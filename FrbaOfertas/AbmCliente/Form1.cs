@@ -20,8 +20,7 @@ namespace FrbaOfertas.AbmCliente
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            conexion conexion = new conexion();
-            conexion.abrir();
+
         }
     }
 }

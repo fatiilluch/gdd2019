@@ -4,25 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace FrbaOfertas.Conexion
 {
-    class conexion
+    /*class Conexion
     {
-        string cadena = "Data Source=DESKTOP-A4VN5NH\\SQLSERVER2012;Initial Catalog=GD2C2019;Integrated Security=False;User ID=gdCupon2019;Password=********;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
-        public SqlConnection conectarBd = new SqlConnection();
-
-        public conexion()
-        {
-            conectarBd.ConnectionString = cadena;
-        }
+        string cadena = "Data Source=DESKTOP-A4VN5NH\\SQLSERVER2012;Initial Catalog=GD2C2019;Integrated Security=True";
+       
+        SqlConnection conn; 
 
         public void abrir()
         {
             try
             {
-                conectarBd.Open();
-                Console.WriteLine("Conexion existosa");
+                conn = new SqlConnection(cadena);
+                conn.Open();
+                Console.WriteLine("Conexion exitosa");
             }
             catch (Exception e)
             {
@@ -32,7 +30,42 @@ namespace FrbaOfertas.Conexion
         
         public void cerrar()
         {
-            conectarBd.Close();
+            conn.Close();
         }
+
+        public void EjecutarSQL(String consulta)
+        {
+            SqlCommand com = new SqlCommand(consulta, conn);
+            int filasAfectadas = com.ExecuteNonQuery();
+
+            if (filasAfectadas > 0)
+            {
+                MessageBox.Show("Operación realizada correctamente", "La Base de Datos ha sido modificada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("No se ha conectado a la base de datos", "Error en el sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void actualizar(DataGridView dg, String consulta)
+        {
+  
+            this.abrir();
+            System.Data.DataSet ds = new System.Data.DataSet();
+
+            SqlDataAdapter da = new SqlDataAdapter(consulta, conn);
+
+
+           // da.Fill(ds, <nombreDeLaTabla>);
+
+            dg.DataSource = ds;
+            dg.DataMember = "NOmbredelatabla";
+
+            this.cerrar();
+        
+        }
+
     }
+*/
 }
