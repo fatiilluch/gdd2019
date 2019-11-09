@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FrbaOfertas.Conexion;
 
 namespace FrbaOfertas.AbmCliente
 {
@@ -16,11 +15,6 @@ namespace FrbaOfertas.AbmCliente
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

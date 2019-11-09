@@ -1,3 +1,5 @@
+use GD2C2019
+
 --Para testear
 begin transaction
 --CREACION DE TABLAS
@@ -95,7 +97,7 @@ create table Cargas_credito(
 	carga_id int identity(1,1) primary key,
 	carga_fecha datetime not null,
 	monto numeric(18,2) not null,
-	cliente_dni int,
+	cliente_dni numeric(18,0),
 	forma_de_pago nvarchar(100) not null,
 	tarjeta_id numeric (18,0)
 )
@@ -112,8 +114,8 @@ create table Cupones(
 	cupon_id int identity(1,1) primary key,
 	fecha_consumo datetime,
 	fecha_compra datetime not null,
-	cliente_comprador_dni int not null,
-	cliente_canjeador_dni int,
+	cliente_comprador_dni numeric(18,0) not null,
+	cliente_canjeador_dni numeric(18,0),
 	oferta_id nvarchar(50) not null,
 	reporte_id numeric(18,0)
 )
@@ -137,7 +139,7 @@ begin
 end
 go
 
-go
+
 create procedure migrar_proveedores
 as
 begin
@@ -189,6 +191,23 @@ begin
 end
 go
 
+create procedure migrar_tablas
+as
+begin
+	exec migrar_clientes;
+	exec migrar_rubros;
+	exec migrar_proveedores;
+	exec migrar_ofertas;
+	exec migrar_cargas;
+	exec migrar_reportes;
+	exec migrar_cupones;
+
+end
+go
+
+exec migrar_tablas;
+go
+
 --Agregando constraints
 alter table Clientes
 add constraint fk_usuario foreign key (nombre_usuario) references Usuarios(nombre_usuario),
@@ -222,19 +241,5 @@ add	constraint fk_comprador foreign key (cliente_comprador_dni) references Clien
 	constraint fk_reporte foreign key (reporte_id) references Reportes_facturacion(reporte_id)
 go
 
-create procedure migrar_tablas
-as
-begin
-	exec migrar_clientes;
-	exec migrar_rubros;
-	exec migrar_proveedores;
-	exec migrar_ofertas;
-	exec migrar_cargas;
-	exec migrar_reportes;
 
-end
-go
-
-exec migrar_cupones;
-select * from Clientes
 rollback

@@ -13,9 +13,14 @@ C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\bin\Debug\FrbaOfertas.exe
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
-C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.Form1.resources
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.Form1.resources
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Form1.resources
+C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.LogIn.Form1.resources
+C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
+C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Acceso.EnrutarFuncion.resources
+C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Acceso.EnrutarRoles.resources
+C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Acceso.Login.resources
+C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.index.resources
