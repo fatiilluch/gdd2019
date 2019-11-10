@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Collections;
+using FrbaOfertas.Conexion;
 
 namespace FrbaOfertas.AbmCliente
 {
@@ -28,17 +29,16 @@ namespace FrbaOfertas.AbmCliente
             camposObligatorios.Add(txtCalle);
             camposObligatorios.Add(txtCp);
         }
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HANM39O\SQLSERVER2012;Initial Catalog=GD2C2019;Integrated Security=True");
-
         private void AltaCliente_Load(object sender, EventArgs e)
         {
 
         }
-
+        SqlConnection con = Conexion.Conexion.getConexion();
         private void btnCrearCliente_Click(object sender, EventArgs e)
         {
             if (esValido())
             {
+                
                 SqlCommand cmd = new SqlCommand("INSERT INTO Clientes VALUES (@dni,@nom,@ap,@fecha,@loc,@cp,@tel,@email,@calle,@piso,@depto)", con);
                 cmd.CommandType = CommandType.Text;
 
@@ -53,7 +53,7 @@ namespace FrbaOfertas.AbmCliente
                 cmd.Parameters.AddWithValue("@calle", txtCalle.Text);
                 cmd.Parameters.AddWithValue("@piso", txtPiso.Text);
                 cmd.Parameters.AddWithValue("@depto", txtDepto.Text);
-                
+
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -69,7 +69,7 @@ namespace FrbaOfertas.AbmCliente
             {
                 flag = false;
                 List<TextBox> camposSinLlennar = camposObligatorios.Where(campo => campo.Text == string.Empty).ToList();
-                MessageBox.Show("Falta llenar campos: " + camposObligatorios.Aggregate("",(s,next)=> s+next.Name.TrimStart('t','x','t')+"--").TrimEnd('-'), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falta llenar campos: " + camposSinLlennar.Aggregate("",(s,next)=> s+next.Name.TrimStart('t','x','t')+" , ").TrimEnd(','), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             return flag;

@@ -70,7 +70,7 @@
     <Compile Include="CargaCredito\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Conexion\ClaseConexion.cs" />
+    <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="CrearOferta\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

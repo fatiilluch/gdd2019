@@ -26,11 +26,12 @@ namespace FrbaOfertas.LoginYSeguridad
             label2.Text = rolSeleccionado;  
             //ver si va lo del if
         }
-
+        SqlConnection con = Conexion.Conexion.getConexion();
         private void Llenar_Combobox_Funcionalidades()
         {
             string query = "select b.DESCRIPCION_FUNC from RE_GDDIENTOS.[Funcionalidad x Rol] a JOIN RE_GDDIENTOS.Funcionalidad b ON a.FUNCIONALIDAD = b.FUNCIONALIDAD where NOMBRE_ROL = '" + this.rolSeleccionado + "'";
-            SqlDataReader reader = ClaseConexion.ResolverConsulta(query);
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 string a = reader.GetString(0);
