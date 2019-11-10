@@ -28,7 +28,9 @@ C:\Home\Gestion de datos\gdd2019\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
-C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.Form1.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.LoginYSeguridad.Funcionalidades.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.AltaCliente.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\bin\Debug\FrbaOfertas.exe
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\bin\Debug\FrbaOfertas.pdb

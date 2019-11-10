@@ -1,5 +1,3 @@
-use GD2C2019
-
 --Para testear
 begin transaction
 --CREACION DE TABLAS

@@ -146,7 +146,6 @@
             this.lblDni.Size = new System.Drawing.Size(26, 13);
             this.lblDni.TabIndex = 11;
             this.lblDni.Text = "Dni:";
-            this.lblDni.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblFechaNacimiento
             // 
@@ -156,7 +155,6 @@
             this.lblFechaNacimiento.Size = new System.Drawing.Size(109, 13);
             this.lblFechaNacimiento.TabIndex = 12;
             this.lblFechaNacimiento.Text = "Fecha de nacimiento:";
-            this.lblFechaNacimiento.Click += new System.EventHandler(this.label4_Click);
             // 
             // lblTelefono
             // 
