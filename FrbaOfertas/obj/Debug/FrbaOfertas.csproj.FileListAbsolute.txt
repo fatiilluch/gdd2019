@@ -24,3 +24,11 @@ C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Acceso.EnrutarRoles.resources
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Acceso.Login.resources
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.index.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.Form1.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.LoginYSeguridad.Funcionalidades.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache

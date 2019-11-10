@@ -241,5 +241,22 @@ add	constraint fk_comprador foreign key (cliente_comprador_dni) references Clien
 	constraint fk_reporte foreign key (reporte_id) references Reportes_facturacion(reporte_id)
 go
 
+-- procedimientos para hacer un CRUD con usuarios
+create procedure mostrarUsuarios
+as
+select top 200 *
+from Usuarios
+order by nombre_usuario desc
+go
+
+-- Procedimiento buscar nombre
+create procedure buscarUsuario
+@textoBuscar varchar(50)
+as
+select *
+from Usuarios
+where nombre_usuario like @textoBuscar + '%'
+go
+
 
 rollback
