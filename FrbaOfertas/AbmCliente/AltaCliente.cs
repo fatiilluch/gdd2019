@@ -69,7 +69,7 @@ namespace FrbaOfertas.AbmCliente
             {
                 flag = false;
                 List<TextBox> camposSinLlennar = camposObligatorios.Where(campo => campo.Text == string.Empty).ToList();
-                MessageBox.Show("Falta llenar campos: " + camposSinLlennar.Aggregate("",(s,next)=> s+next.Name.TrimStart('t','x','t')+" , ").TrimEnd(','), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falta llenar campos: " + camposSinLlennar.Aggregate("",(s,next)=> s+next.Name.TrimStart('t','x','t')+" , ").TrimEnd(',',' '), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             return flag;

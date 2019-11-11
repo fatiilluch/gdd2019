@@ -1,4 +1,7 @@
 --Para testear
+  --usuario de prueba
+  --insert into Usuarios (nombre_usuario,password) values (admin,'f446c8d778f9139e45b488b3c823369567f055e2a5e11e765ce1f3164267ac03')
+
 begin transaction
 --CREACION DE TABLAS
 create table Funcionalidades(
@@ -9,7 +12,7 @@ create table Funcionalidades(
 create table Roles(
 	rol_id smallint primary key,
 	rol_nombre nvarchar(100) not null unique,
-	habilitado bit
+	habilitado bit default 1
 )
 
 create table FuncionalidadPorRol(
@@ -17,12 +20,13 @@ create table FuncionalidadPorRol(
 	funcionalidad_id smallint foreign key references Funcionalidades(funcionalidad_id),
 	primary key(rol_id, funcionalidad_id)
 )
-
 create table Usuarios(
 	nombre_usuario nvarchar(255) primary key,
 	password nvarchar(255) not null,
-	habilitado bit
+	intentos smallint default 0,
+	habilitado bit default 1
 )
+insert into Usuarios (nombre_usuario,password) values ('admin','1234')
 
 create table UsuarioPorRol(
 	rol_id smallint foreign key references Roles(rol_id),
@@ -30,7 +34,7 @@ create table UsuarioPorRol(
 	primary key(rol_id,nombre_usuario)
 )
 
-create table adminitrativos(
+create table Adminitradores(
 	administrativo_id smallint identity(1,1) primary key,
 	nombre_usuario nvarchar(255) not null foreign key references Usuarios(nombre_usuario)
 )
