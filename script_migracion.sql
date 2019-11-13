@@ -59,12 +59,11 @@ create table Rubros(
 )
 
 create table Proveedores(
-	proveedor_id int identity(1,1) primary key,
 	rs nvarchar(100) not null,
 	email nvarchar(255),
 	telefono numeric(18,0) not null,
 	ciudad nvarchar(255) not null,
-	cuit nvarchar(20) not null,
+	cuit nvarchar(20) not null primary key,
 	rubro_id int not null,
 	proveedor_nombre nvarchar(100),
 	direccion nvarchar(255) not null,

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaOfertas.Registro_de_usuario;
+using System.Data.SqlClient;
 
 namespace FrbaOfertas
 {
@@ -14,10 +16,16 @@ namespace FrbaOfertas
     {
         protected List<TextBox> camposObligatorios = new List<TextBox>();
         protected Form ventanaAnterior;
-        
+
         public AltaForm()
         {
             InitializeComponent();
+        }
+        public AltaForm(Form v)
+        {
+            InitializeComponent();
+            ventanaAnterior = v;
+            inicializarCamposObligatorios();
         }
 
         protected virtual void inicializarCamposObligatorios() { }
@@ -33,7 +41,19 @@ namespace FrbaOfertas
             }
             return flag;
         }
+        protected void cargarUsuario(Usuario us)
+        {
+            if (us != null)
+            {
+                SqlCommand cmd1 = new SqlCommand("Insert into Usuarios (nombre_usuario,password) values (@name,@pass)", Utilidades.Utilidades.getCon());
+                cmd1.Parameters.AddWithValue("@name", us.getNombreUsuario());
+                String hash = Utilidades.Utilidades.obtenerHash(us.getPass());
+                cmd1.Parameters.AddWithValue("@pass", hash);
 
+                Utilidades.Utilidades.ejecutar(cmd1);
+
+            }
+        }
         protected void btnAtras_Click(object sender, EventArgs e)
         {
             this.Close();
