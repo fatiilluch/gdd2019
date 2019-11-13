@@ -64,6 +64,7 @@ namespace FrbaOfertas.AbmCliente
                 cmd2.Parameters.AddWithValue("@calle", txtCalle.Text);
                 cmd2.Parameters.AddWithValue("@piso", txtPiso.Text);
                 cmd2.Parameters.AddWithValue("@depto", txtDepto.Text);
+                cmd2.Parameters.AddWithValue("@user", us.getNombreUsuario());
 
                 Utilidades.Utilidades.ejecutar(cmd2);
                 MessageBox.Show("Cliente guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);

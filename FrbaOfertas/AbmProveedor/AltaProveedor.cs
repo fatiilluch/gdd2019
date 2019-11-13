@@ -15,13 +15,13 @@ namespace FrbaOfertas.AbmProveedor
 {
     public partial class AltaProveedor : AltaForm
     {
-        private Usuario infoUsuario;
+        private Usuario us;
         public  AltaProveedor(Usuario user,Form v)
         {
             InitializeComponent();
             inicializarCamposObligatorios();
             ventanaAnterior = v;
-            infoUsuario = user;
+            us = user;
         }
         
         protected override void inicializarCamposObligatorios()
@@ -36,27 +36,33 @@ namespace FrbaOfertas.AbmProveedor
             camposObligatorios.Add(txtCp);
             camposObligatorios.Add(txtContacto);
         }
+
         private void btnCrear_Click(object sender, EventArgs e)
         {
             if (camposObligatoriosCompletados())
             {
+                SqlCommand cmd1 = new SqlCommand("Insert into Usuarios (nombre_usuario,password) values (@name,@pass)", Utilidades.Utilidades.getCon());
+                cmd1.Parameters.AddWithValue("@name", us.getNombreUsuario());
+                String hash = Utilidades.Utilidades.obtenerHash(us.getPass());
+                cmd1.Parameters.AddWithValue("@pass", hash);
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Proveedores VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@prov_nom,@calle,@piso,@depto,@nombre_usuario)", Utilidades.Utilidades.getCon());
-                cmd.CommandType = CommandType.Text;
+                Utilidades.Utilidades.ejecutar(cmd1);
 
-                cmd.Parameters.AddWithValue("@rs", txtRs.Text);
-                cmd.Parameters.AddWithValue("@email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("@telefono", txtTelefono.Text);
-                cmd.Parameters.AddWithValue("@ciudad", txtLocalidad.Text);
-                cmd.Parameters.AddWithValue("@cuit", txtCuit.Text);
-                cmd.Parameters.AddWithValue("@rubro_id", txtRubro.Text);
-                cmd.Parameters.AddWithValue("@prov_nom", txtContacto.Text);
-                cmd.Parameters.AddWithValue("@calle", txtCalle.Text);
-                cmd.Parameters.AddWithValue("@piso", txtCalle.Text);
-                cmd.Parameters.AddWithValue("@depto", txtPiso.Text);
-                cmd.Parameters.AddWithValue("@nombre_usuario", txtDepto.Text);//me lo traigo del formulario anterior
+                SqlCommand cmd2 = new SqlCommand("INSERT INTO Proveedores VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@prov_nom,@calle,@piso,@depto,@nombre_usuario)", Utilidades.Utilidades.getCon());
 
-                Utilidades.Utilidades.ejecutar(cmd);
+                cmd2.Parameters.AddWithValue("@rs", txtRs.Text);
+                cmd2.Parameters.AddWithValue("@email", txtEmail.Text);
+                cmd2.Parameters.AddWithValue("@telefono", txtTelefono.Text);
+                cmd2.Parameters.AddWithValue("@ciudad", txtLocalidad.Text);
+                cmd2.Parameters.AddWithValue("@cuit", txtCuit.Text);
+                cmd2.Parameters.AddWithValue("@rubro_id", txtRubro.Text);
+                cmd2.Parameters.AddWithValue("@prov_nom", txtContacto.Text);
+                cmd2.Parameters.AddWithValue("@calle", txtCalle.Text);
+                cmd2.Parameters.AddWithValue("@piso", txtCalle.Text);
+                cmd2.Parameters.AddWithValue("@depto", txtPiso.Text);
+                cmd2.Parameters.AddWithValue("@nombre_usuario", us.getNombreUsuario());
+
+                Utilidades.Utilidades.ejecutar(cmd2);
                 MessageBox.Show("Proveedor guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

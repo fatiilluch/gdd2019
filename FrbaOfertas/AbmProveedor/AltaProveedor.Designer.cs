@@ -44,7 +44,6 @@
             this.lblCuit = new System.Windows.Forms.Label();
             this.lblRubro = new System.Windows.Forms.Label();
             this.lblContacto = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.lblCalle = new System.Windows.Forms.Label();
             this.txtDepto = new System.Windows.Forms.TextBox();
             this.txtPiso = new System.Windows.Forms.TextBox();
@@ -185,15 +184,6 @@
             this.lblContacto.TabIndex = 15;
             this.lblContacto.Text = "Nombre de Contacto:";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(112, 112);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "label8";
-            // 
             // lblCalle
             // 
             this.lblCalle.AutoSize = true;
@@ -255,12 +245,13 @@
             // 
             // btnCrear
             // 
-            this.btnCrear.Location = new System.Drawing.Point(520, 328);
+            this.btnCrear.Location = new System.Drawing.Point(523, 328);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(75, 23);
             this.btnCrear.TabIndex = 26;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // AltaProveedor
             // 
@@ -275,7 +266,6 @@
             this.Controls.Add(this.txtPiso);
             this.Controls.Add(this.txtDepto);
             this.Controls.Add(this.lblCalle);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.lblContacto);
             this.Controls.Add(this.lblRubro);
             this.Controls.Add(this.lblCuit);
@@ -310,7 +300,6 @@
             this.Controls.SetChildIndex(this.lblCuit, 0);
             this.Controls.SetChildIndex(this.lblRubro, 0);
             this.Controls.SetChildIndex(this.lblContacto, 0);
-            this.Controls.SetChildIndex(this.label8, 0);
             this.Controls.SetChildIndex(this.lblCalle, 0);
             this.Controls.SetChildIndex(this.txtDepto, 0);
             this.Controls.SetChildIndex(this.txtPiso, 0);
@@ -343,7 +332,6 @@
         private System.Windows.Forms.Label lblCuit;
         private System.Windows.Forms.Label lblRubro;
         private System.Windows.Forms.Label lblContacto;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblCalle;
         private System.Windows.Forms.TextBox txtDepto;
         private System.Windows.Forms.TextBox txtPiso;

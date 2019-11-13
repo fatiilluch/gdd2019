@@ -41,9 +41,9 @@ namespace FrbaOfertas.Registro_de_usuario
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
             Usuario us = new Usuario(txtUsuario.Text,txtPassword.Text);
-            String seleccionado = cmbRol.SelectedItem.ToString();
-            if (camposObligatoriosCompletados())
+            if (camposObligatoriosCompletados() && cmbRol.SelectedItem!=null)
             {
+                String seleccionado = cmbRol.SelectedItem.ToString();
                 switch (seleccionado)
                 {
                     case "Cliente":
