@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrbaOfertas.ListadoEstadistico
+namespace FrbaOfertas.AbmRol
 {
-    public partial class Listado_Estadistico : Form
+    public partial class BajaRol : Form
     {
-        public Listado_Estadistico()
+        public BajaRol()
         {
             InitializeComponent();
-        }
-
-        private void Listado_Estadistico_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
