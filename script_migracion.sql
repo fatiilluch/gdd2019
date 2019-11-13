@@ -23,7 +23,6 @@ create table Usuarios(
 	intentos smallint default 0,
 	habilitado bit default 1
 )
-insert into Usuarios (nombre_usuario,password) values ('admin','1234')
 
 create table UsuarioPorRol(
 	rol_id smallint foreign key references Roles(rol_id),
