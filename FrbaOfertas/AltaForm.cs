@@ -14,11 +14,14 @@ namespace FrbaOfertas
     {
         protected List<TextBox> camposObligatorios = new List<TextBox>();
         protected Form ventanaAnterior;
+        
         public AltaForm()
         {
             InitializeComponent();
         }
+
         protected virtual void inicializarCamposObligatorios() { }
+        
         protected bool camposObligatoriosCompletados()
         {
             bool flag = true;
@@ -27,10 +30,8 @@ namespace FrbaOfertas
                 flag = false;
                 List<TextBox> camposSinLlennar = camposObligatorios.Where(campo => campo.Text == string.Empty).ToList();
                 MessageBox.Show("Falta llenar campos: " + camposSinLlennar.Aggregate("", (s, next) => s + next.Name.TrimStart('t', 'x', 't') + " , ").TrimEnd(',', ' '), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             return flag;
-
         }
 
         protected void btnAtras_Click(object sender, EventArgs e)
@@ -38,6 +39,5 @@ namespace FrbaOfertas
             this.Close();
             this.ventanaAnterior.Show();
         }
-
     }
 }

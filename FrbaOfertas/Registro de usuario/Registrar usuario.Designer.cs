@@ -37,10 +37,16 @@
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // btnAtras
+            // 
+            this.btnAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.btnAtras.Location = new System.Drawing.Point(36, 159);
+            this.btnAtras.Size = new System.Drawing.Size(100, 37);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(145, 202);
+            this.label1.Location = new System.Drawing.Point(23, 107);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 0;
@@ -49,7 +55,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(107, 121);
+            this.label2.Location = new System.Drawing.Point(23, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 1;
@@ -58,7 +64,7 @@
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(72, 48);
+            this.lblUsuario.Location = new System.Drawing.Point(23, 28);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(99, 13);
             this.lblUsuario.TabIndex = 2;
@@ -66,14 +72,14 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(228, 121);
+            this.txtPassword.Location = new System.Drawing.Point(148, 62);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(121, 20);
             this.txtPassword.TabIndex = 3;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(228, 48);
+            this.txtUsuario.Location = new System.Drawing.Point(148, 25);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(121, 20);
             this.txtUsuario.TabIndex = 4;
@@ -81,7 +87,7 @@
             // cmbRol
             // 
             this.cmbRol.FormattingEnabled = true;
-            this.cmbRol.Location = new System.Drawing.Point(228, 202);
+            this.cmbRol.Location = new System.Drawing.Point(148, 99);
             this.cmbRol.Name = "cmbRol";
             this.cmbRol.Size = new System.Drawing.Size(121, 21);
             this.cmbRol.TabIndex = 5;
@@ -89,9 +95,10 @@
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(384, 202);
+            this.btnSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.btnSeleccionar.Location = new System.Drawing.Point(157, 159);
             this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionar.Size = new System.Drawing.Size(100, 37);
             this.btnSeleccionar.TabIndex = 6;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
@@ -101,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 333);
+            this.ClientSize = new System.Drawing.Size(316, 235);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.cmbRol);
             this.Controls.Add(this.txtUsuario);
