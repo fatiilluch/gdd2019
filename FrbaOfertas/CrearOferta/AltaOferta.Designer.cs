@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblId = new System.Windows.Forms.Label();
             this.lblStock = new System.Windows.Forms.Label();
             this.lblLimiteCompra = new System.Windows.Forms.Label();
@@ -49,8 +50,14 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnPublicar = new System.Windows.Forms.Button();
+            this.validator = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBoxFechas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.validator)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.Location = new System.Drawing.Point(679, 410);
             // 
             // lblId
             // 
@@ -212,7 +219,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCancelar.Location = new System.Drawing.Point(35, 381);
+            this.btnCancelar.Location = new System.Drawing.Point(15, 381);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(86, 40);
             this.btnCancelar.TabIndex = 17;
@@ -223,13 +230,17 @@
             // btnPublicar
             // 
             this.btnPublicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnPublicar.Location = new System.Drawing.Point(195, 381);
+            this.btnPublicar.Location = new System.Drawing.Point(214, 380);
             this.btnPublicar.Name = "btnPublicar";
             this.btnPublicar.Size = new System.Drawing.Size(83, 41);
             this.btnPublicar.TabIndex = 18;
             this.btnPublicar.Text = "Publicar";
             this.btnPublicar.UseVisualStyleBackColor = true;
             this.btnPublicar.Click += new System.EventHandler(this.btnPublicar_Click);
+            // 
+            // validator
+            // 
+            this.validator.ContainerControl = this;
             // 
             // altaOferta
             // 
@@ -255,8 +266,27 @@
             this.Controls.Add(this.lblId);
             this.Name = "altaOferta";
             this.Text = "Publicar una Oferta";
+            this.Controls.SetChildIndex(this.lblId, 0);
+            this.Controls.SetChildIndex(this.lblStock, 0);
+            this.Controls.SetChildIndex(this.lblLimiteCompra, 0);
+            this.Controls.SetChildIndex(this.lblprecioAntiguo, 0);
+            this.Controls.SetChildIndex(this.lblPrecioNuevo, 0);
+            this.Controls.SetChildIndex(this.lblIdProveedor, 0);
+            this.Controls.SetChildIndex(this.lblDescripcion, 0);
+            this.Controls.SetChildIndex(this.groupBoxFechas, 0);
+            this.Controls.SetChildIndex(this.txtId, 0);
+            this.Controls.SetChildIndex(this.txtStock, 0);
+            this.Controls.SetChildIndex(this.txtLimiteCompra, 0);
+            this.Controls.SetChildIndex(this.txtPrecioAntiguo, 0);
+            this.Controls.SetChildIndex(this.txtPrecioNuevo, 0);
+            this.Controls.SetChildIndex(this.txtIdProv, 0);
+            this.Controls.SetChildIndex(this.txtDescripcion, 0);
+            this.Controls.SetChildIndex(this.btnCancelar, 0);
+            this.Controls.SetChildIndex(this.btnPublicar, 0);
+            this.Controls.SetChildIndex(this.btnAtras, 0);
             this.groupBoxFechas.ResumeLayout(false);
             this.groupBoxFechas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.validator)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,5 +315,6 @@
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnPublicar;
+        private System.Windows.Forms.ErrorProvider validator;
     }
 }

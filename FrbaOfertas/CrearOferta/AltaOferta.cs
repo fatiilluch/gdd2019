@@ -24,7 +24,7 @@ namespace FrbaOfertas.CrearOferta
 
         private void btnPublicar_Click(object sender, EventArgs e)
         {
-            //fijarme si los campos son Ok y despues mandarlo a la base
+            
         }
     }
 }

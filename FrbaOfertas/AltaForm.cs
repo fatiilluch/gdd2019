@@ -28,8 +28,8 @@ namespace FrbaOfertas
             if (camposObligatorios.Exists(campo => campo.Text == string.Empty))
             {
                 flag = false;
-                List<TextBox> camposSinLlennar = camposObligatorios.Where(campo => campo.Text == string.Empty).ToList();
-                MessageBox.Show("Falta llenar campos: " + camposSinLlennar.Aggregate("", (s, next) => s + next.Name.TrimStart('t', 'x', 't') + " , ").TrimEnd(',', ' '), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                List<TextBox> camposSinLlenar = camposObligatorios.Where(campo => campo.Text == string.Empty).ToList();
+                MessageBox.Show("Falta llenar campos: " + camposSinLlenar.Aggregate("", (s, next) => s + next.Name.TrimStart('t', 'x', 't') + " , ").TrimEnd(',', ' '), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return flag;
         }
