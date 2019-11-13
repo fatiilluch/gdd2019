@@ -33,7 +33,7 @@
             // 
             // btnAtras
             // 
-            this.btnAtras.Location = new System.Drawing.Point(48, 300);
+            this.btnAtras.Location = new System.Drawing.Point(22, 312);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(75, 23);
             this.btnAtras.TabIndex = 1;
@@ -49,6 +49,7 @@
             this.Controls.Add(this.btnAtras);
             this.Name = "AltaForm";
             this.Text = "AltaForm";
+            this.Load += new System.EventHandler(this.AltaForm_Load);
             this.ResumeLayout(false);
 
         }

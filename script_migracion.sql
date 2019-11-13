@@ -17,6 +17,7 @@ create table FuncionalidadPorRol(
 	funcionalidad_id smallint foreign key references Funcionalidades(funcionalidad_id),
 	primary key(rol_id, funcionalidad_id)
 )
+
 create table Usuarios(
 	nombre_usuario nvarchar(255) primary key,
 	password nvarchar(255) not null,
@@ -118,6 +119,7 @@ create table Cupones(
 	reporte_id numeric(18,0)
 )
 go
+
 --Migración
 create procedure migrar_clientes
 as
@@ -136,7 +138,6 @@ begin
 		select distinct Provee_Rubro from gd_esquema.Maestra where Provee_Rubro is not null
 end
 go
-
 
 create procedure migrar_proveedores
 as
@@ -255,6 +256,5 @@ select *
 from Usuarios
 where nombre_usuario like @textoBuscar + '%'
 go
-
 
 rollback

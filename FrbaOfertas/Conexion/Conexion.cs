@@ -20,13 +20,7 @@ namespace FrbaOfertas.Conexion
         SqlCommand command;
 
         private static string configuracionConexionSQL = @"Data Source=DESKTOP-HANM39O\SQLSERVER2012;Initial Catalog=GD2C2019;Integrated Security=True";//Con esto me funciona la conexion.
-        //Data Source= \\SQLSERVER2012;Initial Catalog=GD2C2019; Persist Security Info=True;User ID= gdCupon2019 ;PASSWORD= gd2019. Con esto no me funcionaba, a vos si?
-        /*static string server = ConfigurationManager.AppSettings["server"].ToString();
-        static string user = ConfigurationManager.AppSettings["user"].ToString();
-        static string password = ConfigurationManager.AppSettings["password"].ToString();
-        */
-        // declaro una variable de conexion global
-        //public static SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-A4VN5NH\\SQLSERVER2012;Initial Catalog = GD2C2019; Integrated Security=True;User ID=gdCupon2019;Password=********;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False");
+
         private static SqlConnection conexion = new SqlConnection(configuracionConexionSQL);
 
         public string getConfig()
@@ -113,7 +107,6 @@ namespace FrbaOfertas.Conexion
                     columna.Add(fila[0].ToString());
             return columna;
         }
-
 
         public void crearSP(string nombreConsulta)
         {

@@ -81,11 +81,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexion\Conexion.cs" />
-    <Compile Include="CrearOferta\Form1.cs">
+    <Compile Include="CrearOferta\AltaOferta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CrearOferta\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CrearOferta\AltaOferta.Designer.cs">
+      <DependentUpon>AltaOferta.cs</DependentUpon>
     </Compile>
     <Compile Include="Facturar\Form1.cs">
       <SubType>Form</SubType>
@@ -104,11 +104,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GD2C2019DataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ListadoEstadistico\Form1.cs">
+    <Compile Include="ListadoEstadistico\Listado_Estadistico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListadoEstadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ListadoEstadistico\Listado_Estadistico.Designer.cs">
+      <DependentUpon>Listado_Estadistico.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginYSeguridad\EntidadUsuario.cs" />
     <Compile Include="LoginYSeguridad\Login.cs">
@@ -116,12 +116,6 @@
     </Compile>
     <Compile Include="LoginYSeguridad\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LoginYSeguridad\Funcionalidades.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginYSeguridad\Funcionalidades.Designer.cs">
-      <DependentUpon>Funcionalidades.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,8 +134,11 @@
     <EmbeddedResource Include="AltaForm.resx">
       <DependentUpon>AltaForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginYSeguridad\Funcionalidades.resx">
-      <DependentUpon>Funcionalidades.cs</DependentUpon>
+    <EmbeddedResource Include="CrearOferta\AltaOferta.resx">
+      <DependentUpon>AltaOferta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoEstadistico\Listado_Estadistico.resx">
+      <DependentUpon>Listado_Estadistico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginYSeguridad\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
