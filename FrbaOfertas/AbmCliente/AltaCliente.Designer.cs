@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCrearCliente = new System.Windows.Forms.Button();
             this.txtFechaDeNacimiento = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -52,17 +51,12 @@
             this.txtDepto = new System.Windows.Forms.TextBox();
             this.txtLocalidad = new System.Windows.Forms.TextBox();
             this.lblLocalidad = new System.Windows.Forms.Label();
+            this.btnCrear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnCrearCliente
+            // btnAtras
             // 
-            this.btnCrearCliente.Location = new System.Drawing.Point(257, 312);
-            this.btnCrearCliente.Name = "btnCrearCliente";
-            this.btnCrearCliente.Size = new System.Drawing.Size(92, 32);
-            this.btnCrearCliente.TabIndex = 0;
-            this.btnCrearCliente.Text = "Crear";
-            this.btnCrearCliente.UseVisualStyleBackColor = true;
-            this.btnCrearCliente.Click += new System.EventHandler(this.btnCrearCliente_Click);
+            this.btnAtras.Location = new System.Drawing.Point(87, 309);
             // 
             // txtFechaDeNacimiento
             // 
@@ -249,11 +243,23 @@
             this.lblLocalidad.TabIndex = 23;
             this.lblLocalidad.Text = "Localidad:";
             // 
+            // btnCrear
+            // 
+            this.btnCrear.Location = new System.Drawing.Point(419, 309);
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.Size = new System.Drawing.Size(75, 23);
+            this.btnCrear.TabIndex = 24;
+            this.btnCrear.Text = "Crear";
+            this.btnCrear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
+            // 
             // AltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 356);
+            this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.lblLocalidad);
             this.Controls.Add(this.txtLocalidad);
             this.Controls.Add(this.txtDepto);
@@ -277,12 +283,36 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtFechaDeNacimiento);
-            this.Controls.Add(this.btnCrearCliente);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AltaCliente";
             this.Text = "Registro del cliente";
             this.Load += new System.EventHandler(this.AltaCliente_Load);
+            this.Controls.SetChildIndex(this.txtFechaDeNacimiento, 0);
+            this.Controls.SetChildIndex(this.txtTelefono, 0);
+            this.Controls.SetChildIndex(this.txtNombre, 0);
+            this.Controls.SetChildIndex(this.txtApellido, 0);
+            this.Controls.SetChildIndex(this.txtCp, 0);
+            this.Controls.SetChildIndex(this.txtCalle, 0);
+            this.Controls.SetChildIndex(this.txtEmail, 0);
+            this.Controls.SetChildIndex(this.txtDni, 0);
+            this.Controls.SetChildIndex(this.lblNombre, 0);
+            this.Controls.SetChildIndex(this.lblApellido, 0);
+            this.Controls.SetChildIndex(this.lblDni, 0);
+            this.Controls.SetChildIndex(this.lblFechaNacimiento, 0);
+            this.Controls.SetChildIndex(this.lblTelefono, 0);
+            this.Controls.SetChildIndex(this.lblMail, 0);
+            this.Controls.SetChildIndex(this.lblCp, 0);
+            this.Controls.SetChildIndex(this.label8, 0);
+            this.Controls.SetChildIndex(this.lblPiso, 0);
+            this.Controls.SetChildIndex(this.lblDepto, 0);
+            this.Controls.SetChildIndex(this.lblCalle, 0);
+            this.Controls.SetChildIndex(this.txtPiso, 0);
+            this.Controls.SetChildIndex(this.txtDepto, 0);
+            this.Controls.SetChildIndex(this.txtLocalidad, 0);
+            this.Controls.SetChildIndex(this.lblLocalidad, 0);
+            this.Controls.SetChildIndex(this.btnAtras, 0);
+            this.Controls.SetChildIndex(this.btnCrear, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,7 +320,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnCrearCliente;
         private System.Windows.Forms.TextBox txtFechaDeNacimiento;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtNombre;
@@ -314,5 +343,6 @@
         private System.Windows.Forms.TextBox txtDepto;
         private System.Windows.Forms.TextBox txtLocalidad;
         private System.Windows.Forms.Label lblLocalidad;
+        private System.Windows.Forms.Button btnCrear;
     }
 }

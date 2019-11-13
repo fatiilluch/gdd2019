@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Utilidades;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
+using FrbaOfertas.Registro_de_usuario;
 
 namespace FrbaOfertas.LoginYSeguridad
 {
@@ -83,6 +84,18 @@ namespace FrbaOfertas.LoginYSeguridad
             }
             
 
+        }
+
+        private void btnRegistrarse_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegistrarUsuario ventana = new RegistrarUsuario(this);
+            ventana.Show();
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
 

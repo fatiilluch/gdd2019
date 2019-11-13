@@ -37,6 +37,7 @@
             this.btnIngresar = new System.Windows.Forms.Button();
             this.gD2C2019DataSet = new FrbaOfertas.GD2C2019DataSet();
             this.gD2C2019DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnRegistrarse = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2019DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2019DataSetBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -85,7 +86,7 @@
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(94, 217);
+            this.btnIngresar.Location = new System.Drawing.Point(33, 216);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(75, 23);
             this.btnIngresar.TabIndex = 5;
@@ -103,11 +104,22 @@
             this.gD2C2019DataSetBindingSource.DataSource = this.gD2C2019DataSet;
             this.gD2C2019DataSetBindingSource.Position = 0;
             // 
+            // btnRegistrarse
+            // 
+            this.btnRegistrarse.Location = new System.Drawing.Point(160, 216);
+            this.btnRegistrarse.Name = "btnRegistrarse";
+            this.btnRegistrarse.Size = new System.Drawing.Size(75, 23);
+            this.btnRegistrarse.TabIndex = 6;
+            this.btnRegistrarse.Text = "Registrarse!";
+            this.btnRegistrarse.UseVisualStyleBackColor = true;
+            this.btnRegistrarse.Click += new System.EventHandler(this.btnRegistrarse_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnRegistrarse);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.lblBienvenido);
             this.Controls.Add(this.lblPassword);
@@ -117,6 +129,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2019DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2019DataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -134,5 +147,6 @@
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.BindingSource gD2C2019DataSetBindingSource;
         private GD2C2019DataSet gD2C2019DataSet;
+        private System.Windows.Forms.Button btnRegistrarse;
     }
 }

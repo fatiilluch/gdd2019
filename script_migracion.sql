@@ -1,7 +1,4 @@
---Para testear
-  --usuario de prueba
-  --insert into Usuarios (nombre_usuario,password) values (admin,'f446c8d778f9139e45b488b3c823369567f055e2a5e11e765ce1f3164267ac03')
-
+--!!!!!!!
 begin transaction
 --CREACION DE TABLAS
 create table Funcionalidades(
@@ -10,7 +7,7 @@ create table Funcionalidades(
 )
 
 create table Roles(
-	rol_id smallint primary key,
+	rol_id smallint identity(1,1) primary key,
 	rol_nombre nvarchar(100) not null unique,
 	habilitado bit default 1
 )

@@ -46,14 +46,18 @@
             this.lblContacto = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblCalle = new System.Windows.Forms.Label();
-            this.btnCrearProveedor = new System.Windows.Forms.Button();
             this.txtDepto = new System.Windows.Forms.TextBox();
             this.txtPiso = new System.Windows.Forms.TextBox();
             this.lblCp = new System.Windows.Forms.Label();
             this.lblDepto = new System.Windows.Forms.Label();
             this.lblPiso = new System.Windows.Forms.Label();
             this.lblLocalidad = new System.Windows.Forms.Label();
+            this.btnCrear = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.Location = new System.Drawing.Point(123, 328);
             // 
             // txtRs
             // 
@@ -199,16 +203,6 @@
             this.lblCalle.TabIndex = 17;
             this.lblCalle.Text = "Calle:";
             // 
-            // btnCrearProveedor
-            // 
-            this.btnCrearProveedor.Location = new System.Drawing.Point(295, 329);
-            this.btnCrearProveedor.Name = "btnCrearProveedor";
-            this.btnCrearProveedor.Size = new System.Drawing.Size(100, 33);
-            this.btnCrearProveedor.TabIndex = 18;
-            this.btnCrearProveedor.Text = "Crear";
-            this.btnCrearProveedor.UseVisualStyleBackColor = true;
-            this.btnCrearProveedor.Click += new System.EventHandler(this.btnCrearProveedor_Click);
-            // 
             // txtDepto
             // 
             this.txtDepto.Location = new System.Drawing.Point(295, 277);
@@ -259,18 +253,27 @@
             this.lblLocalidad.TabIndex = 25;
             this.lblLocalidad.Text = "Localidad:";
             // 
-            // frmAltaProveedor
+            // btnCrear
+            // 
+            this.btnCrear.Location = new System.Drawing.Point(520, 328);
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.Size = new System.Drawing.Size(75, 23);
+            this.btnCrear.TabIndex = 26;
+            this.btnCrear.Text = "Crear";
+            this.btnCrear.UseVisualStyleBackColor = true;
+            // 
+            // AltaProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 374);
+            this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.lblLocalidad);
             this.Controls.Add(this.lblPiso);
             this.Controls.Add(this.lblDepto);
             this.Controls.Add(this.lblCp);
             this.Controls.Add(this.txtPiso);
             this.Controls.Add(this.txtDepto);
-            this.Controls.Add(this.btnCrearProveedor);
             this.Controls.Add(this.lblCalle);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblContacto);
@@ -289,8 +292,34 @@
             this.Controls.Add(this.txtCalle);
             this.Controls.Add(this.txtCuit);
             this.Controls.Add(this.txtRs);
-            this.Name = "frmAltaProveedor";
+            this.Name = "AltaProveedor";
             this.Text = "Registro del proveedor";
+            this.Controls.SetChildIndex(this.txtRs, 0);
+            this.Controls.SetChildIndex(this.txtCuit, 0);
+            this.Controls.SetChildIndex(this.txtCalle, 0);
+            this.Controls.SetChildIndex(this.txtEmail, 0);
+            this.Controls.SetChildIndex(this.txtTelefono, 0);
+            this.Controls.SetChildIndex(this.txtContacto, 0);
+            this.Controls.SetChildIndex(this.txtLocalidad, 0);
+            this.Controls.SetChildIndex(this.txtCp, 0);
+            this.Controls.SetChildIndex(this.txtRubro, 0);
+            this.Controls.SetChildIndex(this.lblRazonSocial, 0);
+            this.Controls.SetChildIndex(this.lblEmail, 0);
+            this.Controls.SetChildIndex(this.lblTelefono, 0);
+            this.Controls.SetChildIndex(this.lblDireccion, 0);
+            this.Controls.SetChildIndex(this.lblCuit, 0);
+            this.Controls.SetChildIndex(this.lblRubro, 0);
+            this.Controls.SetChildIndex(this.lblContacto, 0);
+            this.Controls.SetChildIndex(this.label8, 0);
+            this.Controls.SetChildIndex(this.lblCalle, 0);
+            this.Controls.SetChildIndex(this.txtDepto, 0);
+            this.Controls.SetChildIndex(this.txtPiso, 0);
+            this.Controls.SetChildIndex(this.lblCp, 0);
+            this.Controls.SetChildIndex(this.lblDepto, 0);
+            this.Controls.SetChildIndex(this.lblPiso, 0);
+            this.Controls.SetChildIndex(this.lblLocalidad, 0);
+            this.Controls.SetChildIndex(this.btnAtras, 0);
+            this.Controls.SetChildIndex(this.btnCrear, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,12 +345,12 @@
         private System.Windows.Forms.Label lblContacto;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblCalle;
-        private System.Windows.Forms.Button btnCrearProveedor;
         private System.Windows.Forms.TextBox txtDepto;
         private System.Windows.Forms.TextBox txtPiso;
         private System.Windows.Forms.Label lblCp;
         private System.Windows.Forms.Label lblDepto;
         private System.Windows.Forms.Label lblPiso;
         private System.Windows.Forms.Label lblLocalidad;
+        private System.Windows.Forms.Button btnCrear;
     }
 }
