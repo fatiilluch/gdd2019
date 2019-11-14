@@ -43,7 +43,7 @@
             // lblUsuarioLog
             // 
             this.lblUsuarioLog.AutoSize = true;
-            this.lblUsuarioLog.Location = new System.Drawing.Point(36, 44);
+            this.lblUsuarioLog.Location = new System.Drawing.Point(12, 23);
             this.lblUsuarioLog.Name = "lblUsuarioLog";
             this.lblUsuarioLog.Size = new System.Drawing.Size(90, 13);
             this.lblUsuarioLog.TabIndex = 0;
@@ -52,7 +52,7 @@
             // lblRol
             // 
             this.lblRol.AutoSize = true;
-            this.lblRol.Location = new System.Drawing.Point(36, 130);
+            this.lblRol.Location = new System.Drawing.Point(13, 51);
             this.lblRol.Name = "lblRol";
             this.lblRol.Size = new System.Drawing.Size(23, 13);
             this.lblRol.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             // btnCambiarContraseña
             // 
-            this.btnCambiarContraseña.Location = new System.Drawing.Point(39, 223);
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(96, 118);
             this.btnCambiarContraseña.Name = "btnCambiarContraseña";
             this.btnCambiarContraseña.Size = new System.Drawing.Size(116, 23);
             this.btnCambiarContraseña.TabIndex = 5;
@@ -71,15 +71,15 @@
             // cmbFuncionalidades
             // 
             this.cmbFuncionalidades.FormattingEnabled = true;
-            this.cmbFuncionalidades.Location = new System.Drawing.Point(279, 142);
+            this.cmbFuncionalidades.Location = new System.Drawing.Point(142, 82);
             this.cmbFuncionalidades.Name = "cmbFuncionalidades";
-            this.cmbFuncionalidades.Size = new System.Drawing.Size(121, 21);
+            this.cmbFuncionalidades.Size = new System.Drawing.Size(148, 21);
             this.cmbFuncionalidades.TabIndex = 6;
             // 
             // lblFuncionalidades
             // 
             this.lblFuncionalidades.AutoSize = true;
-            this.lblFuncionalidades.Location = new System.Drawing.Point(304, 111);
+            this.lblFuncionalidades.Location = new System.Drawing.Point(13, 85);
             this.lblFuncionalidades.Name = "lblFuncionalidades";
             this.lblFuncionalidades.Size = new System.Drawing.Size(84, 13);
             this.lblFuncionalidades.TabIndex = 7;
@@ -87,7 +87,7 @@
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(297, 188);
+            this.btnSeleccionar.Location = new System.Drawing.Point(218, 118);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
             this.btnSeleccionar.TabIndex = 8;
@@ -96,7 +96,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(39, 298);
+            this.btnSalir.Location = new System.Drawing.Point(15, 118);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 9;
@@ -115,26 +115,26 @@
             // lblR
             // 
             this.lblR.BackColor = System.Drawing.SystemColors.Window;
-            this.lblR.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblR.Location = new System.Drawing.Point(36, 167);
+            this.lblR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblR.Location = new System.Drawing.Point(142, 51);
             this.lblR.Name = "lblR";
-            this.lblR.Size = new System.Drawing.Size(119, 28);
+            this.lblR.Size = new System.Drawing.Size(148, 20);
             this.lblR.TabIndex = 11;
             // 
             // lblUsuario
             // 
             this.lblUsuario.BackColor = System.Drawing.SystemColors.Window;
-            this.lblUsuario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblUsuario.Location = new System.Drawing.Point(36, 70);
+            this.lblUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblUsuario.Location = new System.Drawing.Point(142, 23);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(119, 28);
+            this.lblUsuario.Size = new System.Drawing.Size(148, 20);
             this.lblUsuario.TabIndex = 12;
             // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 348);
+            this.ClientSize = new System.Drawing.Size(309, 151);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblR);
             this.Controls.Add(this.lblUser);
