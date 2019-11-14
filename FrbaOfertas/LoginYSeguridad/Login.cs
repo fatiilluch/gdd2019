@@ -11,6 +11,7 @@ using Utilidades;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using FrbaOfertas.Registro_de_usuario;
+using FrbaOfertas.MenuPrincipal;
 
 namespace FrbaOfertas.LoginYSeguridad
 {
@@ -30,10 +31,11 @@ namespace FrbaOfertas.LoginYSeguridad
                     String query = String.Format("Select * from Usuarios where nombre_usuario='{0}'", txtUsserName.Text.Trim());
                     DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
 
-                    String usuario = ds.Tables[0].Rows[0]["nombre_usuario"].ToString().Trim();
-                    String password = ds.Tables[0].Rows[0]["password"].ToString().Trim();
+                    Usuario usuario = new Usuario();
+                    usuario.setNombreUsuario(ds.Tables[0].Rows[0]["nombre_usuario"].ToString().Trim());
+                    usuario.setPass(ds.Tables[0].Rows[0]["password"].ToString().Trim());
 
-                    if (usuario !=null)
+                    if (usuario.getNombreUsuario() !=null)
                     {
                         String hash = Utilidades.Utilidades.obtenerHash(txtPassword.Text.Trim());
 
@@ -44,16 +46,16 @@ namespace FrbaOfertas.LoginYSeguridad
 
                         if (habilitado == true)
                         {
-                            if (password == hash)
+                            if (usuario.getPass() == hash)
                             {
-                                MessageBox.Show("Sesion iniciada correctamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 intentos = 0;
                                 cmd.Parameters.AddWithValue("@intentos", intentos);
-                                cmd.Parameters.AddWithValue("@usuario", usuario);
+                                cmd.Parameters.AddWithValue("@usuario", usuario.getNombreUsuario());
                                 Utilidades.Utilidades.ejecutar(cmd);
-                                //abrir ventana de administrador o de cliente o de proveedor
-                                this.Hide();
 
+                                IngresarComo ingresarComo = new IngresarComo(usuario);
+                                this.Hide();
+                                ingresarComo.Show();
                             }
                             else
                             {
@@ -68,7 +70,7 @@ namespace FrbaOfertas.LoginYSeguridad
                                     MessageBox.Show("Contraseña incorrecta. Intente nuevamente", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                                 cmd.Parameters.AddWithValue("@intentos", intentos);
-                                cmd.Parameters.AddWithValue("@usuario", usuario);
+                                cmd.Parameters.AddWithValue("@usuario", usuario.getNombreUsuario());
                                 Utilidades.Utilidades.ejecutar(cmd);
                             }
 
@@ -94,11 +96,6 @@ namespace FrbaOfertas.LoginYSeguridad
             this.Hide();
             RegistrarUsuario ventana = new RegistrarUsuario(this);
             ventana.Show();
-        }
-
-        private void Login_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
         }
 
 

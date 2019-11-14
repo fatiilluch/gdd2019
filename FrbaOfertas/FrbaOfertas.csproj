@@ -140,6 +140,12 @@
       <DependentUpon>Listado_Estadistico.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginYSeguridad\EntidadUsuario.cs" />
+    <Compile Include="LoginYSeguridad\IngresarComo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginYSeguridad\IngresarComo.Designer.cs">
+      <DependentUpon>IngresarComo.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginYSeguridad\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoEstadistico\Listado_Estadistico.resx">
       <DependentUpon>Listado_Estadistico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginYSeguridad\IngresarComo.resx">
+      <DependentUpon>IngresarComo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginYSeguridad\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

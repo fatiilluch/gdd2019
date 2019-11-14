@@ -21,6 +21,7 @@ namespace Utilidades
 
         public static int getCantidadDeIntentos() { return cantidadDeIntentos; }
         public static SqlConnection getCon() { return con; }
+
         public static DataSet ejecutarConsulta(String query)
         {
             con.Open();
@@ -42,14 +43,6 @@ namespace Utilidades
             adapter.Fill(ds);
             con.Close();
             return ds;
-        }
-        public static int filasAfectadasPorQuery(String query)
-        {
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            int filasAfectadas = cmd.ExecuteNonQuery();
-            con.Close();
-            return filasAfectadas;
         }
 
         public static void ejecutar(String query)

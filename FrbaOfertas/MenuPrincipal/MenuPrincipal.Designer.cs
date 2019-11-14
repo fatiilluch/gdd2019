@@ -30,12 +30,14 @@
         {
             this.lblUsuarioLog = new System.Windows.Forms.Label();
             this.lblRol = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtRol = new System.Windows.Forms.TextBox();
             this.btnCambiarContraseña = new System.Windows.Forms.Button();
             this.cmbFuncionalidades = new System.Windows.Forms.ComboBox();
             this.lblFuncionalidades = new System.Windows.Forms.Label();
             this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.lblUser = new System.Windows.Forms.Label();
+            this.lblR = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblUsuarioLog
@@ -56,30 +58,15 @@
             this.lblRol.TabIndex = 1;
             this.lblRol.Text = "Rol";
             // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(39, 78);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.ReadOnly = true;
-            this.txtUsername.Size = new System.Drawing.Size(100, 20);
-            this.txtUsername.TabIndex = 2;
-            // 
-            // txtRol
-            // 
-            this.txtRol.Location = new System.Drawing.Point(39, 169);
-            this.txtRol.Name = "txtRol";
-            this.txtRol.ReadOnly = true;
-            this.txtRol.Size = new System.Drawing.Size(100, 20);
-            this.txtRol.TabIndex = 3;
-            // 
             // btnCambiarContraseña
             // 
-            this.btnCambiarContraseña.Location = new System.Drawing.Point(39, 270);
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(39, 223);
             this.btnCambiarContraseña.Name = "btnCambiarContraseña";
             this.btnCambiarContraseña.Size = new System.Drawing.Size(116, 23);
             this.btnCambiarContraseña.TabIndex = 5;
             this.btnCambiarContraseña.Text = "Cambiar Contraseña";
             this.btnCambiarContraseña.UseVisualStyleBackColor = true;
+            this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
             // 
             // cmbFuncionalidades
             // 
@@ -107,21 +94,61 @@
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(39, 298);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 9;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(36, 85);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(0, 13);
+            this.lblUser.TabIndex = 10;
+            // 
+            // lblR
+            // 
+            this.lblR.BackColor = System.Drawing.SystemColors.Window;
+            this.lblR.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblR.Location = new System.Drawing.Point(36, 167);
+            this.lblR.Name = "lblR";
+            this.lblR.Size = new System.Drawing.Size(119, 28);
+            this.lblR.TabIndex = 11;
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.BackColor = System.Drawing.SystemColors.Window;
+            this.lblUsuario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblUsuario.Location = new System.Drawing.Point(36, 70);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(119, 28);
+            this.lblUsuario.TabIndex = 12;
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 348);
+            this.Controls.Add(this.lblUsuario);
+            this.Controls.Add(this.lblR);
+            this.Controls.Add(this.lblUser);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.lblFuncionalidades);
             this.Controls.Add(this.cmbFuncionalidades);
             this.Controls.Add(this.btnCambiarContraseña);
-            this.Controls.Add(this.txtRol);
-            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblRol);
             this.Controls.Add(this.lblUsuarioLog);
             this.Name = "MenuPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
+            this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,11 +158,13 @@
 
         private System.Windows.Forms.Label lblUsuarioLog;
         private System.Windows.Forms.Label lblRol;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox txtRol;
         private System.Windows.Forms.Button btnCambiarContraseña;
         private System.Windows.Forms.ComboBox cmbFuncionalidades;
         private System.Windows.Forms.Label lblFuncionalidades;
         private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Label lblR;
+        private System.Windows.Forms.Label lblUsuario;
     }
 }

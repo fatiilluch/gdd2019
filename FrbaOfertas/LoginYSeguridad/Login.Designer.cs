@@ -40,9 +40,9 @@
             this.btnRegistrarse = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2019DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2019DataSetBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -152,27 +152,6 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MV Boli", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label1.Location = new System.Drawing.Point(26, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 31);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "¿No tenés cuenta?";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe Print", 14.25F);
-            this.label2.Location = new System.Drawing.Point(25, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 33);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Registrate! ";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -185,6 +164,27 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "It\'s Free!";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe Print", 14.25F);
+            this.label2.Location = new System.Drawing.Point(25, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(127, 33);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Registrate! ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MV Boli", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.label1.Location = new System.Drawing.Point(26, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(246, 31);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "¿No tenés cuenta?";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,7 +195,6 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2019DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2019DataSetBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);

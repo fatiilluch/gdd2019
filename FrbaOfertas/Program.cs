@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.LoginYSeguridad;
+using FrbaOfertas.MenuPrincipal;
 namespace FrbaOfertas
 {
     static class Program
@@ -16,6 +17,8 @@ namespace FrbaOfertas
         [STAThread]
         static void Main()
         {
+            //Registro_de_usuario.Usuario us = new Registro_de_usuario.Usuario("lele", "1234");
+            //MenuPrincipal.Cliente rol = new MenuPrincipal.Cliente("Administrador");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());

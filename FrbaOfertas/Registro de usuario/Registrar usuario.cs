@@ -28,7 +28,7 @@ namespace FrbaOfertas.Registro_de_usuario
         }
         private void inicializarComboBox()
         {
-            String query = "Select rol_nombre from Roles";
+            String query = "Select rol_nombre from Roles where habilitado = 1";
             DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
 
             foreach (DataRow fila in ds.Tables[0].Rows)
@@ -40,37 +40,38 @@ namespace FrbaOfertas.Registro_de_usuario
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            Usuario us = new Usuario(txtUsuario.Text,txtPassword.Text);
             if (camposObligatoriosCompletados() && cmbRol.SelectedItem!=null)
             {
-                if(nombreUsuarioDisponible(us.getNombreUsuario())){
-
-                String seleccionado = cmbRol.SelectedItem.ToString();
-                switch (seleccionado)
+                Usuario user = new Usuario(txtUsuario.Text, txtPassword.Text);
+                if(!nombreUsuarioEnUso(user.getNombreUsuario())){
+                    
+                    String seleccionado = cmbRol.SelectedItem.ToString();
+                    switch (seleccionado)
+                    {
+                        case "Cliente":
+                            this.Hide();
+                            AltaCliente ventanaCliente = new AltaCliente(user, this);
+                            ventanaCliente.Show();
+                            break;
+                        case "Proveedor":
+                            this.Hide();
+                            AltaProveedor ventanaProveedor = new AltaProveedor(user, this);
+                            ventanaProveedor.Show();
+                            break;
+                    }
+                }else
                 {
-                    case "Cliente":
-                        this.Hide();
-                        AltaCliente ventanaCliente = new AltaCliente(us, this);
-                        ventanaCliente.Show();
-                        break;
-                    case "Proveedor":
-                        this.Hide();
-                        AltaProveedor ventanaProveedor = new AltaProveedor(us, this);
-                        ventanaProveedor.Show();
-                        break;
-                }
-                }else{
                     MessageBox.Show("Nombre de usuario no disponible","Failed",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
             }
             
 
         }
-        private Boolean nombreUsuarioDisponible(String nombre)
+        private Boolean nombreUsuarioEnUso(String nombre)
         {
-            String cmd = String.Format("Select * from Usuarios where nombre_usuario= '{0}'", nombre);
+            String cmd = String.Format("Select * from Usuarios where nombre_usuario= '{0}'", nombre.ToLower());
 
-            int filasRetornadas = Utilidades.Utilidades.filasAfectadasPorQuery(cmd);
+            int filasRetornadas = Utilidades.Utilidades.ejecutarConsulta(cmd).Tables[0].Rows.Count;
             if (filasRetornadas<=0) { 
                 return false; 
             } else { return true; }
@@ -86,6 +87,7 @@ namespace FrbaOfertas.Registro_de_usuario
     {
         private String nombreUsuario;
         private String pass;
+        public Usuario() { }
         public Usuario(String nom,String pas)
         {
             this.nombreUsuario = nom;
@@ -93,5 +95,7 @@ namespace FrbaOfertas.Registro_de_usuario
         }
         public String getNombreUsuario() { return this.nombreUsuario; }
         public String getPass() { return this.pass; }
+        public void setNombreUsuario(String n) { this.nombreUsuario=n; }
+        public void setPass(String p) { this.pass=p; }
     }
 }
