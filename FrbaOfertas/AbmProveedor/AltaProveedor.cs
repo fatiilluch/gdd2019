@@ -41,29 +41,33 @@ namespace FrbaOfertas.AbmProveedor
         {
             if (camposObligatoriosCompletados())
             {
-                SqlCommand cmd1 = new SqlCommand("Insert into Usuarios (nombre_usuario,password) values (@name,@pass)", Utilidades.Utilidades.getCon());
-                cmd1.Parameters.AddWithValue("@name", us.getNombreUsuario());
-                String hash = Utilidades.Utilidades.obtenerHash(us.getPass());
-                cmd1.Parameters.AddWithValue("@pass", hash);
 
-                Utilidades.Utilidades.ejecutar(cmd1);
+                try
+                {
 
-                SqlCommand cmd2 = new SqlCommand("INSERT INTO Proveedores VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@prov_nom,@calle,@piso,@depto,@nombre_usuario)", Utilidades.Utilidades.getCon());
+                    SqlCommand cmd2 = new SqlCommand("INSERT INTO Proveedores VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@prov_nom,@calle,@piso,@depto,@nombre_usuario)", Utilidades.Utilidades.getCon());
 
-                cmd2.Parameters.AddWithValue("@rs", txtRs.Text);
-                cmd2.Parameters.AddWithValue("@email", txtEmail.Text);
-                cmd2.Parameters.AddWithValue("@telefono", txtTelefono.Text);
-                cmd2.Parameters.AddWithValue("@ciudad", txtLocalidad.Text);
-                cmd2.Parameters.AddWithValue("@cuit", txtCuit.Text);
-                cmd2.Parameters.AddWithValue("@rubro_id", txtRubro.Text);
-                cmd2.Parameters.AddWithValue("@prov_nom", txtContacto.Text);
-                cmd2.Parameters.AddWithValue("@calle", txtCalle.Text);
-                cmd2.Parameters.AddWithValue("@piso", txtCalle.Text);
-                cmd2.Parameters.AddWithValue("@depto", txtPiso.Text);
-                cmd2.Parameters.AddWithValue("@nombre_usuario", us.getNombreUsuario());
+                    cmd2.Parameters.AddWithValue("@rs", txtRs.Text);
+                    cmd2.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd2.Parameters.AddWithValue("@telefono", txtTelefono.Text);
+                    cmd2.Parameters.AddWithValue("@ciudad", txtLocalidad.Text);
+                    cmd2.Parameters.AddWithValue("@cuit", txtCuit.Text);
+                    cmd2.Parameters.AddWithValue("@rubro_id", txtRubro.Text);
+                    cmd2.Parameters.AddWithValue("@prov_nom", txtContacto.Text);
+                    cmd2.Parameters.AddWithValue("@calle", txtCalle.Text);
+                    cmd2.Parameters.AddWithValue("@piso", txtCalle.Text);
+                    cmd2.Parameters.AddWithValue("@depto", txtPiso.Text);
 
-                Utilidades.Utilidades.ejecutar(cmd2);
-                MessageBox.Show("Proveedor guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarUsuario(us);
+
+
+                    Utilidades.Utilidades.ejecutar(cmd2);
+                    MessageBox.Show("Proveedor guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (SqlException error)
+                {
+                    
+                }
             }
         }
     }

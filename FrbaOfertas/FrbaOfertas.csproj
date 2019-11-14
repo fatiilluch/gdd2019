@@ -68,6 +68,18 @@
     <Compile Include="AbmRol\AltaRol.Designer.cs">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmRol\BajaRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\BajaRol.Designer.cs">
+      <DependentUpon>BajaRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\GestionarDeciciondeRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\GestionarDeciciondeRol.Designer.cs">
+      <DependentUpon>GestionarDeciciondeRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="AltaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\GestionarDeciciondeRol.resx">
+      <DependentUpon>GestionarDeciciondeRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AltaForm.resx">
       <DependentUpon>AltaForm.cs</DependentUpon>

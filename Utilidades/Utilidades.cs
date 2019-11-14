@@ -21,11 +21,12 @@ namespace Utilidades
 
         public static int getCantidadDeIntentos() { return cantidadDeIntentos; }
         public static SqlConnection getCon() { return con; }
-        public static DataSet ejecutarConsulta(String query){
+        public static DataSet ejecutarConsulta(String query)
+        {
             con.Open();
 
             DataSet ds = new DataSet();
-            SqlDataAdapter adapter = new SqlDataAdapter(query,con);
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
 
             adapter.Fill(ds);
             con.Close();
@@ -46,7 +47,8 @@ namespace Utilidades
             con.Close();
         }
 
-        public static String obtenerHash(String texto){
+        public static String obtenerHash(String texto)
+        {
             var passBytes = Encoding.ASCII.GetBytes(texto);
             var sha = new SHA256Managed();
             var hash = sha.ComputeHash(passBytes);
@@ -54,4 +56,20 @@ namespace Utilidades
             return hash.Aggregate("", (b, next) => next.ToString("x2") + b);
         }
     }
+    public class GestorDeErrores
+    {
+        public static void mostrarErrorSegunTipo(SqlException e)
+        {
+            switch (e.Number)
+            {
+                case 2601:
+                case 2627:
+                    MessageBox.Show("Esa instancia ya existe en la base de datos!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
+
+        }
+    }
 }
+
+

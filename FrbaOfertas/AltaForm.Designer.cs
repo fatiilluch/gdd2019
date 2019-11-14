@@ -49,7 +49,6 @@
             this.Controls.Add(this.btnAtras);
             this.Name = "AltaForm";
             this.Text = "AltaForm";
-            this.Load += new System.EventHandler(this.AltaForm_Load);
             this.ResumeLayout(false);
 
         }

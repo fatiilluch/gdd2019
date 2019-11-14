@@ -24,62 +24,65 @@ namespace FrbaOfertas.LoginYSeguridad
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             try{
-                
-                String query = String.Format("Select * from Usuarios where nombre_usuario='{0}'",txtUsserName.Text.Trim());
-                DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
 
-                String usuario = ds.Tables[0].Rows[0]["nombre_usuario"].ToString().Trim();
-                String password = ds.Tables[0].Rows[0]["password"].ToString().Trim();
-
-                if (usuario == txtUsserName.Text.Trim())
+                if (txtUsserName.Text != null && txtPassword.Text != null)
                 {
-                    String hash = Utilidades.Utilidades.obtenerHash(txtPassword.Text.Trim());
-                    
-                    String query2 = "update Usuarios set intentos = @intentos where nombre_usuario=@usuario";
-                    SqlCommand cmd = new SqlCommand(query2, Utilidades.Utilidades.getCon());
-                    int intentos = Convert.ToInt32(ds.Tables[0].Rows[0]["intentos"].ToString());
-                    Boolean habilitado = Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]);
+                    String query = String.Format("Select * from Usuarios where nombre_usuario='{0}'", txtUsserName.Text.Trim());
+                    DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
 
-                    if (habilitado == true)
+                    String usuario = ds.Tables[0].Rows[0]["nombre_usuario"].ToString().Trim();
+                    String password = ds.Tables[0].Rows[0]["password"].ToString().Trim();
+
+                    if (usuario !=null)
                     {
-                        if (password == hash)
+                        String hash = Utilidades.Utilidades.obtenerHash(txtPassword.Text.Trim());
+
+                        String query2 = "update Usuarios set intentos = @intentos where nombre_usuario=@usuario";
+                        SqlCommand cmd = new SqlCommand(query2, Utilidades.Utilidades.getCon());
+                        int intentos = Convert.ToInt32(ds.Tables[0].Rows[0]["intentos"].ToString());
+                        Boolean habilitado = Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]);
+
+                        if (habilitado == true)
                         {
-                            MessageBox.Show("Sesion iniciada correctamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            intentos = 0;
-                            cmd.Parameters.AddWithValue("@intentos", intentos);
-                            cmd.Parameters.AddWithValue("@usuario", usuario);
-                            Utilidades.Utilidades.ejecutar(cmd);
-                            //abrir ventana de administrador o de cliente o de proveedor
-                            this.Hide();
+                            if (password == hash)
+                            {
+                                MessageBox.Show("Sesion iniciada correctamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                intentos = 0;
+                                cmd.Parameters.AddWithValue("@intentos", intentos);
+                                cmd.Parameters.AddWithValue("@usuario", usuario);
+                                Utilidades.Utilidades.ejecutar(cmd);
+                                //abrir ventana de administrador o de cliente o de proveedor
+                                this.Hide();
+
+                            }
+                            else
+                            {
+                                intentos += 1;
+                                if (intentos == Utilidades.Utilidades.getCantidadDeIntentos())
+                                {
+                                    MessageBox.Show("Intentos agotados. Usuario bloqueado. Contactese con un administrador", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Utilidades.Utilidades.ejecutar(String.Format("update Usuarios set habilitado = 0 where nombre_usuario ='{0}'", usuario));
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Contraseña incorrecta. Intente nuevamente", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                cmd.Parameters.AddWithValue("@intentos", intentos);
+                                cmd.Parameters.AddWithValue("@usuario", usuario);
+                                Utilidades.Utilidades.ejecutar(cmd);
+                            }
 
                         }
                         else
                         {
-                            intentos += 1;
-                            if (intentos == Utilidades.Utilidades.getCantidadDeIntentos())
-                            {
-                                MessageBox.Show("Intentos agotados. Usuario bloqueado. Contactese con un administrador", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Utilidades.Utilidades.ejecutar(String.Format("update Usuarios set habilitado = 0 where nombre_usuario ='{0}'", usuario));
-                            }
-                            else
-                            {
-                                MessageBox.Show("Contraseña incorrecta. Intente nuevamente", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            cmd.Parameters.AddWithValue("@intentos", intentos);
-                            cmd.Parameters.AddWithValue("@usuario", usuario);
-                            Utilidades.Utilidades.ejecutar(cmd);
+                            MessageBox.Show("El usuario se encuentra bloqueado. Contactese con un administrador", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("El usuario se encuentra bloqueado. Contactese con un administrador", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    }else{MessageBox.Show("Usuario inexistente!","Failed",MessageBoxButtons.OK,MessageBoxIcon.None);}
                 }
-
+                else { MessageBox.Show("Complete los campos por favor", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     
             }catch(Exception error){
-                    MessageBox.Show("Los datos ingresados no son válidos. Intente nuevamente."+error, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error: " + error, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     
             }
             
