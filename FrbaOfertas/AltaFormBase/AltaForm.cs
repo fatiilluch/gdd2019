@@ -41,7 +41,7 @@ namespace FrbaOfertas
             }
             return flag;
         }
-        protected void cargarUsuario(Usuario us)
+        protected void cargarUsuario(Usuario us,int rol_id)
         {
             if (us != null)
             {
@@ -50,7 +50,14 @@ namespace FrbaOfertas
                 String hash = Utilidades.Utilidades.obtenerHash(us.getPass());
                 cmd1.Parameters.AddWithValue("@pass", hash);
 
+                SqlCommand cmd2 = new SqlCommand("Insert into UsuarioPorRol (rol_id, nombre_usuario) values (@id,@name)", Utilidades.Utilidades.getCon());
+                cmd2.Parameters.AddWithValue("@id", rol_id);
+                cmd2.Parameters.AddWithValue("@name",us.getNombreUsuario());
+
+                Utilidades.Utilidades.beginTransaction();
                 Utilidades.Utilidades.ejecutar(cmd1);
+                Utilidades.Utilidades.ejecutar(cmd2);
+                Utilidades.Utilidades.commit();
 
             }
         }

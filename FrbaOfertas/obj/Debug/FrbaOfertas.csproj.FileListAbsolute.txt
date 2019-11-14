@@ -45,3 +45,7 @@ C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.altaOferta.resources
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.Form1.resources
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.ListadoEstadistico.Listado_Estadistico.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.AltaRol.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.GestionarDeciciondeRol.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.Form1.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.MenuPrincipal.MenuPrincipal.resources

@@ -80,10 +80,10 @@
     <Compile Include="AbmRol\GestionarDeciciondeRol.Designer.cs">
       <DependentUpon>GestionarDeciciondeRol.cs</DependentUpon>
     </Compile>
-    <Compile Include="AltaForm.cs">
+    <Compile Include="AltaFormBase\AltaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AltaForm.Designer.cs">
+    <Compile Include="AltaFormBase\AltaForm.Designer.cs">
       <DependentUpon>AltaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ComprarOferta\Form1.cs">
@@ -98,7 +98,6 @@
     <Compile Include="CargaCredito\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="CrearOferta\AltaOferta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +134,12 @@
     <Compile Include="LoginYSeguridad\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuPrincipal\MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal\MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro de usuario\Registrar usuario.cs">
@@ -155,7 +160,7 @@
     <EmbeddedResource Include="AbmRol\GestionarDeciciondeRol.resx">
       <DependentUpon>GestionarDeciciondeRol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AltaForm.resx">
+    <EmbeddedResource Include="AltaFormBase\AltaForm.resx">
       <DependentUpon>AltaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearOferta\AltaOferta.resx">
@@ -169,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginYSeguridad\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal\MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

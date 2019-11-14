@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using FrbaOfertas.Conexion;
 using Utilidades;
 using FrbaOfertas.Registro_de_usuario;
+
 namespace FrbaOfertas.AbmProveedor
 {
     public partial class AltaProveedor : AltaForm
@@ -45,7 +45,9 @@ namespace FrbaOfertas.AbmProveedor
                 try
                 {
 
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO Proveedores VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@prov_nom,@calle,@piso,@depto,@nombre_usuario)", Utilidades.Utilidades.getCon());
+                    SqlCommand cmd2 = new SqlCommand("INSERT INTO Proveedores VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@prov_nom,@calle,@piso,@depto,@user)", Utilidades.Utilidades.getCon());
+                    String SelectRol = "Select rol_id from Roles where rol_nombre='Proveedor'";
+                    int rol_id = Convert.ToInt32(Utilidades.Utilidades.ejecutarConsulta(SelectRol).Tables[0].Rows[0]);
 
                     cmd2.Parameters.AddWithValue("@rs", txtRs.Text);
                     cmd2.Parameters.AddWithValue("@email", txtEmail.Text);
@@ -55,18 +57,19 @@ namespace FrbaOfertas.AbmProveedor
                     cmd2.Parameters.AddWithValue("@rubro_id", txtRubro.Text);
                     cmd2.Parameters.AddWithValue("@prov_nom", txtContacto.Text);
                     cmd2.Parameters.AddWithValue("@calle", txtCalle.Text);
-                    cmd2.Parameters.AddWithValue("@piso", txtCalle.Text);
-                    cmd2.Parameters.AddWithValue("@depto", txtPiso.Text);
+                    cmd2.Parameters.AddWithValue("@piso", txtPiso.Text);
+                    cmd2.Parameters.AddWithValue("@depto", txtDepto.Text);
+                    if (us != null) { cmd2.Parameters.AddWithValue("@user", us.getNombreUsuario()); }
 
-                    cargarUsuario(us);
-
-
+                    Utilidades.Utilidades.beginTransaction();
+                    cargarUsuario(us,rol_id);
                     Utilidades.Utilidades.ejecutar(cmd2);
                     MessageBox.Show("Proveedor guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Utilidades.Utilidades.commit();
                 }
                 catch (SqlException error)
                 {
-                    
+                    Utilidades.GestorDeErrores.mostrarErrorSegunTipo(error);
                 }
             }
         }

@@ -43,15 +43,9 @@ namespace FrbaOfertas.AbmCliente
         {
             if (camposObligatoriosCompletados())
             {
-                SqlCommand cmd1 = new SqlCommand("Insert into Usuarios (nombre_usuario,password) values (@name,@pass)",Utilidades.Utilidades.getCon());
-                cmd1.Parameters.AddWithValue("@name", us.getNombreUsuario());
-                String hash = Utilidades.Utilidades.obtenerHash(us.getPass());
-                cmd1.Parameters.AddWithValue("@pass", hash);
-
-                Utilidades.Utilidades.ejecutar(cmd1);
-
                 SqlCommand cmd2 = new SqlCommand("INSERT INTO Clientes VALUES (@dni,@nom,@ap,@fecha,@loc,@cp,@tel,@email,@calle,@piso,@depto,@user)", Utilidades.Utilidades.getCon());
-                cmd2.CommandType = CommandType.Text;
+                String SelectRol = "Select rol_id from Roles where rol_nombre='Cliente'";
+                int rol_id = Convert.ToInt32(Utilidades.Utilidades.ejecutarConsulta(SelectRol).Tables[0].Rows[0]);
 
                 cmd2.Parameters.AddWithValue("@dni", txtDni.Text);
                 cmd2.Parameters.AddWithValue("@nom", txtNombre.Text);
@@ -64,10 +58,13 @@ namespace FrbaOfertas.AbmCliente
                 cmd2.Parameters.AddWithValue("@calle", txtCalle.Text);
                 cmd2.Parameters.AddWithValue("@piso", txtPiso.Text);
                 cmd2.Parameters.AddWithValue("@depto", txtDepto.Text);
-                cmd2.Parameters.AddWithValue("@user", us.getNombreUsuario());
+                if (us != null) { cmd2.Parameters.AddWithValue("@user", us.getNombreUsuario()); }
 
+                Utilidades.Utilidades.beginTransaction();
+                cargarUsuario(us,rol_id);
                 Utilidades.Utilidades.ejecutar(cmd2);
                 MessageBox.Show("Cliente guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Utilidades.Utilidades.commit();
             }
         }
 

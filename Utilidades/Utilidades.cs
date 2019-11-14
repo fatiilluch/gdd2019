@@ -32,6 +32,17 @@ namespace Utilidades
             con.Close();
             return ds;
         }
+        public static DataSet ejecutarConsulta(SqlCommand query)
+        {
+            con.Open();
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter adapter = new SqlDataAdapter(query.CommandText, con);
+
+            adapter.Fill(ds);
+            con.Close();
+            return ds;
+        }
 
         public static void ejecutar(String query)
         {
@@ -46,7 +57,21 @@ namespace Utilidades
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        public static void beginTransaction()
+        {
+            ejecutar("begin transaction");
+        }
+        public static void commit()
+        {
+            ejecutar("commit");
+        }
+        public static void rollback()
+        {
+            ejecutar("rollback");
+        }
 
+
+            
         public static String obtenerHash(String texto)
         {
             var passBytes = Encoding.ASCII.GetBytes(texto);

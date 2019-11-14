@@ -30,12 +30,12 @@ namespace FrbaOfertas.Registro_de_usuario
         {
             String query = "Select rol_nombre from Roles";
             DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
-            List<String> listaDeRoles = new List<String>();
 
             foreach (DataRow fila in ds.Tables[0].Rows)
             {
                 cmbRol.Items.Add(fila["rol_nombre"].ToString());
             }
+            cmbRol.Items.Remove("Administrador");
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
@@ -43,6 +43,8 @@ namespace FrbaOfertas.Registro_de_usuario
             Usuario us = new Usuario(txtUsuario.Text,txtPassword.Text);
             if (camposObligatoriosCompletados() && cmbRol.SelectedItem!=null)
             {
+                if(nombreUsuarioDisponible(us.getNombreUsuario())){
+
                 String seleccionado = cmbRol.SelectedItem.ToString();
                 switch (seleccionado)
                 {
@@ -57,13 +59,19 @@ namespace FrbaOfertas.Registro_de_usuario
                         ventanaProveedor.Show();
                         break;
                 }
+                }else{
+                    MessageBox.Show("Nombre de usuario no disponible","Failed",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
             }
             
 
-            //aca hacer el switch case segun el rol, y que se abra un alta cliente o un alta proveedor segun el rol seleccionado
-            //pasando por parametro al constructor del new alta un objeto dto Usuario con el nombre de usuario
-            //La idea es que cuando haga crear en la siguiente ventana, primero se cree el usuario con la contraseña 
-            //y despues el cliente/proveedor.
+        }
+        private Boolean nombreUsuarioDisponible(String nombre)
+        {
+            SqlCommand cmd = new SqlCommand("Select nombre_usuario from Usuarios where nombre_usuario=@name", Utilidades.Utilidades.getCon());
+            cmd.Parameters.AddWithValue("@name", nombre);
+            int filasRetornadas = cmd.ExecuteNonQuery();
+            if (filasRetornadas > 0) { return false; } else { return true; }
         }
         private void RegistrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
