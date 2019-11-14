@@ -43,6 +43,14 @@ namespace Utilidades
             con.Close();
             return ds;
         }
+        public static int filasAfectadasPorQuery(String query)
+        {
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            int filasAfectadas = cmd.ExecuteNonQuery();
+            con.Close();
+            return filasAfectadas;
+        }
 
         public static void ejecutar(String query)
         {

@@ -23,7 +23,6 @@ C:\Home\Gestion de datos\gdd2019\FrbaOfertas\bin\Debug\Utilidades.dll
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\bin\Debug\Utilidades.pdb
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.AltaCliente.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.AltaProveedor.resources
-C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AltaForm.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.LoginYSeguridad.Login.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Registro_de_usuario.RegistrarUsuario.resources
@@ -49,3 +48,7 @@ C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.AltaRo
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.GestionarDeciciondeRol.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.Form1.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.MenuPrincipal.MenuPrincipal.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.ModificarProveedor.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.BajaRol.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AltaFormBase.AltaForm.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.ModificarRol.resources

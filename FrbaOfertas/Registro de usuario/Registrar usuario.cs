@@ -68,10 +68,12 @@ namespace FrbaOfertas.Registro_de_usuario
         }
         private Boolean nombreUsuarioDisponible(String nombre)
         {
-            SqlCommand cmd = new SqlCommand("Select nombre_usuario from Usuarios where nombre_usuario=@name", Utilidades.Utilidades.getCon());
-            cmd.Parameters.AddWithValue("@name", nombre);
-            int filasRetornadas = cmd.ExecuteNonQuery();
-            if (filasRetornadas > 0) { return false; } else { return true; }
+            String cmd = String.Format("Select * from Usuarios where nombre_usuario= '{0}'", nombre);
+
+            int filasRetornadas = Utilidades.Utilidades.filasAfectadasPorQuery(cmd);
+            if (filasRetornadas<=0) { 
+                return false; 
+            } else { return true; }
         }
         private void RegistrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {

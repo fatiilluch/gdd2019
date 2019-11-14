@@ -41,9 +41,9 @@ namespace FrbaOfertas.MenuPrincipal
     }
     public class Proveedor : Rol
     {
-        ´public Proveedor(String n)
+        public Proveedor(String n)
         {
-            nombre=n
+            nombre = n;
         }
     }
     public class Administrador : Rol

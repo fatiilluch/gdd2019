@@ -60,7 +60,7 @@
             // btnAtras
             // 
             this.btnAtras.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtras.Location = new System.Drawing.Point(765, 162);
+            this.btnAtras.Location = new System.Drawing.Point(126, 344);
             this.btnAtras.Size = new System.Drawing.Size(98, 45);
             // 
             // txtRs
@@ -242,7 +242,7 @@
             // btnCrear
             // 
             this.btnCrear.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrear.Location = new System.Drawing.Point(765, 100);
+            this.btnCrear.Location = new System.Drawing.Point(492, 344);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(98, 45);
             this.btnCrear.TabIndex = 26;
@@ -294,7 +294,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 374);
+            this.ClientSize = new System.Drawing.Size(749, 401);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCrear);
