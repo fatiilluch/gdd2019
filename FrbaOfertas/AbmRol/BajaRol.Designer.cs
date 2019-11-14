@@ -30,7 +30,7 @@
         {
             this.txtRolNombre = new System.Windows.Forms.TextBox();
             this.lblRolNombre = new System.Windows.Forms.Label();
-            this.btnCrear = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
@@ -52,15 +52,15 @@
             this.lblRolNombre.TabIndex = 0;
             this.lblRolNombre.Text = "Nombre del Rol";
             // 
-            // btnCrear
+            // btnEliminar
             // 
-            this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCrear.Location = new System.Drawing.Point(177, 65);
-            this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(120, 39);
-            this.btnCrear.TabIndex = 5;
-            this.btnCrear.Text = "Eliminar Rol";
-            this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.btnEliminar.Location = new System.Drawing.Point(177, 65);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(120, 39);
+            this.btnEliminar.TabIndex = 5;
+            this.btnEliminar.Text = "Eliminar Rol";
+            this.btnEliminar.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
@@ -76,7 +76,7 @@
             // 
             this.groupBox1.Controls.Add(this.txtRolNombre);
             this.groupBox1.Controls.Add(this.lblRolNombre);
-            this.groupBox1.Controls.Add(this.btnCrear);
+            this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -103,7 +103,7 @@
 
         private System.Windows.Forms.TextBox txtRolNombre;
         private System.Windows.Forms.Label lblRolNombre;
-        private System.Windows.Forms.Button btnCrear;
+        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.GroupBox groupBox1;
     }

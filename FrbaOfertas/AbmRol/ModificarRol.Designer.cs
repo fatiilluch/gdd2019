@@ -30,9 +30,11 @@
         {
             this.txtRolNombre = new System.Windows.Forms.TextBox();
             this.lblRolNombre = new System.Windows.Forms.Label();
-            this.btnCrear = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.lblFuncionalidades = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,20 +54,20 @@
             this.lblRolNombre.TabIndex = 0;
             this.lblRolNombre.Text = "Nombre del Rol";
             // 
-            // btnCrear
+            // btnModificar
             // 
-            this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCrear.Location = new System.Drawing.Point(177, 68);
-            this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(126, 39);
-            this.btnCrear.TabIndex = 5;
-            this.btnCrear.Text = "Modificar Rol";
-            this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.btnModificar.Location = new System.Drawing.Point(177, 190);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(120, 39);
+            this.btnModificar.TabIndex = 5;
+            this.btnModificar.Text = "Modificar Rol";
+            this.btnModificar.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCancelar.Location = new System.Drawing.Point(23, 68);
+            this.btnCancelar.Location = new System.Drawing.Point(25, 190);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(91, 39);
             this.btnCancelar.TabIndex = 4;
@@ -75,21 +77,40 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtRolNombre);
+            this.groupBox1.Controls.Add(this.checkedListBox1);
             this.groupBox1.Controls.Add(this.lblRolNombre);
-            this.groupBox1.Controls.Add(this.btnCrear);
+            this.groupBox1.Controls.Add(this.lblFuncionalidades);
+            this.groupBox1.Controls.Add(this.btnModificar);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(322, 125);
+            this.groupBox1.Size = new System.Drawing.Size(322, 235);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Modificar un Rol";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(177, 72);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox1.TabIndex = 7;
+            // 
+            // lblFuncionalidades
+            // 
+            this.lblFuncionalidades.AutoSize = true;
+            this.lblFuncionalidades.Location = new System.Drawing.Point(20, 72);
+            this.lblFuncionalidades.Name = "lblFuncionalidades";
+            this.lblFuncionalidades.Size = new System.Drawing.Size(143, 13);
+            this.lblFuncionalidades.TabIndex = 1;
+            this.lblFuncionalidades.Text = "Seleccionar Funcionalidades";
             // 
             // ModificarRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 147);
+            this.ClientSize = new System.Drawing.Size(342, 252);
             this.Controls.Add(this.groupBox1);
             this.Name = "ModificarRol";
             this.Text = "ModificarRol";
@@ -103,8 +124,10 @@
 
         private System.Windows.Forms.TextBox txtRolNombre;
         private System.Windows.Forms.Label lblRolNombre;
-        private System.Windows.Forms.Button btnCrear;
+        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Label lblFuncionalidades;
     }
 }
