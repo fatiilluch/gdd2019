@@ -1,6 +1,6 @@
 ﻿namespace FrbaOfertas.AbmRol
 {
-    partial class BajaRol
+    partial class ModificarRol
     {
         /// <summary>
         /// Required designer variable.
@@ -55,17 +55,17 @@
             // btnCrear
             // 
             this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCrear.Location = new System.Drawing.Point(177, 65);
+            this.btnCrear.Location = new System.Drawing.Point(177, 68);
             this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(120, 39);
+            this.btnCrear.Size = new System.Drawing.Size(126, 39);
             this.btnCrear.TabIndex = 5;
-            this.btnCrear.Text = "Eliminar Rol";
+            this.btnCrear.Text = "Modificar Rol";
             this.btnCrear.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCancelar.Location = new System.Drawing.Point(23, 65);
+            this.btnCancelar.Location = new System.Drawing.Point(23, 68);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(91, 39);
             this.btnCancelar.TabIndex = 4;
@@ -83,16 +83,16 @@
             this.groupBox1.Size = new System.Drawing.Size(322, 125);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Eliminar un Rol";
+            this.groupBox1.Text = "Modificar un Rol";
             // 
-            // BajaRol
+            // ModificarRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 153);
+            this.ClientSize = new System.Drawing.Size(347, 147);
             this.Controls.Add(this.groupBox1);
-            this.Name = "BajaRol";
-            this.Text = "BajaRol";
+            this.Name = "ModificarRol";
+            this.Text = "ModificarRol";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
