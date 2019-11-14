@@ -36,8 +36,12 @@ C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\bin
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.AltaCliente.resources
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.AltaProveedor.resources
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AltaForm.resources
-C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.LoginYSeguridad.Funcionalidades.resources
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.LoginYSeguridad.Login.resources
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Registro_de_usuario.RegistrarUsuario.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.altaOferta.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.ListadoEstadistico.Listado_Estadistico.resources
+C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.AltaRol.resources
+C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.GestionarDeciciondeRol.resources
+C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.altaOferta.resources
+C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.Form1.resources
+C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.ListadoEstadistico.Listado_Estadistico.resources
