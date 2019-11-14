@@ -25,13 +25,15 @@ create table Usuarios(
 	habilitado bit default 1
 )
 
+insert into Usuarios (nombre_usuario,password) values ('admin','1234')
+
 create table UsuarioPorRol(
 	rol_id smallint foreign key references Roles(rol_id),
 	nombre_usuario nvarchar(255) foreign key references Usuarios(nombre_usuario),
 	primary key(rol_id,nombre_usuario)
 )
 
-create table Adminitradores(
+create table Administradores(
 	administrativo_id smallint identity(1,1) primary key,
 	nombre_usuario nvarchar(255) not null foreign key references Usuarios(nombre_usuario)
 )
@@ -59,11 +61,12 @@ create table Rubros(
 )
 
 create table Proveedores(
+	proveedor_id int identity(1,1) primary key,
 	rs nvarchar(100) not null,
 	email nvarchar(255),
 	telefono numeric(18,0) not null,
 	ciudad nvarchar(255) not null,
-	cuit nvarchar(20) not null primary key,
+	cuit nvarchar(20) not null,
 	rubro_id int not null,
 	proveedor_nombre nvarchar(100),
 	direccion nvarchar(255) not null,
@@ -76,7 +79,7 @@ create table Proveedores(
 create table Ofertas(
 	oferta_id nvarchar(50) primary key,
 	fecha_publicacion datetime not null,
-	fecha_vto datetime not null,
+	fecha_vto datetime not null,vcisual studio 2012
 	precio_oferta numeric(18,2) not null,
 	precio_viejo numeric(18,2) not null,
 	proveedor_id int not null,

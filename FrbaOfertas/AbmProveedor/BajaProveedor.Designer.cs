@@ -28,71 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblId = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtIdProveedor = new System.Windows.Forms.TextBox();
+            this.lblIdProveedor = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnAtras = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(65, 26);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(16, 13);
-            this.lblId.TabIndex = 0;
-            this.lblId.Text = "Id";
-            // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(91, 23);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 1;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnAtras);
+            this.groupBox1.Controls.Add(this.txtIdProveedor);
+            this.groupBox1.Controls.Add(this.lblIdProveedor);
             this.groupBox1.Controls.Add(this.btnEliminar);
-            this.groupBox1.Controls.Add(this.lblId);
-            this.groupBox1.Controls.Add(this.txtId);
+            this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(246, 113);
-            this.groupBox1.TabIndex = 4;
+            this.groupBox1.Size = new System.Drawing.Size(410, 125);
+            this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Eliminar Proveedor";
+            this.groupBox1.Text = "Eliminar un Proveedor";
+            // 
+            // txtIdProveedor
+            // 
+            this.txtIdProveedor.Location = new System.Drawing.Point(274, 35);
+            this.txtIdProveedor.Name = "txtIdProveedor";
+            this.txtIdProveedor.Size = new System.Drawing.Size(120, 20);
+            this.txtIdProveedor.TabIndex = 0;
+            // 
+            // lblIdProveedor
+            // 
+            this.lblIdProveedor.AutoSize = true;
+            this.lblIdProveedor.Location = new System.Drawing.Point(20, 35);
+            this.lblIdProveedor.Name = "lblIdProveedor";
+            this.lblIdProveedor.Size = new System.Drawing.Size(226, 13);
+            this.lblIdProveedor.TabIndex = 0;
+            this.lblIdProveedor.Text = "Ingrese el Id del Proveedor que desea Eliminar";
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.btnEliminar.Location = new System.Drawing.Point(91, 60);
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.btnEliminar.Location = new System.Drawing.Point(233, 65);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(139, 39);
-            this.btnEliminar.TabIndex = 6;
+            this.btnEliminar.Size = new System.Drawing.Size(161, 39);
+            this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar Proveedor";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // btnAtras
+            // btnCancelar
             // 
-            this.btnAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.btnAtras.Location = new System.Drawing.Point(19, 60);
-            this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(62, 39);
-            this.btnAtras.TabIndex = 7;
-            this.btnAtras.Text = "Atrás";
-            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.btnCancelar.Location = new System.Drawing.Point(23, 65);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(91, 39);
+            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // BajaProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 133);
+            this.ClientSize = new System.Drawing.Size(432, 145);
             this.Controls.Add(this.groupBox1);
             this.Name = "BajaProveedor";
-            this.Text = "EliminarProveedor";
+            this.Text = "BajaProveedor";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -101,10 +101,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtIdProveedor;
+        private System.Windows.Forms.Label lblIdProveedor;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnAtras;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
