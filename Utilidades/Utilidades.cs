@@ -14,8 +14,7 @@ namespace Utilidades
 {
     public class Utilidades
     {
-        //Data Source= \\SQLSERVER2012;Initial Catalog=GD2C2019; Persist Security Info=True;User ID= gdCupon2019 ;PASSWORD= gd2019
-        private static string configuracionConexionSQL = @"Data Source=DESKTOP-HANM39O\SQLSERVER2012;Initial Catalog=GD2C2019;Integrated Security=True";//Con esto me funciona la conexion.
+        private static string configuracionConexionSQL = String.Format(@"Data Source=DESKTOP-{0}\SQLSERVER2012;Initial Catalog=GD2C2019;Integrated Security=True",System.Security.Principal.WindowsIdentity.GetCurrent().Name);
         private static SqlConnection con = new SqlConnection(configuracionConexionSQL);
         private static int cantidadDeIntentos = 3;
 

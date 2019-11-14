@@ -59,3 +59,4 @@ C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.BajaProveedor.resources
