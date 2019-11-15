@@ -20,7 +20,6 @@ namespace FrbaOfertas.LoginYSeguridad
         public Login()
         {
             InitializeComponent();
-            MessageBox.Show(String.Format(@"Data Source={0}\SQLSERVER2012;Initial Catalog=GD2C2019;Persist Security Info=True;User ID=gdCupon2019;Password=***********", System.Security.Principal.WindowsIdentity.GetCurrent().Name.TrimEnd('H', 'o', 'g', 'a', 'r', '\\')));
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
