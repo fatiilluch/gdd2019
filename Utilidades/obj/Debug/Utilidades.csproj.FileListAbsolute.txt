@@ -1,10 +1,9 @@
-C:\Home\Gestion de datos\gdd2019\Utilidades\bin\Debug\Utilidades.dll
-C:\Home\Gestion de datos\gdd2019\Utilidades\bin\Debug\Utilidades.pdb
-C:\Home\Gestion de datos\gdd2019\Utilidades\obj\Debug\Utilidades.csprojResolveAssemblyReference.cache
-C:\Home\Gestion de datos\gdd2019\Utilidades\obj\Debug\Utilidades.dll
-C:\Home\Gestion de datos\gdd2019\Utilidades\obj\Debug\Utilidades.pdb
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\Utilidades\bin\Debug\Utilidades.dll
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\Utilidades\bin\Debug\Utilidades.pdb
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\Utilidades\obj\Debug\Utilidades.csprojResolveAssemblyReference.cache
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\Utilidades\obj\Debug\Utilidades.dll
 C:\Users\fatim\OneDrive - est.frba.utn.edu.ar\Escritorio\gdd2019\Utilidades\obj\Debug\Utilidades.pdb
+C:\Home\Gestion de datos\gdd2019\Utilidades\bin\Debug\Utilidades.dll
+C:\Home\Gestion de datos\gdd2019\Utilidades\bin\Debug\Utilidades.pdb
+C:\Home\Gestion de datos\gdd2019\Utilidades\obj\Debug\Utilidades.dll
+C:\Home\Gestion de datos\gdd2019\Utilidades\obj\Debug\Utilidades.pdb

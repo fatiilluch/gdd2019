@@ -14,7 +14,8 @@ namespace Utilidades
 {
     public class Utilidades
     {
-        private static string configuracionConexionSQL = String.Format(@"Data Source=DESKTOP-{0}\SQLSERVER2012;Initial Catalog=GD2C2019;Integrated Security=True",System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+        private static String configuracionConexionSQL = @"Data Source=DESKTOP-HANM39O\SQLSERVER2012;Integrated Security=False;User ID=gdCupon2019;Password=gd2019;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+        //private static string configuracionConexionSQL = String.Format(@"Data Source={0}\SQLSERVER2012;Initial Catalog=GD2C2019;Persist Security Info=True;User ID=gdCupon2019;Password=***********", System.Security.Principal.WindowsIdentity.GetCurrent().Name);
         private static SqlConnection con = new SqlConnection(configuracionConexionSQL);
         private static int cantidadDeIntentos = 3;
 
