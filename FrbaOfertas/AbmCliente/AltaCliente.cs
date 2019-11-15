@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Collections;
 using Utilidades;
-using FrbaOfertas.Registro_de_usuario;
+using FrbaOfertas.Entidades;
 
 namespace FrbaOfertas.AbmCliente
 {

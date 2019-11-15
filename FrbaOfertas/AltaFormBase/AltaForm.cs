@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FrbaOfertas.Registro_de_usuario;
+using FrbaOfertas.Entidades;
 using System.Data.SqlClient;
 
 namespace FrbaOfertas

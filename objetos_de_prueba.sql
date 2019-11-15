@@ -29,6 +29,7 @@
 	insert into Funcionalidades (funcionalidad_nombre) values ('Listar Estadisticas')
 	insert into Funcionalidades (funcionalidad_nombre) values ('Listar ofertas')
 	insert into Funcionalidades (funcionalidad_nombre) values ('Realizar Reporte de facturacion')
+	insert into Funcionalidades (funcionalidad_nombre) values ('Alta de rol')
  --Funcionalidad Por Rol
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (3,5)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,1)
@@ -39,4 +40,5 @@
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,8)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (2,4)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (2,6)
+	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,9)
 

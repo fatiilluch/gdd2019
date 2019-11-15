@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using FrbaOfertas.AbmCliente;
 using FrbaOfertas.AbmProveedor;
+using FrbaOfertas.Entidades;
+
 namespace FrbaOfertas.Registro_de_usuario
 {
     public partial class RegistrarUsuario : AltaForm
@@ -82,20 +84,5 @@ namespace FrbaOfertas.Registro_de_usuario
         }
         
         
-    }
-    public class Usuario
-    {
-        private String nombreUsuario;
-        private String pass;
-        public Usuario() { }
-        public Usuario(String nom,String pas)
-        {
-            this.nombreUsuario = nom;
-            this.pass = pas;
-        }
-        public String getNombreUsuario() { return this.nombreUsuario; }
-        public String getPass() { return this.pass; }
-        public void setNombreUsuario(String n) { this.nombreUsuario=n; }
-        public void setPass(String p) { this.pass=p; }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Utilidades;
-using FrbaOfertas.Registro_de_usuario;
+using FrbaOfertas.Entidades;
 
 namespace FrbaOfertas.AbmProveedor
 {

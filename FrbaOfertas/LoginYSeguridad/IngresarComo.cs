@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.LoginYSeguridad;
 using Utilidades;
-using FrbaOfertas.Registro_de_usuario;
+using FrbaOfertas.Entidades;
 using FrbaOfertas.MenuPrincipal;
 namespace FrbaOfertas.LoginYSeguridad
 {

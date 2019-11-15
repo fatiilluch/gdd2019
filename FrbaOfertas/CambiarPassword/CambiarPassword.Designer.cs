@@ -1,6 +1,6 @@
-﻿namespace FrbaOfertas.CambiarContraseña
+﻿namespace FrbaOfertas.CambiarPassword
 {
-    partial class CambiarContraseña
+    partial class CambiarPassword
     {
         /// <summary>
         /// Required designer variable.
@@ -28,28 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblOldP = new System.Windows.Forms.Label();
             this.lblNewP = new System.Windows.Forms.Label();
             this.lblConfirmNewP = new System.Windows.Forms.Label();
-            this.txtOldP = new System.Windows.Forms.TextBox();
-            this.txtNewP = new System.Windows.Forms.TextBox();
-            this.txtConfirmNewP = new System.Windows.Forms.TextBox();
+            this.txtNuevaContraseña = new System.Windows.Forms.TextBox();
+            this.txtConfirmNuevaContraseña = new System.Windows.Forms.TextBox();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // lblOldP
-            // 
-            this.lblOldP.AutoSize = true;
-            this.lblOldP.Location = new System.Drawing.Point(29, 53);
-            this.lblOldP.Name = "lblOldP";
-            this.lblOldP.Size = new System.Drawing.Size(86, 13);
-            this.lblOldP.TabIndex = 0;
-            this.lblOldP.Text = "Contraseña vieja";
             // 
             // lblNewP
             // 
             this.lblNewP.AutoSize = true;
-            this.lblNewP.Location = new System.Drawing.Point(29, 99);
+            this.lblNewP.Location = new System.Drawing.Point(28, 53);
             this.lblNewP.Name = "lblNewP";
             this.lblNewP.Size = new System.Drawing.Size(96, 13);
             this.lblNewP.TabIndex = 1;
@@ -64,26 +53,21 @@
             this.lblConfirmNewP.TabIndex = 2;
             this.lblConfirmNewP.Text = "Confirmar nueva contraseña";
             // 
-            // txtOldP
+            // txtNuevaContraseña
             // 
-            this.txtOldP.Location = new System.Drawing.Point(161, 50);
-            this.txtOldP.Name = "txtOldP";
-            this.txtOldP.Size = new System.Drawing.Size(100, 20);
-            this.txtOldP.TabIndex = 3;
+            this.txtNuevaContraseña.Location = new System.Drawing.Point(161, 53);
+            this.txtNuevaContraseña.Name = "txtNuevaContraseña";
+            this.txtNuevaContraseña.PasswordChar = '*';
+            this.txtNuevaContraseña.Size = new System.Drawing.Size(100, 20);
+            this.txtNuevaContraseña.TabIndex = 4;
             // 
-            // txtNewP
+            // txtConfirmNuevaContraseña
             // 
-            this.txtNewP.Location = new System.Drawing.Point(161, 96);
-            this.txtNewP.Name = "txtNewP";
-            this.txtNewP.Size = new System.Drawing.Size(100, 20);
-            this.txtNewP.TabIndex = 4;
-            // 
-            // txtConfirmNewP
-            // 
-            this.txtConfirmNewP.Location = new System.Drawing.Point(161, 148);
-            this.txtConfirmNewP.Name = "txtConfirmNewP";
-            this.txtConfirmNewP.Size = new System.Drawing.Size(100, 20);
-            this.txtConfirmNewP.TabIndex = 5;
+            this.txtConfirmNuevaContraseña.Location = new System.Drawing.Point(161, 148);
+            this.txtConfirmNuevaContraseña.Name = "txtConfirmNuevaContraseña";
+            this.txtConfirmNuevaContraseña.PasswordChar = '*';
+            this.txtConfirmNuevaContraseña.Size = new System.Drawing.Size(100, 20);
+            this.txtConfirmNuevaContraseña.TabIndex = 5;
             // 
             // btnConfirmar
             // 
@@ -93,6 +77,7 @@
             this.btnConfirmar.TabIndex = 6;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // CambiarContraseña
             // 
@@ -100,14 +85,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.btnConfirmar);
-            this.Controls.Add(this.txtConfirmNewP);
-            this.Controls.Add(this.txtNewP);
-            this.Controls.Add(this.txtOldP);
+            this.Controls.Add(this.txtConfirmNuevaContraseña);
+            this.Controls.Add(this.txtNuevaContraseña);
             this.Controls.Add(this.lblConfirmNewP);
             this.Controls.Add(this.lblNewP);
-            this.Controls.Add(this.lblOldP);
             this.Name = "CambiarContraseña";
+            this.ShowIcon = false;
             this.Text = "CambiarContraseña";
+            this.TopMost = true;
+            this.Controls.SetChildIndex(this.lblNewP, 0);
+            this.Controls.SetChildIndex(this.lblConfirmNewP, 0);
+            this.Controls.SetChildIndex(this.txtNuevaContraseña, 0);
+            this.Controls.SetChildIndex(this.txtConfirmNuevaContraseña, 0);
+            this.Controls.SetChildIndex(this.btnConfirmar, 0);
+            this.Controls.SetChildIndex(this.btnAtras, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,12 +106,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblOldP;
         private System.Windows.Forms.Label lblNewP;
         private System.Windows.Forms.Label lblConfirmNewP;
-        private System.Windows.Forms.TextBox txtOldP;
-        private System.Windows.Forms.TextBox txtNewP;
-        private System.Windows.Forms.TextBox txtConfirmNewP;
+        private System.Windows.Forms.TextBox txtNuevaContraseña;
+        private System.Windows.Forms.TextBox txtConfirmNuevaContraseña;
         private System.Windows.Forms.Button btnConfirmar;
     }
 }

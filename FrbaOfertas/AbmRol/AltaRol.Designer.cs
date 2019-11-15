@@ -33,7 +33,7 @@
             this.txtRolNombre = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCrear = new System.Windows.Forms.Button();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.chkListaDeRoles = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -83,19 +83,20 @@
             this.btnCrear.TabIndex = 5;
             this.btnCrear.Text = "Crear Rol";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
-            // checkedListBox1
+            // chkListaDeRoles
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(177, 72);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 94);
-            this.checkedListBox1.TabIndex = 7;
+            this.chkListaDeRoles.FormattingEnabled = true;
+            this.chkListaDeRoles.Location = new System.Drawing.Point(177, 72);
+            this.chkListaDeRoles.Name = "chkListaDeRoles";
+            this.chkListaDeRoles.Size = new System.Drawing.Size(120, 94);
+            this.chkListaDeRoles.TabIndex = 7;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtRolNombre);
-            this.groupBox1.Controls.Add(this.checkedListBox1);
+            this.groupBox1.Controls.Add(this.chkListaDeRoles);
             this.groupBox1.Controls.Add(this.lblRolNombre);
             this.groupBox1.Controls.Add(this.lblFuncionalidades);
             this.groupBox1.Controls.Add(this.btnCrear);
@@ -115,6 +116,8 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "AltaRol";
             this.Text = "AltaRol";
+            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.btnAtras, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -128,7 +131,7 @@
         private System.Windows.Forms.TextBox txtRolNombre;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnCrear;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox chkListaDeRoles;
         private System.Windows.Forms.GroupBox groupBox1;
     }
 }

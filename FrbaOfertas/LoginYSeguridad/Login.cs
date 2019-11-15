@@ -10,8 +10,9 @@ using System.Windows.Forms;
 using Utilidades;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
-using FrbaOfertas.Registro_de_usuario;
+using FrbaOfertas.Entidades;
 using FrbaOfertas.MenuPrincipal;
+using FrbaOfertas.Registro_de_usuario;
 
 namespace FrbaOfertas.LoginYSeguridad
 {

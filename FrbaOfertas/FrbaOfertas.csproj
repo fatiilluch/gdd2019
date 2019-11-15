@@ -98,11 +98,11 @@
     <Compile Include="AbmRol\BajaRol.Designer.cs">
       <DependentUpon>BajaRol.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\GestionarDeciciondeRol.cs">
+    <Compile Include="AbmRol\MenuAbmRol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmRol\GestionarDeciciondeRol.Designer.cs">
-      <DependentUpon>GestionarDeciciondeRol.cs</DependentUpon>
+    <Compile Include="AbmRol\MenuAbmRol.Designer.cs">
+      <DependentUpon>MenuAbmRol.cs</DependentUpon>
     </Compile>
     <Compile Include="AltaFormBase\AltaForm.cs">
       <SubType>Form</SubType>
@@ -116,11 +116,11 @@
     <Compile Include="AltaFormBase\AltaForm.Designer.cs">
       <DependentUpon>AltaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CambiarContraseña\CambiarContraseña.cs">
+    <Compile Include="CambiarPassword\CambiarPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CambiarContraseña\CambiarContraseña.Designer.cs">
-      <DependentUpon>CambiarContraseña.cs</DependentUpon>
+    <Compile Include="CambiarPassword\CambiarPassword.Designer.cs">
+      <DependentUpon>CambiarPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="ComprarOferta\Form1.cs">
       <SubType>Form</SubType>
@@ -140,6 +140,9 @@
     <Compile Include="CrearOferta\AltaOferta.Designer.cs">
       <DependentUpon>AltaOferta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Funcionalidad.cs" />
+    <Compile Include="Entidades\Rol.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Facturar\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,7 +166,6 @@
     <Compile Include="ListadoEstadistico\Listado_Estadistico.Designer.cs">
       <DependentUpon>Listado_Estadistico.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginYSeguridad\EntidadUsuario.cs" />
     <Compile Include="LoginYSeguridad\IngresarComo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,15 +210,15 @@
     <EmbeddedResource Include="AbmRol\BajaRol.resx">
       <DependentUpon>BajaRol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmRol\GestionarDeciciondeRol.resx">
-      <DependentUpon>GestionarDeciciondeRol.cs</DependentUpon>
+    <EmbeddedResource Include="AbmRol\MenuAbmRol.resx">
+      <DependentUpon>MenuAbmRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AltaFormBase\AltaForm.resx" />
     <EmbeddedResource Include="AbmRol\ModificarRol.resx">
       <DependentUpon>ModificarRol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CambiarContraseña\CambiarContraseña.resx">
-      <DependentUpon>CambiarContraseña.cs</DependentUpon>
+    <EmbeddedResource Include="CambiarPassword\CambiarPassword.resx">
+      <DependentUpon>CambiarPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearOferta\AltaOferta.resx">
       <DependentUpon>AltaOferta.cs</DependentUpon>

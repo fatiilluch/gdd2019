@@ -1,6 +1,6 @@
 ﻿namespace FrbaOfertas.AbmRol
 {
-    partial class GestionarDeciciondeRol
+    partial class MenuAbmRol
     {
         /// <summary>
         /// Required designer variable.
@@ -53,6 +53,7 @@
             this.btnCargar.TabIndex = 1;
             this.btnCargar.Text = "Cargar Rol";
             this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
             // btnModificar
             // 
@@ -62,6 +63,7 @@
             this.btnModificar.TabIndex = 2;
             this.btnModificar.Text = "Modificar Rol";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -71,8 +73,9 @@
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar Rol";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // GestionarDeciciondeRol
+            // MenuAbmRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -81,8 +84,8 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.label1);
-            this.Name = "GestionarDeciciondeRol";
-            this.Text = "GestionarDeciciondeRol";
+            this.Name = "MenuAbmRol";
+            this.Text = "Menu Abm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
