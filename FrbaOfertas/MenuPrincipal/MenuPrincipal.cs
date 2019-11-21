@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Entidades;
 using FrbaOfertas.CambiarPassword;
-
 namespace FrbaOfertas.MenuPrincipal
 {
     public partial class MenuPrincipal : Form
@@ -36,7 +35,16 @@ namespace FrbaOfertas.MenuPrincipal
         }
         private void inicializarFuncionalidades()
         {
-            
+            String query = String.Format("exec obtener_funcionalidades_del_rol {0};", rol.Id);
+            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+            List<Funcionalidad> funcionalidades = new List<Funcionalidad>();
+
+            foreach (DataRow fila in ds.Tables[0].Rows)
+            {
+                funcionalidades.Add(new Funcionalidad(Convert.ToInt16(fila["funcionalidad_id"]), fila["funcionalidad_nombre"].ToString()));
+            }
+            cmbFuncionalidades.DataSource = funcionalidades;
+            cmbFuncionalidades.DisplayMember = "Nombre";
         }
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
@@ -44,6 +52,16 @@ namespace FrbaOfertas.MenuPrincipal
             CambiarPassword.CambiarPassword ventana=new CambiarPassword.CambiarPassword(usuario);
             ventana.Show();
         }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            Funcionalidad funcionalidadSeleccionada = cmbFuncionalidades.SelectedItem as Funcionalidad;
+            Form form = funcionalidadSeleccionada.getForm(this);
+            form.Show();
+            this.Hide();
+        }
+
+        
 
     }
 

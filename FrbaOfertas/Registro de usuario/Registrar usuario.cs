@@ -30,14 +30,10 @@ namespace FrbaOfertas.Registro_de_usuario
         }
         private void inicializarComboBox()
         {
-            String query = "Select rol_nombre from Roles where habilitado = 1";
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+            List<Rol> roles = RepoRol.getInstance().getRoles().Where(rol=>rol.Nombre!="Administrador General").ToList<Rol>();
+            cmbRol.DisplayMember = "Nombre";
+            cmbRol.DataSource = roles;
 
-            foreach (DataRow fila in ds.Tables[0].Rows)
-            {
-                cmbRol.Items.Add(fila["rol_nombre"].ToString());
-            }
-            cmbRol.Items.Remove("Administrador");
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
@@ -45,10 +41,10 @@ namespace FrbaOfertas.Registro_de_usuario
             if (camposObligatoriosCompletados() && cmbRol.SelectedItem!=null)
             {
                 Usuario user = new Usuario(txtUsuario.Text, txtPassword.Text);
-                if(!nombreUsuarioEnUso(user.getNombreUsuario())){
+                if(!usuarioExistente(user.getNombreUsuario())){
                     
-                    String seleccionado = cmbRol.SelectedItem.ToString();
-                    switch (seleccionado)
+                    Rol seleccionado = cmbRol.SelectedItem as Rol;
+                    switch (seleccionado.Nombre)
                     {
                         case "Cliente":
                             this.Hide();
@@ -69,12 +65,12 @@ namespace FrbaOfertas.Registro_de_usuario
             
 
         }
-        private Boolean nombreUsuarioEnUso(String nombre)
+        private Boolean usuarioExistente(String nombre)
         {
-            String cmd = String.Format("Select * from Usuarios where nombre_usuario= '{0}'", nombre.ToLower());
+            String cmd = String.Format("exec usuario_existente @name='{0}'", nombre.ToLower());
 
-            int filasRetornadas = Utilidades.Utilidades.ejecutarConsulta(cmd).Tables[0].Rows.Count;
-            if (filasRetornadas<=0) { 
+            int valorDeVerdad = Utilidades.Utilidades.ejecutarProcedure(cmd);
+            if (valorDeVerdad<0) { 
                 return false; 
             } else { return true; }
         }

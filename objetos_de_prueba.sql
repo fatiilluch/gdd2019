@@ -2,34 +2,36 @@
 -------------------------------------------------------------------------------
 
 --Usuario admin
-	insert into Usuarios (nombre_usuario,password) values ('admin','f446c8d778f9139e45b488b3c823369567f055e2a5e11e765ce1f3164267ac03')
-
+	insert into Usuarios (nombre_usuario,password) values ('admin','e79bdc0fdce8b1d14a2a3edd4d900dd09edca47001dbb8fc4381cbbf5070b8e6')
+	select * from Usuarios
 --Usuario Cliente
 	insert into Usuarios (nombre_usuario,password) values ('user1','f446c8d778f9139e45b488b3c823369567f055e2a5e11e765ce1f3164267ac03')
 
 --Usuario Proveedor
 	insert into Usuarios (nombre_usuario,password) values ('user2','f446c8d778f9139e45b488b3c823369567f055e2a5e11e765ce1f3164267ac03')
 
+--Usuario Con mas de un rol
+	insert into Usuarios (nombre_usuario,password) values ('user3','f446c8d778f9139e45b488b3c823369567f055e2a5e11e765ce1f3164267ac03')
 --Usuario Por Rol
-	insert into UsuarioPorRol select rol_id,'admin' from Roles where rol_nombre='Administrador'
+	insert into UsuarioPorRol select rol_id,'admin' from Roles where rol_nombre='Administrador General'
 	insert into UsuarioPorRol select rol_id,'user1' from Roles where rol_nombre='Cliente'
 	insert into UsuarioPorRol select rol_id,'user2' from Roles where rol_nombre='Proveedor'
-
---Roles de prueba para probar el combobox 
-	insert into Roles (rol_nombre) values ('Administrador')
+	insert into UsuarioPorRol select rol_id,'user3' from Roles where rol_nombre='Cliente' or rol_nombre='Proveedor'
+--Roles
+	insert into Roles (rol_nombre) values ('Administrador General')
 	insert into Roles (rol_nombre) values ('Proveedor')
 	insert into Roles (rol_nombre) values ('Cliente')
+
 --Funcionalidades
 	insert into Funcionalidades (funcionalidad_nombre) values ('Registrar usuario')
-	insert into Funcionalidades (funcionalidad_nombre) values ('Registrar cliente')
-	insert into Funcionalidades (funcionalidad_nombre) values ('Registrar proveedor')
+	insert into Funcionalidades (funcionalidad_nombre) values ('Abm de cliente')
+	insert into Funcionalidades (funcionalidad_nombre) values ('Abm de proveedor')
 	insert into Funcionalidades (funcionalidad_nombre) values ('Crear oferta')
 	insert into Funcionalidades (funcionalidad_nombre) values ('Comprar Oferta')
 	insert into Funcionalidades (funcionalidad_nombre) values ('Registrar Consumo')
 	insert into Funcionalidades (funcionalidad_nombre) values ('Listar Estadisticas')
-	insert into Funcionalidades (funcionalidad_nombre) values ('Listar ofertas')
 	insert into Funcionalidades (funcionalidad_nombre) values ('Realizar Reporte de facturacion')
-	insert into Funcionalidades (funcionalidad_nombre) values ('Alta de rol')
+	insert into Funcionalidades (funcionalidad_nombre) values ('Abm de rol')
  --Funcionalidad Por Rol
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (3,5)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,1)

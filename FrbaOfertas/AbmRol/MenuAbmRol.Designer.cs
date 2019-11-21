@@ -85,7 +85,9 @@
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.label1);
             this.Name = "MenuAbmRol";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Abm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuAbmRol_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

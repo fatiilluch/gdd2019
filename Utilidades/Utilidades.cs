@@ -14,7 +14,9 @@ namespace Utilidades
 {
     public class Utilidades
     {
-        private static string configuracionConexionSQL = String.Format(@"Data Source={0}\SQLSERVER2012;Integrated Security=False;User ID=gdCupon2019;Password=gd2019;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False", System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+        //private static string configuracionConexionSQL = String.Format(@"Data Source={0}\SQLSERVER2012;Integrated Security=False;User ID=gdCupon2019;Password=gd2019;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False", System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+        private static string configuracionConexionSQL = @"Data Source=localhost\SQLSERVER2012;Integrated Security=False;User ID=gdCupon2019;Password=gd2019;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+
         private static SqlConnection con = new SqlConnection(configuracionConexionSQL);
         private static int cantidadDeIntentos = 3;
 
@@ -68,6 +70,19 @@ namespace Utilidades
         public static void rollback()
         {
             ejecutar("rollback");
+        }
+
+        public static int ejecutarProcedure(String proc)
+        {
+            SqlCommand cmd = new SqlCommand(proc, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@returned", SqlDbType.TinyInt).Direction = ParameterDirection.Output;
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            int i = (int)cmd.Parameters["@returned"].Value;
+            con.Close();
+            return i;
         }
 
 

@@ -62,6 +62,12 @@
     <Compile Include="AbmCliente\BajaCliente.Designer.cs">
       <DependentUpon>BajaCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmCliente\MenuAbmCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\MenuAbmCliente.Designer.cs">
+      <DependentUpon>MenuAbmCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmCliente\ModificarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,12 @@
     </Compile>
     <Compile Include="AbmProveedor\BajaProveedor.Designer.cs">
       <DependentUpon>BajaProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmProveedor\MenuAbmProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmProveedor\MenuAbmProveedor.Designer.cs">
+      <DependentUpon>MenuAbmProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmProveedor\ModificarProveedor.cs">
       <SubType>Form</SubType>
@@ -104,14 +116,14 @@
     <Compile Include="AbmRol\MenuAbmRol.Designer.cs">
       <DependentUpon>MenuAbmRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmRol\ModificacionRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ModificacionRol.Designer.cs">
+      <DependentUpon>ModificacionRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="AltaFormBase\AltaForm.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmRol\ModificarRol.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmRol\ModificarRol.Designer.cs">
-      <DependentUpon>ModificarRol.cs</DependentUpon>
     </Compile>
     <Compile Include="AltaFormBase\AltaForm.Designer.cs">
       <DependentUpon>AltaForm.cs</DependentUpon>
@@ -128,11 +140,11 @@
     <Compile Include="ComprarOferta\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="CargaCredito\Form1.cs">
+    <Compile Include="CargaCredito\CargaCredito.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CargaCredito\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CargaCredito\CargaCredito.Designer.cs">
+      <DependentUpon>CargaCredito.cs</DependentUpon>
     </Compile>
     <Compile Include="CrearOferta\AltaOferta.cs">
       <SubType>Form</SubType>
@@ -149,7 +161,6 @@
     <Compile Include="Facturar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Funcionalidad.cs" />
     <Compile Include="GD2C2019DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -165,6 +176,12 @@
     </Compile>
     <Compile Include="ListadoEstadistico\Listado_Estadistico.Designer.cs">
       <DependentUpon>Listado_Estadistico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listado\ListadoDeProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listado\ListadoDeProveedores.Designer.cs">
+      <DependentUpon>ListadoDeProveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginYSeguridad\IngresarComo.cs">
       <SubType>Form</SubType>
@@ -195,11 +212,17 @@
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\MenuAbmCliente.resx">
+      <DependentUpon>MenuAbmCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmProveedor\AltaProveedor.resx">
       <DependentUpon>AltaProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmProveedor\BajaProveedor.resx">
       <DependentUpon>BajaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmProveedor\MenuAbmProveedor.resx">
+      <DependentUpon>MenuAbmProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmProveedor\ModificarProveedor.resx">
       <DependentUpon>ModificarProveedor.cs</DependentUpon>
@@ -213,12 +236,15 @@
     <EmbeddedResource Include="AbmRol\MenuAbmRol.resx">
       <DependentUpon>MenuAbmRol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AltaFormBase\AltaForm.resx" />
-    <EmbeddedResource Include="AbmRol\ModificarRol.resx">
-      <DependentUpon>ModificarRol.cs</DependentUpon>
+    <EmbeddedResource Include="AbmRol\ModificacionRol.resx">
+      <DependentUpon>ModificacionRol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AltaFormBase\AltaForm.resx" />
     <EmbeddedResource Include="CambiarPassword\CambiarPassword.resx">
       <DependentUpon>CambiarPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CargaCredito\CargaCredito.resx">
+      <DependentUpon>CargaCredito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearOferta\AltaOferta.resx">
       <DependentUpon>AltaOferta.cs</DependentUpon>
@@ -228,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoEstadistico\Listado_Estadistico.resx">
       <DependentUpon>Listado_Estadistico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listado\ListadoDeProveedores.resx">
+      <DependentUpon>ListadoDeProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginYSeguridad\IngresarComo.resx">
       <DependentUpon>IngresarComo.cs</DependentUpon>

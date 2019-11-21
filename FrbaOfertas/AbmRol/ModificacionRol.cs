@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.AbmRol
 {
-    public partial class ModificarRol : Form
+    public partial class ModificacionRol : Form
     {
-        public ModificarRol()
+        private Form menu;
+        public ModificacionRol(Form vent)
+        {
+            menu = vent;
+        }
+        public ModificacionRol()
         {
             InitializeComponent();
+        }
+
+        private void ModificacionRol_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

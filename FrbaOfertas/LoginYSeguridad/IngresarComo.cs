@@ -27,20 +27,23 @@ namespace FrbaOfertas.LoginYSeguridad
 
         private void inicializarComboBox()
         {
-            String query = String.Format("Select rol_nombre from UsuarioPorRol t1 join Roles t2 on (t1.rol_id=t2.rol_id) where nombre_usuario='{0}'", usuario.getNombreUsuario());
+            String query = String.Format("Select rol_nombre,t1.rol_id from UsuarioPorRol t1 join Roles t2 on (t1.rol_id=t2.rol_id) where nombre_usuario='{0}'", usuario.getNombreUsuario());
             DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+            List<Rol> roles = new List<Rol>();
             foreach (DataRow fila in ds.Tables[0].Rows)
             {
-                Rol r = new Rol(fila["rol_nombre"].ToString());
-                cmbRoles.Items.Add(r.ToString());
+                Rol r = new Rol(fila["rol_nombre"].ToString(),Convert.ToInt16(fila["rol_id"]));
+                roles.Add(r);
             }
+            cmbRoles.DataSource = roles;
+            cmbRoles.DisplayMember = "Nombre";
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             if (cmbRoles.SelectedItem != null)
             {
-                Rol r = new Rol(cmbRoles.SelectedItem.ToString());
+                Rol r = cmbRoles.SelectedItem as Rol;
                 MenuPrincipal.MenuPrincipal menu = new MenuPrincipal.MenuPrincipal(usuario,r);
                 menu.Show();
                 this.Close();

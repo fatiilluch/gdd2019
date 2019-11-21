@@ -79,7 +79,7 @@
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // CambiarContraseña
+            // CambiarPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -89,8 +89,9 @@
             this.Controls.Add(this.txtNuevaContraseña);
             this.Controls.Add(this.lblConfirmNewP);
             this.Controls.Add(this.lblNewP);
-            this.Name = "CambiarContraseña";
+            this.Name = "CambiarPassword";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CambiarContraseña";
             this.TopMost = true;
             this.Controls.SetChildIndex(this.lblNewP, 0);

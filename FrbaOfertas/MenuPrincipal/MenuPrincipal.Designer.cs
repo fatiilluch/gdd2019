@@ -93,6 +93,7 @@
             this.btnSeleccionar.TabIndex = 8;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // btnSalir
             // 

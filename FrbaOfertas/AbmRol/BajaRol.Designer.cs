@@ -28,20 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtRolNombre = new System.Windows.Forms.TextBox();
             this.lblRolNombre = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbRoles = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtRolNombre
-            // 
-            this.txtRolNombre.Location = new System.Drawing.Point(177, 28);
-            this.txtRolNombre.Name = "txtRolNombre";
-            this.txtRolNombre.Size = new System.Drawing.Size(120, 20);
-            this.txtRolNombre.TabIndex = 0;
             // 
             // lblRolNombre
             // 
@@ -74,7 +67,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtRolNombre);
+            this.groupBox1.Controls.Add(this.cmbRoles);
             this.groupBox1.Controls.Add(this.lblRolNombre);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.btnCancelar);
@@ -85,6 +78,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Eliminar un Rol";
             // 
+            // cmbRoles
+            // 
+            this.cmbRoles.FormattingEnabled = true;
+            this.cmbRoles.Location = new System.Drawing.Point(176, 32);
+            this.cmbRoles.Name = "cmbRoles";
+            this.cmbRoles.Size = new System.Drawing.Size(121, 21);
+            this.cmbRoles.TabIndex = 6;
+            // 
             // BajaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -93,6 +94,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "BajaRol";
             this.Text = "BajaRol";
+            this.Load += new System.EventHandler(this.BajaRol_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -101,10 +103,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtRolNombre;
         private System.Windows.Forms.Label lblRolNombre;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cmbRoles;
     }
 }

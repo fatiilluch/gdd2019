@@ -8,13 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrbaOfertas.CragaCredito
+namespace FrbaOfertas.AbmCliente
 {
-    public partial class Form1 : Form
+    public partial class MenuAbmCliente : Form
     {
-        public Form1()
+
+        private Form origen;
+        public MenuAbmCliente(Form ventana)
         {
             InitializeComponent();
+            origen = ventana;
         }
     }
 }

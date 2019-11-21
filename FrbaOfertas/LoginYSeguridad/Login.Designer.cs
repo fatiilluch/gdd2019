@@ -40,7 +40,6 @@
             this.btnRegistrarse = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2019DataSet)).BeginInit();
@@ -142,7 +141,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.btnRegistrarse);
             this.groupBox2.Controls.Add(this.label1);
@@ -151,18 +149,6 @@
             this.groupBox2.Size = new System.Drawing.Size(278, 205);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label3.Font = new System.Drawing.Font("Segoe Print", 16.25F);
-            this.label3.ForeColor = System.Drawing.Color.Fuchsia;
-            this.label3.Location = new System.Drawing.Point(158, 97);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 38);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "It\'s Free!";
             // 
             // label2
             // 
@@ -218,7 +204,6 @@
         private System.Windows.Forms.Button btnRegistrarse;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }

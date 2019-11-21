@@ -1,5 +1,5 @@
 --!!!!!!!
-begin transaction
+--begin transaction
 --CREACION DE TABLAS
 create table Funcionalidades(
 	funcionalidad_id smallint identity(1,1) primary key,
@@ -24,8 +24,6 @@ create table Usuarios(
 	intentos smallint default 0,
 	habilitado bit default 1
 )
-
-insert into Usuarios (nombre_usuario,password) values ('admin','1234')
 
 create table UsuarioPorRol(
 	rol_id smallint foreign key references Roles(rol_id),
@@ -79,7 +77,7 @@ create table Proveedores(
 create table Ofertas(
 	oferta_id nvarchar(50) primary key,
 	fecha_publicacion datetime not null,
-	fecha_vto datetime not null,vcisual studio 2012
+	fecha_vto datetime not null,
 	precio_oferta numeric(18,2) not null,
 	precio_viejo numeric(18,2) not null,
 	proveedor_id int not null,
@@ -245,7 +243,7 @@ go
 -- procedimientos para hacer un CRUD con usuarios
 create procedure mostrarUsuarios
 as
-select top 200 *
+select *
 from Usuarios
 order by nombre_usuario desc
 go
@@ -256,7 +254,20 @@ create procedure buscarUsuario
 as
 select *
 from Usuarios
-where nombre_usuario like @textoBuscar + '%'
+where nombre_usuario like '%@textoBuscar%'
 go
 
-rollback
+create procedure usuario_existente (
+	@name nvarchar(255)
+)
+as
+begin
+	if(exists(select * from Usuarios where nombre_usuario='admin')) return 1 else return (-1)
+end
+go
+
+create procedure obtener_funcionalidades_del_rol  (@r smallint)
+as
+	select f1.funcionalidad_id,funcionalidad_nombre from FuncionalidadPorRol f1 join Funcionalidades f2 on (f1.funcionalidad_id=f2.funcionalidad_id) where rol_id=@r;
+go
+--rollback
