@@ -32,6 +32,8 @@
 	insert into Funcionalidades (funcionalidad_nombre) values ('Listar Estadisticas')
 	insert into Funcionalidades (funcionalidad_nombre) values ('Realizar Reporte de facturacion')
 	insert into Funcionalidades (funcionalidad_nombre) values ('Abm de rol')
+	insert into Funcionalidades (funcionalidad_nombre) values ('Carga de Credito')
+	
  --Funcionalidad Por Rol
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (3,5)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,1)
