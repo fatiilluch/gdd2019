@@ -1,0 +1,7 @@
+FrbaOfertas\FrbaOfertas.csproj
+FrbaOfertas\GD2C2019DataSet.xsc
+FrbaOfertas\GD2C2019DataSet.xsd
+FrbaOfertas\GD2C2019DataSet.xss
+FrbaOfertas\GD2C2019DataSet1.xsc
+FrbaOfertas\GD2C2019DataSet1.xsd
+FrbaOfertas\GD2C2019DataSet1.xss
