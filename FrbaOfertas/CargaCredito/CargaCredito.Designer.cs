@@ -44,7 +44,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(81, 294);
+            this.btnCancelar.Location = new System.Drawing.Point(22, 235);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 0;
@@ -54,7 +54,7 @@
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(206, 294);
+            this.btnCargar.Location = new System.Drawing.Point(192, 235);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(75, 23);
             this.btnCargar.TabIndex = 1;
@@ -63,21 +63,21 @@
             // 
             // txtMonto
             // 
-            this.txtMonto.Location = new System.Drawing.Point(152, 40);
+            this.txtMonto.Location = new System.Drawing.Point(123, 20);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(200, 20);
             this.txtMonto.TabIndex = 2;
             // 
             // txtTarjetaTitular
             // 
-            this.txtTarjetaTitular.Location = new System.Drawing.Point(152, 188);
+            this.txtTarjetaTitular.Location = new System.Drawing.Point(123, 138);
             this.txtTarjetaTitular.Name = "txtTarjetaTitular";
             this.txtTarjetaTitular.Size = new System.Drawing.Size(200, 20);
             this.txtTarjetaTitular.TabIndex = 3;
             // 
             // txtTarjeta_id
             // 
-            this.txtTarjeta_id.Location = new System.Drawing.Point(152, 147);
+            this.txtTarjeta_id.Location = new System.Drawing.Point(123, 96);
             this.txtTarjeta_id.Name = "txtTarjeta_id";
             this.txtTarjeta_id.Size = new System.Drawing.Size(200, 20);
             this.txtTarjeta_id.TabIndex = 6;
@@ -85,7 +85,7 @@
             // lblMonto
             // 
             this.lblMonto.AutoSize = true;
-            this.lblMonto.Location = new System.Drawing.Point(102, 40);
+            this.lblMonto.Location = new System.Drawing.Point(18, 23);
             this.lblMonto.Name = "lblMonto";
             this.lblMonto.Size = new System.Drawing.Size(37, 13);
             this.lblMonto.TabIndex = 10;
@@ -94,7 +94,7 @@
             // lblTipoTarjeta
             // 
             this.lblTipoTarjeta.AutoSize = true;
-            this.lblTipoTarjeta.Location = new System.Drawing.Point(64, 81);
+            this.lblTipoTarjeta.Location = new System.Drawing.Point(18, 56);
             this.lblTipoTarjeta.Name = "lblTipoTarjeta";
             this.lblTipoTarjeta.Size = new System.Drawing.Size(75, 13);
             this.lblTipoTarjeta.TabIndex = 11;
@@ -103,7 +103,7 @@
             // lblFechaVto
             // 
             this.lblFechaVto.AutoSize = true;
-            this.lblFechaVto.Location = new System.Drawing.Point(64, 234);
+            this.lblFechaVto.Location = new System.Drawing.Point(19, 183);
             this.lblFechaVto.Name = "lblFechaVto";
             this.lblFechaVto.Size = new System.Drawing.Size(74, 13);
             this.lblFechaVto.TabIndex = 12;
@@ -112,7 +112,7 @@
             // lblTarjetaId
             // 
             this.lblTarjetaId.AutoSize = true;
-            this.lblTarjetaId.Location = new System.Drawing.Point(48, 150);
+            this.lblTarjetaId.Location = new System.Drawing.Point(18, 99);
             this.lblTarjetaId.Name = "lblTarjetaId";
             this.lblTarjetaId.Size = new System.Drawing.Size(91, 13);
             this.lblTarjetaId.TabIndex = 15;
@@ -121,7 +121,7 @@
             // lblTitular
             // 
             this.lblTitular.AutoSize = true;
-            this.lblTitular.Location = new System.Drawing.Point(102, 188);
+            this.lblTitular.Location = new System.Drawing.Point(19, 138);
             this.lblTitular.Name = "lblTitular";
             this.lblTitular.Size = new System.Drawing.Size(36, 13);
             this.lblTitular.TabIndex = 16;
@@ -130,14 +130,14 @@
             // cmbTipoTarjeta
             // 
             this.cmbTipoTarjeta.FormattingEnabled = true;
-            this.cmbTipoTarjeta.Location = new System.Drawing.Point(152, 78);
+            this.cmbTipoTarjeta.Location = new System.Drawing.Point(123, 56);
             this.cmbTipoTarjeta.Name = "cmbTipoTarjeta";
             this.cmbTipoTarjeta.Size = new System.Drawing.Size(200, 21);
             this.cmbTipoTarjeta.TabIndex = 17;
             // 
             // calendario
             // 
-            this.calendario.Location = new System.Drawing.Point(152, 234);
+            this.calendario.Location = new System.Drawing.Point(123, 183);
             this.calendario.Name = "calendario";
             this.calendario.Size = new System.Drawing.Size(200, 20);
             this.calendario.TabIndex = 19;
@@ -147,7 +147,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 329);
+            this.ClientSize = new System.Drawing.Size(344, 279);
             this.Controls.Add(this.calendario);
             this.Controls.Add(this.cmbTipoTarjeta);
             this.Controls.Add(this.lblTitular);

@@ -38,7 +38,7 @@
             // lblNewP
             // 
             this.lblNewP.AutoSize = true;
-            this.lblNewP.Location = new System.Drawing.Point(28, 53);
+            this.lblNewP.Location = new System.Drawing.Point(28, 34);
             this.lblNewP.Name = "lblNewP";
             this.lblNewP.Size = new System.Drawing.Size(96, 13);
             this.lblNewP.TabIndex = 1;
@@ -47,7 +47,7 @@
             // lblConfirmNewP
             // 
             this.lblConfirmNewP.AutoSize = true;
-            this.lblConfirmNewP.Location = new System.Drawing.Point(12, 151);
+            this.lblConfirmNewP.Location = new System.Drawing.Point(28, 81);
             this.lblConfirmNewP.Name = "lblConfirmNewP";
             this.lblConfirmNewP.Size = new System.Drawing.Size(140, 13);
             this.lblConfirmNewP.TabIndex = 2;
@@ -55,7 +55,7 @@
             // 
             // txtNuevaContraseña
             // 
-            this.txtNuevaContraseña.Location = new System.Drawing.Point(161, 53);
+            this.txtNuevaContraseña.Location = new System.Drawing.Point(179, 34);
             this.txtNuevaContraseña.Name = "txtNuevaContraseña";
             this.txtNuevaContraseña.PasswordChar = '*';
             this.txtNuevaContraseña.Size = new System.Drawing.Size(100, 20);
@@ -63,7 +63,7 @@
             // 
             // txtConfirmNuevaContraseña
             // 
-            this.txtConfirmNuevaContraseña.Location = new System.Drawing.Point(161, 148);
+            this.txtConfirmNuevaContraseña.Location = new System.Drawing.Point(179, 78);
             this.txtConfirmNuevaContraseña.Name = "txtConfirmNuevaContraseña";
             this.txtConfirmNuevaContraseña.PasswordChar = '*';
             this.txtConfirmNuevaContraseña.Size = new System.Drawing.Size(100, 20);
@@ -71,7 +71,7 @@
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(94, 206);
+            this.btnConfirmar.Location = new System.Drawing.Point(116, 126);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(75, 23);
             this.btnConfirmar.TabIndex = 6;
@@ -83,7 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(318, 171);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.txtConfirmNuevaContraseña);
             this.Controls.Add(this.txtNuevaContraseña);

@@ -44,15 +44,15 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 179);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 210);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(645, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(633, 150);
             this.dataGridView1.TabIndex = 0;
             // 
             // lblFiltroCuit
             // 
             this.lblFiltroCuit.AutoSize = true;
-            this.lblFiltroCuit.Location = new System.Drawing.Point(57, 25);
+            this.lblFiltroCuit.Location = new System.Drawing.Point(24, 28);
             this.lblFiltroCuit.Name = "lblFiltroCuit";
             this.lblFiltroCuit.Size = new System.Drawing.Size(25, 13);
             this.lblFiltroCuit.TabIndex = 1;
@@ -61,7 +61,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(516, 25);
+            this.lblEmail.Location = new System.Drawing.Point(24, 115);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(32, 13);
             this.lblEmail.TabIndex = 2;
@@ -70,7 +70,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(274, 25);
+            this.label3.Location = new System.Drawing.Point(24, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 13);
             this.label3.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(60, 150);
+            this.btnLimpiar.Location = new System.Drawing.Point(545, 165);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(100, 23);
             this.btnLimpiar.TabIndex = 4;
@@ -87,16 +87,16 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(277, 150);
+            this.btnBuscar.Location = new System.Drawing.Point(27, 165);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(100, 23);
             this.btnBuscar.TabIndex = 5;
-            this.btnBuscar.Text = "button2";
+            this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(559, 150);
+            this.btnSeleccionar.Location = new System.Drawing.Point(160, 165);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(100, 23);
             this.btnSeleccionar.TabIndex = 6;
@@ -106,21 +106,21 @@
             // 
             // txtRs
             // 
-            this.txtRs.Location = new System.Drawing.Point(277, 68);
+            this.txtRs.Location = new System.Drawing.Point(160, 64);
             this.txtRs.Name = "txtRs";
             this.txtRs.Size = new System.Drawing.Size(100, 20);
             this.txtRs.TabIndex = 7;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(519, 68);
+            this.txtEmail.Location = new System.Drawing.Point(160, 108);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 8;
             // 
             // txtCuit
             // 
-            this.txtCuit.Location = new System.Drawing.Point(60, 68);
+            this.txtCuit.Location = new System.Drawing.Point(160, 28);
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(100, 20);
             this.txtCuit.TabIndex = 9;
@@ -129,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 362);
+            this.ClientSize = new System.Drawing.Size(664, 376);
             this.Controls.Add(this.txtCuit);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtRs);

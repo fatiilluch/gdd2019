@@ -116,7 +116,7 @@
             // btnRegistrarse
             // 
             this.btnRegistrarse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.btnRegistrarse.Location = new System.Drawing.Point(83, 154);
+            this.btnRegistrarse.Location = new System.Drawing.Point(99, 154);
             this.btnRegistrarse.Name = "btnRegistrarse";
             this.btnRegistrarse.Size = new System.Drawing.Size(102, 36);
             this.btnRegistrarse.TabIndex = 6;
@@ -154,7 +154,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe Print", 14.25F);
-            this.label2.Location = new System.Drawing.Point(25, 77);
+            this.label2.Location = new System.Drawing.Point(84, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 33);
             this.label2.TabIndex = 8;

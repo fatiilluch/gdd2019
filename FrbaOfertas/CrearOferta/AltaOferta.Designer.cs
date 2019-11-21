@@ -117,7 +117,7 @@
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(389, 27);
+            this.lblDescripcion.Location = new System.Drawing.Point(341, 23);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lblDescripcion.TabIndex = 6;
@@ -126,7 +126,7 @@
             // lblVencimiento
             // 
             this.lblVencimiento.AutoSize = true;
-            this.lblVencimiento.Location = new System.Drawing.Point(24, 25);
+            this.lblVencimiento.Location = new System.Drawing.Point(21, 25);
             this.lblVencimiento.Name = "lblVencimiento";
             this.lblVencimiento.Size = new System.Drawing.Size(65, 13);
             this.lblVencimiento.TabIndex = 7;
@@ -135,7 +135,7 @@
             // lblPublicacion
             // 
             this.lblPublicacion.AutoSize = true;
-            this.lblPublicacion.Location = new System.Drawing.Point(24, 91);
+            this.lblPublicacion.Location = new System.Drawing.Point(21, 91);
             this.lblPublicacion.Name = "lblPublicacion";
             this.lblPublicacion.Size = new System.Drawing.Size(62, 13);
             this.lblPublicacion.TabIndex = 8;
@@ -147,9 +147,9 @@
             this.groupBoxFechas.Controls.Add(this.dateTimePicker1);
             this.groupBoxFechas.Controls.Add(this.lblVencimiento);
             this.groupBoxFechas.Controls.Add(this.lblPublicacion);
-            this.groupBoxFechas.Location = new System.Drawing.Point(392, 168);
+            this.groupBoxFechas.Location = new System.Drawing.Point(344, 171);
             this.groupBoxFechas.Name = "groupBoxFechas";
-            this.groupBoxFechas.Size = new System.Drawing.Size(401, 124);
+            this.groupBoxFechas.Size = new System.Drawing.Size(386, 124);
             this.groupBoxFechas.TabIndex = 9;
             this.groupBoxFechas.TabStop = false;
             this.groupBoxFechas.Text = "Fechas";
@@ -212,17 +212,17 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(503, 27);
+            this.txtDescripcion.Location = new System.Drawing.Point(428, 27);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtDescripcion.Size = new System.Drawing.Size(290, 110);
+            this.txtDescripcion.Size = new System.Drawing.Size(302, 110);
             this.txtDescripcion.TabIndex = 16;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCancelar.Location = new System.Drawing.Point(226, 325);
+            this.btnCancelar.Location = new System.Drawing.Point(644, 321);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(86, 40);
             this.btnCancelar.TabIndex = 17;
@@ -233,7 +233,7 @@
             // btnPublicar
             // 
             this.btnPublicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnPublicar.Location = new System.Drawing.Point(487, 324);
+            this.btnPublicar.Location = new System.Drawing.Point(321, 321);
             this.btnPublicar.Name = "btnPublicar";
             this.btnPublicar.Size = new System.Drawing.Size(83, 41);
             this.btnPublicar.TabIndex = 18;
@@ -247,9 +247,10 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(311, 269);
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.btnBuscar.Location = new System.Drawing.Point(164, 321);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(86, 41);
             this.btnBuscar.TabIndex = 19;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -259,7 +260,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(836, 374);
+            this.ClientSize = new System.Drawing.Size(743, 374);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnPublicar);
             this.Controls.Add(this.btnCancelar);
