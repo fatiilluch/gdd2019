@@ -46,3 +46,19 @@
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (2,6)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,9)
 
+--Cliente asociado a user1
+	insert into Clientes (dni,cliente_nombre,cliente_apellido,fecha_nacimiento,ciudad,codigo_postal,telefono,email,direccion,nombre_usuario)
+	values (39655888,'santu','feijoo',getdate(),'london ahre','1406',4625857,'santuuu','quirno y junta','user1')
+
+--Proveedor asociado a user2
+	insert into Proveedores (rs,email,telefono,ciudad,cuit,rubro_id,proveedor_nombre,direccion,nombre_usuario)
+	values
+	('Lo de tu vieja sa','sadsada',129384,'tambien london :v','20.120312933',1,'ivan','Quirno','user2')
+
+--Cliente y proveedor asociado a user3
+	insert into Clientes (dni,cliente_nombre,cliente_apellido,fecha_nacimiento,ciudad,codigo_postal,telefono,email,direccion,nombre_usuario)
+	values (396888,'chskl','muz',getdate(),'london ahre','1406',48425857,'tusd8dada','quirno y junta','user3')
+
+	insert into Proveedores (rs,email,telefono,ciudad,cuit,rubro_id,proveedor_nombre,direccion,nombre_usuario)
+	values
+	('Lo deeja sa','sq2asddsada',458756,'tambien london :v','20.1312933',1,'ivan','Quirno','user3')

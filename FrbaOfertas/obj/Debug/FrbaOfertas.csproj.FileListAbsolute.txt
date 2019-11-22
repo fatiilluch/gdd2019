@@ -65,3 +65,4 @@ C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.Me
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.MenuAbmProveedor.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.CragaCredito.CargaCredito.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Listado.ListadoDeProveedores.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Listado.ListadoCliente.resources

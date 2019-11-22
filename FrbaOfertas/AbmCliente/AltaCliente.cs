@@ -59,7 +59,7 @@ namespace FrbaOfertas.AbmCliente
 
                         SqlCommand cmd2 = new SqlCommand("INSERT INTO Clientes VALUES (@dni,@nom,@ap,@fecha,@loc,@cp,@tel,@email,@calle,@piso,@depto,@user)", Utilidades.Utilidades.getCon());
                         String SelectRol = "Select rol_id from Roles where rol_nombre='Cliente'";
-                        int rol_id = Convert.ToInt32(Utilidades.Utilidades.ejecutarConsulta(SelectRol).Tables[0].Rows[0]);
+                        int rol_id = Convert.ToInt32(Utilidades.Utilidades.ejecutarConsulta(SelectRol).Tables[0].Rows[0]["rol_id"]);
 
                         cmd2.Parameters.AddWithValue("@dni", txtDni.Text);
                         cmd2.Parameters.AddWithValue("@nom", txtNombre.Text);
@@ -91,6 +91,11 @@ namespace FrbaOfertas.AbmCliente
 
                 
             }
+        }
+
+        private void AltaCliente_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ventanaAnterior.Show();
         }
     }
 }

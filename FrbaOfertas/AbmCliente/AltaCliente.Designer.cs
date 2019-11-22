@@ -52,9 +52,9 @@
             this.lblLocalidad = new System.Windows.Forms.Label();
             this.btnCrear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblUsuario = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -276,6 +276,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos personales del Usuario";
             // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Location = new System.Drawing.Point(97, 142);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(200, 20);
+            this.txtUsuario.TabIndex = 16;
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(32, 145);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(43, 13);
+            this.lblUsuario.TabIndex = 15;
+            this.lblUsuario.Text = "Usuario";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtCalle);
@@ -295,22 +311,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dirección";
             // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(32, 145);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(43, 13);
-            this.lblUsuario.TabIndex = 15;
-            this.lblUsuario.Text = "Usuario";
-            // 
-            // txtUsuario
-            // 
-            this.txtUsuario.Location = new System.Drawing.Point(97, 142);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(200, 20);
-            this.txtUsuario.TabIndex = 16;
-            // 
             // AltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,6 +323,7 @@
             this.MinimizeBox = false;
             this.Name = "AltaCliente";
             this.Text = "Registro del cliente";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AltaCliente_FormClosed);
             this.Load += new System.EventHandler(this.AltaCliente_Load);
             this.Controls.SetChildIndex(this.btnCrear, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);

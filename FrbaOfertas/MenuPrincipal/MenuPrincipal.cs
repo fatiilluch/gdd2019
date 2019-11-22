@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Entidades;
 using FrbaOfertas.CambiarPassword;
+using FrbaOfertas.LoginYSeguridad;
 namespace FrbaOfertas.MenuPrincipal
 {
     public partial class MenuPrincipal : Form
@@ -25,7 +26,9 @@ namespace FrbaOfertas.MenuPrincipal
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+            Form v = new Login();
+            v.Show();
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
@@ -59,6 +62,11 @@ namespace FrbaOfertas.MenuPrincipal
             Form form = funcionalidadSeleccionada.getForm(this);
             form.Show();
             this.Hide();
+        }
+
+        private void MenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         

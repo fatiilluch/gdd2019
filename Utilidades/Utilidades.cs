@@ -85,7 +85,32 @@ namespace Utilidades
             return i;
         }
 
+        public static String condicionesFiltrosTextoExacto(List<TextBox> filtros)
+        {
+            String condiciones = "";
+            if (filtros.Any(box => box.TextLength > 0))
+            {
+                foreach (TextBox filtro in filtros.Where(box => box.TextLength > 0))
+                {
+                    condiciones = condiciones + String.Format("{0} " + "= " + "'{1}'" + " and ", filtro.Name,filtro.Text.ToString());
+                }
 
+            }
+            return condiciones;
+        }
+        public static String condicionesFiltrosTextoLibre(List<TextBox> filtros)
+        {
+            String condiciones = "";
+            if (filtros.Any(box => box.TextLength > 0))
+            {
+                foreach (TextBox filtro in filtros.Where(box => box.TextLength > 0))
+                {
+                    condiciones = condiciones + String.Format("{0} " + "like " + "'{1}'" + " and ", filtro.Name, '%' + filtro.Text.ToString() + '%');
+                }
+
+            }
+            return condiciones;
+        }
             
         public static String obtenerHash(String texto)
         {
