@@ -7,3 +7,4 @@ C:\Home\Gestion de datos\gdd2019\Utilidades\bin\Debug\Utilidades.dll
 C:\Home\Gestion de datos\gdd2019\Utilidades\bin\Debug\Utilidades.pdb
 C:\Home\Gestion de datos\gdd2019\Utilidades\obj\Debug\Utilidades.dll
 C:\Home\Gestion de datos\gdd2019\Utilidades\obj\Debug\Utilidades.pdb
+C:\Home\Gestion de datos\gdd2019\Utilidades\obj\Debug\Utilidades.csprojResolveAssemblyReference.cache

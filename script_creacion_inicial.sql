@@ -280,8 +280,28 @@ create procedure cliente_existente (
 )
 as
 begin
+	declare @v numeric(18,0) = (select TRY_CONVERT(numeric(18,0),@dni))
 	declare @returned smallint
-	if(exists(select * from Clientes where dni=@dni))
+	if(exists(select * from Clientes where dni=@v))
+	begin
+		set @returned= 1
+	end
+	else
+	begin
+		set @returned= (-1)
+	end
+	return @returned
+end
+go
+
+create procedure usuario_con_rol_existente(
+	@rol_id smallint,
+	@username nvarchar(255)
+)
+as
+begin
+	declare @returned smallint
+	if(exists(select * from UsuarioPorRol where rol_id=@rol_id and nombre_usuario=@username))
 	begin
 		set @returned= 1
 	end

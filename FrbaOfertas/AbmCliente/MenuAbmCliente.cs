@@ -19,5 +19,12 @@ namespace FrbaOfertas.AbmCliente
             InitializeComponent();
             origen = ventana;
         }
+
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            Form ventana = new AltaCliente(origen);
+            ventana.Show();
+            this.Close();
+        }
     }
 }

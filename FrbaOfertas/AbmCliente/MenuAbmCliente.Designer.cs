@@ -60,6 +60,7 @@
             this.btnCargar.TabIndex = 9;
             this.btnCargar.Text = "Cargar Cliente";
             this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
             // label1
             // 

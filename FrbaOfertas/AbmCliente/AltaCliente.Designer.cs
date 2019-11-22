@@ -53,6 +53,8 @@
             this.btnCrear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +62,7 @@
             // btnAtras
             // 
             this.btnAtras.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtras.Location = new System.Drawing.Point(184, 336);
+            this.btnAtras.Location = new System.Drawing.Point(184, 358);
             this.btnAtras.Size = new System.Drawing.Size(104, 44);
             // 
             // txtFechaDeNacimiento
@@ -243,7 +245,7 @@
             // 
             this.btnCrear.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrear.ForeColor = System.Drawing.Color.Black;
-            this.btnCrear.Location = new System.Drawing.Point(385, 336);
+            this.btnCrear.Location = new System.Drawing.Point(385, 357);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(111, 45);
             this.btnCrear.TabIndex = 24;
@@ -253,6 +255,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtUsuario);
+            this.groupBox1.Controls.Add(this.lblUsuario);
             this.groupBox1.Controls.Add(this.lblNombre);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.lblApellido);
@@ -267,7 +271,7 @@
             this.groupBox1.Controls.Add(this.lblFechaNacimiento);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(736, 137);
+            this.groupBox1.Size = new System.Drawing.Size(736, 185);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos personales del Usuario";
@@ -284,12 +288,28 @@
             this.groupBox2.Controls.Add(this.lblCp);
             this.groupBox2.Controls.Add(this.txtDepto);
             this.groupBox2.Controls.Add(this.txtCp);
-            this.groupBox2.Location = new System.Drawing.Point(13, 170);
+            this.groupBox2.Location = new System.Drawing.Point(13, 203);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(735, 148);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dirección";
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(32, 145);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(43, 13);
+            this.lblUsuario.TabIndex = 15;
+            this.lblUsuario.Text = "Usuario";
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Location = new System.Drawing.Point(97, 142);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(200, 20);
+            this.txtUsuario.TabIndex = 16;
             // 
             // AltaCliente
             // 
@@ -343,5 +363,7 @@
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.Label lblUsuario;
     }
 }

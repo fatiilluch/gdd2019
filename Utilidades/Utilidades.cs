@@ -109,6 +109,42 @@ namespace Utilidades
             }
 
         }
+        public static void verificarClientesDuplicados(String dni)
+        {
+            SqlCommand cmd = new SqlCommand("cliente_existente");
+            cmd.Parameters.Add("@dni", SqlDbType.NVarChar, 18).Value = dni;
+
+            int i = Utilidades.ejecutarProcedure(cmd);
+            if (i < 0) { throw new ClienteDuplicadoException(); }
+        }
+        public static void verificarUsuarioPorRolExistente(int rol_id, String username)
+        {
+            SqlCommand cmd = new SqlCommand("usuario_con_rol_existente");
+            cmd.Parameters.Add("@rol_id", SqlDbType.SmallInt).Value = rol_id;
+            cmd.Parameters.Add("@username", SqlDbType.NVarChar).Value = username;
+
+            int i = Utilidades.ejecutarProcedure(cmd);
+            if (i < 0) { throw new ClienteDuplicadoException(); }
+        }
+
+    }
+    public class ClienteDuplicadoException : Exception
+    {
+        public ClienteDuplicadoException() { }
+        public void mensaje()
+        {
+            MessageBox.Show("Ya existe un cliente con ese DNI!","Failed",MessageBoxButtons.OK,MessageBoxIcon.Error);
+        }
+
+    }
+    public class UsuarioConRolExistenteException : Exception
+    {
+        public UsuarioConRolExistenteException() { }
+        public void mensaje()
+        {
+            MessageBox.Show("Ya existe un usuario con ese rol!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
     }
 }
 
