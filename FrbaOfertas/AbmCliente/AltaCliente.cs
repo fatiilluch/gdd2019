@@ -97,5 +97,12 @@ namespace FrbaOfertas.AbmCliente
         {
             ventanaAnterior.Show();
         }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            camposObligatorios.ForEach(box => box.Clear());
+            txtPiso.Clear();
+            txtDepto.Clear();
+        }
     }
 }

@@ -26,5 +26,12 @@ namespace FrbaOfertas.AbmCliente
             ventana.Show();
             this.Close();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Form ventana = new BajaCliente(origen);
+            ventana.Show();
+            this.Close();
+        }
     }
 }
