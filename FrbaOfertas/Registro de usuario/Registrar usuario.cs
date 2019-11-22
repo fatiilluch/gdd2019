@@ -67,7 +67,8 @@ namespace FrbaOfertas.Registro_de_usuario
         }
         private Boolean usuarioExistente(String nombre)
         {
-            String cmd = String.Format("exec usuario_existente @name='{0}'", nombre.ToLower());
+            SqlCommand cmd = new SqlCommand("usuario_existente");
+            cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = nombre;
 
             int valorDeVerdad = Utilidades.Utilidades.ejecutarProcedure(cmd);
             if (valorDeVerdad<0) { 

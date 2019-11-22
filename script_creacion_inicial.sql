@@ -254,7 +254,7 @@ create procedure buscarUsuario
 as
 select *
 from Usuarios
-where nombre_usuario like '%@textoBuscar%'
+where nombre_usuario like '%'+@textoBuscar+'%'
 go
 
 create procedure usuario_existente (
@@ -262,7 +262,34 @@ create procedure usuario_existente (
 )
 as
 begin
-	if(exists(select * from Usuarios where nombre_usuario='admin')) return 1 else return (-1)
+	declare @returned smallint
+	if(exists(select * from Usuarios where nombre_usuario=@name))
+	begin
+		set @returned= 1
+	end
+	else
+	begin
+		set @returned= (-1)
+	end
+	return @returned
+end
+go
+
+create procedure cliente_existente (
+	@dni nvarchar(255)
+)
+as
+begin
+	declare @returned smallint
+	if(exists(select * from Clientes where dni=@dni))
+	begin
+		set @returned= 1
+	end
+	else
+	begin
+		set @returned= (-1)
+	end
+	return @returned
 end
 go
 

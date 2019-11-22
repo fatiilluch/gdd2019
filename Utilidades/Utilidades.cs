@@ -72,11 +72,11 @@ namespace Utilidades
             ejecutar("rollback");
         }
 
-        public static int ejecutarProcedure(String proc)
+        public static int ejecutarProcedure(SqlCommand cmd)
         {
-            SqlCommand cmd = new SqlCommand(proc, con);
+            cmd.Connection = getCon();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@returned", SqlDbType.TinyInt).Direction = ParameterDirection.Output;
+            cmd.Parameters.Add("@returned", SqlDbType.SmallInt).Direction = ParameterDirection.ReturnValue;
 
             con.Open();
             cmd.ExecuteNonQuery();
