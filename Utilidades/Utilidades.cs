@@ -151,6 +151,17 @@ namespace Utilidades
             int i = Utilidades.ejecutarProcedure(cmd);
             if (i < 0) { throw new ClienteDuplicadoException(); }
         }
+        public static void verificarExistenciaDeUsuario(DataSet dsUsuario)
+        {
+            if(dsUsuario.Tables[0].Rows.Count == 0){throw new UsuarioInexistenteException();}
+        }
+        public static void verificarCamposObligatoriosCompletos(List<TextBox> campos)
+        {
+            if (campos.Exists(campo => campo.Text == string.Empty))
+            {
+                throw new CamposObligatoriosIncompletosException(campos);
+            }
+        }
 
     }
     public class ClienteDuplicadoException : Exception
@@ -171,6 +182,26 @@ namespace Utilidades
         }
 
     }
+    public class UsuarioInexistenteException : Exception{
+        public void mensaje()
+        {
+            MessageBox.Show("Usuario inexistente!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+    public class CamposObligatoriosIncompletosException : Exception
+    {
+        private List<TextBox> camposObligatorios=new List<TextBox>();
+        public CamposObligatoriosIncompletosException(List<TextBox> l)
+        {
+            camposObligatorios = l;
+        }
+        public void mensaje()
+        {
+            List<TextBox> camposSinLlenar = camposObligatorios.Where(campo => campo.Text == string.Empty).ToList();
+            MessageBox.Show("Falta llenar campos: " + camposSinLlenar.Aggregate("", (s, next) => s + next.Name.TrimStart('t', 'x', 't') + " , ").TrimEnd(',', ' '), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+        
 }
 
 

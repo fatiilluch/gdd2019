@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 using FrbaOfertas.AbmCliente;
 using FrbaOfertas.AbmProveedor;
 using FrbaOfertas.Entidades;
-
+using Utilidades;
 namespace FrbaOfertas.Registro_de_usuario
 {
     public partial class RegistrarUsuario : AltaForm
@@ -38,30 +38,40 @@ namespace FrbaOfertas.Registro_de_usuario
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            if (camposObligatoriosCompletados() && cmbRol.SelectedItem!=null)
+            try
             {
-                Usuario user = new Usuario(txtUsuario.Text, txtPassword.Text);
-                if(!usuarioExistente(user.getNombreUsuario())){
-                    
-                    Rol seleccionado = cmbRol.SelectedItem as Rol;
-                    switch (seleccionado.Nombre)
-                    {
-                        case "Cliente":
-                            this.Hide();
-                            AltaCliente ventanaCliente = new AltaCliente(user, this);
-                            ventanaCliente.Show();
-                            break;
-                        case "Proveedor":
-                            this.Hide();
-                            AltaProveedor ventanaProveedor = new AltaProveedor(user, this);
-                            ventanaProveedor.Show();
-                            break;
-                    }
-                }else
+                if (cmbRol.SelectedItem != null)
                 {
-                    MessageBox.Show("Nombre de usuario no disponible","Failed",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    Usuario user = new Usuario(txtUsuario.Text, txtPassword.Text);
+                    if (!usuarioExistente(user.getNombreUsuario()))
+                    {
+
+                        Rol seleccionado = cmbRol.SelectedItem as Rol;
+                        switch (seleccionado.Nombre)
+                        {
+                            case "Cliente":
+                                this.Hide();
+                                AltaCliente ventanaCliente = new AltaCliente(user, this);
+                                ventanaCliente.Show();
+                                break;
+                            case "Proveedor":
+                                this.Hide();
+                                AltaProveedor ventanaProveedor = new AltaProveedor(user, this);
+                                ventanaProveedor.Show();
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nombre de usuario no disponible", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
+            catch (CamposObligatoriosIncompletosException error)
+            {
+                error.mensaje();
+            }
+            
             
 
         }

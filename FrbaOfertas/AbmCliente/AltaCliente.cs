@@ -61,50 +61,53 @@ namespace FrbaOfertas.AbmCliente
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            if (camposObligatoriosCompletados())
-            {
-                try{
-                        Utilidades.GestorDeErrores.verificarClientesDuplicados(txtDni.Text.ToString());
-                        Utilidades.GestorDeErrores.verificarUsuarioPorRolExistente(RepoRol.getInstance().buscarRol("Cliente").Id,txtUsuario.Text.ToString());
+            
+                try
+                {
+                    Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
 
-                        SqlCommand cmd2 = new SqlCommand("INSERT INTO Clientes VALUES (@dni,@nom,@ap,@fecha,@loc,@cp,@tel,@email,@calle,@piso,@depto,@user)", Utilidades.Utilidades.getCon());
-                        String SelectRol = "Select rol_id from Roles where rol_nombre='Cliente'";
-                        int rol_id = Convert.ToInt32(Utilidades.Utilidades.ejecutarConsulta(SelectRol).Tables[0].Rows[0]["rol_id"]);
+                    Utilidades.GestorDeErrores.verificarClientesDuplicados(txtDni.Text.ToString());
+                    Utilidades.GestorDeErrores.verificarUsuarioPorRolExistente(RepoRol.getInstance().buscarRol("Cliente").Id, txtUsuario.Text.ToString());
 
-                        cmd2.Parameters.AddWithValue("@dni", txtDni.Text);
-                        cmd2.Parameters.AddWithValue("@nom", txtNombre.Text);
-                        cmd2.Parameters.AddWithValue("@ap", txtApellido.Text);
-                        cmd2.Parameters.AddWithValue("@fecha", fechaNacimiento.Value);
-                        cmd2.Parameters.AddWithValue("@loc", txtLocalidad.Text);
-                        cmd2.Parameters.AddWithValue("@cp", txtCp.Text);
-                        cmd2.Parameters.AddWithValue("@tel", txtTelefono.Text);
-                        cmd2.Parameters.AddWithValue("@email", txtEmail.Text);
-                        cmd2.Parameters.AddWithValue("@calle", txtCalle.Text);
-                        cmd2.Parameters.AddWithValue("@piso", txtPiso.Text);
-                        cmd2.Parameters.AddWithValue("@depto", txtDepto.Text);
-                        if (us != null) { cmd2.Parameters.AddWithValue("@user", us.getNombreUsuario()); }
+                    SqlCommand cmd2 = new SqlCommand("INSERT INTO Clientes VALUES (@dni,@nom,@ap,@fecha,@loc,@cp,@tel,@email,@calle,@piso,@depto,@user)", Utilidades.Utilidades.getCon());
+                    String SelectRol = "Select rol_id from Roles where rol_nombre='Cliente'";
+                    int rol_id = Convert.ToInt32(Utilidades.Utilidades.ejecutarConsulta(SelectRol).Tables[0].Rows[0]["rol_id"]);
 
-                        Utilidades.Utilidades.beginTransaction();
-                        cargarUsuario(us,rol_id);
-                        Utilidades.Utilidades.ejecutar(cmd2);
-                        Utilidades.Utilidades.commit();                        
-                        MessageBox.Show("Cliente guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ventanaAnterior.Show();
-                        this.Close();
-                        
+                    cmd2.Parameters.AddWithValue("@dni", txtDni.Text);
+                    cmd2.Parameters.AddWithValue("@nom", txtNombre.Text);
+                    cmd2.Parameters.AddWithValue("@ap", txtApellido.Text);
+                    cmd2.Parameters.AddWithValue("@fecha", fechaNacimiento.Value);
+                    cmd2.Parameters.AddWithValue("@loc", txtLocalidad.Text);
+                    cmd2.Parameters.AddWithValue("@cp", txtCp.Text);
+                    cmd2.Parameters.AddWithValue("@tel", txtTelefono.Text);
+                    cmd2.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd2.Parameters.AddWithValue("@calle", txtCalle.Text);
+                    cmd2.Parameters.AddWithValue("@piso", txtPiso.Text);
+                    cmd2.Parameters.AddWithValue("@depto", txtDepto.Text);
+                    if (us != null) { cmd2.Parameters.AddWithValue("@user", us.getNombreUsuario()); }
+
+                    Utilidades.Utilidades.beginTransaction();
+                    cargarUsuario(us, rol_id);
+                    Utilidades.Utilidades.ejecutar(cmd2);
+                    Utilidades.Utilidades.commit();
+                    MessageBox.Show("Cliente guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ventanaAnterior.Show();
+                    this.Close();
+
 
                 }
-                catch(Utilidades.ClienteDuplicadoException c)
+                catch (CamposObligatoriosIncompletosException error)
+                {
+                    error.mensaje();
+                }
+                catch (Utilidades.ClienteDuplicadoException c)
                 {
                     c.mensaje();
                 }
-                catch(Utilidades.UsuarioConRolExistenteException c)
+                catch (Utilidades.UsuarioConRolExistenteException c)
                 {
                     c.mensaje();
                 }
-
-                
-            }
         }
 
         private void AltaCliente_FormClosed(object sender, FormClosedEventArgs e)

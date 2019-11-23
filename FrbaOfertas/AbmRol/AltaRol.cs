@@ -19,13 +19,13 @@ namespace FrbaOfertas.AbmRol
         {
             InitializeComponent();
             inicializarCamposObligatorios();
-            inicializarCheckBox();
+            inicializarDataGridView();
         }
         public AltaRol(Form menu)
         {
             InitializeComponent();
             inicializarCamposObligatorios();
-            inicializarCheckBox();
+            inicializarDataGridView();
             origen = menu;
         }
 
@@ -33,7 +33,7 @@ namespace FrbaOfertas.AbmRol
         {
             camposObligatorios.Add(txtRolNombre);
         }
-        private void inicializarCheckBox()
+        private void inicializarDataGridView()
         {
             String query = "Select funcionalidad_id,funcionalidad_nombre From Funcionalidades";
             DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
@@ -43,8 +43,7 @@ namespace FrbaOfertas.AbmRol
                 Funcionalidad f = new Funcionalidad(Convert.ToInt16(fila["funcionalidad_id"]), fila["funcionalidad_nombre"].ToString());
                 funcionalidades.Add(f);
             }
-
-            
+            dgFuncionalidadesDisponibles.DataSource = funcionalidades;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -55,11 +54,16 @@ namespace FrbaOfertas.AbmRol
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            if (camposObligatoriosCompletados())
+            try
             {
-                //TODO
 
+                Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
             }
+            catch (CamposObligatoriosIncompletosException error)
+            {
+                error.mensaje();
+            }
+
         }
     }
 }

@@ -27,23 +27,31 @@ namespace FrbaOfertas.CambiarPassword
         }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (camposObligatoriosCompletados())
-            {
-                if (txtNuevaContraseña.Text == txtConfirmNuevaContraseña.Text)
+            
+                try
                 {
-                    String hash = Utilidades.Utilidades.obtenerHash(txtNuevaContraseña.Text);
-                    String query = String.Format("Update Usuarios set password = '{0}' where nombre_usuario ='{1}'", hash, usuario.getNombreUsuario());
-                    Utilidades.Utilidades.ejecutar(query);
-                    MessageBox.Show("Clave cambiada exitósamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+
+                    if (txtNuevaContraseña.Text == txtConfirmNuevaContraseña.Text)
+                    {
+                        String hash = Utilidades.Utilidades.obtenerHash(txtNuevaContraseña.Text);
+                        String query = String.Format("Update Usuarios set password = '{0}' where nombre_usuario ='{1}'", hash, usuario.getNombreUsuario());
+                        Utilidades.Utilidades.ejecutar(query);
+                        MessageBox.Show("Clave cambiada exitósamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Password ingresado inválido", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
+                catch (CamposObligatoriosIncompletosException error)
                 {
-                    MessageBox.Show("Password ingresado inválido", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    error.mensaje();
                 }
                 
             }
-        }
+        
 
     }
 }
