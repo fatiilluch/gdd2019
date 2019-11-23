@@ -14,20 +14,16 @@ namespace FrbaOfertas.AbmCliente
 {
     public partial class BajaCliente : Form
     {
-        private Form origen;
+        private Form menuPrincipal;
         public BajaCliente(Form vent)
         {
             InitializeComponent();
-            origen = vent;
-        }
-        public BajaCliente()
-        {
-            InitializeComponent();
+            menuPrincipal = vent;
         }
 
         private void BajaCliente_FormClosed(object sender, FormClosedEventArgs e)
         {
-            origen.Show();
+            menuPrincipal.Show();
             this.Close();
             
         }
@@ -43,7 +39,7 @@ namespace FrbaOfertas.AbmCliente
             btnBaja.Enabled = true;
             btnBaja.BackColor = SystemColors.Control;
         }
-        private Boolean clienteDadoDeBaja(String dni)
+        private Boolean clienteHabilitado(String dni)
         {
             String query = String.Format("select habilitado from Clientes where dni='{0}'",dni);
             DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
@@ -53,12 +49,12 @@ namespace FrbaOfertas.AbmCliente
 
         private void btnBaja_Click(object sender, EventArgs e)
         {
-            if (!clienteDadoDeBaja(txtDni.Text))
+            if (clienteHabilitado(txtDni.Text))
             {
                 String query = String.Format("update Clientes set habilitado = 0 where dni ='{0}'", txtDni.Text);
                 Utilidades.Utilidades.ejecutar(query);
                 MessageBox.Show("Cliente dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                origen.Show();
+                menuPrincipal.Show();
             }
             else
             {

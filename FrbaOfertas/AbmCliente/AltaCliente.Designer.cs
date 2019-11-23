@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtFechaDeNacimiento = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -56,6 +55,7 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.fechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -65,13 +65,6 @@
             this.btnAtras.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAtras.Location = new System.Drawing.Point(184, 358);
             this.btnAtras.Size = new System.Drawing.Size(104, 44);
-            // 
-            // txtFechaDeNacimiento
-            // 
-            this.txtFechaDeNacimiento.Location = new System.Drawing.Point(494, 102);
-            this.txtFechaDeNacimiento.Name = "txtFechaDeNacimiento";
-            this.txtFechaDeNacimiento.Size = new System.Drawing.Size(200, 20);
-            this.txtFechaDeNacimiento.TabIndex = 1;
             // 
             // txtTelefono
             // 
@@ -208,9 +201,9 @@
             this.lblCalle.AutoSize = true;
             this.lblCalle.Location = new System.Drawing.Point(31, 30);
             this.lblCalle.Name = "lblCalle";
-            this.lblCalle.Size = new System.Drawing.Size(33, 13);
+            this.lblCalle.Size = new System.Drawing.Size(52, 13);
             this.lblCalle.TabIndex = 19;
-            this.lblCalle.Text = "Calle:";
+            this.lblCalle.Text = "Direccion";
             // 
             // txtPiso
             // 
@@ -238,9 +231,9 @@
             this.lblLocalidad.AutoSize = true;
             this.lblLocalidad.Location = new System.Drawing.Point(366, 82);
             this.lblLocalidad.Name = "lblLocalidad";
-            this.lblLocalidad.Size = new System.Drawing.Size(56, 13);
+            this.lblLocalidad.Size = new System.Drawing.Size(40, 13);
             this.lblLocalidad.TabIndex = 23;
-            this.lblLocalidad.Text = "Localidad:";
+            this.lblLocalidad.Text = "Ciudad";
             // 
             // btnCrear
             // 
@@ -256,6 +249,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.fechaNacimiento);
             this.groupBox1.Controls.Add(this.txtUsuario);
             this.groupBox1.Controls.Add(this.lblUsuario);
             this.groupBox1.Controls.Add(this.lblNombre);
@@ -267,7 +261,6 @@
             this.groupBox1.Controls.Add(this.lblMail);
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.txtTelefono);
-            this.groupBox1.Controls.Add(this.txtFechaDeNacimiento);
             this.groupBox1.Controls.Add(this.lblTelefono);
             this.groupBox1.Controls.Add(this.lblFechaNacimiento);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -324,6 +317,16 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // fechaNacimiento
+            // 
+            this.fechaNacimiento.Location = new System.Drawing.Point(494, 108);
+            this.fechaNacimiento.MaxDate = new System.DateTime(2001, 1, 1, 0, 0, 0, 0);
+            this.fechaNacimiento.MinDate = new System.DateTime(1930, 1, 1, 0, 0, 0, 0);
+            this.fechaNacimiento.Name = "fechaNacimiento";
+            this.fechaNacimiento.Size = new System.Drawing.Size(200, 20);
+            this.fechaNacimiento.TabIndex = 17;
+            this.fechaNacimiento.Value = new System.DateTime(2001, 1, 1, 0, 0, 0, 0);
+            // 
             // AltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -354,7 +357,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtFechaDeNacimiento;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApellido;
@@ -382,5 +384,6 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.DateTimePicker fechaNacimiento;
     }
 }

@@ -28,30 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.btnBaja = new System.Windows.Forms.Button();
             this.btnCargar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(233, 60);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(98, 32);
-            this.btnEliminar.TabIndex = 11;
-            this.btnEliminar.Text = "Eliminar Cliente";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(114, 60);
+            this.btnModificar.Location = new System.Drawing.Point(233, 60);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(103, 33);
-            this.btnModificar.TabIndex = 10;
-            this.btnModificar.Text = "Modificar Cliente";
+            this.btnModificar.Size = new System.Drawing.Size(98, 32);
+            this.btnModificar.TabIndex = 11;
+            this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnBaja
+            // 
+            this.btnBaja.Location = new System.Drawing.Point(114, 60);
+            this.btnBaja.Name = "btnBaja";
+            this.btnBaja.Size = new System.Drawing.Size(103, 33);
+            this.btnBaja.TabIndex = 10;
+            this.btnBaja.Text = "Dar de baja";
+            this.btnBaja.UseVisualStyleBackColor = true;
+            this.btnBaja.Click += new System.EventHandler(this.btnBaja_Click);
             // 
             // btnCargar
             // 
@@ -59,7 +60,7 @@
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(83, 33);
             this.btnCargar.TabIndex = 9;
-            this.btnCargar.Text = "Cargar Cliente";
+            this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
             this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
@@ -79,8 +80,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(348, 110);
-            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnBaja);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.label1);
             this.Name = "MenuAbmCliente";
@@ -93,8 +94,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnBaja;
         private System.Windows.Forms.Button btnCargar;
         private System.Windows.Forms.Label label1;
     }

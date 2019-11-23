@@ -33,12 +33,22 @@ namespace FrbaOfertas.AbmCliente
             inicializarCamposObligatorios();
             ventanaAnterior = v;
         }
+        public AltaCliente(Cliente cl, Form v)
+        {
+            InitializeComponent();
+            inicializarCamposObligatorios();
+            ventanaAnterior = v;
+            cargarCampos(cl);
+            txtUsuario.Text = cl.Nombre_usuario;
+            txtUsuario.Enabled = false;
+            txtUsuario.BackColor = Color.DarkGray;
+
+        }
         protected override void inicializarCamposObligatorios(){
             camposObligatorios.Add(txtApellido);
             camposObligatorios.Add(txtNombre);
             camposObligatorios.Add(txtDni);
             camposObligatorios.Add(txtEmail);
-            camposObligatorios.Add(txtFechaDeNacimiento);
             camposObligatorios.Add(txtLocalidad);
             camposObligatorios.Add(txtCalle);
             camposObligatorios.Add(txtCp);
@@ -64,7 +74,7 @@ namespace FrbaOfertas.AbmCliente
                         cmd2.Parameters.AddWithValue("@dni", txtDni.Text);
                         cmd2.Parameters.AddWithValue("@nom", txtNombre.Text);
                         cmd2.Parameters.AddWithValue("@ap", txtApellido.Text);
-                        cmd2.Parameters.AddWithValue("@fecha", txtFechaDeNacimiento.Text);
+                        cmd2.Parameters.AddWithValue("@fecha", fechaNacimiento.Value);
                         cmd2.Parameters.AddWithValue("@loc", txtLocalidad.Text);
                         cmd2.Parameters.AddWithValue("@cp", txtCp.Text);
                         cmd2.Parameters.AddWithValue("@tel", txtTelefono.Text);
@@ -77,8 +87,12 @@ namespace FrbaOfertas.AbmCliente
                         Utilidades.Utilidades.beginTransaction();
                         cargarUsuario(us,rol_id);
                         Utilidades.Utilidades.ejecutar(cmd2);
+                        Utilidades.Utilidades.commit();                        
                         MessageBox.Show("Cliente guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Utilidades.Utilidades.commit();
+                        ventanaAnterior.Show();
+                        this.Close();
+                        
+
                 }
                 catch(Utilidades.ClienteDuplicadoException c)
                 {
@@ -104,5 +118,20 @@ namespace FrbaOfertas.AbmCliente
             txtPiso.Clear();
             txtDepto.Clear();
         }
+        private void cargarCampos(Cliente cliente)
+        {
+            txtNombre.Text = cliente.Cliente_nombre;
+            txtApellido.Text = cliente.Cliente_apellido;
+            txtCalle.Text = cliente.Direccion;
+            txtCp.Text = cliente.Cp;
+            txtDni.Text = cliente.Dni;
+            txtEmail.Text = cliente.Email;
+            txtTelefono.Text = cliente.Telefono;
+            txtLocalidad.Text = cliente.Ciudad;
+            txtPiso.Text = cliente.Piso.ToString();
+            txtDepto.Text = cliente.Dpto.ToString();
+
+        }
+
     }
 }

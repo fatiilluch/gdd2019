@@ -7,14 +7,97 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaOfertas.Listado;
+using FrbaOfertas.Entidades;
+
 
 namespace FrbaOfertas.AbmCliente
 {
     public partial class ModificarCliente : Form
     {
+        private Form menuPrincipal;
+        public ModificarCliente(Form vent)
+        {
+            InitializeComponent();
+            menuPrincipal = vent;
+        }
         public ModificarCliente()
         {
             InitializeComponent();
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Form vent = new ListadoCliente(txtDni);
+            vent.Show();
+        }
+
+        private void txtDni_TextChanged(object sender, EventArgs e)
+        {
+            btnModificar.Enabled = true;
+            btnModificar.BackColor = SystemColors.Control;
+            if (!clienteHabilitado(txtDni.Text))
+            {
+                btnHabilitar.Enabled = true;
+                btnHabilitar.BackColor = SystemColors.Control;
+            }
+            else
+            {
+                btnDeshabilitar.Enabled = true;
+                btnDeshabilitar.BackColor = SystemColors.Control;
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            String query=String.Format("Select * from Clientes where dni='{0}'",txtDni.Text);
+            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+            Int16 piso=new Int16();
+            Char dpto=new Char();
+            if (DBNull.Value != ds.Tables[0].Rows[0]["piso"]) { piso = Convert.ToInt16(ds.Tables[0].Rows[0]["piso"]); }
+            if (DBNull.Value != ds.Tables[0].Rows[0]["dpto"]) { dpto = Convert.ToChar(ds.Tables[0].Rows[0]["dpto"]); }
+
+            Cliente cliente = new Cliente(
+                ds.Tables[0].Rows[0]["dni"].ToString(),
+                ds.Tables[0].Rows[0]["cliente_nombre"].ToString(),
+                ds.Tables[0].Rows[0]["cliente_apellido"].ToString(),
+                Convert.ToDateTime(ds.Tables[0].Rows[0]["fecha_nacimiento"]),
+                ds.Tables[0].Rows[0]["ciudad"].ToString(),
+                ds.Tables[0].Rows[0]["codigo_postal"].ToString(),
+                ds.Tables[0].Rows[0]["telefono"].ToString(),
+                ds.Tables[0].Rows[0]["email"].ToString(),
+                ds.Tables[0].Rows[0]["direccion"].ToString(),
+                piso,
+                dpto,
+                Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]),
+                ds.Tables[0].Rows[0]["nombre_usuario"].ToString()
+                );
+            Form v = new AltaCliente(cliente, menuPrincipal);
+            this.Close();
+            v.Show();
+            
+
+                
+        }
+        private Boolean clienteHabilitado(String dni)
+        {
+            String query = String.Format("Select habilitado from Clientes where dni = '{0}'",dni);
+            return Convert.ToBoolean(Utilidades.Utilidades.ejecutarConsulta(query).Tables[0].Rows[0]["habilitado"]);
+        }
+
+        private void btnHabilitar_Click(object sender, EventArgs e)
+        {
+            String query = String.Format("update Clientes set habilitado = 1 where dni='{0}'",txtDni.Text);
+            Utilidades.Utilidades.ejecutar(query);
+            MessageBox.Show("Cliente habilitado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnDeshabilitar_Click(object sender, EventArgs e)
+        {
+            String query = String.Format("update Clientes set habilitado = 0 where dni='{0}'", txtDni.Text);
+            Utilidades.Utilidades.ejecutar(query);
+            MessageBox.Show("Cliente deshabilitado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
     }
 }
