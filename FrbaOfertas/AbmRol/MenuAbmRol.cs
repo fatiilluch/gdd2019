@@ -25,23 +25,26 @@ namespace FrbaOfertas.AbmRol
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AltaRol ventana = new AltaRol(menu);
             ventana.Show();
-            this.Close();
+            
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            this.Hide();
             ModificacionRol ventana = new ModificacionRol(menu);
             ventana.Show();
-            this.Close();
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            this.Hide();
             BajaRol ventana = new BajaRol(menu);
             ventana.Show();
-            this.Close();
+            
         }
 
         private void MenuAbmRol_FormClosed(object sender, FormClosedEventArgs e)

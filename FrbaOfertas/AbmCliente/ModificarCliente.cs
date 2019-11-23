@@ -30,6 +30,8 @@ namespace FrbaOfertas.AbmCliente
         {
             Form vent = new ListadoCliente(txtDni);
             vent.Show();
+            bloquearBoton(btnDeshabilitar);
+            bloquearBoton(btnHabilitar);
         }
 
         private void txtDni_TextChanged(object sender, EventArgs e)
@@ -72,10 +74,10 @@ namespace FrbaOfertas.AbmCliente
                 Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]),
                 ds.Tables[0].Rows[0]["nombre_usuario"].ToString()
                 );
-            Form v = new AltaCliente(cliente, menuPrincipal);
             this.Close();
+            Form v = new AltaCliente(cliente, menuPrincipal);
+
             v.Show();
-            
 
                 
         }
@@ -90,6 +92,8 @@ namespace FrbaOfertas.AbmCliente
             String query = String.Format("update Clientes set habilitado = 1 where dni='{0}'",txtDni.Text);
             Utilidades.Utilidades.ejecutar(query);
             MessageBox.Show("Cliente habilitado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            bloquearBoton(btnHabilitar);
+            desbloquearBoton(btnDeshabilitar);
         }
 
         private void btnDeshabilitar_Click(object sender, EventArgs e)
@@ -97,7 +101,19 @@ namespace FrbaOfertas.AbmCliente
             String query = String.Format("update Clientes set habilitado = 0 where dni='{0}'", txtDni.Text);
             Utilidades.Utilidades.ejecutar(query);
             MessageBox.Show("Cliente deshabilitado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            bloquearBoton(btnDeshabilitar);
+            desbloquearBoton(btnHabilitar);
         }
-
+        private void bloquearBoton(Button btn)
+        {
+            btn.Enabled = false;
+            btn.BackColor = SystemColors.ControlDarkDark;
+        }
+        private void desbloquearBoton(Button btn)
+        {
+            btn.Enabled = true;
+            btn.BackColor = SystemColors.Control;
+        }
+        
     }
 }

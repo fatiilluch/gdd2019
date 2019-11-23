@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using FrbaOfertas.LoginYSeguridad;
 using FrbaOfertas.MenuPrincipal;
 using FrbaOfertas.Listado;
+using FrbaOfertas.AbmRol;
 namespace FrbaOfertas
 {
     static class Program
@@ -22,7 +23,7 @@ namespace FrbaOfertas
             //MenuPrincipal.Cliente rol = new MenuPrincipal.Cliente("Administrador");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ModificarCliente());
+            Application.Run(new MenuAbmRol());
         }
     }
 }

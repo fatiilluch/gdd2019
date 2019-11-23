@@ -24,7 +24,6 @@ namespace FrbaOfertas.AbmCliente
         private void BajaCliente_FormClosed(object sender, FormClosedEventArgs e)
         {
             menuPrincipal.Show();
-            this.Close();
             
         }
 
@@ -54,7 +53,6 @@ namespace FrbaOfertas.AbmCliente
                 String query = String.Format("update Clientes set habilitado = 0 where dni ='{0}'", txtDni.Text);
                 Utilidades.Utilidades.ejecutar(query);
                 MessageBox.Show("Cliente dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                menuPrincipal.Show();
             }
             else
             {

@@ -111,7 +111,7 @@ namespace Utilidades
             }
             return condiciones;
         }
-            
+         
         public static String obtenerHash(String texto)
         {
             var passBytes = Encoding.ASCII.GetBytes(texto);
