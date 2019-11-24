@@ -53,9 +53,16 @@ namespace FrbaOfertas.AbmRol
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
+            bloquearBoton(btnHabilitar);
+            bloquearBoton(btnDeshabilitar);
+            
             Rol r = cmbRoles.SelectedItem as Rol;
-            if (r.Habilitado) { desbloquearBoton(btnDeshabilitar); }
-            else { bloquearBoton(btnHabilitar); }
+            SqlCommand cmd = new SqlCommand("rol_habilitado");
+            cmd.Parameters.Add("@id",SqlDbType.SmallInt).Value=r.Id;
+            int i = Utilidades.Utilidades.ejecutarProcedure(cmd);
+            
+            if (i>0) { desbloquearBoton(btnDeshabilitar); }
+            else { desbloquearBoton(btnHabilitar); }
         }
 
         private void btnHabilitar_Click(object sender, EventArgs e)

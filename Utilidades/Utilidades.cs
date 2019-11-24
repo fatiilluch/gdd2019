@@ -60,17 +60,24 @@ namespace Utilidades
             cmd.ExecuteNonQuery();
             con.Close();
         }
-        public static void beginTransaction()
+        public static SqlTransaction beginTransaction()
         {
-            ejecutar("begin transaction");
+            con.Open();
+            SqlTransaction trans = con.BeginTransaction();
+            con.Close();
+            return trans;
         }
-        public static void commit()
+        public static void commit(SqlTransaction trans)
         {
-            ejecutar("commit");
+            con.Open();
+            trans.Commit();
+            con.Close();
         }
-        public static void rollback()
+        public static void rollback(SqlTransaction trans)
         {
-            ejecutar("rollback");
+            con.Open();
+            trans.Rollback();
+            con.Close();
         }
 
         public static int ejecutarProcedure(SqlCommand cmd)
@@ -163,7 +170,21 @@ namespace Utilidades
                 throw new CamposObligatoriosIncompletosException(campos);
             }
         }
+        public static void verificarRolExistente(String nombre)
+        {
+            String query = String.Format("select * from roles where rol_nombre='{0}'",nombre);
+            DataSet ds = Utilidades.ejecutarConsulta(query);
 
+            if (ds.Tables[0].Rows.Count > 0) { throw new RolExistenteException(); }
+        }
+    }
+    
+    public class RolExistenteException : Exception
+    {
+        public void mensaje()
+        {
+            MessageBox.Show("Ya existe un rol con ese nombre!","Failed",MessageBoxButtons.OK,MessageBoxIcon.Error);
+        }
     }
     public class ClienteDuplicadoException : Exception
     {

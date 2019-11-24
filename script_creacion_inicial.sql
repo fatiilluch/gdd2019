@@ -317,4 +317,23 @@ create procedure obtener_funcionalidades_del_rol  (@r smallint)
 as
 	select f1.funcionalidad_id,funcionalidad_nombre from FuncionalidadPorRol f1 join Funcionalidades f2 on (f1.funcionalidad_id=f2.funcionalidad_id) where rol_id=@r;
 go
+
+create procedure rol_habilitado (
+	@id smallint
+)
+as
+begin
+	declare @returned smallint
+	if(exists(select * from Roles where rol_id=@id and habilitado=1))
+	begin
+		set @returned = 1
+	end
+	else
+	begin
+		set @returned = (-1)
+	end
+	return @returned
+end
+go
+
 --rollback

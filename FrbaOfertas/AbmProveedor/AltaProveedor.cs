@@ -59,10 +59,10 @@ namespace FrbaOfertas.AbmProveedor
                  cmd2.Parameters.AddWithValue("@depto", txtDepto.Text);
                  if (us != null) { cmd2.Parameters.AddWithValue("@user", us.getNombreUsuario()); }
 
-                 Utilidades.Utilidades.beginTransaction();
+                 SqlTransaction trans = Utilidades.Utilidades.beginTransaction();
                  cargarUsuario(us,rol_id);
                  Utilidades.Utilidades.ejecutar(cmd2);
-                 Utilidades.Utilidades.commit();
+                 Utilidades.Utilidades.commit(trans);
                  MessageBox.Show("Proveedor guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch(CamposObligatoriosIncompletosException error)

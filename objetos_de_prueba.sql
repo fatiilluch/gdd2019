@@ -12,15 +12,17 @@
 
 --Usuario Con mas de un rol
 	insert into Usuarios (nombre_usuario,password) values ('user3','f446c8d778f9139e45b488b3c823369567f055e2a5e11e765ce1f3164267ac03')
---Usuario Por Rol
-	insert into UsuarioPorRol select rol_id,'admin' from Roles where rol_nombre='Administrador General'
-	insert into UsuarioPorRol select rol_id,'user1' from Roles where rol_nombre='Cliente'
-	insert into UsuarioPorRol select rol_id,'user2' from Roles where rol_nombre='Proveedor'
-	insert into UsuarioPorRol select rol_id,'user3' from Roles where rol_nombre='Cliente' or rol_nombre='Proveedor'
+
 --Roles
-	insert into Roles (rol_nombre) values ('Administrador General')
-	insert into Roles (rol_nombre) values ('Proveedor')
-	insert into Roles (rol_nombre) values ('Cliente')
+	insert into Roles (rol_nombre) values ('administrador General')
+	insert into Roles (rol_nombre) values ('proveedor')
+	insert into Roles (rol_nombre) values ('cliente')
+
+--Usuario Por Rol
+	insert into UsuarioPorRol select rol_id,'admin' from Roles where rol_nombre='administrador General'
+	insert into UsuarioPorRol select rol_id,'user1' from Roles where rol_nombre='cliente'
+	insert into UsuarioPorRol select rol_id,'user2' from Roles where rol_nombre='proveedor'
+	insert into UsuarioPorRol select rol_id,'user3' from Roles where rol_nombre='cliente' or rol_nombre='proveedor'
 
 --Funcionalidades
 	insert into Funcionalidades (funcionalidad_nombre) values ('Registrar usuario')
@@ -45,7 +47,7 @@
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (2,4)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (2,6)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,9)
-
+	
 --Cliente asociado a user1
 	insert into Clientes (dni,cliente_nombre,cliente_apellido,fecha_nacimiento,ciudad,codigo_postal,telefono,email,direccion,nombre_usuario)
 	values (39655888,'santu','feijoo',getdate(),'london ahre','1406',4625857,'santuuu','quirno y junta','user1')

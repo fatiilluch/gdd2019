@@ -54,10 +54,10 @@ namespace FrbaOfertas
                 cmd2.Parameters.AddWithValue("@id", rol_id);
                 cmd2.Parameters.AddWithValue("@name",us.getNombreUsuario());
 
-                Utilidades.Utilidades.beginTransaction();
+                SqlTransaction trans = Utilidades.Utilidades.beginTransaction();
                 Utilidades.Utilidades.ejecutar(cmd1);
                 Utilidades.Utilidades.ejecutar(cmd2);
-                Utilidades.Utilidades.commit();
+                Utilidades.Utilidades.commit(trans);
 
             }
         }

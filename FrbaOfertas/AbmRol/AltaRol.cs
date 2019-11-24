@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utilidades;
 using FrbaOfertas.Entidades;
+using System.Data.SqlClient;
 
 namespace FrbaOfertas.AbmRol
 {
@@ -16,13 +17,13 @@ namespace FrbaOfertas.AbmRol
     {
         private Form origen;
         List<Funcionalidad> funcionalidadesDisponibles = new List<Funcionalidad>();
-        List<Funcionalidad> funcionalidadesAgregadas = new List<Funcionalidad>();
 
         public AltaRol()
         {
             InitializeComponent();
             inicializarCamposObligatorios();
             inicializarDataGridView();
+
         }
         public AltaRol(Form menu)
         {
@@ -30,7 +31,6 @@ namespace FrbaOfertas.AbmRol
             inicializarCamposObligatorios();
             inicializarDataGridView();
             origen = menu;
-            
         }
 
         protected override void inicializarCamposObligatorios()
@@ -47,8 +47,6 @@ namespace FrbaOfertas.AbmRol
                 funcionalidadesDisponibles.Add(f);
             }
             dgFuncionalidadesDisponibles.DataSource = funcionalidadesDisponibles;
-            dgAgregados.DataSource = funcionalidadesAgregadas;
-            dgAgregados.AutoGenerateColumns = true;
             dgFuncionalidadesDisponibles.AutoGenerateColumns = true;
 
             
@@ -63,19 +61,44 @@ namespace FrbaOfertas.AbmRol
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            Utilidades.Utilidades.getCon().Close();
+
+            SqlTransaction trans = Utilidades.Utilidades.beginTransaction();
+            
             try
             {
                 Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                Utilidades.GestorDeErrores.verificarRolExistente(txtRolNombre.Text.ToLower());
 
-                //TO DO
+                String query = String.Format("insert into roles (rol_nombre) values ('{0}');", txtRolNombre.Text.ToLower());
+                Utilidades.Utilidades.ejecutar(query);
 
-                MessageBox.Show("Rol creado con éxito!","Ok",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                query = String.Format("select rol_id from roles where rol_nombre = '{0}'", txtRolNombre.Text.ToLower());
+                DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+                Int16 rol_id = Convert.ToInt16(ds.Tables[0].Rows[0]["rol_id"]);
+
+                foreach (DataGridViewRow fila in dgFuncionalidadesDisponibles.SelectedRows)
+                {
+                    Int16 f_id = Convert.ToInt16(fila.Cells[0].Value);
+                    query = String.Format("insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values ({0},{1});", rol_id, f_id);
+                    Utilidades.Utilidades.ejecutar(query);
+                }
+                Utilidades.Utilidades.commit(trans);
+                MessageBox.Show("Rol creado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (CamposObligatoriosIncompletosException error)
             {
                 error.mensaje();
             }
-
+            catch (RolExistenteException error)
+            {
+                error.mensaje();
+            }
+            catch (Exception error)
+            {
+                Utilidades.Utilidades.rollback(trans);
+                MessageBox.Show("Error inesperado, ups!"+error.Message.ToString(), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void bloquearBoton(Button btn)
@@ -87,70 +110,6 @@ namespace FrbaOfertas.AbmRol
         {
             btn.Enabled = true;
             btn.BackColor = SystemColors.Control;
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            if (dgFuncionalidadesDisponibles.SelectedRows != null)
-            {
-                Funcionalidad f = new Funcionalidad();
-                f.Id = Convert.ToInt16(dgFuncionalidadesDisponibles.SelectedRows[0].Cells[0].Value);
-                f.Nombre = Convert.ToString(dgFuncionalidadesDisponibles.SelectedRows[0].Cells[1].Value);
-
-                funcionalidadesAgregadas.Add(f);
-                funcionalidadesDisponibles.Remove(funcionalidadesDisponibles.Find(o => o.Id == f.Id));
-                dgAgregados.Refresh();
-                dgFuncionalidadesDisponibles.Refresh();
-                
-            }
-        }
-        private void btnQuitar_Click(object sender, EventArgs e)
-        {
-            if (dgAgregados.SelectedRows != null)
-            {
-                Funcionalidad f = new Funcionalidad();
-                f.Id = Convert.ToInt16(dgFuncionalidadesDisponibles.SelectedRows[0].Cells[0].Value);
-                f.Nombre = Convert.ToString(dgFuncionalidadesDisponibles.SelectedRows[0].Cells[1].Value);
-
-                funcionalidadesDisponibles.Add(f);
-                funcionalidadesAgregadas.Remove(funcionalidadesAgregadas.Find(func => func.Id == f.Id));
-
-                dgAgregados.DataSource = funcionalidadesAgregadas;
-                dgFuncionalidadesDisponibles.DataSource = funcionalidadesDisponibles;
-                dgFuncionalidadesDisponibles.Refresh();
-                dgAgregados.Refresh();
-            }
-        }
-        private void dgAgregados_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            dgAgregados.Refresh();
-        }
-
-        private void dgAgregados_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
-            dgAgregados.Refresh();
-        }
-
-        private void dgFuncionalidadesDisponibles_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            dgFuncionalidadesDisponibles.Refresh();
-        }
-
-        private void dgFuncionalidadesDisponibles_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
-            dgFuncionalidadesDisponibles.Refresh();
-        }
-
-        private void dgFuncionalidadesDisponibles_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            desbloquearBoton(btnAgregar);
-            bloquearBoton(btnQuitar);
-        }
-
-        private void dgAgregados_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            desbloquearBoton(btnQuitar);
-            bloquearBoton(btnAgregar);
         }
     }
 }
