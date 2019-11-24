@@ -55,6 +55,7 @@ namespace Utilidades
         }
         public static void ejecutar(SqlCommand cmd)
         {
+            cmd.Connection = getCon();
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();

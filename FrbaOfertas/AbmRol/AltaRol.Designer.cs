@@ -114,12 +114,16 @@
             // 
             this.dgAgregados.AllowUserToAddRows = false;
             this.dgAgregados.AllowUserToDeleteRows = false;
+            this.dgAgregados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgAgregados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAgregados.Location = new System.Drawing.Point(573, 115);
             this.dgAgregados.Name = "dgAgregados";
             this.dgAgregados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgAgregados.Size = new System.Drawing.Size(381, 162);
             this.dgAgregados.TabIndex = 9;
+            this.dgAgregados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAgregados_CellClick);
+            this.dgAgregados.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgAgregados_RowsAdded);
+            this.dgAgregados.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgAgregados_RowsRemoved);
             // 
             // btnQuitar
             // 
@@ -131,6 +135,7 @@
             this.btnQuitar.TabIndex = 8;
             this.btnQuitar.Text = "Quitar";
             this.btnQuitar.UseVisualStyleBackColor = false;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // btnAgregar
             // 
@@ -142,11 +147,13 @@
             this.btnAgregar.TabIndex = 7;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // dgFuncionalidadesDisponibles
             // 
             this.dgFuncionalidadesDisponibles.AllowUserToAddRows = false;
             this.dgFuncionalidadesDisponibles.AllowUserToDeleteRows = false;
+            this.dgFuncionalidadesDisponibles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgFuncionalidadesDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgFuncionalidadesDisponibles.Location = new System.Drawing.Point(6, 115);
             this.dgFuncionalidadesDisponibles.MultiSelect = false;
@@ -154,12 +161,15 @@
             this.dgFuncionalidadesDisponibles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgFuncionalidadesDisponibles.Size = new System.Drawing.Size(385, 162);
             this.dgFuncionalidadesDisponibles.TabIndex = 6;
+            this.dgFuncionalidadesDisponibles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFuncionalidadesDisponibles_CellClick);
+            this.dgFuncionalidadesDisponibles.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgFuncionalidadesDisponibles_RowsAdded);
+            this.dgFuncionalidadesDisponibles.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgFuncionalidadesDisponibles_RowsRemoved);
             // 
             // AltaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1020, 369);
+            this.ClientSize = new System.Drawing.Size(990, 369);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCrear);

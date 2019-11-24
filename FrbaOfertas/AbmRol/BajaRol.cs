@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utilidades;
 using FrbaOfertas.Entidades;
+using System.Data.SqlClient;
 
 namespace FrbaOfertas.AbmRol
 {
@@ -27,9 +28,24 @@ namespace FrbaOfertas.AbmRol
         
         private void BajaRol_Load(object sender, EventArgs e)
         {
-            List<Rol> roles = RepoRol.getInstance().getRoles();
+            List<Rol> roles = RepoRol.getInstance().getRolesHabilitados();
             cmbRoles.DataSource = roles;
             cmbRoles.DisplayMember = "Nombre";
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            menu.Show();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Rol r = cmbRoles.SelectedItem as Rol;
+            SqlCommand cmd = new SqlCommand("update Roles set habilitado = 0 where rol_id=@r");
+            cmd.Parameters.Add("@r", SqlDbType.SmallInt).Value = r.Id;
+            Utilidades.Utilidades.ejecutar(cmd);
+            MessageBox.Show("Rol dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            menu.Show();
         }
     }
 }
