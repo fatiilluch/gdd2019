@@ -38,27 +38,25 @@ namespace FrbaOfertas.AbmCliente
             btnBaja.Enabled = true;
             btnBaja.BackColor = SystemColors.Control;
         }
-        private Boolean clienteHabilitado(String dni)
-        {
-            String query = String.Format("select habilitado from Clientes where dni='{0}'",dni);
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
-            Boolean habilitado = Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]);
-            return habilitado;
-        }
 
         private void btnBaja_Click(object sender, EventArgs e)
         {
-            if (clienteHabilitado(txtDni.Text))
+            try
             {
+                Utilidades.GestorDeErrores.verificarClienteHabilitado(txtDni.Text);
                 String query = String.Format("update Clientes set habilitado = 0 where dni ='{0}'", txtDni.Text);
                 Utilidades.Utilidades.ejecutar(query);
                 MessageBox.Show("Cliente dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
+            catch(Utilidades.ClienteDeshabilitadoException error)
             {
-                MessageBox.Show("El Cliente ya estaba dado de baja!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                error.mensaje();
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

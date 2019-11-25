@@ -32,16 +32,17 @@
             this.txtDni = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnBaja = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(23, 36);
+            this.lblUsuario.Location = new System.Drawing.Point(12, 36);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(39, 13);
+            this.lblUsuario.Size = new System.Drawing.Size(74, 13);
             this.lblUsuario.TabIndex = 0;
-            this.lblUsuario.Text = "Cliente";
+            this.lblUsuario.Text = "Dni del cliente";
             // 
             // txtDni
             // 
@@ -54,7 +55,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(222, 75);
+            this.btnBuscar.Location = new System.Drawing.Point(328, 30);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 2;
@@ -66,7 +67,7 @@
             // 
             this.btnBaja.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnBaja.Enabled = false;
-            this.btnBaja.Location = new System.Drawing.Point(87, 75);
+            this.btnBaja.Location = new System.Drawing.Point(239, 75);
             this.btnBaja.Name = "btnBaja";
             this.btnBaja.Size = new System.Drawing.Size(75, 23);
             this.btnBaja.TabIndex = 3;
@@ -74,11 +75,22 @@
             this.btnBaja.UseVisualStyleBackColor = false;
             this.btnBaja.Click += new System.EventHandler(this.btnBaja_Click);
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(105, 75);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // BajaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 138);
+            this.ClientSize = new System.Drawing.Size(415, 138);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnBaja);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtDni);
@@ -98,5 +110,6 @@
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnBaja;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

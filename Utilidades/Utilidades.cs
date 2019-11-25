@@ -184,6 +184,20 @@ namespace Utilidades
             int i = Utilidades.ejecutarProcedure(cmd);
             if (i<0) { throw new RolInhabilitadoException(); }
         }
+        public static void verificarClienteHabilitado(String dni)
+        {
+            String query = String.Format("select habilitado from Clientes where dni='{0}'", dni);
+            DataSet ds = Utilidades.ejecutarConsulta(query);
+            Boolean habilitado = Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]);
+            if (!habilitado) { throw new ClienteDeshabilitadoException(); }
+        }
+        public static void verificarProveedorHabilitado(String cuit)
+        {
+            String query = String.Format("select habilitado from Proveedores where cuit='{0}'", cuit);
+            DataSet ds = Utilidades.ejecutarConsulta(query);
+            Boolean habilitado = Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]);
+            if (!habilitado) { throw new ProveedorDeshabilitadoException(); }
+        }
     }
     
     public class RolExistenteException : Exception
@@ -237,6 +251,21 @@ namespace Utilidades
             MessageBox.Show("El rol se encuentra inhabilitado!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
+    public class ClienteDeshabilitadoException : Exception
+    {
+        public void mensaje()
+        {
+            MessageBox.Show("El Cliente ya estaba dado de baja!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
+    public class ProveedorDeshabilitadoException : Exception
+    {
+        public void mensaje()
+        {
+            MessageBox.Show("El proveedor ya estaba dado de baja!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
+
         
 }
 

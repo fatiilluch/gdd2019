@@ -69,9 +69,18 @@ namespace FrbaOfertas.AbmCliente
                     Utilidades.GestorDeErrores.verificarClientesDuplicados(txtDni.Text.ToString());
                     Utilidades.GestorDeErrores.verificarUsuarioPorRolExistente(RepoRol.getInstance().buscarRol("Cliente").Id, txtUsuario.Text.ToString());
 
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO Clientes VALUES (@dni,@nom,@ap,@fecha,@ciudad,@cp,@tel,@email,@direccion,@piso,@depto,@user)", Utilidades.Utilidades.getCon());
-                    String SelectRol = "Select rol_id from Roles where rol_nombre='cliente'";
-                    int rol_id = Convert.ToInt32(Utilidades.Utilidades.ejecutarConsulta(SelectRol).Tables[0].Rows[0]["rol_id"]);
+                    SqlCommand cmd2 = new SqlCommand();
+                    if (us != null)//vengo de la pantalla RegistrarUsuario, en dicho caso haria el insert.
+                    {
+                        cmd2 = new SqlCommand("INSERT INTO Clientes VALUES (@dni,@nom,@ap,@fecha,@ciudad,@cp,@tel,@email,@direccion,@piso,@depto,@user)", Utilidades.Utilidades.getCon());
+                    }
+                    else
+                    {
+                        cmd2 = new SqlCommand("update Clientes set dni=@dni,cliente_nombre=@nom,cliente_apellido=@ap,fecha_nacimiento=@fecha,ciudad=@ciudad,codigo_postal=@cp,telefono=@tel,email=@email,direccion=@direccion,piso=@piso,depto=@depto where nombre_usuario=@user)", Utilidades.Utilidades.getCon());
+
+                    }
+                    
+                    int rol_id = RepoRol.getInstance().buscarRol("cliente").Id;
 
                     cmd2.Parameters.Add("@dni", SqlDbType.NVarChar,18).Value=txtDni.Text;
                     cmd2.Parameters.Add("@nom", SqlDbType.NVarChar,255).Value=txtNombre.Text;
@@ -84,15 +93,12 @@ namespace FrbaOfertas.AbmCliente
                     cmd2.Parameters.Add("@direccion", SqlDbType.NVarChar, 255).Value = txtDireccion.Text;
                     cmd2.Parameters.Add("@piso", SqlDbType.SmallInt).Value = txtPiso.Text;
                     cmd2.Parameters.Add("@depto", SqlDbType.Char).Value = txtDepto.Text;
+                    cmd2.Parameters.Add("@user", SqlDbType.NVarChar, 255).Value = txtUsuario.Text;
                     if (us != null)
                     {
-                        cmd2.Parameters.Add("@user", SqlDbType.NVarChar, 255).Value = txtUsuario.Text;
+                        cargarUsuario(us, rol_id);
                     }
-
-                    //SqlTransaction trans = Utilidades.Utilidades.beginTransaction();
-                    cargarUsuario(us, rol_id);
                     Utilidades.Utilidades.ejecutar(cmd2);
-                    //Utilidades.Utilidades.commit(trans);
                     MessageBox.Show("Cliente guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ventanaAnterior.Show();
                     this.Close();

@@ -19,26 +19,30 @@ namespace FrbaOfertas.AbmCliente
             InitializeComponent();
             origen = ventana;
         }
+        public MenuAbmCliente()
+        {
+            InitializeComponent();
+        }
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
             Form ventana = new AltaCliente(origen);
             ventana.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void btnBaja_Click(object sender, EventArgs e)
         {
             Form ventana = new BajaCliente(origen);
             ventana.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Form ventana = new ModificarCliente(origen);
             ventana.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

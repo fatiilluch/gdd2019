@@ -7,14 +7,61 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaOfertas.Listado;
 
 namespace FrbaOfertas.AbmProveedor
 {
     public partial class BajaProveedor : Form
     {
+        private Form menu;
+        public BajaProveedor(Form v)
+        {
+            InitializeComponent();
+            menu = v;
+        }
         public BajaProveedor()
         {
             InitializeComponent();
+        }
+        private void desbloquearBoton(Button btn)
+        {
+            btn.Enabled = true;
+            btn.BackColor = SystemColors.Control;
+        }
+        private void txtCuit_TextChanged(object sender, EventArgs e)
+        {
+            desbloquearBoton(btnDarBaja);
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Form v = new ListadoDeProveedores(txtCuit);
+            v.Show();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BajaProveedor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            menu.Show();
+        }
+
+        private void btnDarBaja_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Utilidades.GestorDeErrores.verificarProveedorHabilitado(txtCuit.Text);
+                String query = String.Format("update Proveedores set habilitado = 0 where cuit ='{0}'", txtCuit.Text);
+                Utilidades.Utilidades.ejecutar(query);
+                MessageBox.Show("Proveedor dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Utilidades.ClienteDeshabilitadoException error)
+            {
+                error.mensaje();
+            }
         }
     }
 }
