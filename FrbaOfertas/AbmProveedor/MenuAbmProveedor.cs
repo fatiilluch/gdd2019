@@ -25,23 +25,23 @@ namespace FrbaOfertas.AbmProveedor
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            //Form v = new BajaProveedor(menu);
-            //v.Show();
-            //this.Close();
+            Form v = new BajaProveedor(menu);
+            v.Show();
+            this.Hide();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            //Form v = new ModificarProveedor(menu);
-            //v.Show();
-            //this.Close();
+            Form v = new ModificarProveedor(menu);
+            v.Show();
+            this.Hide();
         }
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            //Form v = new AltaProveedor(menu);
-            //v.Show();
-            //this.Close();
+            Form v = new AltaProveedor(menu);
+            v.Show();
+            this.Hide();
         }
 
         private void MenuAbmProveedor_FormClosed(object sender, FormClosedEventArgs e)

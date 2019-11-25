@@ -30,10 +30,10 @@ namespace FrbaOfertas.LoginYSeguridad
 
                 if (txtUsserName.Text != null && txtPassword.Text != null)
                 {
+                    Utilidades.GestorDeErrores.verificarExistenciaDeUsuario(txtUsserName.Text.Trim());
+
                     String query = String.Format("Select * from Usuarios where nombre_usuario='{0}'", txtUsserName.Text.Trim());
                     DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
-                    Utilidades.GestorDeErrores.verificarExistenciaDeUsuario(ds);
-
                     Usuario usuario = new Usuario();
                     usuario.setNombreUsuario(ds.Tables[0].Rows[0]["nombre_usuario"].ToString().Trim());
                     usuario.setPass(ds.Tables[0].Rows[0]["password"].ToString().Trim());

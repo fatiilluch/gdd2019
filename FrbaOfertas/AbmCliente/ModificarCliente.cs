@@ -74,8 +74,8 @@ namespace FrbaOfertas.AbmCliente
                 Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]),
                 ds.Tables[0].Rows[0]["nombre_usuario"].ToString()
                 );
-            this.Close();
-            Form v = new AltaCliente(cliente, menuPrincipal);
+            this.Hide();
+            Form v = new ModificarPerfilCliente(cliente,menuPrincipal);
 
             v.Show();
 

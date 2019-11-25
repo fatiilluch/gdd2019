@@ -112,7 +112,7 @@ namespace Utilidades
             {
                 foreach (TextBox filtro in filtros.Where(box => box.TextLength > 0))
                 {
-                    condiciones = condiciones + String.Format("{0} " + "like " + "'{1}'" + " and ", filtro.Name, '%' + filtro.Text.ToString() + '%');
+                    condiciones = condiciones + String.Format("{0} " + "like " + "'{1}'" + " and ", filtro.Name.TrimStart('t','x','t'), '%' + filtro.Text.ToString() + '%');
                 }
 
             }
@@ -149,6 +149,14 @@ namespace Utilidades
             int i = Utilidades.ejecutarProcedure(cmd);
             if (i < 0) { throw new ClienteDuplicadoException(); }
         }
+        public static void verificarProveedoresDuplicados(String cuit)
+        {
+            SqlCommand cmd = new SqlCommand("proveedor_existente");
+            cmd.Parameters.Add("@cuit", SqlDbType.NVarChar, 20).Value = cuit;
+
+            int i = Utilidades.ejecutarProcedure(cmd);
+            if (i < 0) { throw new ProveedorDuplicadoException(); }
+        }
         public static void verificarUsuarioPorRolExistente(int rol_id, String username)
         {
             SqlCommand cmd = new SqlCommand("usuario_con_rol_existente");
@@ -158,9 +166,17 @@ namespace Utilidades
             int i = Utilidades.ejecutarProcedure(cmd);
             if (i < 0) { throw new ClienteDuplicadoException(); }
         }
-        public static void verificarExistenciaDeUsuario(DataSet dsUsuario)
+
+        public static void verificarExistenciaDeUsuario(String nombre)
         {
-            if(dsUsuario.Tables[0].Rows.Count == 0){throw new UsuarioInexistenteException();}
+            SqlCommand cmd = new SqlCommand("usuario_existente");
+            cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = nombre;
+
+            int valorDeVerdad = Utilidades.ejecutarProcedure(cmd);
+            if (valorDeVerdad < 0)
+            {
+                throw new UsuarioInexistenteException();
+            }
         }
         public static void verificarCamposObligatoriosCompletos(List<TextBox> campos)
         {
@@ -265,7 +281,13 @@ namespace Utilidades
             MessageBox.Show("El proveedor ya estaba dado de baja!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
-
+    public class ProveedorDuplicadoException : Exception
+    {
+        public void mensaje()
+        {
+            MessageBox.Show("Ya existe un proveedor con ese Cuit!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
         
 }
 

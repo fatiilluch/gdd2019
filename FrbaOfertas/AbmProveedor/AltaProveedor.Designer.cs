@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtRs = new System.Windows.Forms.TextBox();
             this.txtCuit = new System.Windows.Forms.TextBox();
-            this.txtCalle = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtContacto = new System.Windows.Forms.TextBox();
-            this.txtLocalidad = new System.Windows.Forms.TextBox();
+            this.txtCiudad = new System.Windows.Forms.TextBox();
             this.txtCp = new System.Windows.Forms.TextBox();
             this.txtRubro = new System.Windows.Forms.TextBox();
             this.lblRazonSocial = new System.Windows.Forms.Label();
@@ -43,18 +44,23 @@
             this.lblCuit = new System.Windows.Forms.Label();
             this.lblRubro = new System.Windows.Forms.Label();
             this.lblContacto = new System.Windows.Forms.Label();
-            this.lblCalle = new System.Windows.Forms.Label();
+            this.lblDireccion = new System.Windows.Forms.Label();
             this.txtDepto = new System.Windows.Forms.TextBox();
             this.txtPiso = new System.Windows.Forms.TextBox();
             this.lblCp = new System.Windows.Forms.Label();
             this.lblDepto = new System.Windows.Forms.Label();
             this.lblPiso = new System.Windows.Forms.Label();
-            this.lblLocalidad = new System.Windows.Forms.Label();
+            this.lblCiudad = new System.Windows.Forms.Label();
             this.btnCrear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAtras
@@ -77,12 +83,12 @@
             this.txtCuit.Size = new System.Drawing.Size(200, 20);
             this.txtCuit.TabIndex = 1;
             // 
-            // txtCalle
+            // txtDireccion
             // 
-            this.txtCalle.Location = new System.Drawing.Point(112, 39);
-            this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(200, 20);
-            this.txtCalle.TabIndex = 2;
+            this.txtDireccion.Location = new System.Drawing.Point(112, 39);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(200, 20);
+            this.txtDireccion.TabIndex = 2;
             // 
             // txtEmail
             // 
@@ -105,12 +111,12 @@
             this.txtContacto.Size = new System.Drawing.Size(200, 20);
             this.txtContacto.TabIndex = 5;
             // 
-            // txtLocalidad
+            // txtCiudad
             // 
-            this.txtLocalidad.Location = new System.Drawing.Point(112, 75);
-            this.txtLocalidad.Name = "txtLocalidad";
-            this.txtLocalidad.Size = new System.Drawing.Size(200, 20);
-            this.txtLocalidad.TabIndex = 6;
+            this.txtCiudad.Location = new System.Drawing.Point(112, 75);
+            this.txtCiudad.Name = "txtCiudad";
+            this.txtCiudad.Size = new System.Drawing.Size(200, 20);
+            this.txtCiudad.TabIndex = 6;
             // 
             // txtCp
             // 
@@ -180,14 +186,14 @@
             this.lblContacto.TabIndex = 15;
             this.lblContacto.Text = "Nombre de Contacto:";
             // 
-            // lblCalle
+            // lblDireccion
             // 
-            this.lblCalle.AutoSize = true;
-            this.lblCalle.Location = new System.Drawing.Point(31, 39);
-            this.lblCalle.Name = "lblCalle";
-            this.lblCalle.Size = new System.Drawing.Size(33, 13);
-            this.lblCalle.TabIndex = 17;
-            this.lblCalle.Text = "Calle:";
+            this.lblDireccion.AutoSize = true;
+            this.lblDireccion.Location = new System.Drawing.Point(31, 39);
+            this.lblDireccion.Name = "lblDireccion";
+            this.lblDireccion.Size = new System.Drawing.Size(52, 13);
+            this.lblDireccion.TabIndex = 17;
+            this.lblDireccion.Text = "Direccion";
             // 
             // txtDepto
             // 
@@ -230,19 +236,19 @@
             this.lblPiso.TabIndex = 24;
             this.lblPiso.Text = "Piso:";
             // 
-            // lblLocalidad
+            // lblCiudad
             // 
-            this.lblLocalidad.AutoSize = true;
-            this.lblLocalidad.Location = new System.Drawing.Point(31, 78);
-            this.lblLocalidad.Name = "lblLocalidad";
-            this.lblLocalidad.Size = new System.Drawing.Size(56, 13);
-            this.lblLocalidad.TabIndex = 25;
-            this.lblLocalidad.Text = "Localidad:";
+            this.lblCiudad.AutoSize = true;
+            this.lblCiudad.Location = new System.Drawing.Point(31, 78);
+            this.lblCiudad.Name = "lblCiudad";
+            this.lblCiudad.Size = new System.Drawing.Size(40, 13);
+            this.lblCiudad.TabIndex = 25;
+            this.lblCiudad.Text = "Ciudad";
             // 
             // btnCrear
             // 
             this.btnCrear.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrear.Location = new System.Drawing.Point(492, 344);
+            this.btnCrear.Location = new System.Drawing.Point(334, 344);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(98, 45);
             this.btnCrear.TabIndex = 26;
@@ -279,10 +285,10 @@
             this.groupBox2.Controls.Add(this.txtPiso);
             this.groupBox2.Controls.Add(this.txtCp);
             this.groupBox2.Controls.Add(this.lblCp);
-            this.groupBox2.Controls.Add(this.lblLocalidad);
-            this.groupBox2.Controls.Add(this.txtLocalidad);
-            this.groupBox2.Controls.Add(this.txtCalle);
-            this.groupBox2.Controls.Add(this.lblCalle);
+            this.groupBox2.Controls.Add(this.lblCiudad);
+            this.groupBox2.Controls.Add(this.txtCiudad);
+            this.groupBox2.Controls.Add(this.txtDireccion);
+            this.groupBox2.Controls.Add(this.lblDireccion);
             this.groupBox2.Location = new System.Drawing.Point(380, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(355, 310);
@@ -290,54 +296,73 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dirección";
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(542, 344);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(98, 45);
+            this.btnLimpiar.TabIndex = 28;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // AltaProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 401);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCrear);
             this.Name = "AltaProveedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro del proveedor";
             this.Controls.SetChildIndex(this.btnAtras, 0);
             this.Controls.SetChildIndex(this.btnCrear, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.btnLimpiar, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtRs;
-        private System.Windows.Forms.TextBox txtCuit;
-        private System.Windows.Forms.TextBox txtCalle;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.TextBox txtContacto;
-        private System.Windows.Forms.TextBox txtLocalidad;
-        private System.Windows.Forms.TextBox txtCp;
-        private System.Windows.Forms.TextBox txtRubro;
-        private System.Windows.Forms.Label lblRazonSocial;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblTelefono;
-        private System.Windows.Forms.Label lblCuit;
-        private System.Windows.Forms.Label lblRubro;
-        private System.Windows.Forms.Label lblContacto;
-        private System.Windows.Forms.Label lblCalle;
-        private System.Windows.Forms.TextBox txtDepto;
-        private System.Windows.Forms.TextBox txtPiso;
-        private System.Windows.Forms.Label lblCp;
-        private System.Windows.Forms.Label lblDepto;
-        private System.Windows.Forms.Label lblPiso;
-        private System.Windows.Forms.Label lblLocalidad;
-        private System.Windows.Forms.Button btnCrear;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource bindingSource2;
+        protected System.Windows.Forms.TextBox txtRs;
+        protected System.Windows.Forms.TextBox txtCuit;
+        protected System.Windows.Forms.TextBox txtDireccion;
+        protected System.Windows.Forms.TextBox txtEmail;
+        protected System.Windows.Forms.TextBox txtTelefono;
+        protected System.Windows.Forms.TextBox txtContacto;
+        protected System.Windows.Forms.TextBox txtCiudad;
+        protected System.Windows.Forms.TextBox txtCp;
+        protected System.Windows.Forms.TextBox txtRubro;
+        protected System.Windows.Forms.Label lblRazonSocial;
+        protected System.Windows.Forms.Label lblEmail;
+        protected System.Windows.Forms.Label lblTelefono;
+        protected System.Windows.Forms.Label lblCuit;
+        protected System.Windows.Forms.Label lblRubro;
+        protected System.Windows.Forms.Label lblContacto;
+        protected System.Windows.Forms.Label lblDireccion;
+        protected System.Windows.Forms.TextBox txtDepto;
+        protected System.Windows.Forms.TextBox txtPiso;
+        protected System.Windows.Forms.Label lblCp;
+        protected System.Windows.Forms.Label lblDepto;
+        protected System.Windows.Forms.Label lblPiso;
+        protected System.Windows.Forms.Label lblCiudad;
+        protected System.Windows.Forms.GroupBox groupBox1;
+        protected System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.Button btnCrear;
+        protected System.Windows.Forms.Button btnLimpiar;
     }
 }

@@ -40,7 +40,7 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(106, 32);
             this.btnEliminar.TabIndex = 7;
-            this.btnEliminar.Text = "Eliminar Proveedor";
+            this.btnEliminar.Text = "Dar de baja";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -50,7 +50,7 @@
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(113, 33);
             this.btnModificar.TabIndex = 6;
-            this.btnModificar.Text = "Modificar Proveedor";
+            this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
@@ -60,7 +60,7 @@
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(101, 33);
             this.btnCargar.TabIndex = 5;
-            this.btnCargar.Text = "Cargar Proveedor";
+            this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
             this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 

@@ -23,7 +23,7 @@ namespace FrbaOfertas
             //MenuPrincipal.Cliente rol = new MenuPrincipal.Cliente("Administrador");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuAbmCliente());
+            Application.Run(new ModificarPerfilProveedor());
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgProveedores = new System.Windows.Forms.DataGridView();
             this.lblFiltroCuit = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,16 +38,23 @@
             this.txtRs = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtCuit = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProveedores)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgProveedores
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 210);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(633, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.dgProveedores.AllowUserToAddRows = false;
+            this.dgProveedores.AllowUserToDeleteRows = false;
+            this.dgProveedores.AllowUserToOrderColumns = true;
+            this.dgProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgProveedores.Location = new System.Drawing.Point(12, 210);
+            this.dgProveedores.MultiSelect = false;
+            this.dgProveedores.Name = "dgProveedores";
+            this.dgProveedores.ReadOnly = true;
+            this.dgProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgProveedores.Size = new System.Drawing.Size(633, 150);
+            this.dgProveedores.TabIndex = 0;
             // 
             // lblFiltroCuit
             // 
@@ -84,6 +91,7 @@
             this.btnLimpiar.TabIndex = 4;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -93,6 +101,7 @@
             this.btnBuscar.TabIndex = 5;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnSeleccionar
             // 
@@ -139,10 +148,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblFiltroCuit);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgProveedores);
             this.Name = "ListadoDeProveedores";
             this.Text = "ListadoDeProveedores";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.ListadoDeProveedores_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgProveedores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,7 +160,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgProveedores;
         private System.Windows.Forms.Label lblFiltroCuit;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label label3;

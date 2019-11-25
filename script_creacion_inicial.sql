@@ -59,14 +59,14 @@ create table Rubros(
 )
 
 create table Proveedores(
-	proveedor_id int identity(1,1) primary key,
+	cuit nvarchar(20)  primary key,
 	rs nvarchar(100) not null,
 	email nvarchar(255),
 	telefono numeric(18,0) not null,
 	ciudad nvarchar(255) not null,
-	cuit nvarchar(20) not null,
+	codigo_postal nvarchar(20),
 	rubro_id int not null,
-	proveedor_nombre nvarchar(100),
+	nombre_contacto nvarchar(100),
 	direccion nvarchar(255) not null,
 	piso smallint,
 	dpto char,
@@ -80,7 +80,7 @@ create table Ofertas(
 	fecha_vto datetime not null,
 	precio_oferta numeric(18,2) not null,
 	precio_viejo numeric(18,2) not null,
-	proveedor_id int not null,
+	proveedor_cuit nvarchar(20) not null,
 	stock smallint,
 	oferta_descripcion nvarchar(255) not null,
 	limite_compra_por_us smallint
@@ -103,7 +103,7 @@ create table Cargas_credito(
 
 create table Reportes_Facturacion(
 	reporte_id numeric(18,0) primary key,
-	proveedor_id int not null,
+	proveedor_cuit nvarchar(20) not null,
 	fecha_minima datetime,
 	fecha_maxima datetime not null,
 	importe_total numeric(18,2) not null
@@ -151,10 +151,10 @@ go
 create procedure migrar_ofertas
 as
 begin
-	insert into ofertas (oferta_id, fecha_publicacion, fecha_vto, precio_oferta, precio_viejo, proveedor_id, stock, oferta_descripcion)
-		select Oferta_Codigo, Oferta_Fecha, Oferta_Fecha_Venc, Oferta_Precio, Oferta_Precio_Ficticio, proveedor_id,Oferta_Cantidad, Oferta_Descripcion
+	insert into ofertas (oferta_id, fecha_publicacion, fecha_vto, precio_oferta, precio_viejo, proveedor_cuit, stock, oferta_descripcion)
+		select Oferta_Codigo, Oferta_Fecha, Oferta_Fecha_Venc, Oferta_Precio, Oferta_Precio_Ficticio, cuit,Oferta_Cantidad, Oferta_Descripcion
 		from gd_esquema.Maestra join Proveedores on (provee_rs=rs) where Oferta_Codigo is not null
-		group by Oferta_Codigo, Oferta_Fecha, Oferta_Fecha_Venc, Oferta_Precio, Oferta_Precio_Ficticio, proveedor_id, Oferta_Cantidad, Oferta_Descripcion
+		group by Oferta_Codigo, Oferta_Fecha, Oferta_Fecha_Venc, Oferta_Precio, Oferta_Precio_Ficticio, cuit, Oferta_Cantidad, Oferta_Descripcion
 	
 end
 go
@@ -171,11 +171,11 @@ go
 create procedure migrar_reportes
 as
 begin
-	insert into Reportes_Facturacion (reporte_id, proveedor_id, fecha_maxima, importe_total)
-		select Factura_Nro, proveedor_id, Factura_Fecha,sum(oferta_precio)
+	insert into Reportes_Facturacion (reporte_id, proveedor_cuit, fecha_maxima, importe_total)
+		select Factura_Nro, cuit, Factura_Fecha,sum(oferta_precio)
 		from gd_esquema.Maestra join Proveedores on (cuit=Provee_CUIT)
 		where Factura_Nro is not null
-		group by Factura_Nro, proveedor_id, Factura_Fecha
+		group by Factura_Nro, cuit, Factura_Fecha
 
 end
 go
@@ -217,11 +217,11 @@ go
 alter table proveedores
 add constraint fk_rubro foreign key (rubro_id) references Rubros(rubro_id),
 	constraint fk_proveedor_usuario foreign key (nombre_usuario) references Usuarios(nombre_usuario),
-	constraint uc_proveedor unique(rs,email,telefono,cuit);
+	constraint uc_proveedor unique(rs,email,telefono);
 go
 
 alter table ofertas
-add constraint fk_proveedor_of  foreign key (proveedor_id) references Proveedores(proveedor_id);
+add constraint fk_proveedor_of  foreign key (proveedor_cuit) references Proveedores(cuit);
 go
 
 alter table cargas_credito
@@ -230,7 +230,7 @@ add constraint fk_cliente foreign key (cliente_dni) references Clientes(dni),
 go
 
 alter table reportes_facturacion
-add constraint fk_proveedor_rep foreign key (proveedor_id) references Proveedores(proveedor_id);
+add constraint fk_proveedor_rep foreign key (proveedor_cuit) references Proveedores(cuit);
 go
 
 alter table cupones
@@ -240,22 +240,6 @@ add	constraint fk_comprador foreign key (cliente_comprador_dni) references Clien
 	constraint fk_reporte foreign key (reporte_id) references Reportes_facturacion(reporte_id)
 go
 
--- procedimientos para hacer un CRUD con usuarios
-create procedure mostrarUsuarios
-as
-select *
-from Usuarios
-order by nombre_usuario desc
-go
-
--- Procedimiento buscar nombre
-create procedure buscarUsuario
-@textoBuscar varchar(50)
-as
-select *
-from Usuarios
-where nombre_usuario like '%'+@textoBuscar+'%'
-go
 
 create procedure usuario_existente (
 	@name nvarchar(255)

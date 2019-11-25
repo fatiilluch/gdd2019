@@ -74,6 +74,12 @@
     <Compile Include="AbmCliente\ModificarCliente.Designer.cs">
       <DependentUpon>ModificarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmCliente\ModificarPerfilCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\ModificarPerfilCliente.Designer.cs">
+      <DependentUpon>ModificarPerfilCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmProveedor\AltaProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,12 @@
     </Compile>
     <Compile Include="AbmProveedor\MenuAbmProveedor.Designer.cs">
       <DependentUpon>MenuAbmProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmProveedor\ModificarPerfilProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmProveedor\ModificarPerfilProveedor.Designer.cs">
+      <DependentUpon>ModificarPerfilProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmProveedor\ModificarProveedor.cs">
       <SubType>Form</SubType>
@@ -154,6 +166,7 @@
     </Compile>
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Funcionalidad.cs" />
+    <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="Entidades\Rol.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Facturar\Form1.cs">
@@ -228,6 +241,9 @@
     <EmbeddedResource Include="AbmCliente\ModificarCliente.resx">
       <DependentUpon>ModificarCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\ModificarPerfilCliente.resx">
+      <DependentUpon>ModificarPerfilCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmProveedor\AltaProveedor.resx">
       <DependentUpon>AltaProveedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmProveedor\MenuAbmProveedor.resx">
       <DependentUpon>MenuAbmProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmProveedor\ModificarPerfilProveedor.resx">
+      <DependentUpon>ModificarPerfilProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmProveedor\ModificarProveedor.resx">
       <DependentUpon>ModificarProveedor.cs</DependentUpon>

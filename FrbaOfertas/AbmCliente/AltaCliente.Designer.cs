@@ -52,8 +52,6 @@
             this.btnCrear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.fechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.lblUsuario = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -65,6 +63,7 @@
             this.btnAtras.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAtras.Location = new System.Drawing.Point(184, 358);
             this.btnAtras.Size = new System.Drawing.Size(104, 44);
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click_1);
             // 
             // txtTelefono
             // 
@@ -250,8 +249,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.fechaNacimiento);
-            this.groupBox1.Controls.Add(this.txtUsuario);
-            this.groupBox1.Controls.Add(this.lblUsuario);
             this.groupBox1.Controls.Add(this.lblNombre);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.lblApellido);
@@ -265,7 +262,7 @@
             this.groupBox1.Controls.Add(this.lblFechaNacimiento);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(736, 185);
+            this.groupBox1.Size = new System.Drawing.Size(736, 149);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos personales del Usuario";
@@ -280,22 +277,6 @@
             this.fechaNacimiento.TabIndex = 17;
             this.fechaNacimiento.Value = new System.DateTime(2001, 1, 1, 0, 0, 0, 0);
             // 
-            // txtUsuario
-            // 
-            this.txtUsuario.Location = new System.Drawing.Point(97, 142);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(200, 20);
-            this.txtUsuario.TabIndex = 16;
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(32, 145);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(43, 13);
-            this.lblUsuario.TabIndex = 15;
-            this.lblUsuario.Text = "Usuario";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtDireccion);
@@ -308,7 +289,7 @@
             this.groupBox2.Controls.Add(this.lblCp);
             this.groupBox2.Controls.Add(this.txtDepto);
             this.groupBox2.Controls.Add(this.txtCp);
-            this.groupBox2.Location = new System.Drawing.Point(13, 203);
+            this.groupBox2.Location = new System.Drawing.Point(12, 185);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(735, 148);
             this.groupBox2.TabIndex = 26;
@@ -339,9 +320,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AltaCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro del cliente";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AltaCliente_FormClosed);
-            this.Load += new System.EventHandler(this.AltaCliente_Load);
             this.Controls.SetChildIndex(this.btnCrear, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
@@ -357,33 +338,31 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.TextBox txtCp;
-        private System.Windows.Forms.TextBox txtDireccion;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtDni;
-        private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblApellido;
-        private System.Windows.Forms.Label lblDni;
-        private System.Windows.Forms.Label lblFechaNacimiento;
-        private System.Windows.Forms.Label lblTelefono;
-        private System.Windows.Forms.Label lblMail;
-        private System.Windows.Forms.Label lblCp;
-        private System.Windows.Forms.Label lblPiso;
-        private System.Windows.Forms.Label lblDepto;
-        private System.Windows.Forms.Label lblCalle;
-        private System.Windows.Forms.TextBox txtPiso;
-        private System.Windows.Forms.TextBox txtDepto;
-        private System.Windows.Forms.TextBox txtCiudad;
-        private System.Windows.Forms.Label lblLocalidad;
-        private System.Windows.Forms.Button btnCrear;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.Label lblUsuario;
-        private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.DateTimePicker fechaNacimiento;
+        protected System.Windows.Forms.GroupBox groupBox1;
+        protected System.Windows.Forms.TextBox txtTelefono;
+        protected System.Windows.Forms.TextBox txtNombre;
+        protected System.Windows.Forms.TextBox txtApellido;
+        protected System.Windows.Forms.TextBox txtCp;
+        protected System.Windows.Forms.TextBox txtDireccion;
+        protected System.Windows.Forms.TextBox txtEmail;
+        protected System.Windows.Forms.TextBox txtDni;
+        protected System.Windows.Forms.Label lblNombre;
+        protected System.Windows.Forms.Label lblApellido;
+        protected System.Windows.Forms.Label lblDni;
+        protected System.Windows.Forms.Label lblFechaNacimiento;
+        protected System.Windows.Forms.Label lblTelefono;
+        protected System.Windows.Forms.Label lblMail;
+        protected System.Windows.Forms.Label lblCp;
+        protected System.Windows.Forms.Label lblPiso;
+        protected System.Windows.Forms.Label lblDepto;
+        protected System.Windows.Forms.Label lblCalle;
+        protected System.Windows.Forms.TextBox txtPiso;
+        protected System.Windows.Forms.TextBox txtDepto;
+        protected System.Windows.Forms.TextBox txtCiudad;
+        protected System.Windows.Forms.Label lblLocalidad;
+        protected System.Windows.Forms.GroupBox groupBox2;
+        protected System.Windows.Forms.DateTimePicker fechaNacimiento;
+        protected System.Windows.Forms.Button btnLimpiar;
+        protected System.Windows.Forms.Button btnCrear;
     }
 }

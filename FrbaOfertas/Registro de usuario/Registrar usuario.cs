@@ -43,27 +43,23 @@ namespace FrbaOfertas.Registro_de_usuario
                 if (cmbRol.SelectedItem != null)
                 {
                     Usuario user = new Usuario(txtUsuario.Text, txtPassword.Text);
-                    if (!usuarioExistente(user.getNombreUsuario()))
-                    {
+                    Utilidades.GestorDeErrores.verificarExistenciaDeUsuario(user.getNombreUsuario());
 
-                        Rol seleccionado = cmbRol.SelectedItem as Rol;
-                        switch (seleccionado.Nombre)
-                        {
-                            case "Cliente":
-                                this.Hide();
-                                AltaCliente ventanaCliente = new AltaCliente(user, this);
-                                ventanaCliente.Show();
-                                break;
-                            case "Proveedor":
-                                this.Hide();
-                                AltaProveedor ventanaProveedor = new AltaProveedor(user, this);
-                                ventanaProveedor.Show();
-                                break;
-                        }
-                    }
-                    else
+                    Rol seleccionado = cmbRol.SelectedItem as Rol;
+                    Utilidades.GestorDeErrores.verificarUsuarioPorRolExistente(seleccionado.Id, user.getNombreUsuario());
+
+                    switch (seleccionado.Nombre)
                     {
-                        MessageBox.Show("Nombre de usuario no disponible", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        case "Cliente":
+                            this.Hide();
+                            AltaCliente ventanaCliente = new AltaCliente(user, this);
+                            ventanaCliente.Show();
+                            break;
+                        case "Proveedor":
+                            this.Hide();
+                            AltaProveedor ventanaProveedor = new AltaProveedor(user, this);
+                            ventanaProveedor.Show();
+                            break;
                     }
                 }
             }
@@ -71,20 +67,15 @@ namespace FrbaOfertas.Registro_de_usuario
             {
                 error.mensaje();
             }
+            catch (UsuarioInexistenteException error)
+            { error.mensaje(); }
+            catch (UsuarioConRolExistenteException error)
+            { error.mensaje(); }
             
             
 
         }
-        private Boolean usuarioExistente(String nombre)
-        {
-            SqlCommand cmd = new SqlCommand("usuario_existente");
-            cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = nombre;
-
-            int valorDeVerdad = Utilidades.Utilidades.ejecutarProcedure(cmd);
-            if (valorDeVerdad<0) { 
-                return false; 
-            } else { return true; }
-        }
+        
         private void RegistrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.ventanaAnterior.Show();
