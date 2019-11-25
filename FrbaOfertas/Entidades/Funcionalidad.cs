@@ -42,6 +42,18 @@ namespace FrbaOfertas.Entidades
                     throw new Exception("Funcionalidad sin menu");
             }
         }
+        public static List<Funcionalidad> getFuncionalidades()
+        {
+            List<Funcionalidad> list = new List<Funcionalidad>();
+            String query = "Select * from Funcionalidades";
+            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+            foreach (DataRow fila in ds.Tables[0].Rows)
+            {
+                Funcionalidad f = new Funcionalidad(Convert.ToInt16(fila["funcionalidad_id"]), fila["funcionalidad_nombre"].ToString());
+                list.Add(f);
+            }
+            return list;
+        }
 
          
     }

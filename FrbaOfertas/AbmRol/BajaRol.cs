@@ -41,11 +41,15 @@ namespace FrbaOfertas.AbmRol
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Rol r = cmbRoles.SelectedItem as Rol;
-            SqlCommand cmd = new SqlCommand("update Roles set habilitado = 0 where rol_id=@r");
-            cmd.Parameters.Add("@r", SqlDbType.SmallInt).Value = r.Id;
-            Utilidades.Utilidades.ejecutar(cmd);
-            MessageBox.Show("Rol dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            menu.Show();
+            try{
+                Utilidades.GestorDeErrores.verificarRolHabilitado(r.Id);
+                SqlCommand cmd = new SqlCommand("update Roles set habilitado = 0 where rol_id=@r");
+                cmd.Parameters.Add("@r", SqlDbType.SmallInt).Value = r.Id;
+                Utilidades.Utilidades.ejecutar(cmd);
+                MessageBox.Show("Rol dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                menu.Show();
+            }catch(RolInhabilitadoException error)
+            { error.mensaje();}
         }
     }
 }

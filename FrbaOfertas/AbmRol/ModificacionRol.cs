@@ -15,6 +15,8 @@ namespace FrbaOfertas.AbmRol
     public partial class ModificacionRol : Form
     {
         private Form menu;
+        private List<Funcionalidad> funcionalidadesTotales;
+        private List<Funcionalidad> funcionalidadesDelRol;
         public ModificacionRol(Form vent)
         {
             menu = vent;
@@ -50,17 +52,45 @@ namespace FrbaOfertas.AbmRol
             btn.Enabled = true;
             btn.BackColor = SystemColors.Control;
         }
+        private void anularCamposChequeados()
+        {
+            for (int i = 0; i < clbFuncionalidades.Items.Count; i++)
+            {
+                clbFuncionalidades.SetItemChecked(i, false);
+            }
+        }
+        private void cargarCheckedListBox(int id)
+        {
+            anularCamposChequeados();
+            funcionalidadesTotales = Funcionalidad.getFuncionalidades();
 
+            clbFuncionalidades.DataSource = funcionalidadesTotales;
+            clbFuncionalidades.DisplayMember = "Nombre";
+
+            Rol r = cmbRoles.SelectedItem as Rol;
+            funcionalidadesDelRol = RepoRol.obtenerFuncionalidadesDelRol(r.Nombre);
+
+            for (int i = 0; i < clbFuncionalidades.Items.Count; i++)
+            {
+                Funcionalidad f = clbFuncionalidades.Items[i] as Funcionalidad;
+                if (funcionalidadesDelRol.Any(f_rol => f_rol.Id == f.Id))
+                {
+                    clbFuncionalidades.SetItemChecked(i, true);
+                }
+            }
+        }
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
             bloquearBoton(btnHabilitar);
             bloquearBoton(btnDeshabilitar);
             
             Rol r = cmbRoles.SelectedItem as Rol;
+            cargarCheckedListBox(r.Id);
+
             SqlCommand cmd = new SqlCommand("rol_habilitado");
-            cmd.Parameters.Add("@id",SqlDbType.SmallInt).Value=r.Id;
+            cmd.Parameters.Add("@id", SqlDbType.SmallInt).Value = r.Id;
             int i = Utilidades.Utilidades.ejecutarProcedure(cmd);
-            
+
             if (i>0) { desbloquearBoton(btnDeshabilitar); }
             else { desbloquearBoton(btnHabilitar); }
         }
@@ -89,5 +119,25 @@ namespace FrbaOfertas.AbmRol
 
             Utilidades.Utilidades.ejecutar(cmd);
         }
+
+        private void btnModificarRol_Click(object sender, EventArgs e)
+        {
+            Rol r = cmbRoles.SelectedItem as Rol;
+            foreach (Funcionalidad f in funcionalidadesDelRol)
+            {
+                String query = String.Format("delete from FuncionalidadPorRol where rol_id = {0} and funcionalidad_id={1}", Convert.ToInt16(r.Id), Convert.ToInt16(f.Id));
+                Utilidades.Utilidades.ejecutar(query);
+            }
+            for(int i = 0;i<clbFuncionalidades.CheckedItems.Count;i++)
+            {
+                Funcionalidad f = clbFuncionalidades.CheckedItems[i] as Funcionalidad;
+                String query = String.Format("insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values({0},{1})", Convert.ToInt16(r.Id), Convert.ToInt16(f.Id));
+                Utilidades.Utilidades.ejecutar(query);
+            }
+            MessageBox.Show("Rol modificado exitósamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+            menu.Show();
+        }
+
     }
 }

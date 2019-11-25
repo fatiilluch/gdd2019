@@ -49,8 +49,8 @@ namespace FrbaOfertas.AbmCliente
             camposObligatorios.Add(txtNombre);
             camposObligatorios.Add(txtDni);
             camposObligatorios.Add(txtEmail);
-            camposObligatorios.Add(txtLocalidad);
-            camposObligatorios.Add(txtCalle);
+            camposObligatorios.Add(txtCiudad);
+            camposObligatorios.Add(txtDireccion);
             camposObligatorios.Add(txtCp);
             camposObligatorios.Add(txtUsuario);
         }
@@ -69,27 +69,30 @@ namespace FrbaOfertas.AbmCliente
                     Utilidades.GestorDeErrores.verificarClientesDuplicados(txtDni.Text.ToString());
                     Utilidades.GestorDeErrores.verificarUsuarioPorRolExistente(RepoRol.getInstance().buscarRol("Cliente").Id, txtUsuario.Text.ToString());
 
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO Clientes VALUES (@dni,@nom,@ap,@fecha,@loc,@cp,@tel,@email,@calle,@piso,@depto,@user)", Utilidades.Utilidades.getCon());
-                    String SelectRol = "Select rol_id from Roles where rol_nombre='Cliente'";
+                    SqlCommand cmd2 = new SqlCommand("INSERT INTO Clientes VALUES (@dni,@nom,@ap,@fecha,@ciudad,@cp,@tel,@email,@direccion,@piso,@depto,@user)", Utilidades.Utilidades.getCon());
+                    String SelectRol = "Select rol_id from Roles where rol_nombre='cliente'";
                     int rol_id = Convert.ToInt32(Utilidades.Utilidades.ejecutarConsulta(SelectRol).Tables[0].Rows[0]["rol_id"]);
 
-                    cmd2.Parameters.AddWithValue("@dni", txtDni.Text);
-                    cmd2.Parameters.AddWithValue("@nom", txtNombre.Text);
-                    cmd2.Parameters.AddWithValue("@ap", txtApellido.Text);
-                    cmd2.Parameters.AddWithValue("@fecha", fechaNacimiento.Value);
-                    cmd2.Parameters.AddWithValue("@loc", txtLocalidad.Text);
-                    cmd2.Parameters.AddWithValue("@cp", txtCp.Text);
-                    cmd2.Parameters.AddWithValue("@tel", txtTelefono.Text);
-                    cmd2.Parameters.AddWithValue("@email", txtEmail.Text);
-                    cmd2.Parameters.AddWithValue("@calle", txtCalle.Text);
-                    cmd2.Parameters.AddWithValue("@piso", txtPiso.Text);
-                    cmd2.Parameters.AddWithValue("@depto", txtDepto.Text);
-                    if (us != null) { cmd2.Parameters.AddWithValue("@user", us.getNombreUsuario()); }
+                    cmd2.Parameters.Add("@dni", SqlDbType.NVarChar,18).Value=txtDni.Text;
+                    cmd2.Parameters.Add("@nom", SqlDbType.NVarChar,255).Value=txtNombre.Text;
+                    cmd2.Parameters.Add("@ap", SqlDbType.NVarChar, 255).Value = txtApellido.Text;
+                    cmd2.Parameters.Add("@fecha", SqlDbType.DateTime).Value = fechaNacimiento.Value;
+                    cmd2.Parameters.Add("@ciudad", SqlDbType.NVarChar, 255).Value = txtCiudad.Text;
+                    cmd2.Parameters.Add("@cp", SqlDbType.NVarChar, 20).Value = txtCp.Text;
+                    cmd2.Parameters.Add("@tel", SqlDbType.NVarChar, 18).Value = txtTelefono.Text;
+                    cmd2.Parameters.Add("@email", SqlDbType.NVarChar, 255).Value = txtEmail.Text;
+                    cmd2.Parameters.Add("@direccion", SqlDbType.NVarChar, 255).Value = txtDireccion.Text;
+                    cmd2.Parameters.Add("@piso", SqlDbType.SmallInt).Value = txtPiso.Text;
+                    cmd2.Parameters.Add("@depto", SqlDbType.Char).Value = txtDepto.Text;
+                    if (us != null)
+                    {
+                        cmd2.Parameters.Add("@user", SqlDbType.NVarChar, 255).Value = txtUsuario.Text;
+                    }
 
-                    SqlTransaction trans = Utilidades.Utilidades.beginTransaction();
+                    //SqlTransaction trans = Utilidades.Utilidades.beginTransaction();
                     cargarUsuario(us, rol_id);
                     Utilidades.Utilidades.ejecutar(cmd2);
-                    Utilidades.Utilidades.commit(trans);
+                    //Utilidades.Utilidades.commit(trans);
                     MessageBox.Show("Cliente guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ventanaAnterior.Show();
                     this.Close();
@@ -125,12 +128,12 @@ namespace FrbaOfertas.AbmCliente
         {
             txtNombre.Text = cliente.Cliente_nombre;
             txtApellido.Text = cliente.Cliente_apellido;
-            txtCalle.Text = cliente.Direccion;
+            txtDireccion.Text = cliente.Direccion;
             txtCp.Text = cliente.Cp;
             txtDni.Text = cliente.Dni;
             txtEmail.Text = cliente.Email;
             txtTelefono.Text = cliente.Telefono;
-            txtLocalidad.Text = cliente.Ciudad;
+            txtCiudad.Text = cliente.Ciudad;
             txtPiso.Text = cliente.Piso.ToString();
             txtDepto.Text = cliente.Dpto.ToString();
 

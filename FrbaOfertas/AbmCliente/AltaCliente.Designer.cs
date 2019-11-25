@@ -32,7 +32,7 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtCp = new System.Windows.Forms.TextBox();
-            this.txtCalle = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -47,15 +47,15 @@
             this.lblCalle = new System.Windows.Forms.Label();
             this.txtPiso = new System.Windows.Forms.TextBox();
             this.txtDepto = new System.Windows.Forms.TextBox();
-            this.txtLocalidad = new System.Windows.Forms.TextBox();
+            this.txtCiudad = new System.Windows.Forms.TextBox();
             this.lblLocalidad = new System.Windows.Forms.Label();
             this.btnCrear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.fechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.fechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -94,12 +94,12 @@
             this.txtCp.Size = new System.Drawing.Size(200, 20);
             this.txtCp.TabIndex = 5;
             // 
-            // txtCalle
+            // txtDireccion
             // 
-            this.txtCalle.Location = new System.Drawing.Point(96, 30);
-            this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(200, 20);
-            this.txtCalle.TabIndex = 6;
+            this.txtDireccion.Location = new System.Drawing.Point(96, 30);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(200, 20);
+            this.txtDireccion.TabIndex = 6;
             // 
             // txtEmail
             // 
@@ -219,12 +219,12 @@
             this.txtDepto.Size = new System.Drawing.Size(200, 20);
             this.txtDepto.TabIndex = 21;
             // 
-            // txtLocalidad
+            // txtCiudad
             // 
-            this.txtLocalidad.Location = new System.Drawing.Point(493, 75);
-            this.txtLocalidad.Name = "txtLocalidad";
-            this.txtLocalidad.Size = new System.Drawing.Size(200, 20);
-            this.txtLocalidad.TabIndex = 22;
+            this.txtCiudad.Location = new System.Drawing.Point(493, 75);
+            this.txtCiudad.Name = "txtCiudad";
+            this.txtCiudad.Size = new System.Drawing.Size(200, 20);
+            this.txtCiudad.TabIndex = 22;
             // 
             // lblLocalidad
             // 
@@ -270,6 +270,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos personales del Usuario";
             // 
+            // fechaNacimiento
+            // 
+            this.fechaNacimiento.Location = new System.Drawing.Point(494, 108);
+            this.fechaNacimiento.MaxDate = new System.DateTime(2001, 1, 1, 0, 0, 0, 0);
+            this.fechaNacimiento.MinDate = new System.DateTime(1930, 1, 1, 0, 0, 0, 0);
+            this.fechaNacimiento.Name = "fechaNacimiento";
+            this.fechaNacimiento.Size = new System.Drawing.Size(200, 20);
+            this.fechaNacimiento.TabIndex = 17;
+            this.fechaNacimiento.Value = new System.DateTime(2001, 1, 1, 0, 0, 0, 0);
+            // 
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(97, 142);
@@ -288,13 +298,13 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtCalle);
+            this.groupBox2.Controls.Add(this.txtDireccion);
             this.groupBox2.Controls.Add(this.lblPiso);
             this.groupBox2.Controls.Add(this.lblDepto);
             this.groupBox2.Controls.Add(this.lblCalle);
             this.groupBox2.Controls.Add(this.lblLocalidad);
             this.groupBox2.Controls.Add(this.txtPiso);
-            this.groupBox2.Controls.Add(this.txtLocalidad);
+            this.groupBox2.Controls.Add(this.txtCiudad);
             this.groupBox2.Controls.Add(this.lblCp);
             this.groupBox2.Controls.Add(this.txtDepto);
             this.groupBox2.Controls.Add(this.txtCp);
@@ -316,16 +326,6 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
-            // fechaNacimiento
-            // 
-            this.fechaNacimiento.Location = new System.Drawing.Point(494, 108);
-            this.fechaNacimiento.MaxDate = new System.DateTime(2001, 1, 1, 0, 0, 0, 0);
-            this.fechaNacimiento.MinDate = new System.DateTime(1930, 1, 1, 0, 0, 0, 0);
-            this.fechaNacimiento.Name = "fechaNacimiento";
-            this.fechaNacimiento.Size = new System.Drawing.Size(200, 20);
-            this.fechaNacimiento.TabIndex = 17;
-            this.fechaNacimiento.Value = new System.DateTime(2001, 1, 1, 0, 0, 0, 0);
             // 
             // AltaCliente
             // 
@@ -361,7 +361,7 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtCp;
-        private System.Windows.Forms.TextBox txtCalle;
+        private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Label lblNombre;
@@ -376,7 +376,7 @@
         private System.Windows.Forms.Label lblCalle;
         private System.Windows.Forms.TextBox txtPiso;
         private System.Windows.Forms.TextBox txtDepto;
-        private System.Windows.Forms.TextBox txtLocalidad;
+        private System.Windows.Forms.TextBox txtCiudad;
         private System.Windows.Forms.Label lblLocalidad;
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.GroupBox groupBox1;

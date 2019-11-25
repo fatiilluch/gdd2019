@@ -39,18 +39,9 @@ namespace FrbaOfertas.AbmRol
         }
         private void inicializarDataGridView()
         {
-            String query = "Select funcionalidad_id,funcionalidad_nombre From Funcionalidades";
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
-            foreach (DataRow fila in ds.Tables[0].Rows)
-            {
-                Funcionalidad f = new Funcionalidad(Convert.ToInt16(fila["funcionalidad_id"]), fila["funcionalidad_nombre"].ToString());
-                funcionalidadesDisponibles.Add(f);
-            }
+            funcionalidadesDisponibles = Funcionalidad.getFuncionalidades();
             dgFuncionalidadesDisponibles.DataSource = funcionalidadesDisponibles;
             dgFuncionalidadesDisponibles.AutoGenerateColumns = true;
-
-            
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -61,29 +52,35 @@ namespace FrbaOfertas.AbmRol
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            Utilidades.Utilidades.getCon().Close();
 
-            SqlTransaction trans = Utilidades.Utilidades.beginTransaction();
-            
+
             try
             {
                 Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
                 Utilidades.GestorDeErrores.verificarRolExistente(txtRolNombre.Text.ToLower());
 
+                SqlTransaction trans = Utilidades.Utilidades.beginTransaction();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = trans;
+
                 String query = String.Format("insert into roles (rol_nombre) values ('{0}');", txtRolNombre.Text.ToLower());
-                Utilidades.Utilidades.ejecutar(query);
+                cmd.CommandText = query;
+                Utilidades.Utilidades.ejecutar(cmd);
 
                 query = String.Format("select rol_id from roles where rol_nombre = '{0}'", txtRolNombre.Text.ToLower());
-                DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+                cmd.CommandText = query;
+                DataSet ds = Utilidades.Utilidades.ejecutarConsulta(cmd);
                 Int16 rol_id = Convert.ToInt16(ds.Tables[0].Rows[0]["rol_id"]);
 
                 foreach (DataGridViewRow fila in dgFuncionalidadesDisponibles.SelectedRows)
                 {
                     Int16 f_id = Convert.ToInt16(fila.Cells[0].Value);
                     query = String.Format("insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values ({0},{1});", rol_id, f_id);
-                    Utilidades.Utilidades.ejecutar(query);
+                    cmd.CommandText = query;
+                    Utilidades.Utilidades.ejecutar(cmd);
                 }
-                Utilidades.Utilidades.commit(trans);
+              
+                trans.Dispose();
                 MessageBox.Show("Rol creado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (CamposObligatoriosIncompletosException error)
@@ -96,8 +93,11 @@ namespace FrbaOfertas.AbmRol
             }
             catch (Exception error)
             {
-                Utilidades.Utilidades.rollback(trans);
-                MessageBox.Show("Error inesperado, ups!"+error.Message.ToString(), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error inesperado, ups!" + error.Message.ToString(), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Utilidades.Utilidades.getCon().Close();
             }
         }
 

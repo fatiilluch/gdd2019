@@ -57,15 +57,16 @@ namespace FrbaOfertas.Entidades
             return roles.Find(rol => rol.Nombre == nombre);
         }
 
-        public static List<Funcionalidad> obtenerFuncionalidadesDelRol(int rol_id)
+        public static List<Funcionalidad> obtenerFuncionalidadesDelRol(String nombre)
         {
-            String query = String.Format("Select f1.funcionalidad_id,funcionalidad_nombre from FuncionalidadPorRol f1 join Funcionalidades f2 on (f1.funcionalidad_id=f2.funcionalidad_id and f1.rol_id={0})", Convert.ToInt16(rol_id));
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+            String cmd = String.Format("select funcionalidad_id,funcionalidad_nombre from FuncionalidadesPorRolView where rol_nombre='{0}'", nombre.ToLower());
+            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(cmd);
             List<Funcionalidad> funcionalidades = new List<Funcionalidad>();
 
             foreach (DataRow fila in ds.Tables[0].Rows)
             {
                 Funcionalidad f = new Funcionalidad(Convert.ToInt16(fila["funcionalidad_id"]),fila["funcionalidad_nombre"].ToString());
+                funcionalidades.Add(f);
             }
             return funcionalidades;
         }

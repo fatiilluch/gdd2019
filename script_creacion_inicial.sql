@@ -336,4 +336,11 @@ begin
 end
 go
 
+create view FuncionalidadesPorRolView
+as
+	select r.rol_id,rol_nombre,habilitado, f.funcionalidad_id, funcionalidad_nombre 
+	from Roles r join FuncionalidadPorRol fr on(r.rol_id=fr.rol_id)
+				 join Funcionalidades f on (fr.funcionalidad_id=f.funcionalidad_id)
+go
+
 --rollback

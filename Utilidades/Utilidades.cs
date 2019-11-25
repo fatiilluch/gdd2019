@@ -39,7 +39,7 @@ namespace Utilidades
             con.Open();
 
             DataSet ds = new DataSet();
-            SqlDataAdapter adapter = new SqlDataAdapter(query.CommandText, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(query);
 
             adapter.Fill(ds);
             con.Close();
@@ -75,7 +75,6 @@ namespace Utilidades
         }
         public static void rollback(SqlTransaction trans)
         {
-            con.Open();
             trans.Rollback();
             con.Close();
         }
@@ -177,6 +176,14 @@ namespace Utilidades
 
             if (ds.Tables[0].Rows.Count > 0) { throw new RolExistenteException(); }
         }
+        public static void verificarRolHabilitado(int id)
+        {
+            SqlCommand cmd = new SqlCommand("rol_habilitado");
+            cmd.Parameters.Add("@id", SqlDbType.SmallInt).Value = id;
+
+            int i = Utilidades.ejecutarProcedure(cmd);
+            if (i<0) { throw new RolInhabilitadoException(); }
+        }
     }
     
     public class RolExistenteException : Exception
@@ -221,6 +228,13 @@ namespace Utilidades
         {
             List<TextBox> camposSinLlenar = camposObligatorios.Where(campo => campo.Text == string.Empty).ToList();
             MessageBox.Show("Falta llenar campos: " + camposSinLlenar.Aggregate("", (s, next) => s + next.Name.TrimStart('t', 'x', 't') + " , ").TrimEnd(',', ' '), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+    public class RolInhabilitadoException : Exception
+    {
+        public void mensaje()
+        {
+            MessageBox.Show("El rol se encuentra inhabilitado!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
         
