@@ -11,8 +11,8 @@ using FrbaOfertas.Listado;
 using FrbaOfertas.AbmRol;
 using FrbaOfertas.CragaCredito;
 using FrbaOfertas.Entidades;
-using FrbaOfertas.ComprarOferta;
 using FrbaOfertas.CrearOferta;
+using FrbaOfertas.ComprarOferta;
 namespace FrbaOfertas
 {
     static class Program
@@ -27,7 +27,7 @@ namespace FrbaOfertas
             //MenuPrincipal.Cliente rol = new MenuPrincipal.Cliente("Administrador");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AltaOferta(new Form()));
+            Application.Run(new ComprarOferta.ComprarOferta(new Form(),new Usuario("user1","1234")));
         }
     }
 }

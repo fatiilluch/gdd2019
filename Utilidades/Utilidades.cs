@@ -291,7 +291,14 @@ namespace Utilidades
             MessageBox.Show("Ya existe un proveedor con ese Cuit!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
-        
+    public class ClienteSinSaldoException : Exception
+    {
+        public void mensaje()
+        {
+            MessageBox.Show("No posee saldo suficiente", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+    }
 }
 
 

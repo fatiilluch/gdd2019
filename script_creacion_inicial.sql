@@ -381,7 +381,50 @@ begin
 	end try
 	begin catch
 		throw 50001,'Se ingresaron mal los campos. Ingreselos de nuevo correctamente',1;
+	end catch
 end
 go
 
+create view OfertasDisponiblesView
+as
+	select * from Ofertas where GETDATE()>=fecha_publicacion and GETDATE()<=fecha_vto;
+go
+
+create procedure saldo_disponible(
+	@user_name nvarchar(255)
+)
+as
+begin
+	declare @returned numeric(18,2);
+	set @returned = (select saldo from Clientes where nombre_usuario=@user_name)
+	return @returned
+end
+go
+
+create procedure comprar_oferta (
+	@user_name nvarchar(255),
+	@oferta_id nvarchar(50)
+)
+as
+begin
+	declare @saldo_disponible numeric(18,2);
+	exec @saldo_disponible = saldo_disponible @user_name;
+	declare @precio numeric(18,2) = (select precio_oferta from Ofertas where oferta_id = @oferta_id);
+	declare @fecha_actual datetime = getdate() --obtener del config
+	declare @dni_comprador numeric(18,0) = (select dni from Clientes where nombre_usuario=@user_name)
+
+	begin transaction
+	if(@saldo_disponible>= @precio)
+	begin
+		insert into Cupones (fecha_compra,cliente_comprador_dni,oferta_id) values (@fecha_actual,@dni_comprador,@oferta_id);
+		update Clientes set saldo = (@saldo_disponible-@precio) where nombre_usuario=@user_name;
+		commit transaction;
+	end
+	else
+	begin
+		rollback;
+		throw 50002,'No hay saldo suficiente',1;
+	end
+end
+go
 --rollback
