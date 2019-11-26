@@ -362,4 +362,26 @@ begin
 		end catch
 end
 go
+
+create procedure publicar_oferta (
+	@oferta_id nvarchar(50),
+	@stock smallint,
+	@limite_de_compra smallint,
+	@precio_viejo numeric(18,2),
+	@precio_nuevo numeric(18,2),
+	@cuit nvarchar(20),
+	@descr nvarchar(255),
+	@fecha_pub datetime,
+	@fecha_venc datetime
+)
+as
+begin
+	begin try
+		insert into Ofertas values(@oferta_id,@fecha_pub,@fecha_venc,@precio_nuevo,@precio_viejo,@cuit,@stock,@descr,@limite_de_compra)
+	end try
+	begin catch
+		throw 50001,'Se ingresaron mal los campos. Ingreselos de nuevo correctamente',1;
+end
+go
+
 --rollback

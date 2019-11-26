@@ -39,8 +39,8 @@
             this.lblVencimiento = new System.Windows.Forms.Label();
             this.lblPublicacion = new System.Windows.Forms.Label();
             this.groupBoxFechas = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.calendarioPublicacion = new System.Windows.Forms.DateTimePicker();
+            this.calendarioVencimiento = new System.Windows.Forms.DateTimePicker();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.txtLimiteCompra = new System.Windows.Forms.TextBox();
@@ -52,6 +52,7 @@
             this.btnPublicar = new System.Windows.Forms.Button();
             this.validator = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBoxFechas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validator)).BeginInit();
             this.SuspendLayout();
@@ -126,7 +127,7 @@
             // lblVencimiento
             // 
             this.lblVencimiento.AutoSize = true;
-            this.lblVencimiento.Location = new System.Drawing.Point(21, 25);
+            this.lblVencimiento.Location = new System.Drawing.Point(21, 91);
             this.lblVencimiento.Name = "lblVencimiento";
             this.lblVencimiento.Size = new System.Drawing.Size(65, 13);
             this.lblVencimiento.TabIndex = 7;
@@ -135,7 +136,7 @@
             // lblPublicacion
             // 
             this.lblPublicacion.AutoSize = true;
-            this.lblPublicacion.Location = new System.Drawing.Point(21, 91);
+            this.lblPublicacion.Location = new System.Drawing.Point(24, 19);
             this.lblPublicacion.Name = "lblPublicacion";
             this.lblPublicacion.Size = new System.Drawing.Size(62, 13);
             this.lblPublicacion.TabIndex = 8;
@@ -143,8 +144,8 @@
             // 
             // groupBoxFechas
             // 
-            this.groupBoxFechas.Controls.Add(this.dateTimePicker2);
-            this.groupBoxFechas.Controls.Add(this.dateTimePicker1);
+            this.groupBoxFechas.Controls.Add(this.calendarioPublicacion);
+            this.groupBoxFechas.Controls.Add(this.calendarioVencimiento);
             this.groupBoxFechas.Controls.Add(this.lblVencimiento);
             this.groupBoxFechas.Controls.Add(this.lblPublicacion);
             this.groupBoxFechas.Location = new System.Drawing.Point(344, 171);
@@ -154,19 +155,19 @@
             this.groupBoxFechas.TabStop = false;
             this.groupBoxFechas.Text = "Fechas";
             // 
-            // dateTimePicker2
+            // calendarioPublicacion
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(111, 19);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(259, 20);
-            this.dateTimePicker2.TabIndex = 10;
+            this.calendarioPublicacion.Location = new System.Drawing.Point(111, 19);
+            this.calendarioPublicacion.Name = "calendarioPublicacion";
+            this.calendarioPublicacion.Size = new System.Drawing.Size(259, 20);
+            this.calendarioPublicacion.TabIndex = 10;
             // 
-            // dateTimePicker1
+            // calendarioVencimiento
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(111, 91);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(259, 20);
-            this.dateTimePicker1.TabIndex = 9;
+            this.calendarioVencimiento.Location = new System.Drawing.Point(111, 91);
+            this.calendarioVencimiento.Name = "calendarioVencimiento";
+            this.calendarioVencimiento.Size = new System.Drawing.Size(259, 20);
+            this.calendarioVencimiento.TabIndex = 9;
             // 
             // txtId
             // 
@@ -205,6 +206,7 @@
             // 
             // txtCuit
             // 
+            this.txtCuit.Enabled = false;
             this.txtCuit.Location = new System.Drawing.Point(122, 272);
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(175, 20);
@@ -222,7 +224,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCancelar.Location = new System.Drawing.Point(644, 321);
+            this.btnCancelar.Location = new System.Drawing.Point(41, 322);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(86, 40);
             this.btnCancelar.TabIndex = 17;
@@ -233,7 +235,7 @@
             // btnPublicar
             // 
             this.btnPublicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnPublicar.Location = new System.Drawing.Point(321, 321);
+            this.btnPublicar.Location = new System.Drawing.Point(410, 322);
             this.btnPublicar.Name = "btnPublicar";
             this.btnPublicar.Size = new System.Drawing.Size(83, 41);
             this.btnPublicar.TabIndex = 18;
@@ -248,19 +250,31 @@
             // btnBuscar
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnBuscar.Location = new System.Drawing.Point(164, 321);
+            this.btnBuscar.Location = new System.Drawing.Point(189, 322);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(86, 41);
+            this.btnBuscar.Size = new System.Drawing.Size(153, 41);
             this.btnBuscar.TabIndex = 19;
-            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Text = "Buscar proveedor";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.btnLimpiar.Location = new System.Drawing.Point(631, 322);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(83, 40);
+            this.btnLimpiar.TabIndex = 20;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // AltaOferta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(743, 374);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnPublicar);
             this.Controls.Add(this.btnCancelar);
@@ -281,6 +295,7 @@
             this.Controls.Add(this.lblId);
             this.Name = "AltaOferta";
             this.Text = "Publicar una Oferta";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AltaOferta_FormClosed);
             this.Controls.SetChildIndex(this.lblId, 0);
             this.Controls.SetChildIndex(this.lblStock, 0);
             this.Controls.SetChildIndex(this.lblLimiteCompra, 0);
@@ -300,6 +315,7 @@
             this.Controls.SetChildIndex(this.btnPublicar, 0);
             this.Controls.SetChildIndex(this.btnAtras, 0);
             this.Controls.SetChildIndex(this.btnBuscar, 0);
+            this.Controls.SetChildIndex(this.btnLimpiar, 0);
             this.groupBoxFechas.ResumeLayout(false);
             this.groupBoxFechas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validator)).EndInit();
@@ -330,8 +346,9 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnPublicar;
         private System.Windows.Forms.ErrorProvider validator;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker calendarioPublicacion;
+        private System.Windows.Forms.DateTimePicker calendarioVencimiento;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

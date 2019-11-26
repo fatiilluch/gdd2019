@@ -138,6 +138,9 @@ namespace Utilidades
                 case 2627:
                     MessageBox.Show("Esa instancia ya existe en la base de datos!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
+                case 50001:
+                    MessageBox.Show(e.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
             }
 
         }

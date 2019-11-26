@@ -47,6 +47,8 @@
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (2,4)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (2,6)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,9)
+	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (3,10)
+	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,10)
 	
 --Cliente asociado a user1
 	insert into Clientes (dni,cliente_nombre,cliente_apellido,fecha_nacimiento,ciudad,codigo_postal,telefono,email,direccion,nombre_usuario)
