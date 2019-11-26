@@ -327,4 +327,39 @@ as
 				 join Funcionalidades f on (fr.funcionalidad_id=f.funcionalidad_id)
 go
 
+create procedure buscar_cliente_segun_usuario(
+	@user nvarchar(255)
+)
+as
+
+	declare @returned numeric(18,0) = (select dni from Clientes where nombre_usuario=@user)
+	return @returned
+go
+
+create procedure cargar_credito (
+	@dni numeric(18,0),
+	@monto numeric(18,2),
+	@fecha_de_carga datetime,
+	@forma_pago nvarchar(100),
+	@tarj_num numeric(18,0),
+	@fecha_venc datetime,
+	@titular nvarchar(255)
+)
+as
+begin
+	begin transaction
+		begin try
+			if(not exists(select tarjeta_id from Detalles_Tarjeta where tarjeta_id=@tarj_num))
+			begin
+				insert into Detalles_Tarjeta (tarjeta_id,titular,fecha_vto) values (@tarj_num,@titular,@fecha_venc)
+			end
+			insert into Cargas_credito (carga_fecha,monto,cliente_dni,forma_de_pago,tarjeta_id)
+				   values (@fecha_de_carga,@monto,@dni,@forma_pago,@tarj_num)
+			commit transaction
+		end try
+		begin catch
+			rollback
+		end catch
+end
+go
 --rollback

@@ -9,6 +9,8 @@ using FrbaOfertas.LoginYSeguridad;
 using FrbaOfertas.MenuPrincipal;
 using FrbaOfertas.Listado;
 using FrbaOfertas.AbmRol;
+using FrbaOfertas.CragaCredito;
+using FrbaOfertas.Entidades;
 namespace FrbaOfertas
 {
     static class Program
@@ -23,7 +25,7 @@ namespace FrbaOfertas
             //MenuPrincipal.Cliente rol = new MenuPrincipal.Cliente("Administrador");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ModificarPerfilProveedor());
+            Application.Run(new CargaCredito(new Form(),new Usuario("user1","1234")));
         }
     }
 }

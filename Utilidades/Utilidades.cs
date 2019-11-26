@@ -36,8 +36,8 @@ namespace Utilidades
         }
         public static DataSet ejecutarConsulta(SqlCommand query)
         {
+            query.Connection = getCon();
             con.Open();
-
             DataSet ds = new DataSet();
             SqlDataAdapter adapter = new SqlDataAdapter(query);
 
