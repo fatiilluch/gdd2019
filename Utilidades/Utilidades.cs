@@ -139,8 +139,19 @@ namespace Utilidades
                     MessageBox.Show("Esa instancia ya existe en la base de datos!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 case 50001:
-                    MessageBox.Show(e.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Los datos ingresados no son correctos.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
+                case 50002:
+                    MessageBox.Show("El usuario no posee saldo suficiente para efectuar la compra.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case 50003:
+                    MessageBox.Show("Stock agotado!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case 50004:
+                    MessageBox.Show("Ya ha comprado suficientes unidades de esa oferta!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+
+
             }
 
         }

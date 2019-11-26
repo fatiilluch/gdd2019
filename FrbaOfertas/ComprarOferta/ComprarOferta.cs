@@ -29,7 +29,7 @@ namespace FrbaOfertas.ComprarOferta
         }
         private void cargarDg()
         {
-            SqlCommand cmd1 = new SqlCommand("select * from OfertasDisponiblesView");
+            SqlCommand cmd1 = new SqlCommand("select * from Ofertas");
             DataSet ds = Utilidades.Utilidades.ejecutarConsulta(cmd1);
             dgPublicaciones.DataSource = ds.Tables[0];
         }
@@ -67,27 +67,19 @@ namespace FrbaOfertas.ComprarOferta
 
         private void btnComprar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if(Convert.ToDecimal(txtSaldo.Text)<Convert.ToDecimal(dgPublicaciones.SelectedRows[0].Cells["precio_oferta"]))
-                { throw new ClienteSinSaldoException(); }
-
-                Oferta oferta = new Oferta(
-                    dgPublicaciones.SelectedRows[0].Cells["oferta_id"].ToString(),
-                    Convert.ToDateTime(dgPublicaciones.SelectedRows[0].Cells["fecha_publicacion"]),
-                    Convert.ToDateTime(dgPublicaciones.SelectedRows[0].Cells["fecha_vto"]),
-                    Convert.ToDecimal(dgPublicaciones.SelectedRows[0].Cells["precio_oferta"]),
-                    Convert.ToDecimal(dgPublicaciones.SelectedRows[0].Cells["precio_viejo"]),
-                    dgPublicaciones.SelectedRows[0].Cells["proveedor_cuit"].ToString(),
-                    Convert.ToInt16(dgPublicaciones.SelectedRows[0].Cells["stock"]),
-                    dgPublicaciones.SelectedRows[0].Cells["oferta_descripcion"].ToString(),
-                    Convert.ToInt16(dgPublicaciones.SelectedRows[0].Cells["limite_compra_por_us"])
-                );
-                Form confirmacion = new ConfirmarCompra(us,oferta,this,menu);
-                confirmacion.Show();
-            }
-            catch(ClienteSinSaldoException error)
-            { error.mensaje(); }
+            Oferta oferta = new Oferta(
+            dgPublicaciones.SelectedRows[0].Cells["oferta_id"].Value.ToString(),
+            Convert.ToDateTime(dgPublicaciones.SelectedRows[0].Cells["fecha_publicacion"].Value),
+            Convert.ToDateTime(dgPublicaciones.SelectedRows[0].Cells["fecha_vto"].Value),
+            Convert.ToDecimal(dgPublicaciones.SelectedRows[0].Cells["precio_oferta"].Value),
+            Convert.ToDecimal(dgPublicaciones.SelectedRows[0].Cells["precio_viejo"].Value),
+            dgPublicaciones.SelectedRows[0].Cells["proveedor_cuit"].Value.ToString(),
+            Convert.ToInt16(dgPublicaciones.SelectedRows[0].Cells["stock"].Value),
+            dgPublicaciones.SelectedRows[0].Cells["oferta_descripcion"].Value.ToString(),
+            Convert.ToInt16(dgPublicaciones.SelectedRows[0].Cells["limite_compra_por_us"].Value)
+            );
+            Form confirmacion = new ConfirmarCompra(us,oferta,this,menu);
+            confirmacion.Show();
         }
     }
 }

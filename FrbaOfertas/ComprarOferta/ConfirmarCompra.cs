@@ -33,9 +33,12 @@ namespace FrbaOfertas.ComprarOferta
         }
         private void cargarCampos()
         {
-            //todo, cargar los textbox con la info de la compra realizada y hacer un 
-            //Usted esta a punto de comprar:
-            //                  tal costa, a tal precio blabla onda mercadolibre equisde matenme plz
+            txtCuit.Text = oferta.Proveedor_Cuit;
+            txtDescripcion.Text = oferta.Oferta_descripcion;
+            txtId.Text = oferta.Oferta_id;
+            txtPrecio.Text = oferta.Precio_oferta.ToString();
+            String query = String.Format("select nombre_contacto from proveedores where cuit='{0}'",oferta.Proveedor_Cuit);
+            txtNombreProveedor.Text = Utilidades.Utilidades.ejecutarConsulta(query).Tables[0].Rows[0]["nombre_contacto"].ToString();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -55,11 +58,12 @@ namespace FrbaOfertas.ComprarOferta
                 Utilidades.Utilidades.ejecutar(cmd);
                 MessageBox.Show("Compra realizada con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
+                ventanaAnterior.Close();
                 menuPrincipal.Show();
             }
             catch (SqlException error)
             {
-                MessageBox.Show(error.Message,"Failed",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                Utilidades.GestorDeErrores.mostrarErrorSegunTipo(error);
             }
         }
     }

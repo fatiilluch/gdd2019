@@ -62,8 +62,7 @@
             // 
             // btnComprar
             // 
-            this.btnComprar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnComprar.Enabled = false;
+            this.btnComprar.BackColor = System.Drawing.SystemColors.Control;
             this.btnComprar.Location = new System.Drawing.Point(561, 335);
             this.btnComprar.Name = "btnComprar";
             this.btnComprar.Size = new System.Drawing.Size(172, 23);
@@ -85,11 +84,11 @@
             // lblSaldo
             // 
             this.lblSaldo.AutoSize = true;
-            this.lblSaldo.Location = new System.Drawing.Point(579, 26);
+            this.lblSaldo.Location = new System.Drawing.Point(580, 22);
             this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(84, 13);
+            this.lblSaldo.Size = new System.Drawing.Size(114, 13);
             this.lblSaldo.TabIndex = 4;
-            this.lblSaldo.Text = "Saldo disponible";
+            this.lblSaldo.Text = "Saldo disponible        $";
             // 
             // txtSaldo
             // 

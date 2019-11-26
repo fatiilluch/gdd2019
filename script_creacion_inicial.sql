@@ -407,24 +407,35 @@ create procedure comprar_oferta (
 )
 as
 begin
-	declare @saldo_disponible numeric(18,2);
-	exec @saldo_disponible = saldo_disponible @user_name;
-	declare @precio numeric(18,2) = (select precio_oferta from Ofertas where oferta_id = @oferta_id);
-	declare @fecha_actual datetime = getdate() --obtener del config
-	declare @dni_comprador numeric(18,0) = (select dni from Clientes where nombre_usuario=@user_name)
-
 	begin transaction
-	if(@saldo_disponible>= @precio)
+
+	declare @saldo_disponible numeric(18,2), @precio numeric(18,2), @limite_por_us smallint,@fecha_actual datetime,@dni_comprador numeric(18,0),@compras_realizadas_del_cliente smallint,@stock smallint
+
+	exec @saldo_disponible = saldo_disponible @user_name;
+	select @precio=precio_oferta,@limite_por_us=limite_compra_por_us,@stock=stock from Ofertas where oferta_id = @oferta_id;
+	set @fecha_actual = getdate() --obtener del config
+	set @dni_comprador = (select dni from Clientes where nombre_usuario=@user_name)
+	set @compras_realizadas_del_cliente  = (select count(*) from Cupones where cliente_comprador_dni=@dni_comprador and oferta_id=@oferta_id)
+	
+	if(@stock<0)
 	begin
-		insert into Cupones (fecha_compra,cliente_comprador_dni,oferta_id) values (@fecha_actual,@dni_comprador,@oferta_id);
-		update Clientes set saldo = (@saldo_disponible-@precio) where nombre_usuario=@user_name;
-		commit transaction;
+		rollback;
+		throw 50003,'Stock insuficiente',1;
 	end
-	else
+	if(@saldo_disponible< @precio)
 	begin
 		rollback;
 		throw 50002,'No hay saldo suficiente',1;
 	end
+	if(@compras_realizadas_del_cliente>=@limite_por_us)
+	begin
+		rollback;
+		throw 50004,'Ha realizado demasiadas compras de dicha oferta',1;
+	end
+	insert into Cupones (fecha_compra,cliente_comprador_dni,oferta_id) values (@fecha_actual,@dni_comprador,@oferta_id);
+	update Clientes set saldo = (@saldo_disponible-@precio) where nombre_usuario=@user_name;
+	update Ofertas set stock = stock-1 where oferta_id=@oferta_id
+	commit transaction;
 end
 go
 --rollback
