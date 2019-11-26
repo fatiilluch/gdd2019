@@ -172,6 +172,7 @@
     </Compile>
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Funcionalidad.cs" />
+    <Compile Include="Entidades\Oferta.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="Entidades\Rol.cs" />
     <Compile Include="Entidades\Usuario.cs" />
@@ -286,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComprarOferta\ComprarOferta.resx">
       <DependentUpon>ComprarOferta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComprarOferta\ConfirmarCompra.resx">
+      <DependentUpon>ConfirmarCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearOferta\AltaOferta.resx">
       <DependentUpon>AltaOferta.cs</DependentUpon>
