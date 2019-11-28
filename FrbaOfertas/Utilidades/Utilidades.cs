@@ -18,7 +18,7 @@ namespace FrbaOfertas.Utilidades
             {
                 foreach (TextBox filtro in filtros.Where(box => box.TextLength > 0))
                 {
-                    condiciones = condiciones + String.Format("{0} " + "= " + "'{1}'" + " and ", filtro.Name.TrimStart('t', 'x', 't'), filtro.Text.ToString());
+                    condiciones = condiciones + String.Format("{0} " + "= " + "'{1}'" + " and ", filtro.Name, filtro.Text.ToString());
                 }
 
             }
@@ -31,7 +31,7 @@ namespace FrbaOfertas.Utilidades
             {
                 foreach (TextBox filtro in filtros.Where(box => box.TextLength > 0))
                 {
-                    condiciones = condiciones + String.Format("{0} " + "like " + "'{1}'" + " and ", filtro.Name.TrimStart('t', 'x', 't'), '%' + filtro.Text.ToString() + '%');
+                    condiciones = condiciones + String.Format("{0} " + "like " + "'{1}'" + " and ", filtro.Name, '%' + filtro.Text.ToString() + '%');
                 }
 
             }

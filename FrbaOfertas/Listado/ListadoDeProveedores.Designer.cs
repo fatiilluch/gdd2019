@@ -35,9 +35,9 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
-            this.txtRs = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtCuit = new System.Windows.Forms.TextBox();
+            this.rs = new System.Windows.Forms.TextBox();
+            this.email = new System.Windows.Forms.TextBox();
+            this.cuit = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgProveedores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,35 +113,35 @@
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
-            // txtRs
+            // rs
             // 
-            this.txtRs.Location = new System.Drawing.Point(160, 64);
-            this.txtRs.Name = "txtRs";
-            this.txtRs.Size = new System.Drawing.Size(100, 20);
-            this.txtRs.TabIndex = 7;
+            this.rs.Location = new System.Drawing.Point(160, 64);
+            this.rs.Name = "rs";
+            this.rs.Size = new System.Drawing.Size(100, 20);
+            this.rs.TabIndex = 7;
             // 
-            // txtEmail
+            // email
             // 
-            this.txtEmail.Location = new System.Drawing.Point(160, 108);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail.TabIndex = 8;
+            this.email.Location = new System.Drawing.Point(160, 108);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(100, 20);
+            this.email.TabIndex = 8;
             // 
-            // txtCuit
+            // cuit
             // 
-            this.txtCuit.Location = new System.Drawing.Point(160, 28);
-            this.txtCuit.Name = "txtCuit";
-            this.txtCuit.Size = new System.Drawing.Size(100, 20);
-            this.txtCuit.TabIndex = 9;
+            this.cuit.Location = new System.Drawing.Point(160, 28);
+            this.cuit.Name = "cuit";
+            this.cuit.Size = new System.Drawing.Size(100, 20);
+            this.cuit.TabIndex = 9;
             // 
             // ListadoDeProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 376);
-            this.Controls.Add(this.txtCuit);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtRs);
+            this.Controls.Add(this.cuit);
+            this.Controls.Add(this.email);
+            this.Controls.Add(this.rs);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnLimpiar);
@@ -167,8 +167,8 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnSeleccionar;
-        private System.Windows.Forms.TextBox txtRs;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtCuit;
+        private System.Windows.Forms.TextBox rs;
+        private System.Windows.Forms.TextBox email;
+        private System.Windows.Forms.TextBox cuit;
     }
 }

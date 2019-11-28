@@ -183,11 +183,11 @@
     <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="Entidades\Rol.cs" />
     <Compile Include="Entidades\Usuario.cs" />
-    <Compile Include="Facturar\Form1.cs">
+    <Compile Include="Facturar\ReporteDeFacturacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Facturar\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Facturar\ReporteDeFacturacion.Designer.cs">
+      <DependentUpon>ReporteDeFacturacion.cs</DependentUpon>
     </Compile>
     <Compile Include="GD2C2019DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -306,8 +306,8 @@
     <EmbeddedResource Include="CrearOferta\AltaOferta.resx">
       <DependentUpon>AltaOferta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Facturar\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Facturar\ReporteDeFacturacion.resx">
+      <DependentUpon>ReporteDeFacturacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoEstadistico\Listado_Estadistico.resx">
       <DependentUpon>Listado_Estadistico.cs</DependentUpon>

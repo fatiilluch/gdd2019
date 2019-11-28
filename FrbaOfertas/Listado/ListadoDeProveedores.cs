@@ -24,9 +24,9 @@ namespace FrbaOfertas.Listado
         {
             InitializeComponent();
             campoObjetivo = txt;
-            filtrosDeTextoExacto.Add(txtCuit);
-            filtrosDeTextoLibre.Add(txtEmail);
-            filtrosDeTextoLibre.Add(txtRs);
+            filtrosDeTextoExacto.Add(cuit);
+            filtrosDeTextoLibre.Add(email);
+            filtrosDeTextoLibre.Add(rs);
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)

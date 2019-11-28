@@ -473,7 +473,7 @@ begin
 		rollback;
 		throw 50009,'No existe un cliente con ese dni',16;
 	end
-	if(@consumido is null)
+	if(@consumido is not null)
 	begin
 		rollback;
 		throw 50006,'El cupon ya ha sido consumido',16;
@@ -485,6 +485,18 @@ begin
 	end
 	update Cupones set fecha_consumo=@fecha_consumo,cliente_canjeador_dni=@dni where cupon_id=@cupon_id
 	commit transaction;
+end
+go
+
+create procedure facturar (
+	@cuit nvarchar(20),
+	@fecha_minima datetime,
+	@fecha_maxima datetime,
+)
+as
+begin
+	
+
 end
 go
 --rollback

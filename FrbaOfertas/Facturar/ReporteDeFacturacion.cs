@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.Facturar
 {
-    public partial class Form1 : Form
+    public partial class ReporteDeFacturacion : Form
     {
-        public Form1()
+        public ReporteDeFacturacion()
         {
             InitializeComponent();
+        }
+
+        private void ReporteDeFacturacion_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }
