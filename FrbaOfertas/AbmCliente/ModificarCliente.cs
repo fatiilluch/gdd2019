@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Listado;
 using FrbaOfertas.Entidades;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 
 
 namespace FrbaOfertas.AbmCliente
@@ -53,7 +56,7 @@ namespace FrbaOfertas.AbmCliente
         private void btnModificar_Click(object sender, EventArgs e)
         {
             String query=String.Format("Select * from Clientes where dni='{0}'",txtDni.Text);
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+            DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             Int16 piso=new Int16();
             Char dpto=new Char();
             if (DBNull.Value != ds.Tables[0].Rows[0]["piso"]) { piso = Convert.ToInt16(ds.Tables[0].Rows[0]["piso"]); }
@@ -84,13 +87,13 @@ namespace FrbaOfertas.AbmCliente
         private Boolean clienteHabilitado(String dni)
         {
             String query = String.Format("Select habilitado from Clientes where dni = '{0}'",dni);
-            return Convert.ToBoolean(Utilidades.Utilidades.ejecutarConsulta(query).Tables[0].Rows[0]["habilitado"]);
+            return Convert.ToBoolean(Conexion.Conexion.ejecutarConsulta(query).Tables[0].Rows[0]["habilitado"]);
         }
 
         private void btnHabilitar_Click(object sender, EventArgs e)
         {
             String query = String.Format("update Clientes set habilitado = 1 where dni='{0}'",txtDni.Text);
-            Utilidades.Utilidades.ejecutar(query);
+            Conexion.Conexion.ejecutar(query);
             MessageBox.Show("Cliente habilitado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             bloquearBoton(btnHabilitar);
             desbloquearBoton(btnDeshabilitar);
@@ -99,7 +102,7 @@ namespace FrbaOfertas.AbmCliente
         private void btnDeshabilitar_Click(object sender, EventArgs e)
         {
             String query = String.Format("update Clientes set habilitado = 0 where dni='{0}'", txtDni.Text);
-            Utilidades.Utilidades.ejecutar(query);
+            Conexion.Conexion.ejecutar(query);
             MessageBox.Show("Cliente deshabilitado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             bloquearBoton(btnDeshabilitar);
             desbloquearBoton(btnHabilitar);

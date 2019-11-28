@@ -8,8 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Listado;
-using Utilidades;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 using FrbaOfertas.Entidades;
+
 
 namespace FrbaOfertas.AbmProveedor
 {
@@ -62,13 +65,13 @@ namespace FrbaOfertas.AbmProveedor
         private Boolean proveedorHabilitado(String cuit)
         {
             String query = String.Format("Select habilitado from Proveedores where cuit = '{0}'", cuit);
-            return Convert.ToBoolean(Utilidades.Utilidades.ejecutarConsulta(query).Tables[0].Rows[0]["habilitado"]);
+            return Convert.ToBoolean(Conexion.Conexion.ejecutarConsulta(query).Tables[0].Rows[0]["habilitado"]);
         }
 
         private void btnHabilitar_Click(object sender, EventArgs e)
         {
             String query = String.Format("update Proveedores set habilitado = 1 where cuit='{0}'", txtCuit.Text);
-            Utilidades.Utilidades.ejecutar(query);
+            Conexion.Conexion.ejecutar(query);
             MessageBox.Show("Proveedor habilitado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             bloquearBoton(btnHabilitar);
             desbloquearBoton(btnDeshabilitar);
@@ -77,7 +80,7 @@ namespace FrbaOfertas.AbmProveedor
         private void btnDeshabilitar_Click(object sender, EventArgs e)
         {
             String query = String.Format("update Proveedores set habilitado = 0 where cuit='{0}'", txtCuit.Text);
-            Utilidades.Utilidades.ejecutar(query);
+            Conexion.Conexion.ejecutar(query);
             MessageBox.Show("Proveedor deshabilitado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             bloquearBoton(btnDeshabilitar);
             desbloquearBoton(btnHabilitar);
@@ -86,7 +89,7 @@ namespace FrbaOfertas.AbmProveedor
         private void btnModificar_Click(object sender, EventArgs e)
         {
             String query = String.Format("Select * from Proveedores where cuit='{0}'", txtCuit.Text);
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+            DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             Int16 piso = new Int16();
             Char dpto = new Char();
             if (DBNull.Value != ds.Tables[0].Rows[0]["piso"]) { piso = Convert.ToInt16(ds.Tables[0].Rows[0]["piso"]); }

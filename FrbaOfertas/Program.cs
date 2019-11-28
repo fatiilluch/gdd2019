@@ -13,6 +13,7 @@ using FrbaOfertas.CragaCredito;
 using FrbaOfertas.Entidades;
 using FrbaOfertas.CrearOferta;
 using FrbaOfertas.ComprarOferta;
+using FrbaOfertas.ConsumoDeCupon;
 namespace FrbaOfertas
 {
     static class Program
@@ -27,7 +28,7 @@ namespace FrbaOfertas
             //MenuPrincipal.Cliente rol = new MenuPrincipal.Cliente("Administrador");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ComprarOferta.ComprarOferta(new Form(),new Usuario("user1","1234")));
+            Application.Run(new ConsumoDeCupon.ConsumoDeCupon(new Form()));
         }
     }
 }

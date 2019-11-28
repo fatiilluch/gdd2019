@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Entidades;
 using System.Data.SqlClient;
-using Utilidades;
-
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 namespace FrbaOfertas.AbmCliente
 {
     public partial class ModificarPerfilCliente : AltaCliente
@@ -60,11 +61,11 @@ namespace FrbaOfertas.AbmCliente
         {
             try
             {
-                Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
                 String query = String.Format("update Clientes set dni=@dni,cliente_nombre=@nom,cliente_apellido=@ap,fecha_nacimiento=@fecha,ciudad=@ciudad,codigo_postal=@cp,telefono=@tel,email=@email,direccion=@direccion,piso=@piso,dpto=@depto where nombre_usuario='{0}'", us.getNombreUsuario());
                 SqlCommand cmd = new SqlCommand(query);
                 cargarCmd(cmd);
-                Utilidades.Utilidades.ejecutar(cmd);
+                Conexion.Conexion.ejecutar(cmd);
                 MessageBox.Show("Cliente actualizado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ventanaAnterior.Show();
                 this.Close();
@@ -74,7 +75,13 @@ namespace FrbaOfertas.AbmCliente
                 error.mensaje();
             }
             catch (SqlException error)
-            { Utilidades.GestorDeErrores.mostrarErrorSegunTipo(error); }
+            {
+                MessageBox.Show(error.Number + " :" + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Conexion.Conexion.getCon().Close();
+            }
         }
     }
 }

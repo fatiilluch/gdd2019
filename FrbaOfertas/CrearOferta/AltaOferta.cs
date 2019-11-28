@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Listado;
-using Utilidades;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 using System.Data.SqlClient;
 
 namespace FrbaOfertas.CrearOferta
@@ -55,7 +57,7 @@ namespace FrbaOfertas.CrearOferta
         {
             try
             {
-                Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
 
                 SqlCommand cmd = new SqlCommand("publicar_oferta");
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -69,18 +71,19 @@ namespace FrbaOfertas.CrearOferta
                 cmd.Parameters.Add("@fecha_pub", SqlDbType.DateTime).Value = calendarioPublicacion.Value;
                 cmd.Parameters.Add("@fecha_venc", SqlDbType.DateTime).Value = calendarioVencimiento.Value;
 
-                Utilidades.Utilidades.ejecutar(cmd);
+                Conexion.Conexion.ejecutar(cmd);
                 MessageBox.Show("Oferta creada exitósamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             catch (SqlException error)
             {
-                Utilidades.GestorDeErrores.mostrarErrorSegunTipo(error);
+                MessageBox.Show(error.Number + " :" + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (CamposObligatoriosIncompletosException error)
             { error.mensaje(); }
             catch (FormatException error)
-            { MessageBox.Show("Se ingresaron mal los datos de los campos."+error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            { MessageBox.Show("Se ingresaron mal los datos de los campos." + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            finally { Conexion.Conexion.getCon().Close(); }
 
 
         }

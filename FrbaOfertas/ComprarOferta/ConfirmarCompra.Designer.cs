@@ -183,6 +183,7 @@
             this.Name = "ConfirmarCompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Confirmar Compra";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConfirmarCompra_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

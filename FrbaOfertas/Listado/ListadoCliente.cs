@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 
 namespace FrbaOfertas.Listado
 {
@@ -37,14 +40,14 @@ namespace FrbaOfertas.Listado
 
         private void ListadoCliente_Load(object sender, EventArgs e)
         {
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(queryBase);
+            DataSet ds = Conexion.Conexion.ejecutarConsulta(queryBase);
             dgClientes.DataSource = ds.Tables[0];
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             filtrosDeTextoLibre.Concat(filtrosDeTextoExacto).ToList().ForEach(box => box.Clear());
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(queryBase);
+            DataSet ds = Conexion.Conexion.ejecutarConsulta(queryBase);
             dgClientes.DataSource = ds.Tables[0];
         }
 
@@ -63,7 +66,7 @@ namespace FrbaOfertas.Listado
                 query = query + Utilidades.Utilidades.condicionesFiltrosTextoLibre(filtrosDeTextoLibre);
                 query = query.Remove(query.Length - 5);
 
-                DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+                DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
                 dgClientes.DataSource = ds.Tables[0];
             }
         }

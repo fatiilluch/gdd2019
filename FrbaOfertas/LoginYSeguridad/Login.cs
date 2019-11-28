@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Utilidades;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using FrbaOfertas.Entidades;
@@ -30,10 +32,10 @@ namespace FrbaOfertas.LoginYSeguridad
 
                 if (txtUsserName.Text != null && txtPassword.Text != null)
                 {
-                    Utilidades.GestorDeErrores.verificarExistenciaDeUsuario(txtUsserName.Text.Trim());
+                    GestorDeErrores.GestorDeErrores.verificarExistenciaDeUsuario(txtUsserName.Text.Trim());
 
                     String query = String.Format("Select * from Usuarios where nombre_usuario='{0}'", txtUsserName.Text.Trim());
-                    DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+                    DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
                     Usuario usuario = new Usuario();
                     usuario.setNombreUsuario(ds.Tables[0].Rows[0]["nombre_usuario"].ToString().Trim());
                     usuario.setPass(ds.Tables[0].Rows[0]["password"].ToString().Trim());
@@ -42,7 +44,7 @@ namespace FrbaOfertas.LoginYSeguridad
                     String hash = Utilidades.Utilidades.obtenerHash(txtPassword.Text.Trim());
 
                     String query2 = "update Usuarios set intentos = @intentos where nombre_usuario=@usuario";
-                    SqlCommand cmd = new SqlCommand(query2, Utilidades.Utilidades.getCon());
+                    SqlCommand cmd = new SqlCommand(query2, Conexion.Conexion.getCon());
                     int intentos = Convert.ToInt32(ds.Tables[0].Rows[0]["intentos"].ToString());
                     Boolean habilitado = Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]);
                     if (habilitado == true)
@@ -52,7 +54,7 @@ namespace FrbaOfertas.LoginYSeguridad
                             intentos = 0;
                             cmd.Parameters.AddWithValue("@intentos", intentos);
                             cmd.Parameters.AddWithValue("@usuario", usuario.getNombreUsuario());
-                            Utilidades.Utilidades.ejecutar(cmd);
+                            Conexion.Conexion.ejecutar(cmd);
 
                             IngresarComo ingresarComo = new IngresarComo(usuario);
                             this.Hide();
@@ -61,10 +63,10 @@ namespace FrbaOfertas.LoginYSeguridad
                         else
                         {
                             intentos += 1;
-                            if (intentos == Utilidades.Utilidades.getCantidadDeIntentos())
+                            if (intentos == Conexion.Conexion.getCantidadDeIntentos())
                             {
                                 MessageBox.Show("Intentos agotados. Usuario bloqueado. Contactese con un administrador", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Utilidades.Utilidades.ejecutar(String.Format("update Usuarios set habilitado = 0 where nombre_usuario ='{0}'", usuario));
+                                Conexion.Conexion.ejecutar(String.Format("update Usuarios set habilitado = 0 where nombre_usuario ='{0}'", usuario));
                             }
                             else
                             {
@@ -72,7 +74,7 @@ namespace FrbaOfertas.LoginYSeguridad
                             }
                             cmd.Parameters.AddWithValue("@intentos", intentos);
                             cmd.Parameters.AddWithValue("@usuario", usuario.getNombreUsuario());
-                            Utilidades.Utilidades.ejecutar(cmd);
+                            Conexion.Conexion.ejecutar(cmd);
                         }
 
                     }

@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using Utilidades;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 using FrbaOfertas.Entidades;
 
 namespace FrbaOfertas.AbmProveedor
@@ -57,28 +59,30 @@ namespace FrbaOfertas.AbmProveedor
 
         protected void btnCrear_Click(object sender, EventArgs e)
         {
-             try
-             {
-                 Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
-                 Utilidades.GestorDeErrores.verificarProveedoresDuplicados(txtCuit.Text);
+            try
+            {
+                GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                GestorDeErrores.GestorDeErrores.verificarProveedoresDuplicados(txtCuit.Text);
 
-                 SqlCommand cmd = new SqlCommand("INSERT INTO Proveedores (rs,email,telefono,ciudad,codigo_postal,cuit,rubro_id,nombre_contacto,direccion,piso,dpto,nombre_usuario) VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@contacto,@direccion,@piso,@depto,@user)");
-                 String SelectRol = "Select rol_id from Roles where rol_nombre='Proveedor'";
-                 int rol_id = Convert.ToInt32(Utilidades.Utilidades.ejecutarConsulta(SelectRol).Tables[0].Rows[0]);
+                SqlCommand cmd = new SqlCommand("INSERT INTO Proveedores (rs,email,telefono,ciudad,codigo_postal,cuit,rubro_id,nombre_contacto,direccion,piso,dpto,nombre_usuario) VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@contacto,@direccion,@piso,@depto,@user)");
+                String SelectRol = "Select rol_id from Roles where rol_nombre='Proveedor'";
+                int rol_id = Convert.ToInt32(Conexion.Conexion.ejecutarConsulta(SelectRol).Tables[0].Rows[0]);
 
-                 cargarCmd(cmd);
-                 if (us.getNombreUsuario() != null) { cargarUsuario(us, rol_id); }
-                 Utilidades.Utilidades.ejecutar(cmd);
-                 MessageBox.Show("Proveedor guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch(CamposObligatoriosIncompletosException error)
-                {
-                    error.mensaje();
-                }
-                catch (SqlException error)
-                {
-                    Utilidades.GestorDeErrores.mostrarErrorSegunTipo(error);
-                }
+                cargarCmd(cmd);
+                if (us.getNombreUsuario() != null) { cargarUsuario(us, rol_id); }
+                Conexion.Conexion.ejecutar(cmd);
+                MessageBox.Show("Proveedor guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (CamposObligatoriosIncompletosException error)
+            {
+                error.mensaje();
+            }
+            catch (SqlException error)
+            {
+                MessageBox.Show(error.Number + " :" + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally { Conexion.Conexion.getCon().Close(); }
+            
         }
 
         protected void btnLimpiar_Click(object sender, EventArgs e)

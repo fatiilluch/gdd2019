@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Listado;
 using System.Data.SqlClient;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 
 namespace FrbaOfertas.AbmCliente
 {
@@ -43,12 +46,12 @@ namespace FrbaOfertas.AbmCliente
         {
             try
             {
-                Utilidades.GestorDeErrores.verificarClienteHabilitado(txtDni.Text);
+                GestorDeErrores.GestorDeErrores.verificarClienteHabilitado(txtDni.Text);
                 String query = String.Format("update Clientes set habilitado = 0 where dni ='{0}'", txtDni.Text);
-                Utilidades.Utilidades.ejecutar(query);
+                Conexion.Conexion.ejecutar(query);
                 MessageBox.Show("Cliente dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(Utilidades.ClienteDeshabilitadoException error)
+            catch(GestorDeErrores.ClienteDeshabilitadoException error)
             {
                 error.mensaje();
             }

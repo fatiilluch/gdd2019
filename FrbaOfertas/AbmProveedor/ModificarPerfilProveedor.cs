@@ -61,11 +61,11 @@ namespace FrbaOfertas.AbmProveedor
         {
             try
             {
-                Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
                 String query = String.Format("update Proveedores set cuit=@cuit,nombre_contacto=@contacto,ciudad=@ciudad,codigo_postal=@codigo_postal,telefono=@telefono,email=@email,direccion=@direccion,piso=@piso,dpto=@depto where nombre_usuario='{0}'",us.getNombreUsuario());
                 SqlCommand cmd = new SqlCommand(query);
                 cargarCmd(cmd);
-                Utilidades.Utilidades.ejecutar(cmd);
+                Conexion.Conexion.ejecutar(cmd);
                 MessageBox.Show("Cliente actualizado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ventanaAnterior.Show();
                 this.Close();

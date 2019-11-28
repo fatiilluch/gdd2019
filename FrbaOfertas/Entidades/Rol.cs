@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Utilidades;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 using System.Data.SqlClient;
 using System.Data;
 namespace FrbaOfertas.Entidades
@@ -33,7 +35,7 @@ namespace FrbaOfertas.Entidades
         public static RepoRol repo;
         public RepoRol()
         {
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta("select rol_nombre,rol_id,habilitado from roles");
+            DataSet ds = Conexion.Conexion.ejecutarConsulta("select rol_nombre,rol_id,habilitado from roles");
             foreach (DataRow fila in ds.Tables[0].Rows)
             {
                 Rol r = new Rol(fila["rol_nombre"].ToString(), Convert.ToInt16(fila["rol_id"]));
@@ -60,7 +62,7 @@ namespace FrbaOfertas.Entidades
         public static List<Funcionalidad> obtenerFuncionalidadesDelRol(String nombre)
         {
             String cmd = String.Format("select funcionalidad_id,funcionalidad_nombre from FuncionalidadesPorRolView where rol_nombre='{0}'", nombre.ToLower());
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(cmd);
+            DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd);
             List<Funcionalidad> funcionalidades = new List<Funcionalidad>();
 
             foreach (DataRow fila in ds.Tables[0].Rows)

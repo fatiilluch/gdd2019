@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using FrbaOfertas.Entidades;
-using Utilidades;
-
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 namespace FrbaOfertas.ComprarOferta
 {
     public partial class ComprarOferta : Form
     {
-        public Usuario us;
-        public Form menu;
+        private Usuario us;
+        private Form menu;
         public ComprarOferta()
         {
             InitializeComponent();
@@ -29,8 +30,9 @@ namespace FrbaOfertas.ComprarOferta
         }
         private void cargarDg()
         {
-            SqlCommand cmd1 = new SqlCommand("select * from Ofertas");
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(cmd1);
+            SqlCommand cmd1 = new SqlCommand("select * from Ofertas");//aca sería select * from OfertasDisponiblesView, que retorna las ofertas disponibles segun la fecha
+
+            DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd1);
             dgPublicaciones.DataSource = ds.Tables[0];
         }
         private void cargarSaldo()
@@ -39,7 +41,7 @@ namespace FrbaOfertas.ComprarOferta
             cmd2.Parameters.Add("@user_name", SqlDbType.NVarChar, 255).Value = us.getNombreUsuario();
             cmd2.Parameters.Add("@returned", SqlDbType.Decimal).Direction = ParameterDirection.ReturnValue;
 
-            Decimal saldo = (decimal)Utilidades.Utilidades.ejecutarProcedure(cmd2);
+            Decimal saldo = (decimal)Conexion.Conexion.ejecutarProcedure(cmd2);
             txtSaldo.Text = saldo.ToString();
         }
         private void ComprarOferta_Load(object sender, EventArgs e)

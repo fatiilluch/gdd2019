@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Entidades;
-using Utilidades;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 namespace FrbaOfertas.CambiarPassword
 {
     public partial class CambiarPassword : AltaForm
@@ -30,13 +32,13 @@ namespace FrbaOfertas.CambiarPassword
             
                 try
                 {
-                    Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                    GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
 
                     if (txtNuevaContraseña.Text == txtConfirmNuevaContraseña.Text)
                     {
                         String hash = Utilidades.Utilidades.obtenerHash(txtNuevaContraseña.Text);
                         String query = String.Format("Update Usuarios set password = '{0}' where nombre_usuario ='{1}'", hash, usuario.getNombreUsuario());
-                        Utilidades.Utilidades.ejecutar(query);
+                        Conexion.Conexion.ejecutar(query);
                         MessageBox.Show("Clave cambiada exitósamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }

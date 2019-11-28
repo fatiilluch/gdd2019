@@ -38,12 +38,13 @@ namespace FrbaOfertas.ComprarOferta
             txtId.Text = oferta.Oferta_id;
             txtPrecio.Text = oferta.Precio_oferta.ToString();
             String query = String.Format("select nombre_contacto from proveedores where cuit='{0}'",oferta.Proveedor_Cuit);
-            txtNombreProveedor.Text = Utilidades.Utilidades.ejecutarConsulta(query).Tables[0].Rows[0]["nombre_contacto"].ToString();
+            txtNombreProveedor.Text = Conexion.Conexion.ejecutarConsulta(query).Tables[0].Rows[0]["nombre_contacto"].ToString();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+            ventanaAnterior.Show();
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -55,16 +56,25 @@ namespace FrbaOfertas.ComprarOferta
                 cmd.Parameters.Add("@user_name", SqlDbType.NVarChar, 255).Value = usuario.getNombreUsuario();
                 cmd.Parameters.Add("@oferta_id", SqlDbType.NVarChar, 50).Value = oferta.Oferta_id;
 
-                Utilidades.Utilidades.ejecutar(cmd);
+                Conexion.Conexion.ejecutar(cmd);
                 MessageBox.Show("Compra realizada con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-                ventanaAnterior.Close();
+                this.Hide();
+                ventanaAnterior.Hide();
                 menuPrincipal.Show();
             }
             catch (SqlException error)
             {
-                Utilidades.GestorDeErrores.mostrarErrorSegunTipo(error);
+                MessageBox.Show(error.Number + " :" + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                Conexion.Conexion.getCon().Close();
+            }
+        }
+
+        private void ConfirmarCompra_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ventanaAnterior.Show();
         }
     }
 }

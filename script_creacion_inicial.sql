@@ -380,11 +380,18 @@ begin
 		insert into Ofertas values(@oferta_id,@fecha_pub,@fecha_venc,@precio_nuevo,@precio_viejo,@cuit,@stock,@descr,@limite_de_compra)
 	end try
 	begin catch
-		throw 50001,'Se ingresaron mal los campos. Ingreselos de nuevo correctamente',1;
+		throw 50001,'Se ingresaron mal los campos. Ingreselos de nuevo correctamente',16;
 	end catch
 end
 go
 
+/*create function obtenerFechaDelConfig() returns datetime
+begin
+	declare @fecha datetime;
+	TODO
+	return getdate()
+end
+go*/
 create view OfertasDisponiblesView
 as
 	select * from Ofertas where GETDATE()>=fecha_publicacion and GETDATE()<=fecha_vto;
@@ -420,21 +427,63 @@ begin
 	if(@stock<0)
 	begin
 		rollback;
-		throw 50003,'Stock insuficiente',1;
+		throw 50003,'Stock insuficiente',16;
 	end
 	if(@saldo_disponible< @precio)
 	begin
 		rollback;
-		throw 50002,'No hay saldo suficiente',1;
+		throw 50002,'No hay saldo suficiente',16;
 	end
 	if(@compras_realizadas_del_cliente>=@limite_por_us)
 	begin
 		rollback;
-		throw 50004,'Ha realizado demasiadas compras de dicha oferta',1;
+		throw 50004,'Ha realizado demasiadas compras de dicha oferta',16;
 	end
 	insert into Cupones (fecha_compra,cliente_comprador_dni,oferta_id) values (@fecha_actual,@dni_comprador,@oferta_id);
 	update Clientes set saldo = (@saldo_disponible-@precio) where nombre_usuario=@user_name;
 	update Ofertas set stock = stock-1 where oferta_id=@oferta_id
+	commit transaction;
+end
+go
+
+create procedure cargar_consumo_de_cupon (
+	@dni numeric(18,0),
+	@fecha_consumo datetime,
+	@cuit nvarchar(20),
+	@cupon_id int
+)
+as
+begin
+	begin transaction
+	declare @cup int, @oferta nvarchar(50),@proveedor nvarchar(20), @fecha_limite datetime, @consumido datetime;
+
+	if(not exists(select * from Cupones where cupon_id=@cupon_id))
+	begin
+		rollback;
+		throw 50005,'No existe un cupon con ese código',16;
+	end
+	select @oferta=c.oferta_id,@proveedor=proveedor_cuit,@cup=cupon_id,@fecha_limite=fecha_vto,@consumido=fecha_consumo from Cupones c join Ofertas o on(c.oferta_id=o.oferta_id and c.cupon_id=@cupon_id)
+	if(@cuit!=@proveedor)
+	begin
+		rollback;
+		throw 50008,'El proveedor ingresado no realizo la oferta del cupon',16;
+	end
+	if(not exists(select dni from Clientes where dni=@dni))
+	begin
+		rollback;
+		throw 50009,'No existe un cliente con ese dni',16;
+	end
+	if(@consumido is null)
+	begin
+		rollback;
+		throw 50006,'El cupon ya ha sido consumido',16;
+	end
+	if(@fecha_consumo>@fecha_limite)
+	begin
+		rollback;
+		throw 50007,'El cupon se ha vencido.',16;
+	end
+	update Cupones set fecha_consumo=@fecha_consumo,cliente_canjeador_dni=@dni where cupon_id=@cupon_id
 	commit transaction;
 end
 go

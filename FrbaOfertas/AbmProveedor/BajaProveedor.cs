@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Listado;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 
 namespace FrbaOfertas.AbmProveedor
 {
@@ -53,13 +56,13 @@ namespace FrbaOfertas.AbmProveedor
         {
             try
             {
-                Utilidades.GestorDeErrores.verificarProveedorHabilitado(txtCuit.Text);
+                GestorDeErrores.GestorDeErrores.verificarProveedorHabilitado(txtCuit.Text);
                 String query = String.Format("update Proveedores set habilitado = 0 where cuit ='{0}'", txtCuit.Text);
-                Utilidades.Utilidades.ejecutar(query);
+                Conexion.Conexion.ejecutar(query);
                 MessageBox.Show("Proveedor dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
-            catch (Utilidades.ClienteDeshabilitadoException error)
+            catch (GestorDeErrores.ClienteDeshabilitadoException error)
             {
                 error.mensaje();
             }

@@ -10,7 +10,9 @@ using System.Windows.Forms;
 using FrbaOfertas.Entidades;
 using FrbaOfertas.Listado;
 using System.Data.SqlClient;
-using Utilidades;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 namespace FrbaOfertas.CragaCredito
 {
     public partial class CargaCredito : Form
@@ -40,7 +42,7 @@ namespace FrbaOfertas.CragaCredito
             cmd.Parameters.Add("@returned", SqlDbType.NVarChar, 18).Direction = ParameterDirection.ReturnValue;
             cmd.CommandType = CommandType.StoredProcedure;
 
-            Utilidades.Utilidades.ejecutar(cmd);
+            Conexion.Conexion.ejecutar(cmd);
             String dni = Convert.ToString(cmd.Parameters["@returned"].Value);
             txtCliente.Text = dni;
         }
@@ -94,7 +96,7 @@ namespace FrbaOfertas.CragaCredito
             SqlCommand cmd = new SqlCommand("cargar_credito");
             cmd.CommandType=CommandType.StoredProcedure;
             cargarCmd(cmd);
-            Utilidades.Utilidades.ejecutar(cmd);
+            Conexion.Conexion.ejecutar(cmd);
             MessageBox.Show("Carga realizada con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Hide();
             menu.Show();

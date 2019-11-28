@@ -164,6 +164,13 @@
     <Compile Include="ComprarOferta\ConfirmarCompra.Designer.cs">
       <DependentUpon>ConfirmarCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Conexion\Conexion.cs" />
+    <Compile Include="ConsumoDeCupon\ConsumoDeCupon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsumoDeCupon\ConsumoDeCupon.Designer.cs">
+      <DependentUpon>ConsumoDeCupon.cs</DependentUpon>
+    </Compile>
     <Compile Include="CrearOferta\AltaOferta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +199,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GD2C2019DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="GestorDeErrores\GestorDeErrores.cs" />
     <Compile Include="ListadoEstadistico\Listado_Estadistico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +244,7 @@
     <Compile Include="Registro de usuario\Registrar usuario.Designer.cs">
       <DependentUpon>Registrar usuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilidades\Utilidades.cs" />
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComprarOferta\ConfirmarCompra.resx">
       <DependentUpon>ConfirmarCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsumoDeCupon\ConsumoDeCupon.resx">
+      <DependentUpon>ConsumoDeCupon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearOferta\AltaOferta.resx">
       <DependentUpon>AltaOferta.cs</DependentUpon>

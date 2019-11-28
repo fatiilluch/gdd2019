@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.LoginYSeguridad;
-using Utilidades;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 using FrbaOfertas.Entidades;
 using FrbaOfertas.MenuPrincipal;
 namespace FrbaOfertas.LoginYSeguridad
@@ -28,7 +30,7 @@ namespace FrbaOfertas.LoginYSeguridad
         private void inicializarComboBox()
         {
             String query = String.Format("Select rol_nombre,t1.rol_id from UsuarioPorRol t1 join Roles t2 on (t1.rol_id=t2.rol_id) where nombre_usuario='{0}' and habilitado = 1", usuario.getNombreUsuario());
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+            DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             List<Rol> roles = new List<Rol>();
             foreach (DataRow fila in ds.Tables[0].Rows)
             {

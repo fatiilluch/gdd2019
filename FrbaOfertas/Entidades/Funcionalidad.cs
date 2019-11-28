@@ -11,6 +11,9 @@ using FrbaOfertas.AbmRol;
 using FrbaOfertas.CrearOferta;
 using FrbaOfertas.AbmCliente;
 using FrbaOfertas.AbmProveedor;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 
 namespace FrbaOfertas.Entidades
 {
@@ -46,7 +49,7 @@ namespace FrbaOfertas.Entidades
         {
             List<Funcionalidad> list = new List<Funcionalidad>();
             String query = "Select * from Funcionalidades";
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+            DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             foreach (DataRow fila in ds.Tables[0].Rows)
             {
                 Funcionalidad f = new Funcionalidad(Convert.ToInt16(fila["funcionalidad_id"]), fila["funcionalidad_nombre"].ToString());

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using FrbaOfertas.Entidades;
 using FrbaOfertas.CambiarPassword;
 using FrbaOfertas.LoginYSeguridad;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 namespace FrbaOfertas.MenuPrincipal
 {
     public partial class MenuPrincipal : Form
@@ -39,7 +42,7 @@ namespace FrbaOfertas.MenuPrincipal
         private void inicializarFuncionalidades()
         {
             String query = String.Format("exec obtener_funcionalidades_del_rol {0};", rol.Id);
-            DataSet ds = Utilidades.Utilidades.ejecutarConsulta(query);
+            DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             List<Funcionalidad> funcionalidades = new List<Funcionalidad>();
 
             foreach (DataRow fila in ds.Tables[0].Rows)

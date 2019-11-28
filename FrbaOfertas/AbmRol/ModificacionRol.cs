@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Entidades;
 using System.Data.SqlClient;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 
 namespace FrbaOfertas.AbmRol
 {
@@ -89,7 +92,7 @@ namespace FrbaOfertas.AbmRol
 
             SqlCommand cmd = new SqlCommand("rol_habilitado");
             cmd.Parameters.Add("@id", SqlDbType.SmallInt).Value = r.Id;
-            int i = Utilidades.Utilidades.ejecutarProcedure(cmd);
+            int i = Conexion.Conexion.ejecutarProcedure(cmd);
 
             if (i>0) { desbloquearBoton(btnDeshabilitar); }
             else { desbloquearBoton(btnHabilitar); }
@@ -117,7 +120,7 @@ namespace FrbaOfertas.AbmRol
             cmd.Parameters.Add("@id", SqlDbType.SmallInt).Value = r.Id;
             cmd.Parameters.Add("@bit", SqlDbType.Bit).Value = bit;
 
-            Utilidades.Utilidades.ejecutar(cmd);
+            Conexion.Conexion.ejecutar(cmd);
         }
 
         private void btnModificarRol_Click(object sender, EventArgs e)
@@ -126,13 +129,13 @@ namespace FrbaOfertas.AbmRol
             foreach (Funcionalidad f in funcionalidadesDelRol)
             {
                 String query = String.Format("delete from FuncionalidadPorRol where rol_id = {0} and funcionalidad_id={1}", Convert.ToInt16(r.Id), Convert.ToInt16(f.Id));
-                Utilidades.Utilidades.ejecutar(query);
+                Conexion.Conexion.ejecutar(query);
             }
             for(int i = 0;i<clbFuncionalidades.CheckedItems.Count;i++)
             {
                 Funcionalidad f = clbFuncionalidades.CheckedItems[i] as Funcionalidad;
                 String query = String.Format("insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values({0},{1})", Convert.ToInt16(r.Id), Convert.ToInt16(f.Id));
-                Utilidades.Utilidades.ejecutar(query);
+                Conexion.Conexion.ejecutar(query);
             }
             MessageBox.Show("Rol modificado exitósamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();

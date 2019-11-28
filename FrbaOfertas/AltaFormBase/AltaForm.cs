@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Entidades;
 using System.Data.SqlClient;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 
 namespace FrbaOfertas
 {
@@ -45,19 +48,17 @@ namespace FrbaOfertas
         {
             if (us != null)
             {
-                SqlCommand cmd1 = new SqlCommand("Insert into Usuarios (nombre_usuario,password) values (@name,@pass)", Utilidades.Utilidades.getCon());
+                SqlCommand cmd1 = new SqlCommand("Insert into Usuarios (nombre_usuario,password) values (@name,@pass)", Conexion.Conexion.getCon());
                 cmd1.Parameters.AddWithValue("@name", us.getNombreUsuario());
                 String hash = Utilidades.Utilidades.obtenerHash(us.getPass());
                 cmd1.Parameters.AddWithValue("@pass", hash);
 
-                SqlCommand cmd2 = new SqlCommand("Insert into UsuarioPorRol (rol_id, nombre_usuario) values (@id,@name)", Utilidades.Utilidades.getCon());
+                SqlCommand cmd2 = new SqlCommand("Insert into UsuarioPorRol (rol_id, nombre_usuario) values (@id,@name)", Conexion.Conexion.getCon());
                 cmd2.Parameters.AddWithValue("@id", rol_id);
                 cmd2.Parameters.AddWithValue("@name",us.getNombreUsuario());
 
-                SqlTransaction trans = Utilidades.Utilidades.beginTransaction();
-                Utilidades.Utilidades.ejecutar(cmd1);
-                Utilidades.Utilidades.ejecutar(cmd2);
-                Utilidades.Utilidades.commit(trans);
+                Conexion.Conexion.ejecutar(cmd1);
+                Conexion.Conexion.ejecutar(cmd2);
 
             }
         }

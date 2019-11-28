@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Utilidades;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 using FrbaOfertas.Entidades;
 using System.Data.SqlClient;
 
@@ -56,20 +58,18 @@ namespace FrbaOfertas.AbmRol
 
             try
             {
-                Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
-                Utilidades.GestorDeErrores.verificarRolExistente(txtRolNombre.Text.ToLower());
+                GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                GestorDeErrores.GestorDeErrores.verificarRolExistente(txtRolNombre.Text.ToLower());
 
-                SqlTransaction trans = Utilidades.Utilidades.beginTransaction();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Transaction = trans;
 
                 String query = String.Format("insert into roles (rol_nombre) values ('{0}');", txtRolNombre.Text.ToLower());
                 cmd.CommandText = query;
-                Utilidades.Utilidades.ejecutar(cmd);
+                Conexion.Conexion.ejecutar(cmd);
 
                 query = String.Format("select rol_id from roles where rol_nombre = '{0}'", txtRolNombre.Text.ToLower());
                 cmd.CommandText = query;
-                DataSet ds = Utilidades.Utilidades.ejecutarConsulta(cmd);
+                DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd);
                 Int16 rol_id = Convert.ToInt16(ds.Tables[0].Rows[0]["rol_id"]);
 
                 foreach (DataGridViewRow fila in dgFuncionalidadesDisponibles.SelectedRows)
@@ -77,10 +77,9 @@ namespace FrbaOfertas.AbmRol
                     Int16 f_id = Convert.ToInt16(fila.Cells[0].Value);
                     query = String.Format("insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values ({0},{1});", rol_id, f_id);
                     cmd.CommandText = query;
-                    Utilidades.Utilidades.ejecutar(cmd);
+                    Conexion.Conexion.ejecutar(cmd);
                 }
               
-                trans.Dispose();
                 MessageBox.Show("Rol creado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (CamposObligatoriosIncompletosException error)
@@ -94,10 +93,6 @@ namespace FrbaOfertas.AbmRol
             catch (Exception error)
             {
                 MessageBox.Show("Error inesperado, ups!" + error.Message.ToString(), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Utilidades.Utilidades.getCon().Close();
             }
         }
 

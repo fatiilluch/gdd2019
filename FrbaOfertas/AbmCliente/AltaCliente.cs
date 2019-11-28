@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Collections;
-using Utilidades;
+using FrbaOfertas.Conexion;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 using FrbaOfertas.Entidades;
 
 namespace FrbaOfertas.AbmCliente
@@ -48,8 +50,8 @@ namespace FrbaOfertas.AbmCliente
             
                 try
                 {
-                    Utilidades.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
-                    Utilidades.GestorDeErrores.verificarClientesDuplicados(txtDni.Text.ToString());
+                    GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                    GestorDeErrores.GestorDeErrores.verificarClientesDuplicados(txtDni.Text.ToString());
 
                     SqlCommand cmd = new SqlCommand();
                     cmd = new SqlCommand("INSERT INTO Clientes (dni,cliente_nombre,cliente_apellido,fecha_nacimiento,ciudad,codigo_postal,telefono,email,direccion,piso,dpto,nombre_usuario) VALUES (@dni,@nom,@ap,@fecha,@ciudad,@cp,@tel,@email,@direccion,@piso,@depto,@user)");
@@ -58,7 +60,7 @@ namespace FrbaOfertas.AbmCliente
                     cargarCmd(cmd);
 
                     if (us.getNombreUsuario() != null) { cargarUsuario(us, rol_id); }
-                    Utilidades.Utilidades.ejecutar(cmd);
+                    Conexion.Conexion.ejecutar(cmd);
                     MessageBox.Show("Cliente guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ventanaAnterior.Show();
                     this.Close();
@@ -67,11 +69,11 @@ namespace FrbaOfertas.AbmCliente
                 {
                     error.mensaje();
                 }
-                catch (Utilidades.ClienteDuplicadoException c)
+                catch (GestorDeErrores.ClienteDuplicadoException c)
                 {
                     c.mensaje();
                 }
-                catch (Utilidades.UsuarioConRolExistenteException c)
+                catch (GestorDeErrores.UsuarioConRolExistenteException c)
                 {
                     c.mensaje();
                 }
