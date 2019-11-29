@@ -68,8 +68,9 @@
             // 
             // btnDeshabilitar
             // 
-            this.btnDeshabilitar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnDeshabilitar.BackColor = System.Drawing.Color.Red;
             this.btnDeshabilitar.Enabled = false;
+            this.btnDeshabilitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeshabilitar.Location = new System.Drawing.Point(268, 54);
             this.btnDeshabilitar.Name = "btnDeshabilitar";
             this.btnDeshabilitar.Size = new System.Drawing.Size(75, 23);
@@ -80,8 +81,9 @@
             // 
             // btnHabilitar
             // 
-            this.btnHabilitar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnHabilitar.BackColor = System.Drawing.Color.Red;
             this.btnHabilitar.Enabled = false;
+            this.btnHabilitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHabilitar.Location = new System.Drawing.Point(177, 54);
             this.btnHabilitar.Name = "btnHabilitar";
             this.btnHabilitar.Size = new System.Drawing.Size(75, 23);

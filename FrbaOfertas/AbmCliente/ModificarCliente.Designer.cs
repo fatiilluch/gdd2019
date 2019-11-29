@@ -47,8 +47,9 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnModificar.BackColor = System.Drawing.Color.Red;
             this.btnModificar.Enabled = false;
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificar.Location = new System.Drawing.Point(171, 88);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(86, 23);
@@ -79,8 +80,9 @@
             // 
             // btnHabilitar
             // 
-            this.btnHabilitar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnHabilitar.BackColor = System.Drawing.Color.Red;
             this.btnHabilitar.Enabled = false;
+            this.btnHabilitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHabilitar.Location = new System.Drawing.Point(90, 88);
             this.btnHabilitar.Name = "btnHabilitar";
             this.btnHabilitar.Size = new System.Drawing.Size(75, 23);
@@ -91,8 +93,10 @@
             // 
             // btnDeshabilitar
             // 
-            this.btnDeshabilitar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnDeshabilitar.BackColor = System.Drawing.Color.Red;
             this.btnDeshabilitar.Enabled = false;
+            this.btnDeshabilitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeshabilitar.ForeColor = System.Drawing.Color.Black;
             this.btnDeshabilitar.Location = new System.Drawing.Point(9, 88);
             this.btnDeshabilitar.Name = "btnDeshabilitar";
             this.btnDeshabilitar.Size = new System.Drawing.Size(75, 23);

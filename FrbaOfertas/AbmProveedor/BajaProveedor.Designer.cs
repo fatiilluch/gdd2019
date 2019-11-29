@@ -82,8 +82,9 @@
             // 
             // btnDarBaja
             // 
-            this.btnDarBaja.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnDarBaja.BackColor = System.Drawing.Color.Red;
             this.btnDarBaja.Enabled = false;
+            this.btnDarBaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDarBaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.btnDarBaja.Location = new System.Drawing.Point(210, 65);
             this.btnDarBaja.Name = "btnDarBaja";

@@ -65,8 +65,10 @@
             // 
             // btnBaja
             // 
-            this.btnBaja.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnBaja.BackColor = System.Drawing.Color.Red;
             this.btnBaja.Enabled = false;
+            this.btnBaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBaja.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBaja.Location = new System.Drawing.Point(239, 75);
             this.btnBaja.Name = "btnBaja";
             this.btnBaja.Size = new System.Drawing.Size(75, 23);
