@@ -55,7 +55,7 @@
             // lblFuncionalidades
             // 
             this.lblFuncionalidades.AutoSize = true;
-            this.lblFuncionalidades.Location = new System.Drawing.Point(20, 88);
+            this.lblFuncionalidades.Location = new System.Drawing.Point(20, 66);
             this.lblFuncionalidades.Name = "lblFuncionalidades";
             this.lblFuncionalidades.Size = new System.Drawing.Size(143, 13);
             this.lblFuncionalidades.TabIndex = 1;
@@ -71,7 +71,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCancelar.Location = new System.Drawing.Point(73, 301);
+            this.btnCancelar.Location = new System.Drawing.Point(50, 283);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(91, 39);
             this.btnCancelar.TabIndex = 4;
@@ -82,7 +82,7 @@
             // btnCrear
             // 
             this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCrear.Location = new System.Drawing.Point(283, 301);
+            this.btnCrear.Location = new System.Drawing.Point(266, 283);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(95, 39);
             this.btnCrear.TabIndex = 5;
@@ -98,7 +98,7 @@
             this.groupBox1.Controls.Add(this.lblFuncionalidades);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(405, 283);
+            this.groupBox1.Size = new System.Drawing.Size(405, 265);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingrese un Nuevo Rol";
@@ -109,7 +109,7 @@
             this.dgFuncionalidadesDisponibles.AllowUserToDeleteRows = false;
             this.dgFuncionalidadesDisponibles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgFuncionalidadesDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgFuncionalidadesDisponibles.Location = new System.Drawing.Point(6, 115);
+            this.dgFuncionalidadesDisponibles.Location = new System.Drawing.Point(6, 93);
             this.dgFuncionalidadesDisponibles.Name = "dgFuncionalidadesDisponibles";
             this.dgFuncionalidadesDisponibles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgFuncionalidadesDisponibles.Size = new System.Drawing.Size(385, 162);

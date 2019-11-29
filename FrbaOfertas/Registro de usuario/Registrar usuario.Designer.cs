@@ -40,7 +40,7 @@
             // btnAtras
             // 
             this.btnAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.btnAtras.Location = new System.Drawing.Point(36, 159);
+            this.btnAtras.Location = new System.Drawing.Point(36, 141);
             this.btnAtras.Size = new System.Drawing.Size(100, 37);
             // 
             // label1
@@ -97,7 +97,7 @@
             // btnSeleccionar
             // 
             this.btnSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.btnSeleccionar.Location = new System.Drawing.Point(157, 159);
+            this.btnSeleccionar.Location = new System.Drawing.Point(159, 141);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(100, 37);
             this.btnSeleccionar.TabIndex = 6;
@@ -109,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 235);
+            this.ClientSize = new System.Drawing.Size(316, 192);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.cmbRol);
             this.Controls.Add(this.txtUsuario);

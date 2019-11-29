@@ -50,7 +50,7 @@
             this.groupBox1.Controls.Add(this.cmbRoles);
             this.groupBox1.Controls.Add(this.lblRolNombre);
             this.groupBox1.Controls.Add(this.lblFuncionalidades);
-            this.groupBox1.Location = new System.Drawing.Point(41, 33);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(472, 286);
             this.groupBox1.TabIndex = 11;
@@ -129,7 +129,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCancelar.Location = new System.Drawing.Point(73, 325);
+            this.btnCancelar.Location = new System.Drawing.Point(35, 304);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(91, 39);
             this.btnCancelar.TabIndex = 9;
@@ -139,7 +139,7 @@
             // btnModificarRol
             // 
             this.btnModificarRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnModificarRol.Location = new System.Drawing.Point(384, 325);
+            this.btnModificarRol.Location = new System.Drawing.Point(389, 304);
             this.btnModificarRol.Name = "btnModificarRol";
             this.btnModificarRol.Size = new System.Drawing.Size(95, 39);
             this.btnModificarRol.TabIndex = 10;
@@ -151,7 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 366);
+            this.ClientSize = new System.Drawing.Size(501, 355);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnModificarRol);

@@ -60,7 +60,7 @@
             // lblClienteDni
             // 
             this.lblClienteDni.AutoSize = true;
-            this.lblClienteDni.Location = new System.Drawing.Point(22, 78);
+            this.lblClienteDni.Location = new System.Drawing.Point(23, 57);
             this.lblClienteDni.Name = "lblClienteDni";
             this.lblClienteDni.Size = new System.Drawing.Size(75, 13);
             this.lblClienteDni.TabIndex = 2;
@@ -69,7 +69,7 @@
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(22, 138);
+            this.lblFecha.Location = new System.Drawing.Point(23, 93);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(98, 13);
             this.lblFecha.TabIndex = 3;
@@ -77,14 +77,14 @@
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(141, 78);
+            this.txtDni.Location = new System.Drawing.Point(141, 57);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(206, 20);
             this.txtDni.TabIndex = 5;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(45, 237);
+            this.btnCancelar.Location = new System.Drawing.Point(26, 162);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(99, 23);
             this.btnCancelar.TabIndex = 6;
@@ -94,7 +94,7 @@
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(227, 237);
+            this.btnConfirmar.Location = new System.Drawing.Point(244, 162);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(103, 23);
             this.btnConfirmar.TabIndex = 7;
@@ -105,7 +105,7 @@
             // lblCuit
             // 
             this.lblCuit.AutoSize = true;
-            this.lblCuit.Location = new System.Drawing.Point(22, 192);
+            this.lblCuit.Location = new System.Drawing.Point(22, 128);
             this.lblCuit.Name = "lblCuit";
             this.lblCuit.Size = new System.Drawing.Size(76, 13);
             this.lblCuit.TabIndex = 8;
@@ -113,14 +113,14 @@
             // 
             // txtCuit
             // 
-            this.txtCuit.Location = new System.Drawing.Point(141, 189);
+            this.txtCuit.Location = new System.Drawing.Point(141, 128);
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(133, 20);
             this.txtCuit.TabIndex = 9;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(280, 189);
+            this.btnBuscar.Location = new System.Drawing.Point(280, 128);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(67, 23);
             this.btnBuscar.TabIndex = 10;
@@ -130,7 +130,7 @@
             // 
             // dateFechaConsumo
             // 
-            this.dateFechaConsumo.Location = new System.Drawing.Point(141, 138);
+            this.dateFechaConsumo.Location = new System.Drawing.Point(141, 93);
             this.dateFechaConsumo.Name = "dateFechaConsumo";
             this.dateFechaConsumo.Size = new System.Drawing.Size(206, 20);
             this.dateFechaConsumo.TabIndex = 11;
@@ -139,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 272);
+            this.ClientSize = new System.Drawing.Size(370, 199);
             this.Controls.Add(this.dateFechaConsumo);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtCuit);

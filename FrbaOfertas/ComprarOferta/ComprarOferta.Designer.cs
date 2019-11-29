@@ -44,17 +44,17 @@
             this.dgPublicaciones.AllowUserToOrderColumns = true;
             this.dgPublicaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgPublicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPublicaciones.Location = new System.Drawing.Point(50, 50);
+            this.dgPublicaciones.Location = new System.Drawing.Point(15, 47);
             this.dgPublicaciones.MultiSelect = false;
             this.dgPublicaciones.Name = "dgPublicaciones";
             this.dgPublicaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPublicaciones.Size = new System.Drawing.Size(824, 264);
+            this.dgPublicaciones.Size = new System.Drawing.Size(577, 264);
             this.dgPublicaciones.TabIndex = 0;
             // 
             // lblOfertasPublicadas
             // 
             this.lblOfertasPublicadas.AutoSize = true;
-            this.lblOfertasPublicadas.Location = new System.Drawing.Point(47, 19);
+            this.lblOfertasPublicadas.Location = new System.Drawing.Point(12, 22);
             this.lblOfertasPublicadas.Name = "lblOfertasPublicadas";
             this.lblOfertasPublicadas.Size = new System.Drawing.Size(95, 13);
             this.lblOfertasPublicadas.TabIndex = 1;
@@ -63,7 +63,7 @@
             // btnComprar
             // 
             this.btnComprar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnComprar.Location = new System.Drawing.Point(561, 335);
+            this.btnComprar.Location = new System.Drawing.Point(420, 317);
             this.btnComprar.Name = "btnComprar";
             this.btnComprar.Size = new System.Drawing.Size(172, 23);
             this.btnComprar.TabIndex = 2;
@@ -73,7 +73,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(183, 335);
+            this.btnCancelar.Location = new System.Drawing.Point(15, 317);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 3;
@@ -84,7 +84,7 @@
             // lblSaldo
             // 
             this.lblSaldo.AutoSize = true;
-            this.lblSaldo.Location = new System.Drawing.Point(580, 22);
+            this.lblSaldo.Location = new System.Drawing.Point(282, 15);
             this.lblSaldo.Name = "lblSaldo";
             this.lblSaldo.Size = new System.Drawing.Size(114, 13);
             this.lblSaldo.TabIndex = 4;
@@ -92,7 +92,7 @@
             // 
             // txtSaldo
             // 
-            this.txtSaldo.Location = new System.Drawing.Point(696, 19);
+            this.txtSaldo.Location = new System.Drawing.Point(414, 12);
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.ReadOnly = true;
             this.txtSaldo.Size = new System.Drawing.Size(178, 20);
@@ -102,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 378);
+            this.ClientSize = new System.Drawing.Size(608, 355);
             this.Controls.Add(this.txtSaldo);
             this.Controls.Add(this.lblSaldo);
             this.Controls.Add(this.btnCancelar);

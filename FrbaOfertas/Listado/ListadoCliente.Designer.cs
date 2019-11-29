@@ -45,7 +45,7 @@
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(182, 164);
+            this.btnSeleccionar.Location = new System.Drawing.Point(183, 102);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(100, 23);
             this.btnSeleccionar.TabIndex = 10;
@@ -55,7 +55,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(49, 164);
+            this.btnBuscar.Location = new System.Drawing.Point(34, 102);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(100, 23);
             this.btnBuscar.TabIndex = 9;
@@ -65,7 +65,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(567, 164);
+            this.btnLimpiar.Location = new System.Drawing.Point(567, 102);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(100, 23);
             this.btnLimpiar.TabIndex = 8;
@@ -79,7 +79,7 @@
             this.dgClientes.AllowUserToDeleteRows = false;
             this.dgClientes.AllowUserToOrderColumns = true;
             this.dgClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgClientes.Location = new System.Drawing.Point(34, 209);
+            this.dgClientes.Location = new System.Drawing.Point(34, 150);
             this.dgClientes.MultiSelect = false;
             this.dgClientes.Name = "dgClientes";
             this.dgClientes.ReadOnly = true;
@@ -89,7 +89,7 @@
             // 
             // cliente_apellido
             // 
-            this.cliente_apellido.Location = new System.Drawing.Point(454, 25);
+            this.cliente_apellido.Location = new System.Drawing.Point(454, 28);
             this.cliente_apellido.Name = "cliente_apellido";
             this.cliente_apellido.Size = new System.Drawing.Size(100, 20);
             this.cliente_apellido.TabIndex = 16;
@@ -103,7 +103,7 @@
             // 
             // email
             // 
-            this.email.Location = new System.Drawing.Point(454, 87);
+            this.email.Location = new System.Drawing.Point(454, 63);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(100, 20);
             this.email.TabIndex = 14;
@@ -120,7 +120,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(383, 87);
+            this.lblEmail.Location = new System.Drawing.Point(383, 70);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(32, 13);
             this.lblEmail.TabIndex = 12;
@@ -138,7 +138,7 @@
             // lblDni
             // 
             this.lblDni.AutoSize = true;
-            this.lblDni.Location = new System.Drawing.Point(73, 84);
+            this.lblDni.Location = new System.Drawing.Point(73, 66);
             this.lblDni.Name = "lblDni";
             this.lblDni.Size = new System.Drawing.Size(23, 13);
             this.lblDni.TabIndex = 17;
@@ -146,7 +146,7 @@
             // 
             // dni
             // 
-            this.dni.Location = new System.Drawing.Point(127, 81);
+            this.dni.Location = new System.Drawing.Point(127, 63);
             this.dni.Name = "dni";
             this.dni.Size = new System.Drawing.Size(100, 20);
             this.dni.TabIndex = 18;
@@ -155,7 +155,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 378);
+            this.ClientSize = new System.Drawing.Size(708, 315);
             this.Controls.Add(this.dni);
             this.Controls.Add(this.lblDni);
             this.Controls.Add(this.cliente_apellido);

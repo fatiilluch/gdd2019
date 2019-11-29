@@ -48,12 +48,12 @@
             this.dgProveedores.AllowUserToOrderColumns = true;
             this.dgProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgProveedores.Location = new System.Drawing.Point(12, 210);
+            this.dgProveedores.Location = new System.Drawing.Point(27, 177);
             this.dgProveedores.MultiSelect = false;
             this.dgProveedores.Name = "dgProveedores";
             this.dgProveedores.ReadOnly = true;
             this.dgProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgProveedores.Size = new System.Drawing.Size(633, 150);
+            this.dgProveedores.Size = new System.Drawing.Size(618, 150);
             this.dgProveedores.TabIndex = 0;
             // 
             // lblFiltroCuit
@@ -85,7 +85,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(545, 165);
+            this.btnLimpiar.Location = new System.Drawing.Point(545, 148);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(100, 23);
             this.btnLimpiar.TabIndex = 4;
@@ -95,7 +95,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(27, 165);
+            this.btnBuscar.Location = new System.Drawing.Point(27, 148);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(100, 23);
             this.btnBuscar.TabIndex = 5;
@@ -105,7 +105,7 @@
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(160, 165);
+            this.btnSeleccionar.Location = new System.Drawing.Point(160, 148);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(100, 23);
             this.btnSeleccionar.TabIndex = 6;
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 376);
+            this.ClientSize = new System.Drawing.Size(664, 346);
             this.Controls.Add(this.cuit);
             this.Controls.Add(this.email);
             this.Controls.Add(this.rs);
