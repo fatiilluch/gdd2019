@@ -1,5 +1,4 @@
 --!!!!!!!
---begin transaction
 --CREACION DE TABLAS
 create table Funcionalidades(
 	funcionalidad_id smallint identity(1,1) primary key,
@@ -230,7 +229,7 @@ add constraint fk_cliente foreign key (cliente_dni) references Clientes(dni),
 go
 
 alter table reportes_facturacion
-add constraint fk_proveedor_rep foreign key (proveedor_cuit) references Proveedores(cuit);
+add constraint fk_proveedor_rep foreign key (proveedor_cuit) references Proveedores(cuit),
 go
 
 alter table cupones
@@ -240,7 +239,14 @@ add	constraint fk_comprador foreign key (cliente_comprador_dni) references Clien
 	constraint fk_reporte foreign key (reporte_id) references Reportes_facturacion(reporte_id)
 go
 
+--Indices
+create nonclustered index ix_Clientes_username
+on Clientes(dni,nombre_usuario)
 
+create nonclustered index ix_Proveedores_username
+on Proveedores(cuit,nombre_usuario)
+
+--Procedures
 create procedure usuario_existente (
 	@name nvarchar(255)
 )
@@ -488,15 +494,106 @@ begin
 end
 go
 
-create procedure facturar (
+create procedure ofertas_vendidas_en_intervalo (
 	@cuit nvarchar(20),
 	@fecha_minima datetime,
-	@fecha_maxima datetime,
+	@fecha_maxima datetime
+)
+as
+	select o.oferta_id,oferta_descripcion,precio_oferta from Ofertas o join Cupones c on (o.oferta_id=c.oferta_id)
+	where o.proveedor_cuit=@cuit and fecha_compra>=@fecha_minima and fecha_compra<=@fecha_maxima
+go
+
+create procedure realizar_facturacion (
+	@cuit nvarchar(20),
+	@fecha_minima datetime,
+	@fecha_maxima datetime
 )
 as
 begin
 	
-
+	declare @importe_total numeric(18,2)= (select sum(precio_oferta)
+										  from Ofertas o join Cupones c on (o.oferta_id=c.oferta_id)
+										  where o.proveedor_cuit=@cuit and fecha_compra>=@fecha_minima and fecha_compra<=@fecha_maxima)
+	declare @reporte_id numeric(18,0);
+	begin transaction
+	begin try
+		set @reporte_id = RAND()*999999999999999999;
+		while(exists(select * from Reportes_Facturacion where reporte_id = @reporte_id))
+		begin
+			set @reporte_id = RAND()*999999999999999999;
+		end
+		--Inserto en la tabla reportes la facturacion
+		insert into Reportes_Facturacion values(@reporte_id,@cuit,@fecha_minima,@fecha_maxima,@importe_total)
+		
+		--actualizo en la tabla cupones el reporte_id
+		update Cupones set reporte_id=@reporte_id
+								where cupon_id in  (select cupon_id
+													from Ofertas o join Cupones c on (o.oferta_id=c.oferta_id)
+													where o.proveedor_cuit=@cuit and fecha_compra>=@fecha_minima and fecha_compra<=@fecha_maxima)
+		commit transaction
+	end try
+	begin catch
+		rollback;
+		throw 50010,'Error inesperado al cargar el reporte de facturacion',16;
+	end catch
 end
 go
---rollback
+
+create procedure proveedores_con_mayor_facturacion (
+	@year int,
+	@semestre nvarchar(20)
+)
+as
+begin
+	declare @mes_lim_inferior int;
+	declare @mes_lim_superior int;
+	if(@semestre='Primer semestre')
+	begin
+		set @mes_lim_inferior = 1;
+		set @mes_lim_superior = 6;
+	end
+	else
+	begin
+		set @mes_lim_inferior = 7;
+		set @mes_lim_superior = 12;
+	end
+	
+	select top 5 proveedor_cuit, sum(importe_total) as Total_facturado,count(*) as Cantidad_de_facturas from Reportes_Facturacion
+		   where year(fecha_maxima)=@year and MONTH(fecha_maxima) between @mes_lim_inferior and (@mes_lim_superior+1)
+		   group by proveedor_cuit
+		   order by 2 desc
+end
+go
+
+create procedure proveedores_con_mayor_descuento_ofrecido (
+	@year int,
+	@semestre nvarchar(20)
+)
+as
+begin
+	declare @mes_lim_inferior int;
+	declare @mes_lim_superior int;
+	if(@semestre='Primer semestre')
+	begin
+		set @mes_lim_inferior = 1;
+		set @mes_lim_superior = 6;
+	end
+	else
+	begin
+		set @mes_lim_inferior = 7;
+		set @mes_lim_superior = 12;
+	end
+	select top 5 proveedor_cuit,cast((100-(precio_oferta/precio_viejo)*100) as decimal(5,2)) as Porcentaje_de_descuento,precio_oferta,precio_viejo from Ofertas
+		   where year(fecha_publicacion)=@year and MONTH(@mes_lim_inferior) between 1 and (@mes_lim_superior+1)
+		   order by 2 desc
+		   
+end
+go
+
+create procedure ofertas_disponibles_a_la_fecha (
+	@fecha datetime
+)
+as
+	select * from Ofertas where @fecha<fecha_vto
+go

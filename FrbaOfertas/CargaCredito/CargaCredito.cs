@@ -35,6 +35,14 @@ namespace FrbaOfertas.CragaCredito
             bloquearBoton(btnBuscar);
             inicializarCamposObligatorios();
         }
+
+        public CargaCredito(Form ventana)//Si vengo del admin
+        {
+            menu = ventana;
+            InitializeComponent();
+            fecha = DateTime.Now;
+            inicializarCamposObligatorios();
+        }
         private void iniciarTextBoxCliente()
         {
             SqlCommand cmd = new SqlCommand("buscar_cliente_segun_usuario");
@@ -45,13 +53,6 @@ namespace FrbaOfertas.CragaCredito
             Conexion.Conexion.ejecutar(cmd);
             String dni = Convert.ToString(cmd.Parameters["@returned"].Value);
             txtCliente.Text = dni;
-        }
-        public CargaCredito(Form ventana)//Si vengo del admin
-        {
-            menu = ventana;
-            InitializeComponent();
-            fecha = DateTime.Now;
-            inicializarCamposObligatorios();
         }
         private void inicializarCamposObligatorios()
         {

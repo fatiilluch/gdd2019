@@ -45,7 +45,6 @@ C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.MenuAb
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AltaFormBase.AltaForm.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.CambiarPassword.CambiarPassword.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.AltaOferta.resources
-C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.Form1.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.ListadoEstadistico.Listado_Estadistico.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.LoginYSeguridad.IngresarComo.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.LoginYSeguridad.Login.resources
@@ -73,3 +72,4 @@ C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.ComprarOferta.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.ConfirmarCompra.resources
 C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.ConsumoDeCupon.ConsumoDeCupon.resources
+C:\Home\Gestion de datos\gdd2019\FrbaOfertas\obj\Debug\FrbaOfertas.Facturar.ReporteDeFacturacion.resources

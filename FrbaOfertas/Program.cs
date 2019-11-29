@@ -14,6 +14,8 @@ using FrbaOfertas.Entidades;
 using FrbaOfertas.CrearOferta;
 using FrbaOfertas.ComprarOferta;
 using FrbaOfertas.ConsumoDeCupon;
+using FrbaOfertas.Facturar;
+using FrbaOfertas.ListadoEstadistico;
 namespace FrbaOfertas
 {
     static class Program
@@ -24,11 +26,9 @@ namespace FrbaOfertas
         [STAThread]
         static void Main()
         {
-            //Registro_de_usuario.Usuario us = new Registro_de_usuario.Usuario("lele", "1234");
-            //MenuPrincipal.Cliente rol = new MenuPrincipal.Cliente("Administrador");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ConsumoDeCupon.ConsumoDeCupon(new Form()));
+            Application.Run(new Login());
         }
     }
 }

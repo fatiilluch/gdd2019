@@ -33,29 +33,24 @@
             this.lblTipoListado = new System.Windows.Forms.Label();
             this.cmbTipoListado = new System.Windows.Forms.ComboBox();
             this.btnConsultar = new System.Windows.Forms.Button();
-            this.dataGridListado = new System.Windows.Forms.DataGridView();
+            this.dgListado = new System.Windows.Forms.DataGridView();
             this.lblAnio = new System.Windows.Forms.Label();
             this.txtYear = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridListado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgListado)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbSemestre
             // 
             this.cmbSemestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSemestre.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "Descuentos",
-            "Facturación"});
-            this.cmbSemestre.Location = new System.Drawing.Point(134, 61);
+            this.cmbSemestre.Location = new System.Drawing.Point(157, 69);
             this.cmbSemestre.Name = "cmbSemestre";
-            this.cmbSemestre.Size = new System.Drawing.Size(184, 21);
+            this.cmbSemestre.Size = new System.Drawing.Size(241, 21);
             this.cmbSemestre.TabIndex = 3;
             // 
             // lblSemestral
             // 
             this.lblSemestral.AutoSize = true;
-            this.lblSemestral.Location = new System.Drawing.Point(42, 61);
+            this.lblSemestral.Location = new System.Drawing.Point(65, 69);
             this.lblSemestral.Name = "lblSemestral";
             this.lblSemestral.Size = new System.Drawing.Size(51, 13);
             this.lblSemestral.TabIndex = 1;
@@ -64,7 +59,7 @@
             // lblTipoListado
             // 
             this.lblTipoListado.AutoSize = true;
-            this.lblTipoListado.Location = new System.Drawing.Point(42, 100);
+            this.lblTipoListado.Location = new System.Drawing.Point(65, 108);
             this.lblTipoListado.Name = "lblTipoListado";
             this.lblTipoListado.Size = new System.Drawing.Size(80, 13);
             this.lblTipoListado.TabIndex = 2;
@@ -72,38 +67,42 @@
             // 
             // cmbTipoListado
             // 
-            this.cmbTipoListado.FormattingEnabled = true;
-            this.cmbTipoListado.Location = new System.Drawing.Point(134, 100);
+            this.cmbTipoListado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoListado.Location = new System.Drawing.Point(157, 108);
             this.cmbTipoListado.Name = "cmbTipoListado";
-            this.cmbTipoListado.Size = new System.Drawing.Size(184, 21);
+            this.cmbTipoListado.Size = new System.Drawing.Size(241, 21);
             this.cmbTipoListado.TabIndex = 4;
             // 
             // btnConsultar
             // 
             this.btnConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnConsultar.Location = new System.Drawing.Point(134, 143);
+            this.btnConsultar.Location = new System.Drawing.Point(169, 149);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(98, 36);
+            this.btnConsultar.Size = new System.Drawing.Size(155, 36);
             this.btnConsultar.TabIndex = 5;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
-            // dataGridListado
+            // dgListado
             // 
-            this.dataGridListado.AllowUserToAddRows = false;
-            this.dataGridListado.AllowUserToDeleteRows = false;
-            this.dataGridListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridListado.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridListado.Location = new System.Drawing.Point(12, 201);
-            this.dataGridListado.Name = "dataGridListado";
-            this.dataGridListado.ReadOnly = true;
-            this.dataGridListado.Size = new System.Drawing.Size(342, 153);
-            this.dataGridListado.TabIndex = 7;
+            this.dgListado.AllowUserToAddRows = false;
+            this.dgListado.AllowUserToDeleteRows = false;
+            this.dgListado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgListado.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgListado.Location = new System.Drawing.Point(12, 201);
+            this.dgListado.MultiSelect = false;
+            this.dgListado.Name = "dgListado";
+            this.dgListado.ReadOnly = true;
+            this.dgListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgListado.Size = new System.Drawing.Size(462, 153);
+            this.dgListado.TabIndex = 7;
             // 
             // lblAnio
             // 
             this.lblAnio.AutoSize = true;
-            this.lblAnio.Location = new System.Drawing.Point(42, 22);
+            this.lblAnio.Location = new System.Drawing.Point(65, 30);
             this.lblAnio.Name = "lblAnio";
             this.lblAnio.Size = new System.Drawing.Size(26, 13);
             this.lblAnio.TabIndex = 8;
@@ -111,19 +110,19 @@
             // 
             // txtYear
             // 
-            this.txtYear.Location = new System.Drawing.Point(134, 22);
+            this.txtYear.Location = new System.Drawing.Point(157, 30);
             this.txtYear.Name = "txtYear";
-            this.txtYear.Size = new System.Drawing.Size(184, 20);
+            this.txtYear.Size = new System.Drawing.Size(241, 20);
             this.txtYear.TabIndex = 9;
             // 
             // Listado_Estadistico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 366);
+            this.ClientSize = new System.Drawing.Size(486, 366);
             this.Controls.Add(this.txtYear);
             this.Controls.Add(this.lblAnio);
-            this.Controls.Add(this.dataGridListado);
+            this.Controls.Add(this.dgListado);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.cmbTipoListado);
             this.Controls.Add(this.cmbSemestre);
@@ -132,7 +131,8 @@
             this.Name = "Listado_Estadistico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado Estadistico";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridListado)).EndInit();
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Listado_Estadistico_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.dgListado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,7 +145,7 @@
         private System.Windows.Forms.ComboBox cmbSemestre;
         private System.Windows.Forms.ComboBox cmbTipoListado;
         private System.Windows.Forms.Button btnConsultar;
-        private System.Windows.Forms.DataGridView dataGridListado;
+        private System.Windows.Forms.DataGridView dgListado;
         private System.Windows.Forms.Label lblAnio;
         private System.Windows.Forms.TextBox txtYear;
     }

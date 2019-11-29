@@ -48,7 +48,7 @@ namespace FrbaOfertas.AbmRol
         private void bloquearBoton(Button btn)
         {
             btn.Enabled = false;
-            btn.BackColor = SystemColors.ControlDarkDark;
+            btn.BackColor = Color.Red;
         }
         private void desbloquearBoton(Button btn)
         {

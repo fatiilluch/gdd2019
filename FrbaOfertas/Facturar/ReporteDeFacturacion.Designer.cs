@@ -36,9 +36,13 @@
             this.lblFechaMinima = new System.Windows.Forms.Label();
             this.lblFechaMaxima = new System.Windows.Forms.Label();
             this.dgOfertasAFacturar = new System.Windows.Forms.DataGridView();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.btnFacturar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblImporte = new System.Windows.Forms.Label();
+            this.txtImporte = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFactura = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgOfertasAFacturar)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +51,7 @@
             // 
             this.txtCuit.Location = new System.Drawing.Point(132, 21);
             this.txtCuit.Name = "txtCuit";
+            this.txtCuit.ReadOnly = true;
             this.txtCuit.Size = new System.Drawing.Size(196, 20);
             this.txtCuit.TabIndex = 0;
             // 
@@ -67,6 +72,7 @@
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dateFechaMinima
             // 
@@ -106,21 +112,22 @@
             this.dgOfertasAFacturar.AllowUserToDeleteRows = false;
             this.dgOfertasAFacturar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgOfertasAFacturar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgOfertasAFacturar.Location = new System.Drawing.Point(32, 156);
+            this.dgOfertasAFacturar.Location = new System.Drawing.Point(32, 171);
             this.dgOfertasAFacturar.MultiSelect = false;
             this.dgOfertasAFacturar.Name = "dgOfertasAFacturar";
             this.dgOfertasAFacturar.ReadOnly = true;
-            this.dgOfertasAFacturar.Size = new System.Drawing.Size(559, 254);
+            this.dgOfertasAFacturar.Size = new System.Drawing.Size(559, 239);
             this.dgOfertasAFacturar.TabIndex = 8;
             // 
-            // btnCancelar
+            // btnSalir
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(32, 429);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 9;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnSalir.Location = new System.Drawing.Point(32, 429);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 9;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnFacturar
             // 
@@ -130,6 +137,7 @@
             this.btnFacturar.TabIndex = 10;
             this.btnFacturar.Text = "Facturar";
             this.btnFacturar.UseVisualStyleBackColor = true;
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
             // 
             // groupBox1
             // 
@@ -144,14 +152,52 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Intervalo de fechas";
             // 
+            // lblImporte
+            // 
+            this.lblImporte.AutoSize = true;
+            this.lblImporte.Location = new System.Drawing.Point(337, 148);
+            this.lblImporte.Name = "lblImporte";
+            this.lblImporte.Size = new System.Drawing.Size(69, 13);
+            this.lblImporte.TabIndex = 13;
+            this.lblImporte.Text = "Importe Total";
+            // 
+            // txtImporte
+            // 
+            this.txtImporte.Location = new System.Drawing.Point(452, 145);
+            this.txtImporte.Name = "txtImporte";
+            this.txtImporte.ReadOnly = true;
+            this.txtImporte.Size = new System.Drawing.Size(100, 20);
+            this.txtImporte.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(42, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Nro. Factura";
+            // 
+            // txtFactura
+            // 
+            this.txtFactura.Location = new System.Drawing.Point(132, 145);
+            this.txtFactura.Name = "txtFactura";
+            this.txtFactura.ReadOnly = true;
+            this.txtFactura.Size = new System.Drawing.Size(100, 20);
+            this.txtFactura.TabIndex = 16;
+            // 
             // ReporteDeFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 464);
+            this.Controls.Add(this.txtFactura);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtImporte);
+            this.Controls.Add(this.lblImporte);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnFacturar);
-            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dgOfertasAFacturar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.lblCuit);
@@ -178,8 +224,12 @@
         private System.Windows.Forms.Label lblFechaMinima;
         private System.Windows.Forms.Label lblFechaMaxima;
         private System.Windows.Forms.DataGridView dgOfertasAFacturar;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnFacturar;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblImporte;
+        private System.Windows.Forms.TextBox txtImporte;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFactura;
     }
 }
