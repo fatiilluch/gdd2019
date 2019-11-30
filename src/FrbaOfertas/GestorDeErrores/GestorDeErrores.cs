@@ -15,7 +15,7 @@ namespace FrbaOfertas.GestorDeErrores
         
         public static void verificarClientesDuplicados(String dni)
         {
-            SqlCommand cmd = new SqlCommand("cliente_existente");
+            SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].cliente_existente");
             cmd.Parameters.Add("@dni", SqlDbType.NVarChar, 18).Value = dni;
 
             int i = Conexion.Conexion.ejecutarProcedure(cmd);
@@ -23,7 +23,7 @@ namespace FrbaOfertas.GestorDeErrores
         }
         public static void verificarProveedoresDuplicados(String cuit)
         {
-            SqlCommand cmd = new SqlCommand("proveedor_existente");
+            SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].proveedor_existente");
             cmd.Parameters.Add("@cuit", SqlDbType.NVarChar, 20).Value = cuit;
 
             int i = Conexion.Conexion.ejecutarProcedure(cmd);
@@ -31,7 +31,7 @@ namespace FrbaOfertas.GestorDeErrores
         }
         public static void verificarUsuarioPorRolExistente(int rol_id, String username)
         {
-            SqlCommand cmd = new SqlCommand("usuario_con_rol_existente");
+            SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].usuario_con_rol_existente");
             cmd.Parameters.Add("@rol_id", SqlDbType.SmallInt).Value = rol_id;
             cmd.Parameters.Add("@username", SqlDbType.NVarChar).Value = username;
 
@@ -41,7 +41,7 @@ namespace FrbaOfertas.GestorDeErrores
 
         public static void verificarExistenciaDeUsuario(String nombre)
         {
-            SqlCommand cmd = new SqlCommand("usuario_existente");
+            SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].usuario_existente");
             cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = nombre;
 
             int valorDeVerdad = Conexion.Conexion.ejecutarProcedure(cmd);
@@ -52,7 +52,7 @@ namespace FrbaOfertas.GestorDeErrores
         }
         public static void verificarUsuarioDuplicado(String nombre)
         {
-            SqlCommand cmd = new SqlCommand("usuario_duplicado");
+            SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].usuario_duplicado");
             cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = nombre;
 
             int valorDeVerdad = Conexion.Conexion.ejecutarProcedure(cmd);
@@ -70,14 +70,14 @@ namespace FrbaOfertas.GestorDeErrores
         }
         public static void verificarRolExistente(String nombre)
         {
-            String query = String.Format("select * from roles where rol_nombre='{0}'", nombre);
+            String query = String.Format("select * from [RE_GDDIENTOS].roles where rol_nombre='{0}'", nombre);
             DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
 
             if (ds.Tables[0].Rows.Count > 0) { throw new RolExistenteException(); }
         }
         public static void verificarRolHabilitado(int id)
         {
-            SqlCommand cmd = new SqlCommand("rol_habilitado");
+            SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].rol_habilitado");
             cmd.Parameters.Add("@id", SqlDbType.SmallInt).Value = id;
 
             int i = Conexion.Conexion.ejecutarProcedure(cmd);
@@ -85,14 +85,14 @@ namespace FrbaOfertas.GestorDeErrores
         }
         public static void verificarClienteHabilitado(String dni)
         {
-            String query = String.Format("select habilitado from Clientes where dni='{0}'", dni);
+            String query = String.Format("select habilitado from [RE_GDDIENTOS].Clientes where dni='{0}'", dni);
             DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             Boolean habilitado = Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]);
             if (!habilitado) { throw new ClienteDeshabilitadoException(); }
         }
         public static void verificarProveedorHabilitado(String cuit)
         {
-            String query = String.Format("select habilitado from Proveedores where cuit='{0}'", cuit);
+            String query = String.Format("select habilitado from [RE_GDDIENTOS].Proveedores where cuit='{0}'", cuit);
             DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             Boolean habilitado = Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]);
             if (!habilitado) { throw new ProveedorDeshabilitadoException(); }

@@ -63,11 +63,11 @@ namespace FrbaOfertas.AbmRol
 
                 SqlCommand cmd = new SqlCommand();
 
-                String query = String.Format("insert into roles (rol_nombre) values ('{0}');", txtRolNombre.Text.ToLower());
+                String query = String.Format("insert into [RE_GDDIENTOS].roles (rol_nombre) values ('{0}');", txtRolNombre.Text.ToLower());
                 cmd.CommandText = query;
                 Conexion.Conexion.ejecutar(cmd);
 
-                query = String.Format("select rol_id from roles where rol_nombre = '{0}'", txtRolNombre.Text.ToLower());
+                query = String.Format("select rol_id from [RE_GDDIENTOS].roles where rol_nombre = '{0}'", txtRolNombre.Text.ToLower());
                 cmd.CommandText = query;
                 DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd);
                 Int16 rol_id = Convert.ToInt16(ds.Tables[0].Rows[0]["rol_id"]);
@@ -75,7 +75,7 @@ namespace FrbaOfertas.AbmRol
                 foreach (DataGridViewRow fila in dgFuncionalidadesDisponibles.SelectedRows)
                 {
                     Int16 f_id = Convert.ToInt16(fila.Cells[0].Value);
-                    query = String.Format("insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values ({0},{1});", rol_id, f_id);
+                    query = String.Format("insert into [RE_GDDIENTOS].FuncionalidadPorRol (rol_id,funcionalidad_id) values ({0},{1});", rol_id, f_id);
                     cmd.CommandText = query;
                     Conexion.Conexion.ejecutar(cmd);
                 }

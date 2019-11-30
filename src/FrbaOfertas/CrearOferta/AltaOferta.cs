@@ -42,7 +42,7 @@ namespace FrbaOfertas.CrearOferta
         {
             if (usuario.getRol().Nombre.ToLower() == "proveedor")
             {
-                String query = String.Format("select cuit from proveedores where nombre_usuario='{0}'", usuario.getNombreUsuario());
+                String query = String.Format("select cuit from [RE_GDDIENTOS].proveedores where nombre_usuario='{0}'", usuario.getNombreUsuario());
                 SqlCommand cmd = new SqlCommand(query);
                 DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd);
                 txtCuit.Text = ds.Tables[0].Rows[0]["cuit"].ToString();
@@ -74,7 +74,7 @@ namespace FrbaOfertas.CrearOferta
             {
                 GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
 
-                SqlCommand cmd = new SqlCommand("publicar_oferta");
+                SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].publicar_oferta");
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@oferta_id", SqlDbType.NVarChar, 50).Value = txtId.Text;
                 cmd.Parameters.Add("@stock", SqlDbType.SmallInt).Value = txtStock.Text;

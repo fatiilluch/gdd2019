@@ -31,11 +31,11 @@ namespace FrbaOfertas.LoginYSeguridad
             try
             {
 
-                if (txtUsserName.Text != null && txtPassword.Text != null)
+                if (txtUsserName.Text != "" && txtPassword.Text != "")
                 {
                     GestorDeErrores.GestorDeErrores.verificarExistenciaDeUsuario(txtUsserName.Text.Trim());
 
-                    String query = String.Format("Select * from Usuarios where nombre_usuario='{0}'", txtUsserName.Text.Trim());
+                    String query = String.Format("Select * from [RE_GDDIENTOS].Usuarios where nombre_usuario='{0}'", txtUsserName.Text.Trim());
                     DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
                     Usuario usuario = new Usuario();
                     usuario.setNombreUsuario(ds.Tables[0].Rows[0]["nombre_usuario"].ToString().Trim());
@@ -44,7 +44,7 @@ namespace FrbaOfertas.LoginYSeguridad
 
                     String hash = Utilidades.Utilidades.obtenerHash(txtPassword.Text.Trim());
 
-                    String query2 = "update Usuarios set intentos = @intentos where nombre_usuario=@usuario";
+                    String query2 = "update [RE_GDDIENTOS].Usuarios set intentos = @intentos where nombre_usuario=@usuario";
                     SqlCommand cmd = new SqlCommand(query2, Conexion.Conexion.getCon());
                     int intentos = Convert.ToInt32(ds.Tables[0].Rows[0]["intentos"].ToString());
                     Boolean habilitado = Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]);
@@ -67,7 +67,7 @@ namespace FrbaOfertas.LoginYSeguridad
                             if (intentos == Conexion.Conexion.getCantidadDeIntentos())
                             {
                                 MessageBox.Show("Intentos agotados. Usuario bloqueado. Contactese con un administrador", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Conexion.Conexion.ejecutar(String.Format("update Usuarios set habilitado = 0 where nombre_usuario ='{0}'", usuario));
+                                Conexion.Conexion.ejecutar(String.Format("update [RE_GDDIENTOS].Usuarios set habilitado = 0 where nombre_usuario ='{0}'", usuario));
                             }
                             else
                             {

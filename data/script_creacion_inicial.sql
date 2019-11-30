@@ -368,7 +368,7 @@ go
 create view [RE_GDDIENTOS].FuncionalidadesPorRolView
 as
 	select r.rol_id,rol_nombre,habilitado, f.funcionalidad_id, funcionalidad_nombre 
-	from Roles r join [RE_GDDIENTOS].FuncionalidadPorRol fr on(r.rol_id=fr.rol_id)
+	from [RE_GDDIENTOS].Roles r join [RE_GDDIENTOS].FuncionalidadPorRol fr on(r.rol_id=fr.rol_id)
 				 join [RE_GDDIENTOS].Funcionalidades f on (fr.funcionalidad_id=f.funcionalidad_id)
 go
 

@@ -38,7 +38,7 @@ namespace FrbaOfertas.AbmProveedor
             camposObligatorios.Add(txtRs);
             camposObligatorios.Add(txtTelefono);
 
-            SqlCommand cmd = new SqlCommand("select * from rubros");
+            SqlCommand cmd = new SqlCommand("select * from [RE_GDDIENTOS].rubros");
             DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd);
             List<Rubro> rubros = new List<Rubro>();
             foreach (DataRow fila in ds.Tables[0].Rows)
@@ -73,7 +73,7 @@ namespace FrbaOfertas.AbmProveedor
             try
             {
                 GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
-                String query = String.Format("update Proveedores set cuit=@cuit,nombre_contacto=@contacto,ciudad=@ciudad,codigo_postal=@codigo_postal,telefono=@telefono,email=@email,direccion=@direccion,piso=@piso,dpto=@depto where nombre_usuario='{0}'", us.getNombreUsuario());
+                String query = String.Format("update [RE_GDDIENTOS].Proveedores set cuit=@cuit,nombre_contacto=@contacto,ciudad=@ciudad,codigo_postal=@codigo_postal,telefono=@telefono,email=@email,direccion=@direccion,piso=@piso,dpto=@depto where nombre_usuario='{0}'", us.getNombreUsuario());
                 SqlCommand cmd = new SqlCommand(query);
                 cargarCmd(cmd);
                 Conexion.Conexion.ejecutar(cmd);

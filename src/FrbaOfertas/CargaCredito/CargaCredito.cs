@@ -42,7 +42,7 @@ namespace FrbaOfertas.CragaCredito
         }
         private void iniciarTextBoxCliente()
         {
-            SqlCommand cmd = new SqlCommand("buscar_cliente_segun_usuario");
+            SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].buscar_cliente_segun_usuario");
             cmd.Parameters.Add("@user", SqlDbType.NVarChar, 255).Value = us.getNombreUsuario();
             cmd.Parameters.Add("@returned", SqlDbType.NVarChar, 18).Direction = ParameterDirection.ReturnValue;
             cmd.CommandType = CommandType.StoredProcedure;
@@ -91,7 +91,7 @@ namespace FrbaOfertas.CragaCredito
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("cargar_credito");
+            SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].cargar_credito");
             cmd.CommandType=CommandType.StoredProcedure;
             cargarCmd(cmd);
             Conexion.Conexion.ejecutar(cmd);

@@ -39,7 +39,7 @@ namespace FrbaOfertas.MenuPrincipal
         }
         private void inicializarFuncionalidades()
         {
-            String query = String.Format("exec obtener_funcionalidades_del_rol {0};", usuario.getRol().Id);
+            String query = String.Format("exec [RE_GDDIENTOS].obtener_funcionalidades_del_rol {0};", usuario.getRol().Id);
             DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             List<Funcionalidad> funcionalidades = new List<Funcionalidad>();
 

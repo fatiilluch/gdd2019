@@ -62,7 +62,7 @@ namespace FrbaOfertas.AbmCliente
             try
             {
                 GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
-                String query = String.Format("update Clientes set dni=@dni,cliente_nombre=@nom,cliente_apellido=@ap,fecha_nacimiento=@fecha,ciudad=@ciudad,codigo_postal=@cp,telefono=@tel,email=@email,direccion=@direccion,piso=@piso,dpto=@depto where nombre_usuario='{0}'", us.getNombreUsuario());
+                String query = String.Format("update [RE_GDDIENTOS].Clientes set dni=@dni,cliente_nombre=@nom,cliente_apellido=@ap,fecha_nacimiento=@fecha,ciudad=@ciudad,codigo_postal=@cp,telefono=@tel,email=@email,direccion=@direccion,piso=@piso,dpto=@depto where nombre_usuario='{0}'", us.getNombreUsuario());
                 SqlCommand cmd = new SqlCommand(query);
                 cargarCmd(cmd);
                 Conexion.Conexion.ejecutar(cmd);

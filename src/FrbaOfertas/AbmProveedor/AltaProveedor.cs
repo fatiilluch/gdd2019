@@ -55,7 +55,7 @@ namespace FrbaOfertas.AbmProveedor
             camposObligatorios.Add(txtCp);
             camposObligatorios.Add(txtContacto);
 
-            SqlCommand cmd = new SqlCommand("select * from rubros");
+            SqlCommand cmd = new SqlCommand("select * from [RE_GDDIENTOS].rubros");
             DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd);
             List<Rubro> rubros = new List<Rubro>();
             foreach (DataRow fila in ds.Tables[0].Rows)
@@ -75,8 +75,8 @@ namespace FrbaOfertas.AbmProveedor
                 GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
                 GestorDeErrores.GestorDeErrores.verificarProveedoresDuplicados(txtCuit.Text);
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Proveedores (rs,email,telefono,ciudad,codigo_postal,cuit,rubro_id,nombre_contacto,direccion,piso,dpto,nombre_usuario) VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@contacto,@direccion,@piso,@depto,@user)");
-                String SelectRol = "Select rol_id from Roles where rol_nombre='Proveedor'";
+                SqlCommand cmd = new SqlCommand("INSERT INTO [RE_GDDIENTOS].Proveedores (rs,email,telefono,ciudad,codigo_postal,cuit,rubro_id,nombre_contacto,direccion,piso,dpto,nombre_usuario) VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@contacto,@direccion,@piso,@depto,@user)");
+                String SelectRol = "Select rol_id from [RE_GDDIENTOS].Roles where rol_nombre='Proveedor'";
                 int rol_id = Convert.ToInt32(Conexion.Conexion.ejecutarConsulta(SelectRol).Tables[0].Rows[0]);
 
                 cargarCmd(cmd);

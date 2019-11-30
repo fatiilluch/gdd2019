@@ -35,7 +35,7 @@ namespace FrbaOfertas.Entidades
         public static RepoRol repo;
         public RepoRol()
         {
-            DataSet ds = Conexion.Conexion.ejecutarConsulta("select rol_nombre,rol_id,habilitado from roles");
+            DataSet ds = Conexion.Conexion.ejecutarConsulta("select rol_nombre,rol_id,habilitado from [RE_GDDIENTOS].roles");
             foreach (DataRow fila in ds.Tables[0].Rows)
             {
                 Rol r = new Rol(fila["rol_nombre"].ToString(), Convert.ToInt16(fila["rol_id"]));
@@ -61,7 +61,7 @@ namespace FrbaOfertas.Entidades
 
         public static List<Funcionalidad> obtenerFuncionalidadesDelRol(String nombre)
         {
-            String cmd = String.Format("select funcionalidad_id,funcionalidad_nombre from FuncionalidadesPorRolView where rol_nombre='{0}'", nombre.ToLower());
+            String cmd = String.Format("select funcionalidad_id,funcionalidad_nombre from [RE_GDDIENTOS].FuncionalidadesPorRolView where rol_nombre='{0}'", nombre.ToLower());
             DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd);
             List<Funcionalidad> funcionalidades = new List<Funcionalidad>();
 

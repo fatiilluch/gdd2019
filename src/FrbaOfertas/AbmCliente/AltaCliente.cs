@@ -54,7 +54,7 @@ namespace FrbaOfertas.AbmCliente
                 GestorDeErrores.GestorDeErrores.verificarClientesDuplicados(txtDni.Text.ToString());
 
                 SqlCommand cmd = new SqlCommand();
-                cmd = new SqlCommand("INSERT INTO Clientes (dni,cliente_nombre,cliente_apellido,fecha_nacimiento,ciudad,codigo_postal,telefono,email,direccion,piso,dpto,nombre_usuario) VALUES (@dni,@nom,@ap,@fecha,@ciudad,@cp,@tel,@email,@direccion,@piso,@depto,@user)");
+                cmd = new SqlCommand("INSERT INTO [RE_GDDIENTOS].Clientes (dni,cliente_nombre,cliente_apellido,fecha_nacimiento,ciudad,codigo_postal,telefono,email,direccion,piso,dpto,nombre_usuario) VALUES (@dni,@nom,@ap,@fecha,@ciudad,@cp,@tel,@email,@direccion,@piso,@depto,@user)");
 
                 int rol_id = RepoRol.getInstance().buscarRol("Cliente").Id;
                 cargarCmd(cmd);

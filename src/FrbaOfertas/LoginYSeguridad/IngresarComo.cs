@@ -29,7 +29,7 @@ namespace FrbaOfertas.LoginYSeguridad
 
         private void inicializarComboBox()
         {
-            String query = String.Format("Select rol_nombre,t1.rol_id from UsuarioPorRol t1 join Roles t2 on (t1.rol_id=t2.rol_id) where nombre_usuario='{0}' and habilitado = 1", usuario.getNombreUsuario());
+            String query = String.Format("Select rol_nombre,t1.rol_id from [RE_GDDIENTOS].UsuarioPorRol t1 join [RE_GDDIENTOS].Roles t2 on (t1.rol_id=t2.rol_id) where nombre_usuario='{0}' and habilitado = 1", usuario.getNombreUsuario());
             DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             List<Rol> roles = new List<Rol>();
             foreach (DataRow fila in ds.Tables[0].Rows)

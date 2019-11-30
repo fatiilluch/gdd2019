@@ -59,7 +59,7 @@ namespace FrbaOfertas.Facturar
                 }
                 else
                 {
-                    SqlCommand cmd = new SqlCommand("ofertas_vendidas_en_intervalo");
+                    SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].ofertas_vendidas_en_intervalo");
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@cuit", SqlDbType.NVarChar, 20).Value = txtCuit.Text;
                     cmd.Parameters.Add("@fecha_minima", SqlDbType.DateTime).Value = dateFechaMinima.Value;
@@ -73,7 +73,7 @@ namespace FrbaOfertas.Facturar
                         importeTotal += Convert.ToDecimal(fila["precio_oferta"]);
                     }
 
-                    SqlCommand cmd2 = new SqlCommand("realizar_facturacion");
+                    SqlCommand cmd2 = new SqlCommand("[RE_GDDIENTOS].realizar_facturacion");
                     cmd2.CommandType = CommandType.StoredProcedure;
                     cmd2.Parameters.Add("@cuit", SqlDbType.NVarChar, 20).Value = txtCuit.Text;
                     cmd2.Parameters.Add("@fecha_minima", SqlDbType.DateTime).Value = dateFechaMinima.Value;

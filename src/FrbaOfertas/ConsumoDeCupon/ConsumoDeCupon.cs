@@ -48,7 +48,7 @@ namespace FrbaOfertas.ConsumoDeCupon
         {
             if(usuario.getRol().Nombre.ToLower()=="proveedor")
             {
-                String query= String.Format("select cuit from proveedores where nombre_usuario='{0}'",usuario.getNombreUsuario());
+                String query = String.Format("select cuit from [RE_GDDIENTOS].proveedores where nombre_usuario='{0}'", usuario.getNombreUsuario());
                 DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
                 txtCuit.Text = ds.Tables[0].Rows[0]["cuit"].ToString();
                 txtCuit.Enabled = false;
@@ -73,7 +73,7 @@ namespace FrbaOfertas.ConsumoDeCupon
             try
             {
                 GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
-                SqlCommand cmd = new SqlCommand("cargar_consumo_de_cupon");
+                SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].cargar_consumo_de_cupon");
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@cupon_id", SqlDbType.Int).Value = Convert.ToInt32(txtCuponId.Text);
                 cmd.Parameters.Add("@dni", SqlDbType.NVarChar, 18).Value = txtDni.Text;

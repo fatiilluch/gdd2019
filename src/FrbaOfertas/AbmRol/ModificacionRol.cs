@@ -115,7 +115,7 @@ namespace FrbaOfertas.AbmRol
         }
         private void cambiarEstadoRol(Boolean bit)
         {
-            SqlCommand cmd = new SqlCommand("update Roles set habilitado = @bit where rol_id=@id");
+            SqlCommand cmd = new SqlCommand("update [RE_GDDIENTOS].Roles set habilitado = @bit where rol_id=@id");
             Rol r = cmbRoles.SelectedItem as Rol;
             cmd.Parameters.Add("@id", SqlDbType.SmallInt).Value = r.Id;
             cmd.Parameters.Add("@bit", SqlDbType.Bit).Value = bit;
@@ -128,13 +128,13 @@ namespace FrbaOfertas.AbmRol
             Rol r = cmbRoles.SelectedItem as Rol;
             foreach (Funcionalidad f in funcionalidadesDelRol)
             {
-                String query = String.Format("delete from FuncionalidadPorRol where rol_id = {0} and funcionalidad_id={1}", Convert.ToInt16(r.Id), Convert.ToInt16(f.Id));
+                String query = String.Format("delete from [RE_GDDIENTOS].FuncionalidadPorRol where rol_id = {0} and funcionalidad_id={1}", Convert.ToInt16(r.Id), Convert.ToInt16(f.Id));
                 Conexion.Conexion.ejecutar(query);
             }
             for(int i = 0;i<clbFuncionalidades.CheckedItems.Count;i++)
             {
                 Funcionalidad f = clbFuncionalidades.CheckedItems[i] as Funcionalidad;
-                String query = String.Format("insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values({0},{1})", Convert.ToInt16(r.Id), Convert.ToInt16(f.Id));
+                String query = String.Format("insert into [RE_GDDIENTOS].FuncionalidadPorRol (rol_id,funcionalidad_id) values({0},{1})", Convert.ToInt16(r.Id), Convert.ToInt16(f.Id));
                 Conexion.Conexion.ejecutar(query);
             }
             MessageBox.Show("Rol modificado exitósamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);

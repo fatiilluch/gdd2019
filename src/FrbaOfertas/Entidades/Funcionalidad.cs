@@ -94,7 +94,7 @@ namespace FrbaOfertas.Entidades
         public static List<Funcionalidad> getFuncionalidades()
         {
             List<Funcionalidad> list = new List<Funcionalidad>();
-            String query = "Select * from Funcionalidades";
+            String query = "Select * from [RE_GDDIENTOS].Funcionalidades";
             DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             foreach (DataRow fila in ds.Tables[0].Rows)
             {

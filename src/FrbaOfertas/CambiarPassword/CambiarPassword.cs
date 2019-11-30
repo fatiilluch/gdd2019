@@ -37,7 +37,7 @@ namespace FrbaOfertas.CambiarPassword
                     if (txtNuevaContraseña.Text == txtConfirmNuevaContraseña.Text)
                     {
                         String hash = Utilidades.Utilidades.obtenerHash(txtNuevaContraseña.Text);
-                        String query = String.Format("Update Usuarios set password = '{0}' where nombre_usuario ='{1}'", hash, usuario.getNombreUsuario());
+                        String query = String.Format("Update [RE_GDDIENTOS].Usuarios set password = '{0}' where nombre_usuario ='{1}'", hash, usuario.getNombreUsuario());
                         Conexion.Conexion.ejecutar(query);
                         MessageBox.Show("Clave cambiada exitósamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();

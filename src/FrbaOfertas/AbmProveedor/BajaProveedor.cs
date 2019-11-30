@@ -57,7 +57,7 @@ namespace FrbaOfertas.AbmProveedor
             try
             {
                 GestorDeErrores.GestorDeErrores.verificarProveedorHabilitado(txtCuit.Text);
-                String query = String.Format("update Proveedores set habilitado = 0 where cuit ='{0}'", txtCuit.Text);
+                String query = String.Format("update [RE_GDDIENTOS].Proveedores set habilitado = 0 where cuit ='{0}'", txtCuit.Text);
                 Conexion.Conexion.ejecutar(query);
                 MessageBox.Show("Proveedor dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

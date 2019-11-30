@@ -15,7 +15,7 @@ namespace FrbaOfertas.Listado
 {
     public partial class ListadoDeProveedores : Form
     {
-        private String queryBase = "Select * from Proveedores";
+        private String queryBase = "Select * from [RE_GDDIENTOS].Proveedores";
         private List<TextBox> filtrosDeTextoLibre = new List<TextBox>();
         private List<TextBox> filtrosDeTextoExacto = new List<TextBox>();
 

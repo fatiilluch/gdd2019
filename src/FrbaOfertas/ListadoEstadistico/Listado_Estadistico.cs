@@ -48,7 +48,7 @@ namespace FrbaOfertas.ListadoEstadistico
                 }
                 else
                 {
-                    String proc = cmbTipoListado.SelectedItem.ToString();
+                    String proc = "[RE_GDDIENTOS]."+cmbTipoListado.SelectedItem.ToString();
                     SqlCommand cmd = new SqlCommand(proc);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@year", SqlDbType.Int).Value = Convert.ToInt32(txtYear.Text);

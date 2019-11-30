@@ -43,7 +43,7 @@ namespace FrbaOfertas.AbmRol
             Rol r = cmbRoles.SelectedItem as Rol;
             try{
                 GestorDeErrores.GestorDeErrores.verificarRolHabilitado(r.Id);
-                SqlCommand cmd = new SqlCommand("update Roles set habilitado = 0 where rol_id=@r");
+                SqlCommand cmd = new SqlCommand("update [RE_GDDIENTOS].Roles set habilitado = 0 where rol_id=@r");
                 cmd.Parameters.Add("@r", SqlDbType.SmallInt).Value = r.Id;
                 Conexion.Conexion.ejecutar(cmd);
                 MessageBox.Show("Rol dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);

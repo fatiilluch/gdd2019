@@ -47,7 +47,7 @@ namespace FrbaOfertas.AbmCliente
             try
             {
                 GestorDeErrores.GestorDeErrores.verificarClienteHabilitado(txtDni.Text);
-                String query = String.Format("update Clientes set habilitado = 0 where dni ='{0}'", txtDni.Text);
+                String query = String.Format("update [RE_GDDIENTOS].Clientes set habilitado = 0 where dni ='{0}'", txtDni.Text);
                 Conexion.Conexion.ejecutar(query);
                 MessageBox.Show("Cliente dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

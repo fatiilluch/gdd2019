@@ -37,7 +37,7 @@ namespace FrbaOfertas.ComprarOferta
             txtDescripcion.Text = oferta.Oferta_descripcion;
             txtId.Text = oferta.Oferta_id;
             txtPrecio.Text = oferta.Precio_oferta.ToString();
-            String query = String.Format("select nombre_contacto from proveedores where cuit='{0}'",oferta.Proveedor_Cuit);
+            String query = String.Format("select nombre_contacto from [RE_GDDIENTOS].proveedores where cuit='{0}'", oferta.Proveedor_Cuit);
             txtNombreProveedor.Text = Conexion.Conexion.ejecutarConsulta(query).Tables[0].Rows[0]["nombre_contacto"].ToString();
         }
 
@@ -51,7 +51,7 @@ namespace FrbaOfertas.ComprarOferta
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("comprar_oferta");
+                SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].comprar_oferta");
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@user_name", SqlDbType.NVarChar, 255).Value = usuario.getNombreUsuario();
                 cmd.Parameters.Add("@oferta_id", SqlDbType.NVarChar, 50).Value = oferta.Oferta_id;

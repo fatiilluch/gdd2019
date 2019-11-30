@@ -15,7 +15,7 @@ namespace FrbaOfertas.Listado
 {
     public partial class ListadoCliente : Form
     {
-        private String queryBase = "Select * from Clientes";
+        private String queryBase = "Select * from [RE_GDDIENTOS].Clientes";
         private List<TextBox> filtrosDeTextoLibre = new List<TextBox>();
         private List<TextBox> filtrosDeTextoExacto = new List<TextBox>();
 

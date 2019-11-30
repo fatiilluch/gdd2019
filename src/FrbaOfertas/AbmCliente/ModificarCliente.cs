@@ -55,7 +55,7 @@ namespace FrbaOfertas.AbmCliente
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            String query=String.Format("Select * from Clientes where dni='{0}'",txtDni.Text);
+            String query = String.Format("Select * from [RE_GDDIENTOS].Clientes where dni='{0}'", txtDni.Text);
             DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             Int16 piso=new Int16();
             Char dpto=new Char();
@@ -86,13 +86,13 @@ namespace FrbaOfertas.AbmCliente
         }
         private Boolean clienteHabilitado(String dni)
         {
-            String query = String.Format("Select habilitado from Clientes where dni = '{0}'",dni);
+            String query = String.Format("Select habilitado from [RE_GDDIENTOS].Clientes where dni = '{0}'", dni);
             return Convert.ToBoolean(Conexion.Conexion.ejecutarConsulta(query).Tables[0].Rows[0]["habilitado"]);
         }
 
         private void btnHabilitar_Click(object sender, EventArgs e)
         {
-            String query = String.Format("update Clientes set habilitado = 1 where dni='{0}'",txtDni.Text);
+            String query = String.Format("update [RE_GDDIENTOS].Clientes set habilitado = 1 where dni='{0}'", txtDni.Text);
             Conexion.Conexion.ejecutar(query);
             MessageBox.Show("Cliente habilitado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             bloquearBoton(btnHabilitar);
@@ -101,7 +101,7 @@ namespace FrbaOfertas.AbmCliente
 
         private void btnDeshabilitar_Click(object sender, EventArgs e)
         {
-            String query = String.Format("update Clientes set habilitado = 0 where dni='{0}'", txtDni.Text);
+            String query = String.Format("update [RE_GDDIENTOS].Clientes set habilitado = 0 where dni='{0}'", txtDni.Text);
             Conexion.Conexion.ejecutar(query);
             MessageBox.Show("Cliente deshabilitado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             bloquearBoton(btnDeshabilitar);
