@@ -251,7 +251,7 @@ add constraint fk_cliente foreign key (cliente_dni) references [RE_GDDIENTOS].Cl
 go
 
 alter table [RE_GDDIENTOS].reportes_facturacion
-add constraint fk_proveedor_rep foreign key (proveedor_cuit) references [RE_GDDIENTOS].Proveedores(cuit),
+add constraint fk_proveedor_rep foreign key (proveedor_cuit) references [RE_GDDIENTOS].Proveedores(cuit);
 go
 
 alter table [RE_GDDIENTOS].cupones
