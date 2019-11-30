@@ -16,8 +16,8 @@ create table [RE_GDDIENTOS].Roles(
 )
 
 create table [RE_GDDIENTOS].FuncionalidadPorRol(
-	rol_id smallint foreign key references Roles(rol_id),
-	funcionalidad_id smallint foreign key references Funcionalidades(funcionalidad_id),
+	rol_id smallint foreign key references [RE_GDDIENTOS].Roles(rol_id),
+	funcionalidad_id smallint foreign key references [RE_GDDIENTOS].Funcionalidades(funcionalidad_id),
 	primary key(rol_id, funcionalidad_id)
 )
 
@@ -29,14 +29,14 @@ create table [RE_GDDIENTOS].Usuarios(
 )
 
 create table [RE_GDDIENTOS].UsuarioPorRol(
-	rol_id smallint foreign key references Roles(rol_id),
-	nombre_usuario nvarchar(255) foreign key references Usuarios(nombre_usuario),
+	rol_id smallint foreign key references [RE_GDDIENTOS].Roles(rol_id),
+	nombre_usuario nvarchar(255) foreign key references [RE_GDDIENTOS].Usuarios(nombre_usuario),
 	primary key(rol_id,nombre_usuario)
 )
 
 create table [RE_GDDIENTOS].Administradores(
 	administrativo_id smallint identity(1,1) primary key,
-	nombre_usuario nvarchar(255) not null foreign key references Usuarios(nombre_usuario)
+	nombre_usuario nvarchar(255) not null foreign key references [RE_GDDIENTOS].Usuarios(nombre_usuario)
 )
 
 create table [RE_GDDIENTOS].Clientes (
@@ -214,18 +214,18 @@ go
 create procedure [RE_GDDIENTOS].migrar_tablas
 as
 begin
-	exec migrar_clientes;
-	exec migrar_rubros;
-	exec migrar_proveedores;
-	exec migrar_ofertas;
-	exec migrar_cargas;
-	exec migrar_reportes;
-	exec migrar_cupones;
+	exec [RE_GDDIENTOS].migrar_clientes;
+	exec [RE_GDDIENTOS].migrar_rubros;
+	exec [RE_GDDIENTOS].migrar_proveedores;
+	exec [RE_GDDIENTOS].migrar_ofertas;
+	exec [RE_GDDIENTOS].migrar_cargas;
+	exec [RE_GDDIENTOS].migrar_reportes;
+	exec [RE_GDDIENTOS].migrar_cupones;
 
 end
 go
 
-exec migrar_tablas;
+exec [RE_GDDIENTOS].migrar_tablas;
 go
 
 --Agregando constraints
