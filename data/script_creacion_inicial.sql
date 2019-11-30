@@ -188,7 +188,7 @@ as
 begin
 	insert into [RE_GDDIENTOS].Reportes_Facturacion (reporte_id, proveedor_cuit, fecha_maxima, importe_total)
 		select Factura_Nro, cuit, Factura_Fecha,sum(oferta_precio)
-		from gd_esquema.Maestra join Proveedores on (cuit=Provee_CUIT)
+		from gd_esquema.Maestra join [RE_GDDIENTOS].Proveedores on (cuit=Provee_CUIT)
 		where Factura_Nro is not null
 		group by Factura_Nro, cuit, Factura_Fecha
 
@@ -230,38 +230,38 @@ go
 
 --Agregando constraints
 alter table [RE_GDDIENTOS].Clientes
-add constraint fk_usuario foreign key (nombre_usuario) references Usuarios(nombre_usuario),
+add constraint fk_usuario foreign key (nombre_usuario) references [RE_GDDIENTOS].Usuarios(nombre_usuario),
 	constraint saldo_default default 200 for saldo,
 	constraint uc_cliente unique(telefono,email);
 go
 
 alter table [RE_GDDIENTOS].proveedores
-add constraint fk_rubro foreign key (rubro_id) references Rubros(rubro_id),
-	constraint fk_proveedor_usuario foreign key (nombre_usuario) references Usuarios(nombre_usuario),
+add constraint fk_rubro foreign key (rubro_id) references [RE_GDDIENTOS].Rubros(rubro_id),
+	constraint fk_proveedor_usuario foreign key (nombre_usuario) references [RE_GDDIENTOS].Usuarios(nombre_usuario),
 	constraint uc_proveedor unique(rs,email,telefono);
 go
 
 alter table [RE_GDDIENTOS].ofertas
-add constraint fk_proveedor_of  foreign key (proveedor_cuit) references Proveedores(cuit);
+add constraint fk_proveedor_of  foreign key (proveedor_cuit) references [RE_GDDIENTOS].Proveedores(cuit);
 go
 
 alter table [RE_GDDIENTOS].cargas_credito
-add constraint fk_cliente foreign key (cliente_dni) references Clientes(dni),
-	constraint fk_tarjeta foreign key (tarjeta_id) references Detalles_Tarjeta(tarjeta_id);
+add constraint fk_cliente foreign key (cliente_dni) references [RE_GDDIENTOS].Clientes(dni),
+	constraint fk_tarjeta foreign key (tarjeta_id) references [RE_GDDIENTOS].Detalles_Tarjeta(tarjeta_id);
 go
 
 alter table [RE_GDDIENTOS].reportes_facturacion
-add constraint fk_proveedor_rep foreign key (proveedor_cuit) references Proveedores(cuit),
+add constraint fk_proveedor_rep foreign key (proveedor_cuit) references [RE_GDDIENTOS].Proveedores(cuit),
 go
 
 alter table [RE_GDDIENTOS].cupones
-add	constraint fk_comprador foreign key (cliente_comprador_dni) references Clientes(dni),
-	constraint fk_canjeador foreign key (cliente_canjeador_dni) references Clientes(dni),
-	constraint fk_oferta foreign key (oferta_id) references Ofertas(oferta_id),
-	constraint fk_reporte foreign key (reporte_id) references Reportes_facturacion(reporte_id)
+add	constraint fk_comprador foreign key (cliente_comprador_dni) references [RE_GDDIENTOS].Clientes(dni),
+	constraint fk_canjeador foreign key (cliente_canjeador_dni) references [RE_GDDIENTOS].Clientes(dni),
+	constraint fk_oferta foreign key (oferta_id) references [RE_GDDIENTOS].Ofertas(oferta_id),
+	constraint fk_reporte foreign key (reporte_id) references [RE_GDDIENTOS].Reportes_facturacion(reporte_id)
 go
 
---Indices
+--Indices para las búsquedas por usuario que realizamos en muchas ocasiones para obtener algún dato como por ejemplo el saldo del cliente.
 create nonclustered index ix_Clientes_username
 on [RE_GDDIENTOS].Clientes(dni,nombre_usuario)
 
@@ -271,6 +271,7 @@ on [RE_GDDIENTOS].Proveedores(cuit,nombre_usuario)
 --Procedures
 use GD2C2019
 go
+-------------------------Si el usuario existe, devuelve 1, sino (-1)
 create procedure [RE_GDDIENTOS].usuario_existente (
 	@name nvarchar(255)
 )
@@ -291,6 +292,7 @@ go
 
 use GD2C2019
 go
+-------------------------Si existe el cliente, devuelve 1, sino (-1)
 create procedure [RE_GDDIENTOS].cliente_existente (
 	@dni nvarchar(255)
 )
@@ -312,6 +314,7 @@ go
 
 use	GD2C2019
 go
+-------------------------Si existe un usuario con ese rol, devuelve 1, sino (-1)
 create procedure [RE_GDDIENTOS].usuario_con_rol_existente(
 	@rol_id smallint,
 	@username nvarchar(255)
@@ -333,6 +336,7 @@ go
 
 use GD2C2019
 go
+-------------------------Obtiene todas las funcionalidades de un rol dado
 create procedure [RE_GDDIENTOS].obtener_funcionalidades_del_rol  (@r smallint)
 as
 	select f1.funcionalidad_id,funcionalidad_nombre from [RE_GDDIENTOS].FuncionalidadPorRol f1 join [RE_GDDIENTOS].Funcionalidades f2 on (f1.funcionalidad_id=f2.funcionalidad_id) where rol_id=@r;
@@ -340,13 +344,14 @@ go
 
 use GD2C2019
 go
+-------------------------Si el rol se encuentra habilitado, devuelve 1, sino (-1)
 create procedure [RE_GDDIENTOS].rol_habilitado (
 	@id smallint
 )
 as
 begin
 	declare @returned smallint
-	if(exists(select * from Roles where rol_id=@id and habilitado=1))
+	if(exists(select * from [RE_GDDIENTOS].Roles where rol_id=@id and habilitado=1))
 	begin
 		set @returned = 1
 	end
@@ -380,6 +385,8 @@ go
 
 use GD2C2019
 go
+-------------------------Primero, si no existe la tarjeta ingresada, la carga al sistema, y luego realiza la carga de credito
+-------------------------
 create procedure [RE_GDDIENTOS].cargar_credito (
 	@dni numeric(18,0),
 	@monto numeric(18,2),
@@ -446,6 +453,12 @@ go
 
 use GD2C2019
 go
+-------------------------1- Recupero el saldo actual del cliente para compararlo con el precio de la oferta
+-------------------------2- Recupero el stock actual de la mercaderia y el limite de compra por usuario
+-------------------------3- Recupero la cantidad de veces que compro ese usuario esa oferta, para compararla por el limite de compra
+-------------------------4- Se lanza error si el saldo actual del cliente es menor al precio de la compra, si no hay mas stock, y si el usuario ya compro
+-------------------------   suficientes veces esa oferta
+-------------------------5- Si no hay errores, se actualiza el saldo, el stock y se crea un cupon
 create procedure [RE_GDDIENTOS].comprar_oferta (
 	@user_name nvarchar(255),
 	@oferta_id nvarchar(50),
@@ -478,14 +491,17 @@ begin
 		throw 50004,'Ha realizado demasiadas compras de dicha oferta',16;
 	end
 	insert into [RE_GDDIENTOS].Cupones (fecha_compra,cliente_comprador_dni,oferta_id) values (@fecha_actual,@dni_comprador,@oferta_id);
-	update Clientes set saldo = (@saldo_disponible-@precio) where nombre_usuario=@user_name;
-	update Ofertas set stock = stock-1 where oferta_id=@oferta_id
+	update [RE_GDDIENTOS].Clientes set saldo = (@saldo_disponible-@precio) where nombre_usuario=@user_name;
+	update [RE_GDDIENTOS].Ofertas set stock = stock-1 where oferta_id=@oferta_id
 	commit transaction;
 end
 go
 
 use GD2C2019
 go
+-------------------------Se busca al cupon comprado por el cliente ingresado, se fija si no fue consumido ( es decir, fecha_consumo de la tabla is not null),
+-------------------------si el proveedor ingresado fue el correcto, si el cliente existe en el sistema,o si se vencio el cupon.
+-------------------------En caso de no haber errores se actualiza la fecha de consumo del cupon al dia de consumo.
 create procedure [RE_GDDIENTOS].cargar_consumo_de_cupon (
 	@dni numeric(18,0),
 	@fecha_consumo datetime,
@@ -502,13 +518,14 @@ begin
 		rollback;
 		throw 50005,'No existe un cupon con ese código',16;
 	end
-	select @oferta=c.oferta_id,@proveedor=proveedor_cuit,@cup=cupon_id,@fecha_limite=fecha_vto,@consumido=fecha_consumo from [RE_GDDIENTOS].Cupones c join [RE_GDDIENTOS].Ofertas o on(c.oferta_id=o.oferta_id and c.cupon_id=@cupon_id)
+	select @oferta=c.oferta_id,@proveedor=proveedor_cuit,@cup=cupon_id,@fecha_limite=fecha_vto,@consumido=fecha_consumo 
+	from [RE_GDDIENTOS].Cupones c join [RE_GDDIENTOS].Ofertas o on(c.oferta_id=o.oferta_id and c.cupon_id=@cupon_id)
 	if(@cuit!=@proveedor)
 	begin
 		rollback;
 		throw 50008,'El proveedor ingresado no realizo la oferta del cupon',16;
 	end
-	if(not exists(select dni from Clientes where dni=@dni))
+	if(not exists(select dni from [RE_GDDIENTOS].Clientes where dni=@dni))
 	begin
 		rollback;
 		throw 50009,'No existe un cliente con ese dni',16;
@@ -542,6 +559,9 @@ go
 
 use GD2C2019
 go
+-------------------------1- Recupero el importe total de todas las ofertas de un proveedor dado que fueron compradas
+-------------------------2- Genero el numero de reporte_id que sera un numero random. Si este numero generado ya existe, genera otro nuevo
+-------------------------3- Luego genera el reporte y actualiza todos los cupones que pertenezcan a la oferta del proveedor.
 create procedure [RE_GDDIENTOS].realizar_facturacion (
 	@cuit nvarchar(20),
 	@fecha_minima datetime,
@@ -580,6 +600,7 @@ go
 
 use GD2C2019
 go
+-------------------------
 create procedure [RE_GDDIENTOS].proveedores_con_mayor_facturacion (
 	@year int,
 	@semestre nvarchar(20)
@@ -635,6 +656,7 @@ go
 
 use GD2C2019
 go
+-------------------------devuelve las ofertas disponibles a la fecha ingresada por parametro, asi le puedo pasar por parametro la fecha del config
 create procedure [RE_GDDIENTOS].ofertas_disponibles_a_la_fecha (
 	@fecha datetime
 )
@@ -642,6 +664,7 @@ as
 	select * from [RE_GDDIENTOS].Ofertas where @fecha<fecha_vto
 go
 
+-------------------------devuelve 1 si hay usuarios duplicados, sino (-1)
 create procedure usuario_duplicado (
 	@name nvarchar(255)
 )
@@ -662,7 +685,12 @@ go
 
 --Carga inicial del Sistema!!!!!!!
 -------------------------------------------------------------------------------
-
+-------------------------Acá se carga al admin con su contraseña guardada segun el algoritmo sha256.
+-------------------------Los demas usuarios tienen la contraseña clasica de 1234.
+-------------------------El usuario 1 es solamente cliente.
+-------------------------El usuario 2 es solamente proveedor.
+-------------------------El usuario 3 es cliente y proveedor. cuando se ingresa al sistema se elige con qué rol ingresar.
+-------------------------Al admin no le agregué la funcionalidad de 'Comprar oferta' ya que no le veo el sentido, porque no va a poseer saldo.
 --Usuario admin
 	insert into [RE_GDDIENTOS].Usuarios (nombre_usuario,password) values ('admin','e79bdc0fdce8b1d14a2a3edd4d900dd09edca47001dbb8fc4381cbbf5070b8e6')
 	
