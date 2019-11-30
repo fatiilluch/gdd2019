@@ -142,5 +142,10 @@ namespace FrbaOfertas.AbmRol
             menu.Show();
         }
 
+        private void ModificacionRol_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            menu.Show();
+        }
+
     }
 }

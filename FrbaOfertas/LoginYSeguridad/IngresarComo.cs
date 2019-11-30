@@ -46,7 +46,8 @@ namespace FrbaOfertas.LoginYSeguridad
             if (cmbRoles.SelectedItem != null)
             {
                 Rol r = cmbRoles.SelectedItem as Rol;
-                MenuPrincipal.MenuPrincipal menu = new MenuPrincipal.MenuPrincipal(usuario,r);
+                usuario.setRol(r);
+                MenuPrincipal.MenuPrincipal menu = new MenuPrincipal.MenuPrincipal(usuario);
                 menu.Show();
                 this.Close();
             }

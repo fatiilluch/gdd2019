@@ -11,6 +11,7 @@ namespace FrbaOfertas.Entidades
     {
         private String nombreUsuario;
         private String pass;
+        private Rol rol;
         public Usuario() { }
         public Usuario(String nom, String pas)
         {
@@ -19,7 +20,9 @@ namespace FrbaOfertas.Entidades
         }
         public String getNombreUsuario() { return this.nombreUsuario; }
         public String getPass() { return this.pass; }
+        public Rol getRol() { return this.rol; }
         public void setNombreUsuario(String n) { this.nombreUsuario = n; }
         public void setPass(String p) { this.pass = p; }
+        public void setRol(Rol r) { this.rol = r; }
     }
 }

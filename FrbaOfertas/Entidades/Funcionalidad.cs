@@ -14,7 +14,11 @@ using FrbaOfertas.AbmProveedor;
 using FrbaOfertas.Conexion;
 using FrbaOfertas.Utilidades;
 using FrbaOfertas.GestorDeErrores;
-
+using FrbaOfertas.ComprarOferta;
+using FrbaOfertas.ConsumoDeCupon;
+using FrbaOfertas.ListadoEstadistico;
+using FrbaOfertas.CragaCredito;
+using FrbaOfertas.Facturar;
 namespace FrbaOfertas.Entidades
 {
 
@@ -28,22 +32,64 @@ namespace FrbaOfertas.Entidades
             Id = n;
             Nombre = name;
         }
-        public  Form getForm(Form menu){
-            switch(Nombre.ToLower())
+        public  Form getForm(Form menu,Usuario usuario){
+            if (usuario.getRol().Nombre == "administrador general")
             {
-                case "registrar usuario":
-                    return new RegistrarUsuario(menu);
-                case "abm de cliente":
-                    return new MenuAbmCliente(menu);
-                case "abm de proveedor":
-                    return new MenuAbmProveedor(menu);
-                case "crear oferta":
-                    return new AltaOferta(menu);
-                case "abm de rol":
-                    return new MenuAbmRol(menu);
-                default:
-                    throw new Exception("Funcionalidad sin menu");
+                switch (Nombre.ToLower())
+                {
+                    case "registrar usuario":
+                        return new RegistrarUsuario(menu);
+                    case "abm de cliente":
+                        return new MenuAbmCliente(menu);
+                    case "abm de proveedor":
+                        return new MenuAbmProveedor(menu);
+                    case "crear oferta":
+                        return new AltaOferta(menu);
+                    case "comprar oferta":
+                        return new ComprarOferta.ComprarOferta(menu);
+                    case "registrar consumo":
+                        return new ConsumoDeCupon.ConsumoDeCupon(menu);
+                    case "listar estadisticas":
+                        return new Listado_Estadistico(menu);
+                    case "realizar reporte de facturacion":
+                        return new ReporteDeFacturacion(menu);
+                    case "abm de rol":
+                        return new MenuAbmRol(menu);
+                    case "carga de credito":
+                        return new CargaCredito(menu);
+                    default:
+                        throw new Exception("Funcionalidad sin menu");
+                }
             }
+            else
+            {
+                switch (Nombre.ToLower())
+                {
+                    case "registrar usuario":
+                        return new RegistrarUsuario(menu);
+                    case "abm de cliente":
+                        return new MenuAbmCliente(menu);
+                    case "abm de proveedor":
+                        return new MenuAbmProveedor(menu);
+                    case "crear oferta":
+                        return new AltaOferta(menu,usuario);
+                    case "comprar oferta":
+                        return new ComprarOferta.ComprarOferta(menu,usuario);
+                    case "registrar consumo":
+                        return new ConsumoDeCupon.ConsumoDeCupon(menu);
+                    case "listar estadisticas":
+                        return new Listado_Estadistico(menu);
+                    case "realizar reporte de facturacion":
+                        return new ReporteDeFacturacion(menu);
+                    case "abm de rol":
+                        return new MenuAbmRol(menu);
+                    case "carga de credito":
+                        return new CargaCredito(menu);
+                    default:
+                        throw new Exception("Funcionalidad sin menu");
+                }
+            }
+            
         }
         public static List<Funcionalidad> getFuncionalidades()
         {

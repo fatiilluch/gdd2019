@@ -47,36 +47,40 @@ namespace FrbaOfertas.AbmCliente
         }
         virtual protected void btnCrear_Click(object sender, EventArgs e)
         {
-            
-                try
-                {
-                    GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
-                    GestorDeErrores.GestorDeErrores.verificarClientesDuplicados(txtDni.Text.ToString());
 
-                    SqlCommand cmd = new SqlCommand();
-                    cmd = new SqlCommand("INSERT INTO Clientes (dni,cliente_nombre,cliente_apellido,fecha_nacimiento,ciudad,codigo_postal,telefono,email,direccion,piso,dpto,nombre_usuario) VALUES (@dni,@nom,@ap,@fecha,@ciudad,@cp,@tel,@email,@direccion,@piso,@depto,@user)");
+            try
+            {
+                GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                GestorDeErrores.GestorDeErrores.verificarClientesDuplicados(txtDni.Text.ToString());
 
-                    int rol_id = RepoRol.getInstance().buscarRol("Cliente").Id;
-                    cargarCmd(cmd);
+                SqlCommand cmd = new SqlCommand();
+                cmd = new SqlCommand("INSERT INTO Clientes (dni,cliente_nombre,cliente_apellido,fecha_nacimiento,ciudad,codigo_postal,telefono,email,direccion,piso,dpto,nombre_usuario) VALUES (@dni,@nom,@ap,@fecha,@ciudad,@cp,@tel,@email,@direccion,@piso,@depto,@user)");
 
-                    if (us.getNombreUsuario() != null) { cargarUsuario(us, rol_id); }
-                    Conexion.Conexion.ejecutar(cmd);
-                    MessageBox.Show("Cliente guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ventanaAnterior.Show();
-                    this.Close();
-                }
-                catch (CamposObligatoriosIncompletosException error)
-                {
-                    error.mensaje();
-                }
-                catch (GestorDeErrores.ClienteDuplicadoException c)
-                {
-                    c.mensaje();
-                }
-                catch (GestorDeErrores.UsuarioConRolExistenteException c)
-                {
-                    c.mensaje();
-                }
+                int rol_id = RepoRol.getInstance().buscarRol("Cliente").Id;
+                cargarCmd(cmd);
+
+                if (us.getNombreUsuario() != null) { cargarUsuario(us, rol_id); }
+                Conexion.Conexion.ejecutar(cmd);
+                MessageBox.Show("Cliente guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ventanaAnterior.Show();
+                this.Close();
+            }
+            catch (CamposObligatoriosIncompletosException error)
+            {
+                error.mensaje();
+            }
+            catch (GestorDeErrores.ClienteDuplicadoException c)
+            {
+                c.mensaje();
+            }
+            catch (GestorDeErrores.UsuarioConRolExistenteException c)
+            {
+                c.mensaje();
+            }
+            catch (FormatException error)
+            {
+                MessageBox.Show(error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         protected void AltaCliente_FormClosed(object sender, FormClosedEventArgs e)

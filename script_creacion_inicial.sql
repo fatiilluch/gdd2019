@@ -1,5 +1,8 @@
 --!!!!!!!
 --CREACION DE TABLAS
+USE [GD2C2019]
+GO
+
 create table Funcionalidades(
 	funcionalidad_id smallint identity(1,1) primary key,
 	funcionalidad_nombre nvarchar(100) not null unique
@@ -559,7 +562,7 @@ begin
 		set @mes_lim_superior = 12;
 	end
 	
-	select top 5 proveedor_cuit, sum(importe_total) as Total_facturado,count(*) as Cantidad_de_facturas from Reportes_Facturacion
+	select distinct top 5 proveedor_cuit, sum(importe_total) as Total_facturado,count(*) as Cantidad_de_facturas from Reportes_Facturacion
 		   where year(fecha_maxima)=@year and MONTH(fecha_maxima) between @mes_lim_inferior and (@mes_lim_superior+1)
 		   group by proveedor_cuit
 		   order by 2 desc
@@ -584,7 +587,7 @@ begin
 		set @mes_lim_inferior = 7;
 		set @mes_lim_superior = 12;
 	end
-	select top 5 proveedor_cuit,cast((100-(precio_oferta/precio_viejo)*100) as decimal(5,2)) as Porcentaje_de_descuento,precio_oferta,precio_viejo from Ofertas
+	select distinct top 5 proveedor_cuit,cast((100-(precio_oferta/precio_viejo)*100) as decimal(5,2)) as Porcentaje_de_descuento,precio_oferta,precio_viejo from Ofertas
 		   where year(fecha_publicacion)=@year and MONTH(@mes_lim_inferior) between 1 and (@mes_lim_superior+1)
 		   order by 2 desc
 		   
@@ -596,4 +599,22 @@ create procedure ofertas_disponibles_a_la_fecha (
 )
 as
 	select * from Ofertas where @fecha<fecha_vto
+go
+
+create procedure usuario_duplicado (
+	@name nvarchar(255)
+)
+as
+begin
+	declare @returned int;
+	if(exists(select * from Usuarios where nombre_usuario=@name))
+	begin
+		set @returned = 1
+	end
+	else
+	begin
+		set @returned = (-1)
+	end
+	return @returned
+end
 go

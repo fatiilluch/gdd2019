@@ -160,6 +160,7 @@
             this.Name = "ModificacionRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificacion de Rol";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ModificacionRol_FormClosed);
             this.Load += new System.EventHandler(this.ModificacionRol_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -23,6 +23,11 @@ namespace FrbaOfertas.ComprarOferta
         {
             InitializeComponent();
         }
+        public ComprarOferta(Form v)
+        {
+            InitializeComponent();
+            menu = v;
+        }
         public ComprarOferta(Form v,Usuario u)
         {
             InitializeComponent();

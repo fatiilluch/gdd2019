@@ -35,8 +35,6 @@ namespace FrbaOfertas.ConsumoDeCupon
             menuPrincipal = menu;
             cargartxtCuit();
             cargarCamposObligatorios();
-            btnBuscar.Enabled = false;
-            btnBuscar.BackColor = SystemColors.ControlDarkDark;
         }
         private void cargarCamposObligatorios()
         {
@@ -48,11 +46,15 @@ namespace FrbaOfertas.ConsumoDeCupon
         }
         private void cargartxtCuit()
         {
-            String query= String.Format("select cuit from proveedores where nombre_usuario='{0}'",usuario.getNombreUsuario());
-            DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
-            txtCuit.Text = ds.Tables[0].Rows[0]["cuit"].ToString();
-            txtCuit.Enabled = false;
-            txtCuit.ReadOnly = true;
+            if(usuario.getRol().Nombre.ToLower()=="proveedor")
+            {
+                String query= String.Format("select cuit from proveedores where nombre_usuario='{0}'",usuario.getNombreUsuario());
+                DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
+                txtCuit.Text = ds.Tables[0].Rows[0]["cuit"].ToString();
+                txtCuit.Enabled = false;
+                txtCuit.ReadOnly = true;
+            }
+            
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {

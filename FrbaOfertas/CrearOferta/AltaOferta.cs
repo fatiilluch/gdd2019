@@ -12,12 +12,12 @@ using FrbaOfertas.Conexion;
 using FrbaOfertas.Utilidades;
 using FrbaOfertas.GestorDeErrores;
 using System.Data.SqlClient;
-
+using FrbaOfertas.Entidades;
 namespace FrbaOfertas.CrearOferta
 {
     public partial class AltaOferta : AltaForm
     {
-        private String proveedorCuit;
+        private Usuario usuario;
         public AltaOferta(Form vent)//si vengo del Admin
         {
             InitializeComponent();
@@ -26,17 +26,32 @@ namespace FrbaOfertas.CrearOferta
             calendarioPublicacion.MinDate = DateTime.Now;
             calendarioVencimiento.MinDate = DateTime.Now;
         }
-        public AltaOferta(Form vent,String cuit)//si vengo del Proveedor
+        public AltaOferta(Form vent,Usuario us)//si vengo del Proveedor
         {
             InitializeComponent();
             ventanaAnterior = vent;
-            proveedorCuit = cuit;
-            txtCuit.Text = cuit;
+            usuario = us;
+            cargarCuit();
             inicializarCamposObligatorios();
             btnBuscar.BackColor = Color.DarkGray;
             btnBuscar.Enabled = false;
             calendarioPublicacion.MinDate = DateTime.Now;
             calendarioVencimiento.MinDate = DateTime.Now;
+        }
+        private void cargarCuit()
+        {
+            if (usuario.getRol().Nombre.ToLower() == "proveedor")
+            {
+                String query = String.Format("select cuit from proveedores where nombre_usuario='{0}'", usuario.getNombreUsuario());
+                SqlCommand cmd = new SqlCommand(query);
+                DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd);
+                txtCuit.Text = ds.Tables[0].Rows[0]["cuit"].ToString();
+            }
+            else
+            {
+                btnBuscar.BackColor = SystemColors.Control;
+                btnBuscar.Enabled = true;
+            }
         }
         protected override void inicializarCamposObligatorios()
         {

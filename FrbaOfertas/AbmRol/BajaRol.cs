@@ -47,6 +47,7 @@ namespace FrbaOfertas.AbmRol
                 cmd.Parameters.Add("@r", SqlDbType.SmallInt).Value = r.Id;
                 Conexion.Conexion.ejecutar(cmd);
                 MessageBox.Show("Rol dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
                 menu.Show();
             }catch(RolInhabilitadoException error)
             { error.mensaje();}

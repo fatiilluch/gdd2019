@@ -33,6 +33,9 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
+            // txtRubro
+            // 
+            // 
             // btnCrear
             // 
             this.btnCrear.Location = new System.Drawing.Point(542, 423);

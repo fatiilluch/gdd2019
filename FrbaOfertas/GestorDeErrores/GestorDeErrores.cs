@@ -50,6 +50,17 @@ namespace FrbaOfertas.GestorDeErrores
                 throw new UsuarioInexistenteException();
             }
         }
+        public static void verificarUsuarioDuplicado(String nombre)
+        {
+            SqlCommand cmd = new SqlCommand("usuario_duplicado");
+            cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = nombre;
+
+            int valorDeVerdad = Conexion.Conexion.ejecutarProcedure(cmd);
+            if (valorDeVerdad > 0)
+            {
+                throw new UsuarioDuplicadoException();
+            }
+        }
         public static void verificarCamposObligatoriosCompletos(List<TextBox> campos)
         {
             if (campos.Exists(campo => campo.Text == string.Empty))
@@ -166,6 +177,14 @@ namespace FrbaOfertas.GestorDeErrores
         public void mensaje()
         {
             MessageBox.Show("No posee saldo suficiente", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+    }
+    public class UsuarioDuplicadoException : Exception
+    {
+        public void mensaje()
+        {
+            MessageBox.Show("Ya existe alguien con ese nombre de usuario", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
     }

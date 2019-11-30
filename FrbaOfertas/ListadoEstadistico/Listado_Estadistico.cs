@@ -22,6 +22,7 @@ namespace FrbaOfertas.ListadoEstadistico
         public Listado_Estadistico(Form v)
         {
             InitializeComponent();
+            inicializarCmb();
             menuPrincipal = v;
         }
         private void inicializarCmb()

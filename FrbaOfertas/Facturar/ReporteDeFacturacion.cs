@@ -94,6 +94,10 @@ namespace FrbaOfertas.Facturar
             {
                 MessageBox.Show(error.Number.ToString()+" :"+error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (FormatException error)
+            {
+                MessageBox.Show(error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             finally
             {
                 Conexion.Conexion.getCon().Close();

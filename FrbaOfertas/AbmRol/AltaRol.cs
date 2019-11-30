@@ -79,7 +79,7 @@ namespace FrbaOfertas.AbmRol
                     cmd.CommandText = query;
                     Conexion.Conexion.ejecutar(cmd);
                 }
-              
+
                 MessageBox.Show("Rol creado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (CamposObligatoriosIncompletosException error)
@@ -90,10 +90,19 @@ namespace FrbaOfertas.AbmRol
             {
                 error.mensaje();
             }
+            catch (FormatException error)
+            {
+                MessageBox.Show(error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception error)
             {
                 MessageBox.Show("Error inesperado, ups!" + error.Message.ToString(), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                Conexion.Conexion.getCon().Close();
+            }
+
         }
 
         private void bloquearBoton(Button btn)

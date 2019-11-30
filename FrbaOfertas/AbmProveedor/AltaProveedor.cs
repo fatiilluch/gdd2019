@@ -48,13 +48,24 @@ namespace FrbaOfertas.AbmProveedor
         {
             camposObligatorios.Add(txtRs);
             camposObligatorios.Add(txtCuit);
-            camposObligatorios.Add(txtRubro);
             camposObligatorios.Add(txtEmail);
             camposObligatorios.Add(txtTelefono);
             camposObligatorios.Add(txtCiudad);
             camposObligatorios.Add(txtDireccion);
             camposObligatorios.Add(txtCp);
             camposObligatorios.Add(txtContacto);
+
+            SqlCommand cmd = new SqlCommand("select * from rubros");
+            DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd);
+            List<Rubro> rubros = new List<Rubro>();
+            foreach (DataRow fila in ds.Tables[0].Rows)
+            {
+                Rubro r = new Rubro(fila["rubro_nombre"].ToString(), Convert.ToInt32(fila["rubro_id"]));
+                rubros.Add(r);
+            }
+            cmbRubros.DataSource = rubros;
+            cmbRubros.DisplayMember = "Nombre";
+            
         }
 
         protected void btnCrear_Click(object sender, EventArgs e)
@@ -81,6 +92,10 @@ namespace FrbaOfertas.AbmProveedor
             {
                 MessageBox.Show(error.Number + " :" + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (FormatException error)
+            {
+                MessageBox.Show(error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             finally { Conexion.Conexion.getCon().Close(); }
             
         }
@@ -93,13 +108,14 @@ namespace FrbaOfertas.AbmProveedor
         }
         protected void cargarCmd(SqlCommand cmd)
         {
+            Rubro r = cmbRubros.SelectedItem as Rubro;
             cmd.Parameters.Add("@rs", SqlDbType.NVarChar,100).Value=txtRs.Text;
             cmd.Parameters.Add("@email", SqlDbType.NVarChar, 255).Value = txtEmail.Text;
             cmd.Parameters.Add("@telefono", SqlDbType.NVarChar, 18).Value = txtTelefono.Text;
             cmd.Parameters.Add("@ciudad", SqlDbType.NVarChar, 255).Value = txtCiudad.Text;
             cmd.Parameters.Add("@codigo_postal", SqlDbType.NVarChar, 20).Value = txtCp;
             cmd.Parameters.Add("@cuit", SqlDbType.NVarChar, 20).Value = txtCuit.Text;
-            cmd.Parameters.Add("@rubro_id", SqlDbType.SmallInt).Value=Convert.ToInt16(txtRubro.Text);
+            cmd.Parameters.Add("@rubro_id", SqlDbType.SmallInt).Value=Convert.ToInt16(r.Id);
             cmd.Parameters.Add("@contacto", SqlDbType.NVarChar, 255).Value = txtContacto.Text; ;
             cmd.Parameters.Add("@direccion", SqlDbType.NVarChar,255).Value=txtDireccion.Text;
             cmd.Parameters.Add("@piso", SqlDbType.SmallInt).Value = txtPiso.Text;

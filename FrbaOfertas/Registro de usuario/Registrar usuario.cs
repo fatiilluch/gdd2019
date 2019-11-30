@@ -48,7 +48,7 @@ namespace FrbaOfertas.Registro_de_usuario
                     GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
 
                     Rol seleccionado = cmbRol.SelectedItem as Rol;
-                    GestorDeErrores.GestorDeErrores.verificarUsuarioPorRolExistente(seleccionado.Id, user.getNombreUsuario());
+                    GestorDeErrores.GestorDeErrores.verificarUsuarioDuplicado(user.getNombreUsuario());
 
                     switch (seleccionado.Nombre)
                     {
@@ -69,10 +69,12 @@ namespace FrbaOfertas.Registro_de_usuario
             {
                 error.mensaje();
             }
-            catch (UsuarioInexistenteException error)
+            catch (UsuarioDuplicadoException error)
             { error.mensaje(); }
-            catch (UsuarioConRolExistenteException error)
-            { error.mensaje(); }
+            finally
+            {
+                Conexion.Conexion.getCon().Close();
+            }
             
             
 

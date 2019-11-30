@@ -98,7 +98,7 @@ namespace FrbaOfertas.AbmProveedor
             Proveedor proveedor = new Proveedor(
                 ds.Tables[0].Rows[0]["rs"].ToString(),
                 ds.Tables[0].Rows[0]["cuit"].ToString(),
-                ds.Tables[0].Rows[0]["proveedor_nombre"].ToString(),
+                ds.Tables[0].Rows[0]["nombre_contacto"].ToString(),
                 ds.Tables[0].Rows[0]["ciudad"].ToString(),
                 ds.Tables[0].Rows[0]["codigo_postal"].ToString(),
                 ds.Tables[0].Rows[0]["telefono"].ToString(),

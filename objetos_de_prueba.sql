@@ -19,7 +19,7 @@
 	insert into Roles (rol_nombre) values ('cliente')
 
 --Usuario Por Rol
-	insert into UsuarioPorRol select rol_id,'admin' from Roles where rol_nombre='administrador General'
+	insert into UsuarioPorRol select rol_id,'admin' from Roles where rol_nombre='administrador general'
 	insert into UsuarioPorRol select rol_id,'user1' from Roles where rol_nombre='cliente'
 	insert into UsuarioPorRol select rol_id,'user2' from Roles where rol_nombre='proveedor'
 	insert into UsuarioPorRol select rol_id,'user3' from Roles where rol_nombre='cliente' or rol_nombre='proveedor'
@@ -35,7 +35,7 @@
 	insert into Funcionalidades (funcionalidad_nombre) values ('Realizar reporte de facturacion')
 	insert into Funcionalidades (funcionalidad_nombre) values ('Abm de rol')
 	insert into Funcionalidades (funcionalidad_nombre) values ('Carga de credito')
-	insert into Funcionalidades (funcionalidad_nombre) values ('Consumo de oferta')
+	
 	
  --Funcionalidad Por Rol
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (3,5)
@@ -50,8 +50,7 @@
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,9)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (3,10)
 	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,10)
-	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,11)
-	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (2,11)
+	insert into FuncionalidadPorRol (rol_id,funcionalidad_id) values (1,6)
 	
 --Cliente asociado a user1
 	insert into Clientes (dni,cliente_nombre,cliente_apellido,fecha_nacimiento,ciudad,codigo_postal,telefono,email,direccion,nombre_usuario)

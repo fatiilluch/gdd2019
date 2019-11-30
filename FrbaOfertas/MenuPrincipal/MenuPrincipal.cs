@@ -18,12 +18,10 @@ namespace FrbaOfertas.MenuPrincipal
     public partial class MenuPrincipal : Form
     {
         Usuario usuario;
-        Rol rol;
-        public MenuPrincipal(Usuario us, Rol r)
+        public MenuPrincipal(Usuario us)
         {
             InitializeComponent();
             usuario = us;
-            rol=r;
             inicializarFuncionalidades();
         }
 
@@ -37,11 +35,11 @@ namespace FrbaOfertas.MenuPrincipal
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = usuario.getNombreUsuario();
-            lblR.Text = rol.ToString();
+            lblR.Text = usuario.getRol().Nombre.ToString();
         }
         private void inicializarFuncionalidades()
         {
-            String query = String.Format("exec obtener_funcionalidades_del_rol {0};", rol.Id);
+            String query = String.Format("exec obtener_funcionalidades_del_rol {0};", usuario.getRol().Id);
             DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
             List<Funcionalidad> funcionalidades = new List<Funcionalidad>();
 
@@ -62,7 +60,7 @@ namespace FrbaOfertas.MenuPrincipal
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
             Funcionalidad funcionalidadSeleccionada = cmbFuncionalidades.SelectedItem as Funcionalidad;
-            Form form = funcionalidadSeleccionada.getForm(this);
+            Form form = funcionalidadSeleccionada.getForm(this,usuario);
             form.Show();
             this.Hide();
         }

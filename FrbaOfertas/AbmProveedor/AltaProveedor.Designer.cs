@@ -37,7 +37,6 @@
             this.txtContacto = new System.Windows.Forms.TextBox();
             this.txtCiudad = new System.Windows.Forms.TextBox();
             this.txtCp = new System.Windows.Forms.TextBox();
-            this.txtRubro = new System.Windows.Forms.TextBox();
             this.lblRazonSocial = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblTelefono = new System.Windows.Forms.Label();
@@ -57,6 +56,7 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.cmbRubros = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -125,13 +125,6 @@
             this.txtCp.Size = new System.Drawing.Size(200, 20);
             this.txtCp.TabIndex = 7;
             // 
-            // txtRubro
-            // 
-            this.txtRubro.Location = new System.Drawing.Point(132, 120);
-            this.txtRubro.Name = "txtRubro";
-            this.txtRubro.Size = new System.Drawing.Size(200, 20);
-            this.txtRubro.TabIndex = 8;
-            // 
             // lblRazonSocial
             // 
             this.lblRazonSocial.AutoSize = true;
@@ -171,7 +164,7 @@
             // lblRubro
             // 
             this.lblRubro.AutoSize = true;
-            this.lblRubro.Location = new System.Drawing.Point(18, 127);
+            this.lblRubro.Location = new System.Drawing.Point(18, 120);
             this.lblRubro.Name = "lblRubro";
             this.lblRubro.Size = new System.Drawing.Size(39, 13);
             this.lblRubro.TabIndex = 14;
@@ -258,6 +251,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbRubros);
             this.groupBox1.Controls.Add(this.lblRazonSocial);
             this.groupBox1.Controls.Add(this.txtRs);
             this.groupBox1.Controls.Add(this.lblCuit);
@@ -267,7 +261,6 @@
             this.groupBox1.Controls.Add(this.lblEmail);
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.lblRubro);
-            this.groupBox1.Controls.Add(this.txtRubro);
             this.groupBox1.Controls.Add(this.lblTelefono);
             this.groupBox1.Controls.Add(this.txtTelefono);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -306,6 +299,14 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // cmbRubros
+            // 
+            this.cmbRubros.FormattingEnabled = true;
+            this.cmbRubros.Location = new System.Drawing.Point(132, 120);
+            this.cmbRubros.Name = "cmbRubros";
+            this.cmbRubros.Size = new System.Drawing.Size(200, 21);
+            this.cmbRubros.TabIndex = 16;
             // 
             // AltaProveedor
             // 
@@ -346,7 +347,6 @@
         protected System.Windows.Forms.TextBox txtContacto;
         protected System.Windows.Forms.TextBox txtCiudad;
         protected System.Windows.Forms.TextBox txtCp;
-        protected System.Windows.Forms.TextBox txtRubro;
         protected System.Windows.Forms.Label lblRazonSocial;
         protected System.Windows.Forms.Label lblEmail;
         protected System.Windows.Forms.Label lblTelefono;
@@ -364,5 +364,6 @@
         protected System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.Button btnCrear;
         protected System.Windows.Forms.Button btnLimpiar;
+        protected System.Windows.Forms.ComboBox cmbRubros;
     }
 }
