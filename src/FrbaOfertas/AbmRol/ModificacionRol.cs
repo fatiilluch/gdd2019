@@ -48,7 +48,7 @@ namespace FrbaOfertas.AbmRol
         private void bloquearBoton(Button btn)
         {
             btn.Enabled = false;
-            btn.BackColor = Color.Red;
+            btn.BackColor = SystemColors.ControlDarkDark;
         }
         private void desbloquearBoton(Button btn)
         {
@@ -90,7 +90,7 @@ namespace FrbaOfertas.AbmRol
             Rol r = cmbRoles.SelectedItem as Rol;
             cargarCheckedListBox(r.Id);
 
-            SqlCommand cmd = new SqlCommand("rol_habilitado");
+            SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].rol_habilitado");
             cmd.Parameters.Add("@id", SqlDbType.SmallInt).Value = r.Id;
             int i = Conexion.Conexion.ejecutarProcedure(cmd);
 
@@ -138,12 +138,18 @@ namespace FrbaOfertas.AbmRol
                 Conexion.Conexion.ejecutar(query);
             }
             MessageBox.Show("Rol modificado exitósamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            this.Hide();
             menu.Show();
         }
 
         private void ModificacionRol_FormClosed(object sender, FormClosedEventArgs e)
         {
+            menu.Show();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
             menu.Show();
         }
 

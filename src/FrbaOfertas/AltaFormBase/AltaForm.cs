@@ -64,7 +64,7 @@ namespace FrbaOfertas
         }
         protected void btnAtras_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             this.ventanaAnterior.Show();
         }
     }

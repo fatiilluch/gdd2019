@@ -27,9 +27,7 @@ namespace FrbaOfertas.MenuPrincipal
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form v = new Login();
-            v.Show();
+            Application.Exit();
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)

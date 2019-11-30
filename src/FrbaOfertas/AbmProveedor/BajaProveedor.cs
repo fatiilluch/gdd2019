@@ -44,7 +44,7 @@ namespace FrbaOfertas.AbmProveedor
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void BajaProveedor_FormClosed(object sender, FormClosedEventArgs e)
@@ -60,7 +60,7 @@ namespace FrbaOfertas.AbmProveedor
                 String query = String.Format("update [RE_GDDIENTOS].Proveedores set habilitado = 0 where cuit ='{0}'", txtCuit.Text);
                 Conexion.Conexion.ejecutar(query);
                 MessageBox.Show("Proveedor dado de baja con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                this.Hide();
             }
             catch (GestorDeErrores.ClienteDeshabilitadoException error)
             {

@@ -68,7 +68,7 @@
             // 
             // btnDeshabilitar
             // 
-            this.btnDeshabilitar.BackColor = System.Drawing.Color.Red;
+            this.btnDeshabilitar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnDeshabilitar.Enabled = false;
             this.btnDeshabilitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeshabilitar.Location = new System.Drawing.Point(268, 54);
@@ -81,7 +81,7 @@
             // 
             // btnHabilitar
             // 
-            this.btnHabilitar.BackColor = System.Drawing.Color.Red;
+            this.btnHabilitar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnHabilitar.Enabled = false;
             this.btnHabilitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHabilitar.Location = new System.Drawing.Point(177, 54);
@@ -137,6 +137,7 @@
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnModificarRol
             // 

@@ -65,7 +65,7 @@
             // 
             // btnBaja
             // 
-            this.btnBaja.BackColor = System.Drawing.Color.Red;
+            this.btnBaja.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnBaja.Enabled = false;
             this.btnBaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBaja.ForeColor = System.Drawing.SystemColors.ControlText;

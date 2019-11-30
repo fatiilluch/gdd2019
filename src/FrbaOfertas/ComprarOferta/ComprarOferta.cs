@@ -36,6 +36,7 @@ namespace FrbaOfertas.ComprarOferta
         private void cargarDg()
         {
             SqlCommand cmd1 = new SqlCommand("[RE_GDDIENTOS].ofertas_disponibles_a_la_fecha");
+            cmd1.CommandType = CommandType.StoredProcedure;
             cmd1.Parameters.Add("@fecha",SqlDbType.DateTime).Value = Utilidades.Utilidades.fechaConfig;
 
             DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd1);
@@ -44,6 +45,7 @@ namespace FrbaOfertas.ComprarOferta
         private void cargarSaldo()
         {
             SqlCommand cmd2 = new SqlCommand("[RE_GDDIENTOS].saldo_disponible");
+            cmd2.CommandType = CommandType.StoredProcedure;
             cmd2.Parameters.Add("@user_name", SqlDbType.NVarChar, 255).Value = us.getNombreUsuario();
             cmd2.Parameters.Add("@returned", SqlDbType.Decimal).Direction = ParameterDirection.ReturnValue;
 

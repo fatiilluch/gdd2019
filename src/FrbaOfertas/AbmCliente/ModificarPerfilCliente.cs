@@ -68,7 +68,7 @@ namespace FrbaOfertas.AbmCliente
                 Conexion.Conexion.ejecutar(cmd);
                 MessageBox.Show("Cliente actualizado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ventanaAnterior.Show();
-                this.Close();
+                this.Hide();
             }
             catch (CamposObligatoriosIncompletosException error)
             {

@@ -47,13 +47,14 @@
             // 
             // btnEliminar
             // 
+            this.btnEliminar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.btnEliminar.Location = new System.Drawing.Point(177, 65);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(120, 39);
             this.btnEliminar.TabIndex = 5;
-            this.btnEliminar.Text = "Eliminar Rol";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Text = "Dar de baja";
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnCancelar
@@ -95,7 +96,8 @@
             this.ClientSize = new System.Drawing.Size(349, 153);
             this.Controls.Add(this.groupBox1);
             this.Name = "BajaRol";
-            this.Text = "BajaRol";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Baja de Rol";
             this.Load += new System.EventHandler(this.BajaRol_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

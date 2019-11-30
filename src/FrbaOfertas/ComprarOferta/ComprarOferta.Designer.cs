@@ -48,7 +48,7 @@
             this.dgPublicaciones.MultiSelect = false;
             this.dgPublicaciones.Name = "dgPublicaciones";
             this.dgPublicaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPublicaciones.Size = new System.Drawing.Size(577, 264);
+            this.dgPublicaciones.Size = new System.Drawing.Size(902, 264);
             this.dgPublicaciones.TabIndex = 0;
             // 
             // lblOfertasPublicadas
@@ -63,7 +63,7 @@
             // btnComprar
             // 
             this.btnComprar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnComprar.Location = new System.Drawing.Point(420, 317);
+            this.btnComprar.Location = new System.Drawing.Point(745, 320);
             this.btnComprar.Name = "btnComprar";
             this.btnComprar.Size = new System.Drawing.Size(172, 23);
             this.btnComprar.TabIndex = 2;
@@ -84,7 +84,7 @@
             // lblSaldo
             // 
             this.lblSaldo.AutoSize = true;
-            this.lblSaldo.Location = new System.Drawing.Point(282, 15);
+            this.lblSaldo.Location = new System.Drawing.Point(607, 15);
             this.lblSaldo.Name = "lblSaldo";
             this.lblSaldo.Size = new System.Drawing.Size(114, 13);
             this.lblSaldo.TabIndex = 4;
@@ -92,7 +92,7 @@
             // 
             // txtSaldo
             // 
-            this.txtSaldo.Location = new System.Drawing.Point(414, 12);
+            this.txtSaldo.Location = new System.Drawing.Point(739, 12);
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.ReadOnly = true;
             this.txtSaldo.Size = new System.Drawing.Size(178, 20);
@@ -102,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 355);
+            this.ClientSize = new System.Drawing.Size(929, 355);
             this.Controls.Add(this.txtSaldo);
             this.Controls.Add(this.lblSaldo);
             this.Controls.Add(this.btnCancelar);

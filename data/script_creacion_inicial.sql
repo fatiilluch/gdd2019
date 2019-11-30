@@ -238,7 +238,8 @@ go
 alter table [RE_GDDIENTOS].proveedores
 add constraint fk_rubro foreign key (rubro_id) references [RE_GDDIENTOS].Rubros(rubro_id),
 	constraint fk_proveedor_usuario foreign key (nombre_usuario) references [RE_GDDIENTOS].Usuarios(nombre_usuario),
-	constraint uc_proveedor unique(rs,email,telefono);
+	constraint uc_proveedor unique(rs,email,telefono),
+	constraint df_lim_compra_por_us default 100 for limite_compra_por_us;
 go
 
 alter table [RE_GDDIENTOS].ofertas
@@ -406,6 +407,7 @@ begin
 			end
 			insert into [RE_GDDIENTOS].Cargas_credito (carga_fecha,monto,cliente_dni,forma_de_pago,tarjeta_id)
 				   values (@fecha_de_carga,@monto,@dni,@forma_pago,@tarj_num)
+			update Clientes set saldo=saldo+@monto where dni=@dni
 			commit transaction
 		end try
 		begin catch

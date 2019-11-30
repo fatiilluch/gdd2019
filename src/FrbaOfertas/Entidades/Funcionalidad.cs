@@ -84,7 +84,7 @@ namespace FrbaOfertas.Entidades
                     case "abm de rol":
                         return new MenuAbmRol(menu);
                     case "carga de credito":
-                        return new CargaCredito(menu);
+                        return new CargaCredito(menu,usuario);
                     default:
                         throw new Exception("Funcionalidad sin menu");
                 }
