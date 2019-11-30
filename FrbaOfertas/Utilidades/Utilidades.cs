@@ -11,6 +11,7 @@ namespace FrbaOfertas.Utilidades
 {
     public class Utilidades
     {
+        public static DateTime fechaConfig = DateTime.Parse(System.Configuration.ConfigurationManager.AppSettings["fechaConfig"]);
         public static String condicionesFiltrosTextoExacto(List<TextBox> filtros)
         {
             String condiciones = "";

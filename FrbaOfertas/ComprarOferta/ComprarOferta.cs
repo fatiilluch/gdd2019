@@ -18,7 +18,6 @@ namespace FrbaOfertas.ComprarOferta
     {
         private Usuario us;
         private Form menu;
-        private DateTime fechaActual=DateTime.Now;
         public ComprarOferta()
         {
             InitializeComponent();
@@ -33,16 +32,11 @@ namespace FrbaOfertas.ComprarOferta
             InitializeComponent();
             us = u;
             menu = v;
-            leerFechaDelConfig();
-        }
-        private void leerFechaDelConfig()
-        {
-            ///TO DO
         }
         private void cargarDg()
         {
             SqlCommand cmd1 = new SqlCommand("ofertas_disponibles_a_la_fecha");
-            cmd1.Parameters.Add("@fecha",SqlDbType.DateTime).Value = fechaActual;
+            cmd1.Parameters.Add("@fecha",SqlDbType.DateTime).Value = Utilidades.Utilidades.fechaConfig;
 
             DataSet ds = Conexion.Conexion.ejecutarConsulta(cmd1);
             dgPublicaciones.DataSource = ds.Tables[0];

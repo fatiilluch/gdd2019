@@ -20,7 +20,6 @@ namespace FrbaOfertas.CragaCredito
         private List<TextBox> camposObligatorios = new List<TextBox>();
         private Form menu;
         private Usuario us;
-        private DateTime fecha;
         public CargaCredito()
         {
             InitializeComponent();
@@ -29,7 +28,6 @@ namespace FrbaOfertas.CragaCredito
         {
             menu = ventana;
             InitializeComponent();
-            fecha = DateTime.Now; // sacarlo de un archivo de config duh
             us = user;
             iniciarTextBoxCliente();
             bloquearBoton(btnBuscar);
@@ -40,7 +38,6 @@ namespace FrbaOfertas.CragaCredito
         {
             menu = ventana;
             InitializeComponent();
-            fecha = DateTime.Now;
             inicializarCamposObligatorios();
         }
         private void iniciarTextBoxCliente()
@@ -108,7 +105,7 @@ namespace FrbaOfertas.CragaCredito
         {
             cmd.Parameters.Add("@dni", SqlDbType.NVarChar, 18).Value = txtCliente.Text;
             cmd.Parameters.Add("@monto", SqlDbType.Decimal).Value = Convert.ToDecimal(txtMonto.Text);
-            cmd.Parameters.Add("@fecha_de_carga", SqlDbType.DateTime).Value = fecha;
+            cmd.Parameters.Add("@fecha_de_carga", SqlDbType.DateTime).Value = Utilidades.Utilidades.fechaConfig;
             cmd.Parameters.Add("@forma_pago", SqlDbType.NVarChar, 100).Value = cmbTipoTarjeta.SelectedItem.ToString();
             cmd.Parameters.Add("@tarj_num", SqlDbType.NVarChar, 18).Value = txtTarjeta_id.Text;
             cmd.Parameters.Add("@fecha_venc", SqlDbType.DateTime).Value = calendario.Value;

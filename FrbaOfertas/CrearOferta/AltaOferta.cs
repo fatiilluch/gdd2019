@@ -23,8 +23,8 @@ namespace FrbaOfertas.CrearOferta
             InitializeComponent();
             ventanaAnterior = vent;
             inicializarCamposObligatorios();
-            calendarioPublicacion.MinDate = DateTime.Now;
-            calendarioVencimiento.MinDate = DateTime.Now;
+            calendarioPublicacion.MinDate = Utilidades.Utilidades.fechaConfig;
+            calendarioVencimiento.MinDate = Utilidades.Utilidades.fechaConfig;
         }
         public AltaOferta(Form vent,Usuario us)//si vengo del Proveedor
         {
@@ -35,8 +35,8 @@ namespace FrbaOfertas.CrearOferta
             inicializarCamposObligatorios();
             btnBuscar.BackColor = Color.DarkGray;
             btnBuscar.Enabled = false;
-            calendarioPublicacion.MinDate = DateTime.Now;
-            calendarioVencimiento.MinDate = DateTime.Now;
+            calendarioPublicacion.MinDate = Utilidades.Utilidades.fechaConfig;
+            calendarioVencimiento.MinDate = Utilidades.Utilidades.fechaConfig;
         }
         private void cargarCuit()
         {

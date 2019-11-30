@@ -55,6 +55,7 @@ namespace FrbaOfertas.ComprarOferta
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@user_name", SqlDbType.NVarChar, 255).Value = usuario.getNombreUsuario();
                 cmd.Parameters.Add("@oferta_id", SqlDbType.NVarChar, 50).Value = oferta.Oferta_id;
+                cmd.Parameters.Add("@fecha_actual", SqlDbType.DateTime).Value = Utilidades.Utilidades.fechaConfig;
 
                 Conexion.Conexion.ejecutar(cmd);
                 MessageBox.Show("Compra realizada con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
