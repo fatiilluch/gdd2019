@@ -709,10 +709,10 @@ go
 	insert into [RE_GDDIENTOS].Roles (rol_nombre) values ('cliente')
 
 --Usuario Por Rol
-	insert into [RE_GDDIENTOS].UsuarioPorRol select rol_id,'admin' from Roles where rol_nombre='administrador general'
-	insert into [RE_GDDIENTOS].UsuarioPorRol select rol_id,'user1' from Roles where rol_nombre='cliente'
-	insert into [RE_GDDIENTOS].UsuarioPorRol select rol_id,'user2' from Roles where rol_nombre='proveedor'
-	insert into [RE_GDDIENTOS].UsuarioPorRol select rol_id,'user3' from Roles where rol_nombre='cliente' or rol_nombre='proveedor'
+	insert into [RE_GDDIENTOS].UsuarioPorRol select rol_id,'admin' from [RE_GDDIENTOS].Roles where rol_nombre='administrador general'
+	insert into [RE_GDDIENTOS].UsuarioPorRol select rol_id,'user1' from [RE_GDDIENTOS].Roles where rol_nombre='cliente'
+	insert into [RE_GDDIENTOS].UsuarioPorRol select rol_id,'user2' from [RE_GDDIENTOS].Roles where rol_nombre='proveedor'
+	insert into [RE_GDDIENTOS].UsuarioPorRol select rol_id,'user3' from [RE_GDDIENTOS].Roles where rol_nombre='cliente' or rol_nombre='proveedor'
 
 --Funcionalidades
 	insert into [RE_GDDIENTOS].Funcionalidades (funcionalidad_nombre) values ('Registrar usuario')
