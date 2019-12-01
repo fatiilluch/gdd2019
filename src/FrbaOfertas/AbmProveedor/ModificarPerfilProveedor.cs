@@ -73,6 +73,7 @@ namespace FrbaOfertas.AbmProveedor
             try
             {
                 GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                verificarCampos();
                 String query = String.Format("update [RE_GDDIENTOS].Proveedores set cuit=@cuit,nombre_contacto=@contacto,ciudad=@ciudad,codigo_postal=@codigo_postal,telefono=@telefono,email=@email,direccion=@direccion,piso=@piso,dpto=@depto where nombre_usuario='{0}'", us.getNombreUsuario());
                 SqlCommand cmd = new SqlCommand(query);
                 cargarCmd(cmd);
@@ -87,7 +88,7 @@ namespace FrbaOfertas.AbmProveedor
             }
             catch (FormatException error)
             {
-                MessageBox.Show(error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hay campos con el formato incorrecto: " + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

@@ -38,6 +38,9 @@
             this.rs = new System.Windows.Forms.TextBox();
             this.email = new System.Windows.Forms.TextBox();
             this.cuit = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgProveedores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +56,7 @@
             this.dgProveedores.Name = "dgProveedores";
             this.dgProveedores.ReadOnly = true;
             this.dgProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgProveedores.Size = new System.Drawing.Size(618, 150);
+            this.dgProveedores.Size = new System.Drawing.Size(906, 150);
             this.dgProveedores.TabIndex = 0;
             // 
             // lblFiltroCuit
@@ -85,30 +88,30 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(545, 148);
+            this.btnLimpiar.Location = new System.Drawing.Point(745, 148);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(100, 23);
-            this.btnLimpiar.TabIndex = 4;
+            this.btnLimpiar.Size = new System.Drawing.Size(165, 23);
+            this.btnLimpiar.TabIndex = 6;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(27, 148);
+            this.btnBuscar.Location = new System.Drawing.Point(49, 148);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(100, 23);
-            this.btnBuscar.TabIndex = 5;
+            this.btnBuscar.Size = new System.Drawing.Size(143, 23);
+            this.btnBuscar.TabIndex = 4;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(160, 148);
+            this.btnSeleccionar.Location = new System.Drawing.Point(240, 148);
             this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(100, 23);
-            this.btnSeleccionar.TabIndex = 6;
+            this.btnSeleccionar.Size = new System.Drawing.Size(175, 23);
+            this.btnSeleccionar.TabIndex = 5;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
@@ -117,28 +120,61 @@
             // 
             this.rs.Location = new System.Drawing.Point(160, 64);
             this.rs.Name = "rs";
-            this.rs.Size = new System.Drawing.Size(100, 20);
-            this.rs.TabIndex = 7;
+            this.rs.Size = new System.Drawing.Size(162, 20);
+            this.rs.TabIndex = 2;
             // 
             // email
             // 
             this.email.Location = new System.Drawing.Point(160, 108);
             this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(100, 20);
-            this.email.TabIndex = 8;
+            this.email.Size = new System.Drawing.Size(162, 20);
+            this.email.TabIndex = 3;
             // 
             // cuit
             // 
             this.cuit.Location = new System.Drawing.Point(160, 28);
             this.cuit.Name = "cuit";
-            this.cuit.Size = new System.Drawing.Size(100, 20);
-            this.cuit.TabIndex = 9;
+            this.cuit.Size = new System.Drawing.Size(162, 20);
+            this.cuit.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(340, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "(Texto libre)";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(340, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "(Texto exacto)";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(340, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "(Texto libre)";
             // 
             // ListadoDeProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 346);
+            this.ClientSize = new System.Drawing.Size(945, 346);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cuit);
             this.Controls.Add(this.email);
             this.Controls.Add(this.rs);
@@ -170,5 +206,8 @@
         private System.Windows.Forms.TextBox rs;
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.TextBox cuit;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
     }
 }

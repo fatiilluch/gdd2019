@@ -17,7 +17,7 @@ namespace FrbaOfertas.AbmProveedor
 {
     public partial class AltaProveedor : AltaForm
     {
-        private Usuario us = new Usuario();
+        private Usuario us;
         public  AltaProveedor(Usuario user,Form v)
         {
             InitializeComponent();
@@ -73,6 +73,7 @@ namespace FrbaOfertas.AbmProveedor
             try
             {
                 GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                verificarCampos();
                 GestorDeErrores.GestorDeErrores.verificarProveedoresDuplicados(txtCuit.Text);
 
                 SqlCommand cmd = new SqlCommand("INSERT INTO [RE_GDDIENTOS].Proveedores (rs,email,telefono,ciudad,codigo_postal,cuit,rubro_id,nombre_contacto,direccion,piso,dpto,nombre_usuario) VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@contacto,@direccion,@piso,@depto,@user)");
@@ -80,7 +81,7 @@ namespace FrbaOfertas.AbmProveedor
                 int rol_id = Convert.ToInt32(Conexion.Conexion.ejecutarConsulta(SelectRol).Tables[0].Rows[0]);
 
                 cargarCmd(cmd);
-                if (us.getNombreUsuario() != null) { cargarUsuario(us, rol_id); }
+                if (us!= null) { cargarUsuario(us, rol_id); }
                 Conexion.Conexion.ejecutar(cmd);
                 MessageBox.Show("Proveedor guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -94,12 +95,17 @@ namespace FrbaOfertas.AbmProveedor
             }
             catch (FormatException error)
             {
-                MessageBox.Show(error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hay campos con el formato incorrecto: " + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally { Conexion.Conexion.getCon().Close(); }
             
         }
-
+        protected void verificarCampos()
+        {
+            Utilidades.Utilidades.verificarCampoNumerico(txtPiso);
+            Utilidades.Utilidades.verificarCampoNumerico(txtTelefono);
+            Utilidades.Utilidades.verificarCampoChar(txtDepto);
+        }
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
             camposObligatorios.ForEach(box => box.Clear());
@@ -118,9 +124,15 @@ namespace FrbaOfertas.AbmProveedor
             cmd.Parameters.Add("@rubro_id", SqlDbType.SmallInt).Value=Convert.ToInt16(r.Id);
             cmd.Parameters.Add("@contacto", SqlDbType.NVarChar, 255).Value = txtContacto.Text; ;
             cmd.Parameters.Add("@direccion", SqlDbType.NVarChar,255).Value=txtDireccion.Text;
-            cmd.Parameters.Add("@piso", SqlDbType.SmallInt).Value = txtPiso.Text;
-            cmd.Parameters.Add("@depto", SqlDbType.Char).Value = txtDepto.Text;
-            cmd.Parameters.Add("@user", SqlDbType.NVarChar,255).Value=us.getNombreUsuario();
+            if (txtPiso.Text != "") { cmd.Parameters.Add("@piso", SqlDbType.SmallInt).Value = txtPiso.Text; }
+            if (txtDepto.Text != "") { cmd.Parameters.Add("@depto", SqlDbType.Char).Value = txtDepto.Text; }
+            if (us != null) { cmd.Parameters.Add("@user", SqlDbType.NVarChar, 255).Value = us.getNombreUsuario(); }
+        }
+
+        private void ControlChanged(object sender, EventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            ctrl.BackColor = Color.White;
         }
     }
 

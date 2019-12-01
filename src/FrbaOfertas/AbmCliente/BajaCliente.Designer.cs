@@ -49,13 +49,13 @@
             this.txtDni.Location = new System.Drawing.Point(87, 33);
             this.txtDni.Name = "txtDni";
             this.txtDni.ReadOnly = true;
-            this.txtDni.Size = new System.Drawing.Size(210, 20);
+            this.txtDni.Size = new System.Drawing.Size(295, 20);
             this.txtDni.TabIndex = 1;
             this.txtDni.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(328, 31);
+            this.btnBuscar.Location = new System.Drawing.Point(307, 75);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 2;
@@ -69,7 +69,7 @@
             this.btnBaja.Enabled = false;
             this.btnBaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBaja.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnBaja.Location = new System.Drawing.Point(239, 75);
+            this.btnBaja.Location = new System.Drawing.Point(176, 75);
             this.btnBaja.Name = "btnBaja";
             this.btnBaja.Size = new System.Drawing.Size(75, 23);
             this.btnBaja.TabIndex = 3;
@@ -79,7 +79,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(105, 75);
+            this.btnCancelar.Location = new System.Drawing.Point(45, 75);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 4;

@@ -41,6 +41,7 @@ namespace FrbaOfertas.AbmCliente
         {
             btnModificar.Enabled = true;
             btnModificar.BackColor = SystemColors.Control;
+            txtDni.BackColor = Color.White;
             if (!clienteHabilitado(txtDni.Text))
             {
                 btnHabilitar.Enabled = true;
@@ -52,37 +53,35 @@ namespace FrbaOfertas.AbmCliente
                 btnDeshabilitar.BackColor = SystemColors.Control;
             }
         }
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            String query = String.Format("Select * from [RE_GDDIENTOS].Clientes where dni='{0}'", txtDni.Text);
-            DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
-            Int16 piso=new Int16();
-            Char dpto=new Char();
-            if (DBNull.Value != ds.Tables[0].Rows[0]["piso"]) { piso = Convert.ToInt16(ds.Tables[0].Rows[0]["piso"]); }
-            if (DBNull.Value != ds.Tables[0].Rows[0]["dpto"]) { dpto = Convert.ToChar(ds.Tables[0].Rows[0]["dpto"]); }
+            
+                String query = String.Format("Select * from [RE_GDDIENTOS].Clientes where dni='{0}'", txtDni.Text);
+                DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
+                Int16 piso = new Int16();
+                Char dpto = new Char();
+                if (DBNull.Value != ds.Tables[0].Rows[0]["piso"]) { piso = Convert.ToInt16(ds.Tables[0].Rows[0]["piso"]); }
+                if (DBNull.Value != ds.Tables[0].Rows[0]["dpto"]) { dpto = Convert.ToChar(ds.Tables[0].Rows[0]["dpto"]); }
 
-            Cliente cliente = new Cliente(
-                ds.Tables[0].Rows[0]["dni"].ToString(),
-                ds.Tables[0].Rows[0]["cliente_nombre"].ToString(),
-                ds.Tables[0].Rows[0]["cliente_apellido"].ToString(),
-                Convert.ToDateTime(ds.Tables[0].Rows[0]["fecha_nacimiento"]),
-                ds.Tables[0].Rows[0]["ciudad"].ToString(),
-                ds.Tables[0].Rows[0]["codigo_postal"].ToString(),
-                ds.Tables[0].Rows[0]["telefono"].ToString(),
-                ds.Tables[0].Rows[0]["email"].ToString(),
-                ds.Tables[0].Rows[0]["direccion"].ToString(),
-                piso,
-                dpto,
-                Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]),
-                ds.Tables[0].Rows[0]["nombre_usuario"].ToString()
-                );
-            this.Hide();
-            Form v = new ModificarPerfilCliente(cliente,menuPrincipal);
+                Cliente cliente = new Cliente(
+                    ds.Tables[0].Rows[0]["dni"].ToString(),
+                    ds.Tables[0].Rows[0]["cliente_nombre"].ToString(),
+                    ds.Tables[0].Rows[0]["cliente_apellido"].ToString(),
+                    Convert.ToDateTime(ds.Tables[0].Rows[0]["fecha_nacimiento"]),
+                    ds.Tables[0].Rows[0]["ciudad"].ToString(),
+                    ds.Tables[0].Rows[0]["codigo_postal"].ToString(),
+                    ds.Tables[0].Rows[0]["telefono"].ToString(),
+                    ds.Tables[0].Rows[0]["email"].ToString(),
+                    ds.Tables[0].Rows[0]["direccion"].ToString(),
+                    piso,
+                    dpto,
+                    Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]),
+                    ds.Tables[0].Rows[0]["nombre_usuario"].ToString()
+                    );
+                this.Hide();
+                Form v = new ModificarPerfilCliente(cliente, menuPrincipal);
 
-            v.Show();
-
-                
+                v.Show();
         }
         private Boolean clienteHabilitado(String dni)
         {

@@ -68,10 +68,6 @@ namespace FrbaOfertas.CragaCredito
             btn.Enabled = true;
             btn.BackColor = SystemColors.Control;
         }
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void CargaCredito_Load(object sender, EventArgs e)
         {
@@ -91,13 +87,23 @@ namespace FrbaOfertas.CragaCredito
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].cargar_credito");
-            cmd.CommandType=CommandType.StoredProcedure;
-            cargarCmd(cmd);
-            Conexion.Conexion.ejecutar(cmd);
-            MessageBox.Show("Carga realizada con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Hide();
-            menu.Show();
+            try
+            {
+                verificarCampos();
+
+                SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].cargar_credito");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cargarCmd(cmd);
+                Conexion.Conexion.ejecutar(cmd);
+                MessageBox.Show("Carga realizada con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Hide();
+                menu.Show();
+            }
+            catch (FormatException error)
+            {
+                MessageBox.Show("Hay campos con el formato incorrecto: " + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
 
         }
 
@@ -115,6 +121,21 @@ namespace FrbaOfertas.CragaCredito
         {
             Form v = new ListadoCliente(txtCliente);
             v.Show();
+        }
+        private void verificarCampos()
+        {
+            Utilidades.Utilidades.verificarCampoNumerico(txtMonto);
+            Utilidades.Utilidades.verificarCampoNumerico(txtTarjeta_id);
+        }
+        private void ControlChanged(object sender, EventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            ctrl.BackColor = Color.White;
+        }
+
+        private void txtCliente_TextChanged(object sender, EventArgs e)
+        {
+
         }
         
     }

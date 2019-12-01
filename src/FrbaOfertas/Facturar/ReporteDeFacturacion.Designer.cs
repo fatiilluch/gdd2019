@@ -69,7 +69,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(352, 19);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.TabIndex = 1;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -79,14 +79,14 @@
             this.dateFechaMinima.Location = new System.Drawing.Point(26, 44);
             this.dateFechaMinima.Name = "dateFechaMinima";
             this.dateFechaMinima.Size = new System.Drawing.Size(200, 20);
-            this.dateFechaMinima.TabIndex = 4;
+            this.dateFechaMinima.TabIndex = 2;
             // 
             // dateFechaMaxima
             // 
             this.dateFechaMaxima.Location = new System.Drawing.Point(320, 44);
             this.dateFechaMaxima.Name = "dateFechaMaxima";
             this.dateFechaMaxima.Size = new System.Drawing.Size(200, 20);
-            this.dateFechaMaxima.TabIndex = 5;
+            this.dateFechaMaxima.TabIndex = 3;
             // 
             // lblFechaMinima
             // 
@@ -124,7 +124,7 @@
             this.btnSalir.Location = new System.Drawing.Point(32, 429);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 9;
+            this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -134,7 +134,7 @@
             this.btnFacturar.Location = new System.Drawing.Point(516, 429);
             this.btnFacturar.Name = "btnFacturar";
             this.btnFacturar.Size = new System.Drawing.Size(75, 23);
-            this.btnFacturar.TabIndex = 10;
+            this.btnFacturar.TabIndex = 4;
             this.btnFacturar.Text = "Facturar";
             this.btnFacturar.UseVisualStyleBackColor = true;
             this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);

@@ -81,6 +81,7 @@
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(206, 20);
             this.txtDni.TabIndex = 5;
+            this.txtDni.TextChanged += new System.EventHandler(this.txtDni_TextChanged);
             // 
             // btnCancelar
             // 

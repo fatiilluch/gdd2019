@@ -59,12 +59,12 @@
             this.Controls.Add(this.btnActualizar);
             this.Name = "ModificarPerfilCliente";
             this.Text = "Modificar Perfil";
+            this.Controls.SetChildIndex(this.btnActualizar, 0);
             this.Controls.SetChildIndex(this.btnCrear, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.btnAtras, 0);
             this.Controls.SetChildIndex(this.btnLimpiar, 0);
-            this.Controls.SetChildIndex(this.btnActualizar, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

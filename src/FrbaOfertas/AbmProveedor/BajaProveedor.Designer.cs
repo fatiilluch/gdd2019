@@ -53,7 +53,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(288, 31);
+            this.btnBuscar.Location = new System.Drawing.Point(314, 71);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 6;
@@ -64,10 +64,10 @@
             // txtCuit
             // 
             this.txtCuit.Enabled = false;
-            this.txtCuit.Location = new System.Drawing.Point(105, 33);
+            this.txtCuit.Location = new System.Drawing.Point(92, 32);
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.ReadOnly = true;
-            this.txtCuit.Size = new System.Drawing.Size(136, 20);
+            this.txtCuit.Size = new System.Drawing.Size(266, 20);
             this.txtCuit.TabIndex = 0;
             this.txtCuit.TextChanged += new System.EventHandler(this.txtCuit_TextChanged);
             // 
@@ -86,9 +86,9 @@
             this.btnDarBaja.Enabled = false;
             this.btnDarBaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDarBaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnDarBaja.Location = new System.Drawing.Point(210, 65);
+            this.btnDarBaja.Location = new System.Drawing.Point(154, 71);
             this.btnDarBaja.Name = "btnDarBaja";
-            this.btnDarBaja.Size = new System.Drawing.Size(112, 39);
+            this.btnDarBaja.Size = new System.Drawing.Size(115, 26);
             this.btnDarBaja.TabIndex = 5;
             this.btnDarBaja.Text = "Dar de Baja";
             this.btnDarBaja.UseVisualStyleBackColor = false;
@@ -97,9 +97,9 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnCancelar.Location = new System.Drawing.Point(38, 65);
+            this.btnCancelar.Location = new System.Drawing.Point(22, 71);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(112, 39);
+            this.btnCancelar.Size = new System.Drawing.Size(88, 26);
             this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;

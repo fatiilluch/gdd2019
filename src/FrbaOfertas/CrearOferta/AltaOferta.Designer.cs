@@ -53,6 +53,12 @@
             this.validator = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBoxFechas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validator)).BeginInit();
             this.SuspendLayout();
@@ -160,7 +166,7 @@
             this.calendarioPublicacion.Location = new System.Drawing.Point(111, 19);
             this.calendarioPublicacion.Name = "calendarioPublicacion";
             this.calendarioPublicacion.Size = new System.Drawing.Size(259, 20);
-            this.calendarioPublicacion.TabIndex = 10;
+            this.calendarioPublicacion.TabIndex = 8;
             // 
             // calendarioVencimiento
             // 
@@ -174,35 +180,35 @@
             this.txtId.Location = new System.Drawing.Point(122, 20);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(175, 20);
-            this.txtId.TabIndex = 10;
+            this.txtId.TabIndex = 1;
             // 
             // txtStock
             // 
             this.txtStock.Location = new System.Drawing.Point(122, 69);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(175, 20);
-            this.txtStock.TabIndex = 11;
+            this.txtStock.TabIndex = 2;
             // 
             // txtLimiteCompra
             // 
             this.txtLimiteCompra.Location = new System.Drawing.Point(122, 117);
             this.txtLimiteCompra.Name = "txtLimiteCompra";
             this.txtLimiteCompra.Size = new System.Drawing.Size(175, 20);
-            this.txtLimiteCompra.TabIndex = 12;
+            this.txtLimiteCompra.TabIndex = 3;
             // 
             // txtPrecioAntiguo
             // 
             this.txtPrecioAntiguo.Location = new System.Drawing.Point(122, 168);
             this.txtPrecioAntiguo.Name = "txtPrecioAntiguo";
             this.txtPrecioAntiguo.Size = new System.Drawing.Size(175, 20);
-            this.txtPrecioAntiguo.TabIndex = 13;
+            this.txtPrecioAntiguo.TabIndex = 4;
             // 
             // txtPrecioNuevo
             // 
             this.txtPrecioNuevo.Location = new System.Drawing.Point(122, 214);
             this.txtPrecioNuevo.Name = "txtPrecioNuevo";
             this.txtPrecioNuevo.Size = new System.Drawing.Size(175, 20);
-            this.txtPrecioNuevo.TabIndex = 14;
+            this.txtPrecioNuevo.TabIndex = 5;
             // 
             // txtCuit
             // 
@@ -210,16 +216,16 @@
             this.txtCuit.Location = new System.Drawing.Point(122, 272);
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(175, 20);
-            this.txtCuit.TabIndex = 15;
+            this.txtCuit.TabIndex = 6;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(428, 27);
+            this.txtDescripcion.Location = new System.Drawing.Point(424, 20);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtDescripcion.Size = new System.Drawing.Size(302, 110);
-            this.txtDescripcion.TabIndex = 16;
+            this.txtDescripcion.TabIndex = 7;
             // 
             // btnCancelar
             // 
@@ -227,7 +233,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(41, 322);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(86, 40);
-            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -238,7 +244,7 @@
             this.btnPublicar.Location = new System.Drawing.Point(410, 322);
             this.btnPublicar.Name = "btnPublicar";
             this.btnPublicar.Size = new System.Drawing.Size(83, 41);
-            this.btnPublicar.TabIndex = 18;
+            this.btnPublicar.TabIndex = 12;
             this.btnPublicar.Text = "Publicar";
             this.btnPublicar.UseVisualStyleBackColor = true;
             this.btnPublicar.Click += new System.EventHandler(this.btnPublicar_Click);
@@ -253,7 +259,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(189, 322);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(153, 41);
-            this.btnBuscar.TabIndex = 19;
+            this.btnBuscar.TabIndex = 11;
             this.btnBuscar.Text = "Buscar proveedor";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -264,16 +270,82 @@
             this.btnLimpiar.Location = new System.Drawing.Point(631, 322);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(83, 40);
-            this.btnLimpiar.TabIndex = 20;
+            this.btnLimpiar.TabIndex = 13;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(303, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(11, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "*";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(303, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(11, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "*";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(303, 168);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(11, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "*";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(303, 214);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(11, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "*";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(303, 269);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(11, 13);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "*";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(732, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(11, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "*";
             // 
             // AltaOferta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 374);
+            this.ClientSize = new System.Drawing.Size(762, 374);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnPublicar);
@@ -313,9 +385,15 @@
             this.Controls.SetChildIndex(this.txtDescripcion, 0);
             this.Controls.SetChildIndex(this.btnCancelar, 0);
             this.Controls.SetChildIndex(this.btnPublicar, 0);
-            this.Controls.SetChildIndex(this.btnAtras, 0);
             this.Controls.SetChildIndex(this.btnBuscar, 0);
             this.Controls.SetChildIndex(this.btnLimpiar, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.btnAtras, 0);
             this.groupBoxFechas.ResumeLayout(false);
             this.groupBoxFechas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validator)).EndInit();
@@ -350,5 +428,11 @@
         private System.Windows.Forms.DateTimePicker calendarioVencimiento;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

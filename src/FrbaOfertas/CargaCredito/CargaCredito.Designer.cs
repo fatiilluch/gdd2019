@@ -50,7 +50,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(34, 277);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 0;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -60,7 +60,7 @@
             this.btnCargar.Location = new System.Drawing.Point(220, 277);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(75, 23);
-            this.btnCargar.TabIndex = 1;
+            this.btnCargar.TabIndex = 7;
             this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
             this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
@@ -71,20 +71,22 @@
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(200, 20);
             this.txtMonto.TabIndex = 2;
+            this.txtMonto.TextChanged += new System.EventHandler(this.ControlChanged);
             // 
             // txtTarjetaTitular
             // 
             this.txtTarjetaTitular.Location = new System.Drawing.Point(129, 175);
             this.txtTarjetaTitular.Name = "txtTarjetaTitular";
             this.txtTarjetaTitular.Size = new System.Drawing.Size(200, 20);
-            this.txtTarjetaTitular.TabIndex = 3;
+            this.txtTarjetaTitular.TabIndex = 5;
             // 
             // txtTarjeta_id
             // 
             this.txtTarjeta_id.Location = new System.Drawing.Point(129, 133);
             this.txtTarjeta_id.Name = "txtTarjeta_id";
             this.txtTarjeta_id.Size = new System.Drawing.Size(200, 20);
-            this.txtTarjeta_id.TabIndex = 6;
+            this.txtTarjeta_id.TabIndex = 4;
+            this.txtTarjeta_id.TextChanged += new System.EventHandler(this.ControlChanged);
             // 
             // lblMonto
             // 
@@ -137,15 +139,14 @@
             this.cmbTipoTarjeta.Location = new System.Drawing.Point(129, 93);
             this.cmbTipoTarjeta.Name = "cmbTipoTarjeta";
             this.cmbTipoTarjeta.Size = new System.Drawing.Size(200, 21);
-            this.cmbTipoTarjeta.TabIndex = 17;
+            this.cmbTipoTarjeta.TabIndex = 3;
             // 
             // calendario
             // 
             this.calendario.Location = new System.Drawing.Point(129, 220);
             this.calendario.Name = "calendario";
             this.calendario.Size = new System.Drawing.Size(200, 20);
-            this.calendario.TabIndex = 19;
-            this.calendario.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.calendario.TabIndex = 6;
             // 
             // txtCliente
             // 
@@ -154,7 +155,8 @@
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.ReadOnly = true;
             this.txtCliente.Size = new System.Drawing.Size(119, 20);
-            this.txtCliente.TabIndex = 20;
+            this.txtCliente.TabIndex = 1;
+            this.txtCliente.TextChanged += new System.EventHandler(this.txtCliente_TextChanged);
             // 
             // lblCliente
             // 

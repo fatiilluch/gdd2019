@@ -68,11 +68,18 @@ namespace FrbaOfertas.ConsumoDeCupon
             menuPrincipal.Show();
         }
 
+        private void verificarCampos()
+        {
+            Utilidades.Utilidades.verificarCampoNumerico(txtDni);
+        }
+
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             try
             {
                 GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                verificarCampos();
+
                 SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].cargar_consumo_de_cupon");
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@cupon_id", SqlDbType.Int).Value = Convert.ToInt32(txtCuponId.Text);
@@ -88,14 +95,24 @@ namespace FrbaOfertas.ConsumoDeCupon
             {
                 error.mensaje();
             }
-            catch(SqlException error)
+            catch (FormatException error)
             {
-                MessageBox.Show(error.Number+" :"+error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hay campos con el formato incorrecto: " + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (SqlException error)
+            {
+                MessageBox.Show(error.Number + " :" + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 Conexion.Conexion.getCon().Close();
             }
+        }
+
+        private void txtDni_TextChanged(object sender, EventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            ctrl.BackColor = Color.White;
         }
     }
 }

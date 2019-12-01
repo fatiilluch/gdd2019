@@ -42,6 +42,7 @@
             this.btnAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.btnAtras.Location = new System.Drawing.Point(36, 141);
             this.btnAtras.Size = new System.Drawing.Size(100, 37);
+            this.btnAtras.TabIndex = 5;
             // 
             // label1
             // 
@@ -76,23 +77,23 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(121, 20);
-            this.txtPassword.TabIndex = 3;
+            this.txtPassword.TabIndex = 2;
             // 
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(148, 25);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(121, 20);
-            this.txtUsuario.TabIndex = 4;
+            this.txtUsuario.TabIndex = 1;
             // 
             // cmbRol
             // 
+            this.cmbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRol.FormattingEnabled = true;
             this.cmbRol.Location = new System.Drawing.Point(148, 99);
             this.cmbRol.Name = "cmbRol";
             this.cmbRol.Size = new System.Drawing.Size(121, 21);
-            this.cmbRol.TabIndex = 5;
-            this.cmbRol.Text = "Seleccione Rol";
+            this.cmbRol.TabIndex = 3;
             // 
             // btnSeleccionar
             // 
@@ -100,7 +101,7 @@
             this.btnSeleccionar.Location = new System.Drawing.Point(159, 141);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(100, 37);
-            this.btnSeleccionar.TabIndex = 6;
+            this.btnSeleccionar.TabIndex = 4;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);

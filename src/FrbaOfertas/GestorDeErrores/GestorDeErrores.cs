@@ -19,7 +19,7 @@ namespace FrbaOfertas.GestorDeErrores
             cmd.Parameters.Add("@dni", SqlDbType.NVarChar, 18).Value = dni;
 
             int i = Conexion.Conexion.ejecutarProcedure(cmd);
-            if (i < 0) { throw new ClienteDuplicadoException(); }
+            if (i > 0) { throw new ClienteDuplicadoException(); }
         }
         public static void verificarProveedoresDuplicados(String cuit)
         {

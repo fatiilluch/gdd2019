@@ -88,31 +88,32 @@ namespace FrbaOfertas.AbmProveedor
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            String query = String.Format("Select * from [RE_GDDIENTOS].Proveedores where cuit='{0}'", txtCuit.Text);
-            DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
-            Int16 piso = new Int16();
-            Char dpto = new Char();
-            if (DBNull.Value != ds.Tables[0].Rows[0]["piso"]) { piso = Convert.ToInt16(ds.Tables[0].Rows[0]["piso"]); }
-            if (DBNull.Value != ds.Tables[0].Rows[0]["dpto"]) { dpto = Convert.ToChar(ds.Tables[0].Rows[0]["dpto"]); }
+            
+                String query = String.Format("Select * from [RE_GDDIENTOS].Proveedores where cuit='{0}'", txtCuit.Text);
+                DataSet ds = Conexion.Conexion.ejecutarConsulta(query);
+                Int16 piso = new Int16();
+                Char dpto = new Char();
+                if (DBNull.Value != ds.Tables[0].Rows[0]["piso"]) { piso = Convert.ToInt16(ds.Tables[0].Rows[0]["piso"]); }
+                if (DBNull.Value != ds.Tables[0].Rows[0]["dpto"]) { dpto = Convert.ToChar(ds.Tables[0].Rows[0]["dpto"]); }
 
-            Proveedor proveedor = new Proveedor(
-                ds.Tables[0].Rows[0]["rs"].ToString(),
-                ds.Tables[0].Rows[0]["cuit"].ToString(),
-                ds.Tables[0].Rows[0]["nombre_contacto"].ToString(),
-                ds.Tables[0].Rows[0]["ciudad"].ToString(),
-                ds.Tables[0].Rows[0]["codigo_postal"].ToString(),
-                ds.Tables[0].Rows[0]["telefono"].ToString(),
-                ds.Tables[0].Rows[0]["email"].ToString(),
-                ds.Tables[0].Rows[0]["direccion"].ToString(),
-                piso,
-                dpto,
-                Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]),
-                ds.Tables[0].Rows[0]["nombre_usuario"].ToString()
-                );
-            this.Hide();
-            Form v = new ModificarPerfilProveedor(proveedor,menu);
+                Proveedor proveedor = new Proveedor(
+                    ds.Tables[0].Rows[0]["rs"].ToString(),
+                    ds.Tables[0].Rows[0]["cuit"].ToString(),
+                    ds.Tables[0].Rows[0]["nombre_contacto"].ToString(),
+                    ds.Tables[0].Rows[0]["ciudad"].ToString(),
+                    ds.Tables[0].Rows[0]["codigo_postal"].ToString(),
+                    ds.Tables[0].Rows[0]["telefono"].ToString(),
+                    ds.Tables[0].Rows[0]["email"].ToString(),
+                    ds.Tables[0].Rows[0]["direccion"].ToString(),
+                    piso,
+                    dpto,
+                    Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]),
+                    ds.Tables[0].Rows[0]["nombre_usuario"].ToString()
+                    );
+                this.Hide();
+                Form v = new ModificarPerfilProveedor(proveedor, menu);
 
-            v.Show();
+                v.Show();
         }
     }
 }

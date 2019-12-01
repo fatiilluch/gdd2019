@@ -45,7 +45,7 @@
             this.cmbSemestre.Location = new System.Drawing.Point(157, 69);
             this.cmbSemestre.Name = "cmbSemestre";
             this.cmbSemestre.Size = new System.Drawing.Size(241, 21);
-            this.cmbSemestre.TabIndex = 3;
+            this.cmbSemestre.TabIndex = 2;
             // 
             // lblSemestral
             // 
@@ -71,7 +71,7 @@
             this.cmbTipoListado.Location = new System.Drawing.Point(157, 108);
             this.cmbTipoListado.Name = "cmbTipoListado";
             this.cmbTipoListado.Size = new System.Drawing.Size(241, 21);
-            this.cmbTipoListado.TabIndex = 4;
+            this.cmbTipoListado.TabIndex = 3;
             // 
             // btnConsultar
             // 
@@ -79,7 +79,7 @@
             this.btnConsultar.Location = new System.Drawing.Point(169, 149);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(155, 36);
-            this.btnConsultar.TabIndex = 5;
+            this.btnConsultar.TabIndex = 4;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
@@ -113,7 +113,7 @@
             this.txtYear.Location = new System.Drawing.Point(157, 30);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(241, 20);
-            this.txtYear.TabIndex = 9;
+            this.txtYear.TabIndex = 1;
             // 
             // Listado_Estadistico
             // 

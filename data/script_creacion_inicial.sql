@@ -667,7 +667,7 @@ as
 go
 
 -------------------------devuelve 1 si hay usuarios duplicados, sino (-1)
-create procedure usuario_duplicado (
+create procedure [RE_GDDIENTOS].usuario_duplicado (
 	@name nvarchar(255)
 )
 as
