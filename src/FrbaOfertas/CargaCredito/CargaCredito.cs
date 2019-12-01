@@ -124,8 +124,8 @@ namespace FrbaOfertas.CragaCredito
         }
         private void verificarCampos()
         {
-            Utilidades.Utilidades.verificarCampoNumerico(txtMonto);
-            Utilidades.Utilidades.verificarCampoNumerico(txtTarjeta_id);
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtMonto);
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtTarjeta_id);
         }
         private void ControlChanged(object sender, EventArgs e)
         {

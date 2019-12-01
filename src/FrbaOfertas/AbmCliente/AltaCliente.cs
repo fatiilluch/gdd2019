@@ -36,7 +36,7 @@ namespace FrbaOfertas.AbmCliente
             inicializarCamposObligatorios();
             ventanaAnterior = v;
         }
-        protected override void inicializarCamposObligatorios(){
+        private void inicializarCamposObligatorios(){
             camposObligatorios.Add(txtApellido);
             camposObligatorios.Add(txtNombre);
             camposObligatorios.Add(txtDni);
@@ -113,9 +113,9 @@ namespace FrbaOfertas.AbmCliente
             cmd.Parameters.Add("@tel", SqlDbType.NVarChar, 18).Value = txtTelefono.Text;
             cmd.Parameters.Add("@email", SqlDbType.NVarChar, 255).Value = txtEmail.Text;
             cmd.Parameters.Add("@direccion", SqlDbType.NVarChar, 255).Value = txtDireccion.Text;
-            if (txtPiso.Text != "") { cmd.Parameters.Add("@piso", SqlDbType.SmallInt).Value = txtPiso.Text; }
-            if (txtDepto.Text != "") { cmd.Parameters.Add("@depto", SqlDbType.Char).Value = txtDepto.Text; }
-            if (us != null) { cmd.Parameters.Add("@user", SqlDbType.NVarChar, 255).Value = us.getNombreUsuario(); }
+            if (txtPiso.Text != "") { cmd.Parameters.Add("@piso", SqlDbType.SmallInt).Value = txtPiso.Text; } else { cmd.Parameters.Add("@piso", SqlDbType.SmallInt).Value = DBNull.Value; }
+            if (txtDepto.Text != "") { cmd.Parameters.Add("@depto", SqlDbType.Char).Value = txtDepto.Text; } else { cmd.Parameters.Add("@depto", SqlDbType.Char).Value = DBNull.Value; }
+            if (us != null) { cmd.Parameters.Add("@user", SqlDbType.NVarChar, 255).Value = us.getNombreUsuario(); } else { cmd.Parameters.Add("@user", SqlDbType.NVarChar, 255).Value = DBNull.Value; }
         }
 
         protected void btnAtras_Click_1(object sender, EventArgs e)
@@ -125,10 +125,10 @@ namespace FrbaOfertas.AbmCliente
         protected void verificarCampos()
         {
 
-            Utilidades.Utilidades.verificarCampoNumerico(txtDni);
-            Utilidades.Utilidades.verificarCampoNumerico(txtPiso);
-            Utilidades.Utilidades.verificarCampoNumerico(txtTelefono);
-            Utilidades.Utilidades.verificarCampoChar(txtDepto);
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtDni);
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtPiso);
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtTelefono);
+            GestorDeErrores.GestorDeErrores.verificarCampoChar(txtDepto);
         }
 
         protected void ControlChanged(object sender, EventArgs e)

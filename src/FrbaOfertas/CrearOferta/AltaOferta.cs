@@ -53,11 +53,10 @@ namespace FrbaOfertas.CrearOferta
                 btnBuscar.Enabled = true;
             }
         }
-        protected override void inicializarCamposObligatorios()
+        private void inicializarCamposObligatorios()
         {
             camposObligatorios.Add(txtCuit);
             camposObligatorios.Add(txtDescripcion);
-            camposObligatorios.Add(txtId);
             camposObligatorios.Add(txtLimiteCompra);
             camposObligatorios.Add(txtPrecioAntiguo);
             camposObligatorios.Add(txtPrecioNuevo);
@@ -67,16 +66,22 @@ namespace FrbaOfertas.CrearOferta
         {
             this.Close();
         }
-
+        private void verificarCampos()
+        {
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtStock);
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtPrecioNuevo);
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtPrecioAntiguo);
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtLimiteCompra);
+        }
         private void btnPublicar_Click(object sender, EventArgs e)
         {
             try
             {
                 GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                verificarCampos();
 
                 SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].publicar_oferta");
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@oferta_id", SqlDbType.NVarChar, 50).Value = txtId.Text;
                 cmd.Parameters.Add("@stock", SqlDbType.SmallInt).Value = txtStock.Text;
                 cmd.Parameters.Add("@limite_de_compra", SqlDbType.SmallInt).Value = txtLimiteCompra.Text;
                 cmd.Parameters.Add("@precio_viejo", SqlDbType.Decimal).Value = Convert.ToDecimal(txtPrecioAntiguo.Text);
@@ -118,11 +123,16 @@ namespace FrbaOfertas.CrearOferta
         {
             txtCuit.Clear();
             txtDescripcion.Clear();
-            txtId.Clear();
             txtLimiteCompra.Clear();
             txtPrecioAntiguo.Clear();
             txtPrecioNuevo.Clear();
             txtStock.Clear();
+        }
+
+        private void ControlChanged(object sender, EventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            ctrl.BackColor = Color.White;
         }
     }
 }

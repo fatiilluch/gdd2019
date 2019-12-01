@@ -33,6 +33,10 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
+            // txtDni
+            // 
+            this.txtDni.ReadOnly = true;
+            // 
             // btnCrear
             // 
             this.btnCrear.Location = new System.Drawing.Point(554, 448);
@@ -55,7 +59,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 407);
+            this.ClientSize = new System.Drawing.Size(765, 407);
             this.Controls.Add(this.btnActualizar);
             this.Name = "ModificarPerfilCliente";
             this.Text = "Modificar Perfil";

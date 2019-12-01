@@ -115,5 +115,10 @@ namespace FrbaOfertas.AbmProveedor
 
                 v.Show();
         }
+
+        private void ModificarProveedor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            menu.Show();
+        }
     }
 }

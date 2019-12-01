@@ -49,25 +49,6 @@ namespace FrbaOfertas.Utilidades
             return hash.Aggregate("", (b, next) => next.ToString("x2") + b);
         }
 
-        public static void verificarCampoNumerico(TextBox box)
-        {
-            int num;
-            if (!int.TryParse(box.Text, out num))
-            {
-                Exception error = new FormatException(String.Format("El campo {0} debe contener solamente numeros",box.Name));
-                box.BackColor = Color.LightCoral;
-                throw error;
-            }
-        }
-        public static void verificarCampoChar(TextBox box)
-        {
-            char c;
-            if ((box.Text != "") && (!Char.TryParse(box.Text, out c)))//ya que no es un campo obligatorio
-            {
-                Exception error = new FormatException(String.Format("El campo {0} debe contener solamente un caracter",box.Name));
-                box.BackColor = Color.LightCoral;
-                throw error;
-            }
-        }
+        
     }
 }

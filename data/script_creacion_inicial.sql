@@ -231,14 +231,12 @@ go
 --Agregando constraints
 alter table [RE_GDDIENTOS].Clientes
 add constraint fk_usuario foreign key (nombre_usuario) references [RE_GDDIENTOS].Usuarios(nombre_usuario),
-	constraint saldo_default default 200 for saldo,
-	constraint uc_cliente unique(telefono,email);
+	constraint saldo_default default 200 for saldo;
 go
 
 alter table [RE_GDDIENTOS].proveedores
 add constraint fk_rubro foreign key (rubro_id) references [RE_GDDIENTOS].Rubros(rubro_id),
 	constraint fk_proveedor_usuario foreign key (nombre_usuario) references [RE_GDDIENTOS].Usuarios(nombre_usuario),
-	constraint uc_proveedor unique(rs,email,telefono),
 	constraint df_lim_compra_por_us default 100 for limite_compra_por_us;
 go
 
@@ -272,6 +270,7 @@ on [RE_GDDIENTOS].Proveedores(cuit,nombre_usuario)
 --Procedures
 use GD2C2019
 go
+
 -------------------------Si el usuario existe, devuelve 1, sino (-1)
 create procedure [RE_GDDIENTOS].usuario_existente (
 	@name nvarchar(255)
@@ -302,6 +301,27 @@ begin
 	declare @v numeric(18,0) = (select TRY_CONVERT(numeric(18,0),@dni))
 	declare @returned smallint
 	if(exists(select * from [RE_GDDIENTOS].Clientes where dni=@v))
+	begin
+		set @returned= 1
+	end
+	else
+	begin
+		set @returned= (-1)
+	end
+	return @returned
+end
+go
+
+use GD2C2019
+go
+-------------------------Si existe el proveedor, devuelve 1, sino (-1)
+create procedure [RE_GDDIENTOS].proveedor_existente (
+	@cuit nvarchar(20)
+)
+as
+begin
+	declare @returned smallint
+	if(exists(select * from [RE_GDDIENTOS].Proveedores where cuit=@cuit))
 	begin
 		set @returned= 1
 	end
@@ -419,7 +439,6 @@ go
 use GD2C2019
 go
 create procedure [RE_GDDIENTOS].publicar_oferta (
-	@oferta_id nvarchar(50),
 	@stock smallint,
 	@limite_de_compra smallint,
 	@precio_viejo numeric(18,2),
@@ -431,6 +450,12 @@ create procedure [RE_GDDIENTOS].publicar_oferta (
 )
 as
 begin
+	declare @oferta_id nvarchar(50) = (select convert(nvarchar(50),newid()));
+	while(exists(select oferta_id from [RE_GDDIENTOS].Ofertas where oferta_id=@oferta_id))
+	begin
+		set @oferta_id = (select convert(nvarchar(50),newid()));
+	end
+
 	begin try
 		insert into [RE_GDDIENTOS].Ofertas values(@oferta_id,@fecha_pub,@fecha_venc,@precio_nuevo,@precio_viejo,@cuit,@stock,@descr,@limite_de_compra)
 	end try
@@ -666,7 +691,9 @@ as
 	select * from [RE_GDDIENTOS].Ofertas where @fecha<fecha_vto
 go
 
--------------------------devuelve 1 si hay usuarios duplicados, sino (-1)
+use GD2C2019
+go
+-------------------------Devuelve 1 si hay usuarios duplicados, sino (-1)
 create procedure [RE_GDDIENTOS].usuario_duplicado (
 	@name nvarchar(255)
 )
@@ -684,6 +711,7 @@ begin
 	return @returned
 end
 go
+
 
 --Carga inicial del Sistema!!!!!!!
 -------------------------------------------------------------------------------

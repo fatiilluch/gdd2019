@@ -13,6 +13,7 @@ using FrbaOfertas.LoginYSeguridad;
 using FrbaOfertas.Conexion;
 using FrbaOfertas.Utilidades;
 using FrbaOfertas.GestorDeErrores;
+using System.Data.SqlClient;
 namespace FrbaOfertas.MenuPrincipal
 {
     public partial class MenuPrincipal : Form
@@ -34,6 +35,12 @@ namespace FrbaOfertas.MenuPrincipal
         {
             lblUsuario.Text = usuario.getNombreUsuario();
             lblR.Text = usuario.getRol().Nombre.ToString();
+            if (!usuarioConRolHabilitado())
+            {
+                btnSeleccionar.BackColor = SystemColors.ControlDarkDark;
+                btnSeleccionar.Enabled = false;
+                MessageBox.Show("Usted se encuentra bloqueado y no puede ejecutar ninguna funcionalidad. Contactese con un administrador","Failed",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
         private void inicializarFuncionalidades()
         {
@@ -68,7 +75,25 @@ namespace FrbaOfertas.MenuPrincipal
             Application.Exit();
         }
 
-        
+        private Boolean usuarioConRolHabilitado()
+        {
+            Boolean flag = false;
+            switch (lblR.Text)
+            {
+                case "cliente":
+                    String query = String.Format("select habilitado from [RE_GDDIENTOS].Clientes where nombre_usuario='{0}'", usuario.getNombreUsuario());
+                    flag = Convert.ToBoolean(Conexion.Conexion.ejecutarConsulta(query).Tables[0].Rows[0]["habilitado"]);
+                    break;
+                case "proveedor":
+                    String query2 = String.Format("select habilitado from [RE_GDDIENTOS].Proveedores where nombre_usuario='{0}'", usuario.getNombreUsuario());
+                    flag = Convert.ToBoolean(Conexion.Conexion.ejecutarConsulta(query2).Tables[0].Rows[0]["habilitado"]);
+                    break;
+                case "administrador general":
+                    flag=true;
+                    break;
+            }
+            return flag;
+        }
 
     }
 

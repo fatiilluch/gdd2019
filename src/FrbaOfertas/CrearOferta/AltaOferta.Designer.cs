@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lblId = new System.Windows.Forms.Label();
             this.lblStock = new System.Windows.Forms.Label();
             this.lblLimiteCompra = new System.Windows.Forms.Label();
             this.lblprecioAntiguo = new System.Windows.Forms.Label();
@@ -41,7 +40,6 @@
             this.groupBoxFechas = new System.Windows.Forms.GroupBox();
             this.calendarioPublicacion = new System.Windows.Forms.DateTimePicker();
             this.calendarioVencimiento = new System.Windows.Forms.DateTimePicker();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.txtLimiteCompra = new System.Windows.Forms.TextBox();
             this.txtPrecioAntiguo = new System.Windows.Forms.TextBox();
@@ -53,7 +51,6 @@
             this.validator = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,19 +64,10 @@
             // 
             this.btnAtras.Location = new System.Drawing.Point(698, 406);
             // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(12, 27);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(16, 13);
-            this.lblId.TabIndex = 0;
-            this.lblId.Text = "Id";
-            // 
             // lblStock
             // 
             this.lblStock.AutoSize = true;
-            this.lblStock.Location = new System.Drawing.Point(12, 69);
+            this.lblStock.Location = new System.Drawing.Point(12, 26);
             this.lblStock.Name = "lblStock";
             this.lblStock.Size = new System.Drawing.Size(35, 13);
             this.lblStock.TabIndex = 1;
@@ -88,7 +76,7 @@
             // lblLimiteCompra
             // 
             this.lblLimiteCompra.AutoSize = true;
-            this.lblLimiteCompra.Location = new System.Drawing.Point(12, 117);
+            this.lblLimiteCompra.Location = new System.Drawing.Point(12, 82);
             this.lblLimiteCompra.Name = "lblLimiteCompra";
             this.lblLimiteCompra.Size = new System.Drawing.Size(88, 13);
             this.lblLimiteCompra.TabIndex = 2;
@@ -97,7 +85,7 @@
             // lblprecioAntiguo
             // 
             this.lblprecioAntiguo.AutoSize = true;
-            this.lblprecioAntiguo.Location = new System.Drawing.Point(12, 171);
+            this.lblprecioAntiguo.Location = new System.Drawing.Point(12, 138);
             this.lblprecioAntiguo.Name = "lblprecioAntiguo";
             this.lblprecioAntiguo.Size = new System.Drawing.Size(76, 13);
             this.lblprecioAntiguo.TabIndex = 3;
@@ -106,7 +94,7 @@
             // lblPrecioNuevo
             // 
             this.lblPrecioNuevo.AutoSize = true;
-            this.lblPrecioNuevo.Location = new System.Drawing.Point(12, 214);
+            this.lblPrecioNuevo.Location = new System.Drawing.Point(12, 200);
             this.lblPrecioNuevo.Name = "lblPrecioNuevo";
             this.lblPrecioNuevo.Size = new System.Drawing.Size(72, 13);
             this.lblPrecioNuevo.TabIndex = 4;
@@ -175,40 +163,37 @@
             this.calendarioVencimiento.Size = new System.Drawing.Size(259, 20);
             this.calendarioVencimiento.TabIndex = 9;
             // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(122, 20);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(175, 20);
-            this.txtId.TabIndex = 1;
-            // 
             // txtStock
             // 
-            this.txtStock.Location = new System.Drawing.Point(122, 69);
+            this.txtStock.Location = new System.Drawing.Point(122, 23);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(175, 20);
             this.txtStock.TabIndex = 2;
+            this.txtStock.TextChanged += new System.EventHandler(this.ControlChanged);
             // 
             // txtLimiteCompra
             // 
-            this.txtLimiteCompra.Location = new System.Drawing.Point(122, 117);
+            this.txtLimiteCompra.Location = new System.Drawing.Point(122, 82);
             this.txtLimiteCompra.Name = "txtLimiteCompra";
             this.txtLimiteCompra.Size = new System.Drawing.Size(175, 20);
             this.txtLimiteCompra.TabIndex = 3;
+            this.txtLimiteCompra.TextChanged += new System.EventHandler(this.ControlChanged);
             // 
             // txtPrecioAntiguo
             // 
-            this.txtPrecioAntiguo.Location = new System.Drawing.Point(122, 168);
+            this.txtPrecioAntiguo.Location = new System.Drawing.Point(122, 138);
             this.txtPrecioAntiguo.Name = "txtPrecioAntiguo";
             this.txtPrecioAntiguo.Size = new System.Drawing.Size(175, 20);
             this.txtPrecioAntiguo.TabIndex = 4;
+            this.txtPrecioAntiguo.TextChanged += new System.EventHandler(this.ControlChanged);
             // 
             // txtPrecioNuevo
             // 
-            this.txtPrecioNuevo.Location = new System.Drawing.Point(122, 214);
+            this.txtPrecioNuevo.Location = new System.Drawing.Point(122, 207);
             this.txtPrecioNuevo.Name = "txtPrecioNuevo";
             this.txtPrecioNuevo.Size = new System.Drawing.Size(175, 20);
             this.txtPrecioNuevo.TabIndex = 5;
+            this.txtPrecioNuevo.TextChanged += new System.EventHandler(this.ControlChanged);
             // 
             // txtCuit
             // 
@@ -275,21 +260,11 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(303, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(11, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "*";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(303, 69);
+            this.label2.Location = new System.Drawing.Point(303, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(11, 13);
             this.label2.TabIndex = 15;
@@ -299,7 +274,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(303, 168);
+            this.label4.Location = new System.Drawing.Point(303, 141);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(11, 13);
             this.label4.TabIndex = 17;
@@ -309,7 +284,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(303, 214);
+            this.label5.Location = new System.Drawing.Point(303, 210);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(11, 13);
             this.label5.TabIndex = 18;
@@ -319,7 +294,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(303, 269);
+            this.label6.Location = new System.Drawing.Point(303, 272);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(11, 13);
             this.label6.TabIndex = 19;
@@ -345,7 +320,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnPublicar);
@@ -356,7 +330,6 @@
             this.Controls.Add(this.txtPrecioAntiguo);
             this.Controls.Add(this.txtLimiteCompra);
             this.Controls.Add(this.txtStock);
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.groupBoxFechas);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblProveedor);
@@ -364,11 +337,9 @@
             this.Controls.Add(this.lblprecioAntiguo);
             this.Controls.Add(this.lblLimiteCompra);
             this.Controls.Add(this.lblStock);
-            this.Controls.Add(this.lblId);
             this.Name = "AltaOferta";
             this.Text = "Publicar una Oferta";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AltaOferta_FormClosed);
-            this.Controls.SetChildIndex(this.lblId, 0);
             this.Controls.SetChildIndex(this.lblStock, 0);
             this.Controls.SetChildIndex(this.lblLimiteCompra, 0);
             this.Controls.SetChildIndex(this.lblprecioAntiguo, 0);
@@ -376,7 +347,6 @@
             this.Controls.SetChildIndex(this.lblProveedor, 0);
             this.Controls.SetChildIndex(this.lblDescripcion, 0);
             this.Controls.SetChildIndex(this.groupBoxFechas, 0);
-            this.Controls.SetChildIndex(this.txtId, 0);
             this.Controls.SetChildIndex(this.txtStock, 0);
             this.Controls.SetChildIndex(this.txtLimiteCompra, 0);
             this.Controls.SetChildIndex(this.txtPrecioAntiguo, 0);
@@ -387,7 +357,6 @@
             this.Controls.SetChildIndex(this.btnPublicar, 0);
             this.Controls.SetChildIndex(this.btnBuscar, 0);
             this.Controls.SetChildIndex(this.btnLimpiar, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.label5, 0);
@@ -404,7 +373,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblStock;
         private System.Windows.Forms.Label lblLimiteCompra;
         private System.Windows.Forms.Label lblprecioAntiguo;
@@ -414,7 +382,6 @@
         private System.Windows.Forms.Label lblVencimiento;
         private System.Windows.Forms.Label lblPublicacion;
         private System.Windows.Forms.GroupBox groupBoxFechas;
-        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.TextBox txtLimiteCompra;
         private System.Windows.Forms.TextBox txtPrecioAntiguo;
@@ -433,6 +400,5 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
     }
 }

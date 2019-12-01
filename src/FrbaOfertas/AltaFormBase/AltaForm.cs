@@ -28,10 +28,7 @@ namespace FrbaOfertas
         {
             InitializeComponent();
             ventanaAnterior = v;
-            inicializarCamposObligatorios();
         }
-
-        protected virtual void inicializarCamposObligatorios() { }
         
         protected bool camposObligatoriosCompletados()
         {

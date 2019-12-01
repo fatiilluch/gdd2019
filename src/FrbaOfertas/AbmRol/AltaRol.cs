@@ -35,7 +35,7 @@ namespace FrbaOfertas.AbmRol
             origen = menu;
         }
 
-        protected override void inicializarCamposObligatorios()
+        private void inicializarCamposObligatorios()
         {
             camposObligatorios.Add(txtRolNombre);
         }

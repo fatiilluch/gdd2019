@@ -25,7 +25,7 @@ namespace FrbaOfertas.Registro_de_usuario
             inicializarCamposObligatorios();
             this.ventanaAnterior = ventana;
         }
-        protected override void inicializarCamposObligatorios()
+        private void inicializarCamposObligatorios()
         {
             camposObligatorios.Add(txtUsuario);
             camposObligatorios.Add(txtPassword);

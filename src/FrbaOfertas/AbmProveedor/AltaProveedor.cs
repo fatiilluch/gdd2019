@@ -28,7 +28,6 @@ namespace FrbaOfertas.AbmProveedor
         public AltaProveedor()
         {
             InitializeComponent();
-            inicializarCamposObligatorios();
         }
         public AltaProveedor(Form v)
         {
@@ -44,7 +43,7 @@ namespace FrbaOfertas.AbmProveedor
             us.setNombreUsuario(p.Nombre_usuario);
         }
         
-        protected override void inicializarCamposObligatorios()
+        private  void inicializarCamposObligatorios()
         {
             camposObligatorios.Add(txtRs);
             camposObligatorios.Add(txtCuit);
@@ -76,14 +75,16 @@ namespace FrbaOfertas.AbmProveedor
                 verificarCampos();
                 GestorDeErrores.GestorDeErrores.verificarProveedoresDuplicados(txtCuit.Text);
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO [RE_GDDIENTOS].Proveedores (rs,email,telefono,ciudad,codigo_postal,cuit,rubro_id,nombre_contacto,direccion,piso,dpto,nombre_usuario) VALUES (@rs,@email,@telefono,@ciudad,@cuit,@rubro_id,@contacto,@direccion,@piso,@depto,@user)");
-                String SelectRol = "Select rol_id from [RE_GDDIENTOS].Roles where rol_nombre='Proveedor'";
-                int rol_id = Convert.ToInt32(Conexion.Conexion.ejecutarConsulta(SelectRol).Tables[0].Rows[0]);
+                SqlCommand cmd = new SqlCommand("INSERT INTO [RE_GDDIENTOS].Proveedores (rs,email,telefono,ciudad,codigo_postal,cuit,rubro_id,nombre_contacto,direccion,piso,dpto,nombre_usuario) VALUES (@rs,@email,@telefono,@ciudad,@codigo_postal,@cuit,@rubro_id,@contacto,@direccion,@piso,@depto,@user)");
+                String SelectRol = "Select rol_id from [RE_GDDIENTOS].Roles where rol_nombre='proveedor'";
+                int rol_id = Convert.ToInt16(Conexion.Conexion.ejecutarConsulta(SelectRol).Tables[0].Rows[0]["rol_id"]);
 
                 cargarCmd(cmd);
                 if (us!= null) { cargarUsuario(us, rol_id); }
                 Conexion.Conexion.ejecutar(cmd);
                 MessageBox.Show("Proveedor guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                ventanaAnterior.Show();
             }
             catch (CamposObligatoriosIncompletosException error)
             {
@@ -102,9 +103,9 @@ namespace FrbaOfertas.AbmProveedor
         }
         protected void verificarCampos()
         {
-            Utilidades.Utilidades.verificarCampoNumerico(txtPiso);
-            Utilidades.Utilidades.verificarCampoNumerico(txtTelefono);
-            Utilidades.Utilidades.verificarCampoChar(txtDepto);
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtPiso);
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtTelefono);
+            GestorDeErrores.GestorDeErrores.verificarCampoChar(txtDepto);
         }
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -119,14 +120,14 @@ namespace FrbaOfertas.AbmProveedor
             cmd.Parameters.Add("@email", SqlDbType.NVarChar, 255).Value = txtEmail.Text;
             cmd.Parameters.Add("@telefono", SqlDbType.NVarChar, 18).Value = txtTelefono.Text;
             cmd.Parameters.Add("@ciudad", SqlDbType.NVarChar, 255).Value = txtCiudad.Text;
-            cmd.Parameters.Add("@codigo_postal", SqlDbType.NVarChar, 20).Value = txtCp;
+            cmd.Parameters.Add("@codigo_postal", SqlDbType.NVarChar, 20).Value = txtCp.Text;
             cmd.Parameters.Add("@cuit", SqlDbType.NVarChar, 20).Value = txtCuit.Text;
             cmd.Parameters.Add("@rubro_id", SqlDbType.SmallInt).Value=Convert.ToInt16(r.Id);
             cmd.Parameters.Add("@contacto", SqlDbType.NVarChar, 255).Value = txtContacto.Text; ;
             cmd.Parameters.Add("@direccion", SqlDbType.NVarChar,255).Value=txtDireccion.Text;
-            if (txtPiso.Text != "") { cmd.Parameters.Add("@piso", SqlDbType.SmallInt).Value = txtPiso.Text; }
-            if (txtDepto.Text != "") { cmd.Parameters.Add("@depto", SqlDbType.Char).Value = txtDepto.Text; }
-            if (us != null) { cmd.Parameters.Add("@user", SqlDbType.NVarChar, 255).Value = us.getNombreUsuario(); }
+            if (txtPiso.Text != "") { cmd.Parameters.Add("@piso", SqlDbType.SmallInt).Value = txtPiso.Text; } else { cmd.Parameters.Add("@piso", SqlDbType.SmallInt).Value = DBNull.Value; }
+            if (txtDepto.Text != "") { cmd.Parameters.Add("@depto", SqlDbType.Char).Value = txtDepto.Text; } else { cmd.Parameters.Add("@depto", SqlDbType.Char).Value = DBNull.Value; }
+            if (us != null) { cmd.Parameters.Add("@user", SqlDbType.NVarChar, 255).Value = us.getNombreUsuario(); } else { cmd.Parameters.Add("@user", SqlDbType.NVarChar, 255).Value = DBNull.Value; }
         }
 
         private void ControlChanged(object sender, EventArgs e)

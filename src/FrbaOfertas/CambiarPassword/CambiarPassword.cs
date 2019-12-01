@@ -22,7 +22,7 @@ namespace FrbaOfertas.CambiarPassword
             usuario = us;
             inicializarCamposObligatorios();
         }
-        protected override void inicializarCamposObligatorios()
+        private void inicializarCamposObligatorios()
         {
             camposObligatorios.Add(txtConfirmNuevaContraseña);
             camposObligatorios.Add(txtNuevaContraseña);

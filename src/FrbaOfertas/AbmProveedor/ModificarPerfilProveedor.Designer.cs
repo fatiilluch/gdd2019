@@ -33,8 +33,9 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtRubro
+            // txtCuit
             // 
+            this.txtCuit.ReadOnly = true;
             // 
             // btnCrear
             // 
@@ -58,7 +59,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 397);
+            this.ClientSize = new System.Drawing.Size(759, 397);
             this.Controls.Add(this.btnActualizar);
             this.Name = "ModificarPerfilProveedor";
             this.Text = "ModificarPerfilProveedor";

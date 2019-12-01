@@ -44,17 +44,17 @@ namespace FrbaOfertas.LoginYSeguridad
 
                     String hash = Utilidades.Utilidades.obtenerHash(txtPassword.Text.Trim());
 
-                    String query2 = "update [RE_GDDIENTOS].Usuarios set intentos = @intentos where nombre_usuario=@usuario";
-                    SqlCommand cmd = new SqlCommand(query2, Conexion.Conexion.getCon());
                     int intentos = Convert.ToInt32(ds.Tables[0].Rows[0]["intentos"].ToString());
                     Boolean habilitado = Convert.ToBoolean(ds.Tables[0].Rows[0]["habilitado"]);
+                    SqlCommand cmd = new SqlCommand();
+
                     if (habilitado == true)
                     {
                         if (usuario.getPass() == hash)
                         {
                             intentos = 0;
-                            cmd.Parameters.AddWithValue("@intentos", intentos);
-                            cmd.Parameters.AddWithValue("@usuario", usuario.getNombreUsuario());
+                            String query2 = String.Format("update [RE_GDDIENTOS].Usuarios set intentos = {0} where nombre_usuario='{1}'", intentos, usuario.getNombreUsuario());
+                            cmd.CommandText = query2;
                             Conexion.Conexion.ejecutar(cmd);
 
                             IngresarComo ingresarComo = new IngresarComo(usuario);
@@ -67,15 +67,15 @@ namespace FrbaOfertas.LoginYSeguridad
                             if (intentos == Conexion.Conexion.getCantidadDeIntentos())
                             {
                                 MessageBox.Show("Intentos agotados. Usuario bloqueado. Contactese con un administrador", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Conexion.Conexion.ejecutar(String.Format("update [RE_GDDIENTOS].Usuarios set habilitado = 0 where nombre_usuario ='{0}'", usuario));
+                                Conexion.Conexion.ejecutar(String.Format("update [RE_GDDIENTOS].Usuarios set habilitado = 0 where nombre_usuario ='{0}'", usuario.getNombreUsuario()));
                             }
                             else
                             {
                                 MessageBox.Show("Contraseña incorrecta. Intente nuevamente", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                String query2 = String.Format("update [RE_GDDIENTOS].Usuarios set intentos = {0} where nombre_usuario='{1}'", intentos, usuario.getNombreUsuario());
+                                cmd.CommandText = query2;
+                                Conexion.Conexion.ejecutar(cmd);
                             }
-                            cmd.Parameters.AddWithValue("@intentos", intentos);
-                            cmd.Parameters.AddWithValue("@usuario", usuario.getNombreUsuario());
-                            Conexion.Conexion.ejecutar(cmd);
                         }
 
                     }

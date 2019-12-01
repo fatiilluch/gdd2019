@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Utilidades;
 using FrbaOfertas.Entidades;
 using System.Data.SqlClient;
-
+using FrbaOfertas.GestorDeErrores;
+using FrbaOfertas.Utilidades;
 namespace FrbaOfertas.AbmRol
 {
     public partial class BajaRol : Form

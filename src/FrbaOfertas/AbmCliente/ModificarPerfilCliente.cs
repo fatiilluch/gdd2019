@@ -22,13 +22,14 @@ namespace FrbaOfertas.AbmCliente
         }
         public ModificarPerfilCliente(Cliente cliente,Form v)
         {
+            us = new Usuario();
             InitializeComponent();
             ventanaAnterior = v;
             inicializarCamposObligatorios();
             cargarCampos(cliente);
             us.setNombreUsuario(cliente.Nombre_usuario);
         }
-        protected override void inicializarCamposObligatorios()
+        private void inicializarCamposObligatorios()
         {
             camposObligatorios.Add(txtApellido);
             camposObligatorios.Add(txtCiudad);
@@ -62,12 +63,14 @@ namespace FrbaOfertas.AbmCliente
             try
             {
                 GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                
                 verificarCampos();
-
-                String query = String.Format("update [RE_GDDIENTOS].Clientes set dni=@dni,cliente_nombre=@nom,cliente_apellido=@ap,fecha_nacimiento=@fecha,ciudad=@ciudad,codigo_postal=@cp,telefono=@tel,email=@email,direccion=@direccion,piso=@piso,dpto=@depto where nombre_usuario='{0}'", us.getNombreUsuario());
-                SqlCommand cmd = new SqlCommand(query);
+                
+                SqlCommand cmd = new SqlCommand("update [RE_GDDIENTOS].Clientes set cliente_nombre=@nom,cliente_apellido=@ap, fecha_nacimiento=@fecha,ciudad=@ciudad,codigo_postal=@cp, telefono=@tel, email=@email,direccion=@direccion,piso=@piso,dpto=@depto where nombre_usuario=@user");
+                cmd.CommandType = CommandType.Text;
                 cargarCmd(cmd);
                 Conexion.Conexion.ejecutar(cmd);
+                
                 MessageBox.Show("Cliente actualizado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ventanaAnterior.Show();
                 this.Hide();

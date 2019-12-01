@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Entidades;
 using System.Data.SqlClient;
-using Utilidades;
+using FrbaOfertas.Utilidades;
+using FrbaOfertas.GestorDeErrores;
 namespace FrbaOfertas.AbmProveedor
 {
     public partial class ModificarPerfilProveedor : AltaProveedor
@@ -23,11 +24,11 @@ namespace FrbaOfertas.AbmProveedor
         {
             InitializeComponent();
             ventanaAnterior = v;
-            cargarCampos(proveedor);
             inicializarCamposObligatorios();
+            cargarCampos(proveedor);
             us.setNombreUsuario(proveedor.Nombre_usuario);
         }
-        protected override void inicializarCamposObligatorios()
+        private void inicializarCamposObligatorios()
         {
             camposObligatorios.Add(txtCiudad);
             camposObligatorios.Add(txtContacto);
@@ -74,10 +75,12 @@ namespace FrbaOfertas.AbmProveedor
             {
                 GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
                 verificarCampos();
-                String query = String.Format("update [RE_GDDIENTOS].Proveedores set cuit=@cuit,nombre_contacto=@contacto,ciudad=@ciudad,codigo_postal=@codigo_postal,telefono=@telefono,email=@email,direccion=@direccion,piso=@piso,dpto=@depto where nombre_usuario='{0}'", us.getNombreUsuario());
-                SqlCommand cmd = new SqlCommand(query);
+
+                SqlCommand cmd = new SqlCommand("update [RE_GDDIENTOS].Clientes set dni=@dni,cliente_nombre=@nom,cliente_apellido=@ap, fecha_nacimiento=@fecha,ciudad=@ciudad,codigo_postal=@cp, telefono=@tel, email=@email,direccion=@direccion,piso=@piso,dpto=@depto where nombre_usuario=@user");
+                cmd.CommandType = CommandType.Text;
                 cargarCmd(cmd);
                 Conexion.Conexion.ejecutar(cmd);
+
                 MessageBox.Show("Cliente actualizado con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ventanaAnterior.Show();
                 this.Hide();
@@ -86,7 +89,15 @@ namespace FrbaOfertas.AbmProveedor
             {
                 error.mensaje();
             }
+            catch (SqlException error)
+            {
+                MessageBox.Show(error.Number + " :" + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (FormatException error)
+            {
+                MessageBox.Show("Hay campos con el formato incorrecto: " + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception error)
             {
                 MessageBox.Show("Hay campos con el formato incorrecto: " + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

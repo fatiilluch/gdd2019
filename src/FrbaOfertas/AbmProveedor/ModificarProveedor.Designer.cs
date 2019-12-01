@@ -118,6 +118,7 @@
             this.Name = "ModificarProveedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModificarProveedor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ModificarProveedor_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

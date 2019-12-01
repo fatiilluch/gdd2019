@@ -76,7 +76,7 @@ namespace FrbaOfertas.Entidades
                     case "comprar oferta":
                         return new ComprarOferta.ComprarOferta(menu,usuario);
                     case "registrar consumo":
-                        return new ConsumoDeCupon.ConsumoDeCupon(menu);
+                        return new ConsumoDeCupon.ConsumoDeCupon(menu,usuario);
                     case "listar estadisticas":
                         return new Listado_Estadistico(menu);
                     case "realizar reporte de facturacion":

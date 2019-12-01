@@ -28,7 +28,7 @@ namespace FrbaOfertas.ConsumoDeCupon
             menuPrincipal = menu;
             cargarCamposObligatorios();
         }
-        public ConsumoDeCupon(Usuario us,Form menu)
+        public ConsumoDeCupon(Form menu,Usuario us)
         {
             InitializeComponent();
             usuario = us;
@@ -70,7 +70,7 @@ namespace FrbaOfertas.ConsumoDeCupon
 
         private void verificarCampos()
         {
-            Utilidades.Utilidades.verificarCampoNumerico(txtDni);
+            GestorDeErrores.GestorDeErrores.verificarCampoNumerico(txtDni);
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)

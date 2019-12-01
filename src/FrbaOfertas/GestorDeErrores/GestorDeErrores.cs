@@ -12,7 +12,26 @@ namespace FrbaOfertas.GestorDeErrores
 {
     public class GestorDeErrores
     {
-        
+        public static void verificarCampoNumerico(TextBox box)
+        {
+            int num;
+            if ((box.Text != "") && !int.TryParse(box.Text, out num))
+            {
+                Exception error = new FormatException(String.Format("El campo {0} debe contener solamente numeros", box.Name));
+                box.BackColor = Color.LightCoral;
+                throw error;
+            }
+        }
+        public static void verificarCampoChar(TextBox box)
+        {
+            char c;
+            if ((box.Text != "") && (!Char.TryParse(box.Text, out c)))//ya que no es un campo obligatorio
+            {
+                Exception error = new FormatException(String.Format("El campo {0} debe contener solamente un caracter", box.Name));
+                box.BackColor = Color.LightCoral;
+                throw error;
+            }
+        }
         public static void verificarClientesDuplicados(String dni)
         {
             SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].cliente_existente");
@@ -27,7 +46,7 @@ namespace FrbaOfertas.GestorDeErrores
             cmd.Parameters.Add("@cuit", SqlDbType.NVarChar, 20).Value = cuit;
 
             int i = Conexion.Conexion.ejecutarProcedure(cmd);
-            if (i < 0) { throw new ProveedorDuplicadoException(); }
+            if (i > 0) { throw new ProveedorDuplicadoException(); }
         }
         public static void verificarUsuarioPorRolExistente(int rol_id, String username)
         {
@@ -63,7 +82,7 @@ namespace FrbaOfertas.GestorDeErrores
         }
         public static void verificarCamposObligatoriosCompletos(List<TextBox> campos)
         {
-            if (campos.Exists(campo => campo.Text == string.Empty))
+            if (campos.Any(campo => campo.Text == string.Empty))
             {
                 throw new CamposObligatoriosIncompletosException(campos);
             }
