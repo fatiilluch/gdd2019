@@ -331,6 +331,112 @@ begin
 end
 go
 
+use GD2C2019
+go
+create procedure [RE_GDDIENTOS].cargar_usuario_con_rol(
+	@user nvarchar(255),
+	@pass nvarchar(255),
+	@rol_id smallint
+)
+as
+begin
+	begin transaction
+	insert into [RE_GDDIENTOS].Usuarios (nombre_usuario,password) values (@user,@pass);
+	insert into [RE_GDDIENTOS].UsuarioPorRol (nombre_usuario,rol_id) values (@user,@rol_id);
+	commit transaction
+end
+go
+
+use GD2C2019
+go
+------------------------------Primero verifico que el cliente no exista, luego chequeo que el usuario sea distinto de null.
+------------------------------Si es distinto de null quiere decir que estoy registrando a un usuario, por lo tanto primero lo cargo
+------------------------------en su tabla. Por otro lado, si es igual a null, quiere decir que estoy cargando un cliente sin usuario
+------------------------------desde el abm del admin.
+create procedure [RE_GDDIENTOS].alta_cliente (
+	@dni numeric(18,0),
+	@nom nvarchar(255),
+	@ap nvarchar(255),
+	@fecha datetime,
+	@ciudad nvarchar(255),
+	@cp nvarchar(20),
+	@tel numeric(18,0),
+	@email nvarchar(255),
+	@direccion nvarchar(255),
+	@piso smallint,
+	@depto char,
+	@user nvarchar(255),
+	@pass nvarchar(255),
+	@rol_id smallint
+)
+as
+begin
+	declare @aux int;
+	begin transaction
+	exec @aux= [RE_GDDIENTOS].cliente_existente @dni;
+	if(@aux>1)
+	begin
+		rollback;
+		throw 50044,'Ya existe un cliente con ese DNI',16;
+	end
+	if(@user is not null)
+	begin
+		--significa que tengo que cargar al usuario primero, con su respectivo rol
+		exec [RE_GDDIENTOS].cargar_usuario_con_rol @user,@pass,@rol_id
+	end
+
+	INSERT INTO [RE_GDDIENTOS].Clientes (dni,cliente_nombre,cliente_apellido,fecha_nacimiento,ciudad,codigo_postal,telefono,email,direccion,piso,dpto,nombre_usuario)
+	VALUES (@dni,@nom,@ap,@fecha,@ciudad,@cp,@tel,@email,@direccion,@piso,@depto,@user)
+	
+	commit transaction
+end
+go
+
+use GD2C2019
+go
+create procedure [RE_GDDIENTOS].alta_proveedor (
+	@rs nvarchar(100),
+	@email nvarchar(255),
+	@telefono numeric(18,0),
+	@ciudad nvarchar(255),
+	@codigo_postal nvarchar(20),
+	@cuit nvarchar(20),
+	@rubro_id smallint,
+	@contacto nvarchar(255),
+	@direccion nvarchar(255),
+	@piso smallint,
+	@depto char,
+	@user nvarchar(255),
+	@pass nvarchar(255),
+	@rol_id smallint
+)
+as
+begin
+	declare @aux int;
+	
+	begin transaction
+	exec @aux = [RE_GDDIENTOS].proveedor_existente @cuit;
+	if(@aux>0)
+	begin
+		rollback;
+		throw 50032,'Ya existe un proveedor con ese CUIT',16;
+	end
+	if(@user is not null)
+	begin
+		--significa que tengo que cargar al usuario primero, con su respectivo rol
+		exec [RE_GDDIENTOS].cargar_usuario_con_rol @user,@pass,@rol_id
+	end
+
+	INSERT INTO [RE_GDDIENTOS].Proveedores (rs,email,telefono,ciudad,codigo_postal,cuit,rubro_id,nombre_contacto,direccion,piso,dpto,nombre_usuario)
+	VALUES (@rs,@email,@telefono,@ciudad,@codigo_postal,@cuit,@rubro_id,@contacto,@direccion,@piso,@depto,@user)
+
+	commit transaction
+
+end
+go
+
+
+
 use	GD2C2019
 go
 -------------------------Si existe un usuario con ese rol, devuelve 1, sino (-1)
@@ -425,7 +531,7 @@ begin
 			end
 			insert into [RE_GDDIENTOS].Cargas_credito (carga_fecha,monto,cliente_dni,forma_de_pago,tarjeta_id)
 				   values (@fecha_de_carga,@monto,@dni,@forma_pago,@tarj_num)
-			update Clientes set saldo=saldo+@monto where dni=@dni
+			update [RE_GDDIENTOS].Clientes set saldo=saldo+@monto where dni=@dni
 			commit transaction
 		end try
 		begin catch
@@ -458,7 +564,7 @@ begin
 		insert into [RE_GDDIENTOS].Ofertas values(@oferta_id,@fecha_pub,@fecha_venc,@precio_nuevo,@precio_viejo,@cuit,@stock,@descr,@limite_de_compra)
 	end try
 	begin catch
-		throw 50001,'Se ingresaron mal los campos. Ingreselos de nuevo correctamente',16;
+		throw 50001,'Error inesperado intentando insertar la oferta',16;
 	end catch
 end
 go

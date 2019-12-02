@@ -57,6 +57,7 @@ namespace FrbaOfertas.CragaCredito
             camposObligatorios.Add(txtTarjetaTitular);
             camposObligatorios.Add(txtTarjeta_id);
             camposObligatorios.Add(txtMonto);
+            fecha_vto.MinDate = Utilidades.Utilidades.fechaConfig;
         }
         private void bloquearBoton(Button btn)
         {
@@ -133,7 +134,7 @@ namespace FrbaOfertas.CragaCredito
             cmd.Parameters.Add("@fecha_de_carga", SqlDbType.DateTime).Value = Utilidades.Utilidades.fechaConfig;
             cmd.Parameters.Add("@forma_pago", SqlDbType.NVarChar, 100).Value = cmbTipoTarjeta.SelectedItem.ToString();
             cmd.Parameters.Add("@tarj_num", SqlDbType.NVarChar, 18).Value = txtTarjeta_id.Text;
-            cmd.Parameters.Add("@fecha_venc", SqlDbType.DateTime).Value = calendario.Value;
+            cmd.Parameters.Add("@fecha_venc", SqlDbType.DateTime).Value = fecha_vto.Value;
             cmd.Parameters.Add("@titular", SqlDbType.NVarChar, 255).Value = txtTarjetaTitular.Text;
         }
         private void btnBuscar_Click(object sender, EventArgs e)

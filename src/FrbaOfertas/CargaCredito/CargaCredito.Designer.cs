@@ -39,7 +39,7 @@
             this.lblTarjetaId = new System.Windows.Forms.Label();
             this.lblTitular = new System.Windows.Forms.Label();
             this.cmbTipoTarjeta = new System.Windows.Forms.ComboBox();
-            this.calendario = new System.Windows.Forms.DateTimePicker();
+            this.fecha_vto = new System.Windows.Forms.DateTimePicker();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.lblCliente = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -145,12 +145,12 @@
             this.cmbTipoTarjeta.Size = new System.Drawing.Size(200, 21);
             this.cmbTipoTarjeta.TabIndex = 3;
             // 
-            // calendario
+            // fecha_vto
             // 
-            this.calendario.Location = new System.Drawing.Point(129, 220);
-            this.calendario.Name = "calendario";
-            this.calendario.Size = new System.Drawing.Size(200, 20);
-            this.calendario.TabIndex = 6;
+            this.fecha_vto.Location = new System.Drawing.Point(129, 220);
+            this.fecha_vto.Name = "fecha_vto";
+            this.fecha_vto.Size = new System.Drawing.Size(200, 20);
+            this.fecha_vto.TabIndex = 6;
             // 
             // txtCliente
             // 
@@ -190,7 +190,7 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.txtCliente);
-            this.Controls.Add(this.calendario);
+            this.Controls.Add(this.fecha_vto);
             this.Controls.Add(this.cmbTipoTarjeta);
             this.Controls.Add(this.lblTitular);
             this.Controls.Add(this.lblTarjetaId);
@@ -225,9 +225,9 @@
         private System.Windows.Forms.Label lblTarjetaId;
         private System.Windows.Forms.Label lblTitular;
         private System.Windows.Forms.ComboBox cmbTipoTarjeta;
-        private System.Windows.Forms.DateTimePicker calendario;
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.DateTimePicker fecha_vto;
     }
 }
