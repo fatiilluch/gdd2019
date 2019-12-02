@@ -68,6 +68,7 @@
             // txtMonto
             // 
             this.txtMonto.Location = new System.Drawing.Point(129, 57);
+            this.txtMonto.MaxLength = 18;
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(200, 20);
             this.txtMonto.TabIndex = 2;
@@ -76,6 +77,7 @@
             // txtTarjetaTitular
             // 
             this.txtTarjetaTitular.Location = new System.Drawing.Point(129, 175);
+            this.txtTarjetaTitular.MaxLength = 255;
             this.txtTarjetaTitular.Name = "txtTarjetaTitular";
             this.txtTarjetaTitular.Size = new System.Drawing.Size(200, 20);
             this.txtTarjetaTitular.TabIndex = 5;
@@ -83,6 +85,7 @@
             // txtTarjeta_id
             // 
             this.txtTarjeta_id.Location = new System.Drawing.Point(129, 133);
+            this.txtTarjeta_id.MaxLength = 18;
             this.txtTarjeta_id.Name = "txtTarjeta_id";
             this.txtTarjeta_id.Size = new System.Drawing.Size(200, 20);
             this.txtTarjeta_id.TabIndex = 4;
@@ -135,6 +138,7 @@
             // 
             // cmbTipoTarjeta
             // 
+            this.cmbTipoTarjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoTarjeta.FormattingEnabled = true;
             this.cmbTipoTarjeta.Location = new System.Drawing.Point(129, 93);
             this.cmbTipoTarjeta.Name = "cmbTipoTarjeta";
@@ -152,6 +156,7 @@
             // 
             this.txtCliente.Enabled = false;
             this.txtCliente.Location = new System.Drawing.Point(129, 20);
+            this.txtCliente.MaxLength = 18;
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.ReadOnly = true;
             this.txtCliente.Size = new System.Drawing.Size(119, 20);
@@ -163,9 +168,9 @@
             this.lblCliente.AutoSize = true;
             this.lblCliente.Location = new System.Drawing.Point(26, 20);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(39, 13);
+            this.lblCliente.Size = new System.Drawing.Size(61, 13);
             this.lblCliente.TabIndex = 21;
-            this.lblCliente.Text = "Cliente";
+            this.lblCliente.Text = "Cliente DNI";
             // 
             // btnBuscar
             // 

@@ -119,6 +119,7 @@
             // rs
             // 
             this.rs.Location = new System.Drawing.Point(160, 64);
+            this.rs.MaxLength = 100;
             this.rs.Name = "rs";
             this.rs.Size = new System.Drawing.Size(162, 20);
             this.rs.TabIndex = 2;
@@ -126,6 +127,7 @@
             // email
             // 
             this.email.Location = new System.Drawing.Point(160, 108);
+            this.email.MaxLength = 255;
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(162, 20);
             this.email.TabIndex = 3;
@@ -133,6 +135,7 @@
             // cuit
             // 
             this.cuit.Location = new System.Drawing.Point(160, 28);
+            this.cuit.MaxLength = 20;
             this.cuit.Name = "cuit";
             this.cuit.Size = new System.Drawing.Size(162, 20);
             this.cuit.TabIndex = 1;
@@ -186,7 +189,8 @@
             this.Controls.Add(this.lblFiltroCuit);
             this.Controls.Add(this.dgProveedores);
             this.Name = "ListadoDeProveedores";
-            this.Text = "ListadoDeProveedores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Listado de Proveedores";
             this.Load += new System.EventHandler(this.ListadoDeProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgProveedores)).EndInit();
             this.ResumeLayout(false);

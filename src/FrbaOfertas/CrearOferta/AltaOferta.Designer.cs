@@ -166,6 +166,7 @@
             // txtStock
             // 
             this.txtStock.Location = new System.Drawing.Point(122, 23);
+            this.txtStock.MaxLength = 5;
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(175, 20);
             this.txtStock.TabIndex = 2;
@@ -174,6 +175,7 @@
             // txtLimiteCompra
             // 
             this.txtLimiteCompra.Location = new System.Drawing.Point(122, 82);
+            this.txtLimiteCompra.MaxLength = 5;
             this.txtLimiteCompra.Name = "txtLimiteCompra";
             this.txtLimiteCompra.Size = new System.Drawing.Size(175, 20);
             this.txtLimiteCompra.TabIndex = 3;
@@ -182,6 +184,7 @@
             // txtPrecioAntiguo
             // 
             this.txtPrecioAntiguo.Location = new System.Drawing.Point(122, 138);
+            this.txtPrecioAntiguo.MaxLength = 18;
             this.txtPrecioAntiguo.Name = "txtPrecioAntiguo";
             this.txtPrecioAntiguo.Size = new System.Drawing.Size(175, 20);
             this.txtPrecioAntiguo.TabIndex = 4;
@@ -190,6 +193,7 @@
             // txtPrecioNuevo
             // 
             this.txtPrecioNuevo.Location = new System.Drawing.Point(122, 207);
+            this.txtPrecioNuevo.MaxLength = 18;
             this.txtPrecioNuevo.Name = "txtPrecioNuevo";
             this.txtPrecioNuevo.Size = new System.Drawing.Size(175, 20);
             this.txtPrecioNuevo.TabIndex = 5;
@@ -199,6 +203,7 @@
             // 
             this.txtCuit.Enabled = false;
             this.txtCuit.Location = new System.Drawing.Point(122, 272);
+            this.txtCuit.MaxLength = 20;
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(175, 20);
             this.txtCuit.TabIndex = 6;
@@ -206,6 +211,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(424, 20);
+            this.txtDescripcion.MaxLength = 255;
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Both;

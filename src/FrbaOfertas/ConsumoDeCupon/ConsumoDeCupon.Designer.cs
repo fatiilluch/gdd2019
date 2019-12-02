@@ -53,6 +53,7 @@
             // txtCuponId
             // 
             this.txtCuponId.Location = new System.Drawing.Point(141, 22);
+            this.txtCuponId.MaxLength = 20;
             this.txtCuponId.Name = "txtCuponId";
             this.txtCuponId.Size = new System.Drawing.Size(206, 20);
             this.txtCuponId.TabIndex = 1;
@@ -78,6 +79,7 @@
             // txtDni
             // 
             this.txtDni.Location = new System.Drawing.Point(141, 57);
+            this.txtDni.MaxLength = 18;
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(206, 20);
             this.txtDni.TabIndex = 5;
@@ -115,6 +117,7 @@
             // txtCuit
             // 
             this.txtCuit.Location = new System.Drawing.Point(141, 128);
+            this.txtCuit.MaxLength = 20;
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(133, 20);
             this.txtCuit.TabIndex = 9;
@@ -154,7 +157,7 @@
             this.Controls.Add(this.lblCuponId);
             this.Name = "ConsumoDeCupon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ConsumoDeCupon";
+            this.Text = "Consumo De Cupon";
             this.ResumeLayout(false);
             this.PerformLayout();
 

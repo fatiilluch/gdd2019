@@ -71,20 +71,24 @@ namespace FrbaOfertas.AbmProveedor
         {
             try
             {
-                GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
-                verificarCampos();
-                GestorDeErrores.GestorDeErrores.verificarProveedoresDuplicados(txtCuit.Text);
+                if (cmbRubros.SelectedItem != null)
+                {
+                    GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                    verificarCampos();
+                    GestorDeErrores.GestorDeErrores.verificarProveedoresDuplicados(txtCuit.Text);
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO [RE_GDDIENTOS].Proveedores (rs,email,telefono,ciudad,codigo_postal,cuit,rubro_id,nombre_contacto,direccion,piso,dpto,nombre_usuario) VALUES (@rs,@email,@telefono,@ciudad,@codigo_postal,@cuit,@rubro_id,@contacto,@direccion,@piso,@depto,@user)");
-                String SelectRol = "Select rol_id from [RE_GDDIENTOS].Roles where rol_nombre='proveedor'";
-                int rol_id = Convert.ToInt16(Conexion.Conexion.ejecutarConsulta(SelectRol).Tables[0].Rows[0]["rol_id"]);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO [RE_GDDIENTOS].Proveedores (rs,email,telefono,ciudad,codigo_postal,cuit,rubro_id,nombre_contacto,direccion,piso,dpto,nombre_usuario) VALUES (@rs,@email,@telefono,@ciudad,@codigo_postal,@cuit,@rubro_id,@contacto,@direccion,@piso,@depto,@user)");
+                    String SelectRol = "Select rol_id from [RE_GDDIENTOS].Roles where rol_nombre='proveedor'";
+                    int rol_id = Convert.ToInt16(Conexion.Conexion.ejecutarConsulta(SelectRol).Tables[0].Rows[0]["rol_id"]);
 
-                cargarCmd(cmd);
-                if (us!= null) { cargarUsuario(us, rol_id); }
-                Conexion.Conexion.ejecutar(cmd);
-                MessageBox.Show("Proveedor guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-                ventanaAnterior.Show();
+                    cargarCmd(cmd);
+                    if (us != null) { cargarUsuario(us, rol_id); }
+                    Conexion.Conexion.ejecutar(cmd);
+                    MessageBox.Show("Proveedor guardado exitosamente!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                    ventanaAnterior.Show();
+                }
+                
             }
             catch (CamposObligatoriosIncompletosException error)
             {

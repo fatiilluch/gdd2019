@@ -56,6 +56,7 @@
             // txtNuevaContraseña
             // 
             this.txtNuevaContraseña.Location = new System.Drawing.Point(179, 34);
+            this.txtNuevaContraseña.MaxLength = 255;
             this.txtNuevaContraseña.Name = "txtNuevaContraseña";
             this.txtNuevaContraseña.PasswordChar = '*';
             this.txtNuevaContraseña.Size = new System.Drawing.Size(100, 20);
@@ -64,6 +65,7 @@
             // txtConfirmNuevaContraseña
             // 
             this.txtConfirmNuevaContraseña.Location = new System.Drawing.Point(179, 78);
+            this.txtConfirmNuevaContraseña.MaxLength = 255;
             this.txtConfirmNuevaContraseña.Name = "txtConfirmNuevaContraseña";
             this.txtConfirmNuevaContraseña.PasswordChar = '*';
             this.txtConfirmNuevaContraseña.Size = new System.Drawing.Size(100, 20);

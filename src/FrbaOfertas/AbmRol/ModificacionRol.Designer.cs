@@ -104,6 +104,7 @@
             // 
             // cmbRoles
             // 
+            this.cmbRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoles.FormattingEnabled = true;
             this.cmbRoles.Location = new System.Drawing.Point(177, 27);
             this.cmbRoles.Name = "cmbRoles";

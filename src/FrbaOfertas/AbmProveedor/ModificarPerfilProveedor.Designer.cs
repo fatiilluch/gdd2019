@@ -62,7 +62,7 @@
             this.ClientSize = new System.Drawing.Size(759, 397);
             this.Controls.Add(this.btnActualizar);
             this.Name = "ModificarPerfilProveedor";
-            this.Text = "ModificarPerfilProveedor";
+            this.Text = "Modificar Perfil Proveedor";
             this.Controls.SetChildIndex(this.btnAtras, 0);
             this.Controls.SetChildIndex(this.btnCrear, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);

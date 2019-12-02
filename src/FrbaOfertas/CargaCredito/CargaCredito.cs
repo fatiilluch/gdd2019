@@ -89,19 +89,38 @@ namespace FrbaOfertas.CragaCredito
         {
             try
             {
-                verificarCampos();
+                if (cmbTipoTarjeta.SelectedItem != null)
+                {
+                    GestorDeErrores.GestorDeErrores.verificarCamposObligatoriosCompletos(camposObligatorios);
+                    verificarCampos();
 
-                SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].cargar_credito");
-                cmd.CommandType = CommandType.StoredProcedure;
-                cargarCmd(cmd);
-                Conexion.Conexion.ejecutar(cmd);
-                MessageBox.Show("Carga realizada con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Hide();
-                menu.Show();
+                    SqlCommand cmd = new SqlCommand("[RE_GDDIENTOS].cargar_credito");
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cargarCmd(cmd);
+                    Conexion.Conexion.ejecutar(cmd);
+                    MessageBox.Show("Carga realizada con éxito!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    menu.Show();
+                }
+                
+            }
+            catch (CamposObligatoriosIncompletosException error)
+            {
+                error.mensaje();
             }
             catch (FormatException error)
             {
                 MessageBox.Show("Hay campos con el formato incorrecto: " + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (SqlException error)
+            {
+                MessageBox.Show(error.Number + " :" + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception error)
+            { MessageBox.Show(" Error inesperado :" + error.Message, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            finally
+            {
+                Conexion.Conexion.getCon().Close();
             }
             
 

@@ -94,6 +94,7 @@
             // cliente_apellido
             // 
             this.cliente_apellido.Location = new System.Drawing.Point(624, 25);
+            this.cliente_apellido.MaxLength = 255;
             this.cliente_apellido.Name = "cliente_apellido";
             this.cliente_apellido.Size = new System.Drawing.Size(190, 20);
             this.cliente_apellido.TabIndex = 3;
@@ -101,6 +102,7 @@
             // cliente_nombre
             // 
             this.cliente_nombre.Location = new System.Drawing.Point(136, 24);
+            this.cliente_nombre.MaxLength = 255;
             this.cliente_nombre.Name = "cliente_nombre";
             this.cliente_nombre.Size = new System.Drawing.Size(190, 20);
             this.cliente_nombre.TabIndex = 1;
@@ -108,6 +110,7 @@
             // email
             // 
             this.email.Location = new System.Drawing.Point(624, 66);
+            this.email.MaxLength = 255;
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(190, 20);
             this.email.TabIndex = 4;
@@ -151,6 +154,7 @@
             // dni
             // 
             this.dni.Location = new System.Drawing.Point(136, 63);
+            this.dni.MaxLength = 18;
             this.dni.Name = "dni";
             this.dni.Size = new System.Drawing.Size(190, 20);
             this.dni.TabIndex = 2;
@@ -217,6 +221,7 @@
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.dgClientes);
             this.Name = "ListadoCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado de Clientes";
             this.Load += new System.EventHandler(this.ListadoCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgClientes)).EndInit();

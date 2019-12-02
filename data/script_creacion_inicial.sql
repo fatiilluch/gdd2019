@@ -53,7 +53,7 @@ create table [RE_GDDIENTOS].Clientes (
 	dpto char,
 	habilitado bit default 1,
 	nombre_usuario nvarchar(255),
-	saldo numeric(18,2)
+	saldo numeric(18,2) default 200
 )
 
 create table [RE_GDDIENTOS].Rubros(
@@ -86,7 +86,7 @@ create table [RE_GDDIENTOS].Ofertas(
 	proveedor_cuit nvarchar(20) not null,
 	stock smallint,
 	oferta_descripcion nvarchar(255) not null,
-	limite_compra_por_us smallint
+	limite_compra_por_us smallint default 100
 )
 
 create table [RE_GDDIENTOS].Detalles_Tarjeta(
@@ -230,14 +230,12 @@ go
 
 --Agregando constraints
 alter table [RE_GDDIENTOS].Clientes
-add constraint fk_usuario foreign key (nombre_usuario) references [RE_GDDIENTOS].Usuarios(nombre_usuario),
-	constraint saldo_default default 200 for saldo;
+add constraint fk_usuario foreign key (nombre_usuario) references [RE_GDDIENTOS].Usuarios(nombre_usuario);
 go
 
 alter table [RE_GDDIENTOS].proveedores
 add constraint fk_rubro foreign key (rubro_id) references [RE_GDDIENTOS].Rubros(rubro_id),
-	constraint fk_proveedor_usuario foreign key (nombre_usuario) references [RE_GDDIENTOS].Usuarios(nombre_usuario),
-	constraint df_lim_compra_por_us default 100 for limite_compra_por_us;
+	constraint fk_proveedor_usuario foreign key (nombre_usuario) references [RE_GDDIENTOS].Usuarios(nombre_usuario);
 go
 
 alter table [RE_GDDIENTOS].ofertas
@@ -596,12 +594,19 @@ create procedure [RE_GDDIENTOS].realizar_facturacion (
 )
 as
 begin
-	
-	declare @importe_total numeric(18,2)= (select sum(precio_oferta)
-										  from [RE_GDDIENTOS].Ofertas o join [RE_GDDIENTOS].Cupones c on (o.oferta_id=c.oferta_id)
-										  where o.proveedor_cuit=@cuit and fecha_compra>=@fecha_minima and fecha_compra<=@fecha_maxima)
-	declare @reporte_id numeric(18,0);
 	begin transaction
+	declare @importe_total numeric(18,2);
+	if(not exists(select * from [RE_GDDIENTOS].Ofertas o join [RE_GDDIENTOS].Cupones c on (o.oferta_id=c.oferta_id)
+	where o.proveedor_cuit=@cuit and fecha_compra>=@fecha_minima and fecha_compra<=@fecha_maxima))
+	begin
+		rollback;
+		throw 50042,'No hay ofertas para facturar',16;
+	end
+	set @importe_total =(select sum(precio_oferta)
+						 from [RE_GDDIENTOS].Ofertas o join [RE_GDDIENTOS].Cupones c on (o.oferta_id=c.oferta_id)
+						 where o.proveedor_cuit=@cuit and fecha_compra>=@fecha_minima and fecha_compra<=@fecha_maxima)
+	declare @reporte_id numeric(18,0);
+	
 	begin try
 		set @reporte_id = RAND()*999999999999999999;
 		while(exists(select * from [RE_GDDIENTOS].Reportes_Facturacion where reporte_id = @reporte_id))
