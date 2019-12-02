@@ -11,6 +11,7 @@ using FrbaOfertas.Listado;
 using FrbaOfertas.Entidades;
 using System.Data.SqlClient;
 using FrbaOfertas.GestorDeErrores;
+using FrbaOfertas.Utilidades;
 namespace FrbaOfertas.ConsumoDeCupon
 {
     public partial class ConsumoDeCupon : Form
@@ -22,19 +23,24 @@ namespace FrbaOfertas.ConsumoDeCupon
         {
             InitializeComponent();
         }
-        public ConsumoDeCupon(Form menu)
+        public ConsumoDeCupon(Form menu)//vengo del admin
         {
             InitializeComponent();
             menuPrincipal = menu;
             cargarCamposObligatorios();
         }
-        public ConsumoDeCupon(Form menu,Usuario us)
+        public ConsumoDeCupon(Form menu,Usuario us)//vengo de otro usuario
         {
             InitializeComponent();
             usuario = us;
             menuPrincipal = menu;
             cargartxtCuit();
             cargarCamposObligatorios();
+
+            btnBuscadorCupones.Enabled = false;
+            btnBuscadorProveedores.Enabled = false;
+            btnBuscadorProveedores.BackColor = SystemColors.ControlDarkDark;
+            btnBuscadorCupones.BackColor = SystemColors.ControlDarkDark;
         }
         private void cargarCamposObligatorios()
         {
@@ -42,7 +48,7 @@ namespace FrbaOfertas.ConsumoDeCupon
             camposObligatorios.Add(txtCuponId);
             camposObligatorios.Add(txtDni);
             dateFechaConsumo.Enabled = false;
-            dateFechaConsumo.Value = DateTime.Now;
+            dateFechaConsumo.Value = Utilidades.Utilidades.fechaConfig;
         }
         private void cargartxtCuit()
         {
@@ -113,6 +119,17 @@ namespace FrbaOfertas.ConsumoDeCupon
         {
             Control ctrl = (Control)sender;
             ctrl.BackColor = Color.White;
+        }
+
+        private void btnBuscadorCupones_Click(object sender, EventArgs e)
+        {
+            Form v = new ListadoDeCupones(txtCuponId);
+            v.Show();
+        }
+
+        private void ConsumoDeCupon_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            menuPrincipal.Show();
         }
     }
 }

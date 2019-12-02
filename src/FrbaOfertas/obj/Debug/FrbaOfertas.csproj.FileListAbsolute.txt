@@ -111,3 +111,4 @@ C:\Home\Gestion de datos\gdd2019\src\FrbaOfertas\obj\Debug\FrbaOfertas.MenuPrinc
 C:\Home\Gestion de datos\gdd2019\src\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
 C:\Home\Gestion de datos\gdd2019\src\FrbaOfertas\obj\Debug\FrbaOfertas.Registro_de_usuario.RegistrarUsuario.resources
 C:\Home\Gestion de datos\gdd2019\src\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
+C:\Home\Gestion de datos\gdd2019\src\FrbaOfertas\obj\Debug\FrbaOfertas.Listado.ListadoDeCupones.resources
