@@ -679,8 +679,9 @@ begin
 		set @mes_lim_inferior = 7;
 		set @mes_lim_superior = 12;
 	end
-	select distinct top 5 proveedor_cuit,cast((100-(precio_oferta/precio_viejo)*100) as decimal(5,2)) as Porcentaje_de_descuento,precio_oferta,precio_viejo from [RE_GDDIENTOS].Ofertas
-		   where year(fecha_publicacion)=@year and MONTH(@mes_lim_inferior) between 1 and (@mes_lim_superior+1)
+	select distinct top 5 proveedor_cuit,max(cast((100-(precio_oferta/precio_viejo)*100) as decimal(5,2))) as Porcentaje_de_descuento from [RE_GDDIENTOS].Ofertas
+		   where year(fecha_publicacion)=@year and MONTH(fecha_publicacion) between @mes_lim_inferior and (@mes_lim_superior+1)
+		   group by proveedor_cuit
 		   order by 2 desc
 		   
 end
